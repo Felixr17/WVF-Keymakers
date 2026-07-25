@@ -103,6 +103,9 @@
       <path d="M36.5 105 h15 v7 h-15 Z" fill="currentColor"/>
       <rect x="25.5" y="106" width="13" height="13" transform="rotate(45 32 112.5)" fill="none" stroke="currentColor" stroke-width="3.5"/>
     </symbol>
+    <symbol id="icon-keyhole" viewBox="0 0 40 60">
+      <path d="M20 4c-6.6 0-12 5.4-12 12 0 4.8 2.8 8.9 6.9 10.8L10 54h20l-4.9-27.2C29.2 24.9 32 20.8 32 16c0-6.6-5.4-12-12-12z"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -165,6 +168,29 @@
   </div>
 </header>
 
+<!-- ============================================================ -->
+<!-- LIVE STROBE COUNTER BANNER                                    -->
+<!-- ============================================================ -->
+<div class="bg-navy border-b border-white/10 py-2.5 px-4">
+  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-1.5">
+    <div class="flex items-center gap-2.5 text-xs sm:text-sm text-white/85">
+      <span class="relative flex h-3 w-3 shrink-0">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-gold"></span>
+      </span>
+      <span>
+        <span class="font-bold text-white">47 new keys</span> shared this month
+        <span class="text-white/40 mx-1">&bull;</span>
+        <span class="font-bold text-white">327 women</span> joined the movement
+      </span>
+    </div>
+    <a href="#stories" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-gold hover:text-white transition-colors whitespace-nowrap">
+      Explore the Registry
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </a>
+  </div>
+</div>
+
 <main id="top">
 
 <!-- ============================================================ -->
@@ -184,22 +210,21 @@
         Keymakers &nbsp;|&nbsp; A Movement Built by Women, for Women
       </div>
 
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.1] font-semibold text-navy mb-6">
-        Your story can open a door for someone else.
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.15rem] leading-[1.12] font-semibold text-navy mb-6">
+        Open Doors. Build New Pathways. Empower Women Entrepreneurs.
       </h1>
 
-      <p class="text-navy/70 text-base sm:text-lg leading-relaxed mb-2">
-        It might be a moment of courage. A decision that changed everything. A key that unlocked a new possibility.
+      <p class="text-navy/70 text-base sm:text-lg leading-relaxed mb-8">
+        Keymakers is a year-round membership community that brings together stories, relationships, knowledge, philanthropy, and capital to open new pathways for women entrepreneurs.
       </p>
-      <p class="text-navy font-semibold text-lg sm:text-xl mb-8">What&rsquo;s your key?</p>
 
       <div class="flex flex-wrap items-center gap-4">
-        <button @click="openModal(howItWorksStory)" type="button" class="inline-flex items-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.5 7.2v5.6a.6.6 0 00.92.5l4.5-2.8a.6.6 0 000-1.02l-4.5-2.8a.6.6 0 00-.92.52z"/></svg>
-          Share Your Key
-        </button>
-        <a href="#gathering" class="inline-flex items-center gap-2 rounded-full border-2 border-gold text-gold font-bold text-sm px-6 py-3.5 hover:bg-gold hover:text-white transition-colors">
-          Reserve Your Place
+        <a href="https://forms.example.com/keymakers-join" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
+          Become a Keymaker
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="#get-involved" class="inline-flex items-center gap-2 rounded-full border-2 border-gold text-gold font-bold text-sm px-6 py-3.5 hover:bg-gold hover:text-white transition-colors">
+          Explore Memberships
         </a>
       </div>
 
@@ -259,7 +284,7 @@
 <!-- SECTION 3 :: WHY KEYMAKERS EXISTS NOW                         -->
 <!-- ============================================================ -->
 <section id="why-it-matters" class="relative bg-brown text-cream">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-16 lg:pb-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
     <!-- Text -->
     <div>
@@ -290,6 +315,46 @@
       <div class="rounded-2xl overflow-hidden shadow-soft aspect-square">
         <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=800&q=80" alt="Two women entrepreneurs in candid conversation" class="w-full h-full object-cover">
       </div>
+    </div>
+  </div>
+
+  <!-- Three Pillar Cards -->
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="grid sm:grid-cols-3 gap-6 lg:gap-8">
+
+        <!-- Pillar 1: Keymakers -->
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold mb-5">
+            <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="24" r="9"/><path d="M23 24h19M36 24v7M42 24v7"/></svg>
+          </span>
+          <h3 class="font-serif text-xl font-semibold text-white mb-3">Keymakers</h3>
+          <p class="text-cream/70 text-sm leading-relaxed">Share their stories and contribute &mdash; building clarity and capital for the movement.</p>
+        </div>
+
+        <!-- Pillar 2: Connectors -->
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold mb-5">
+            <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M14 15l7 16M34 15l-7 16M15 12h18"/></svg>
+          </span>
+          <h3 class="font-serif text-xl font-semibold text-white mb-3">Connectors</h3>
+          <p class="text-cream/70 text-sm leading-relaxed">Build the room &mdash; bringing their networks, relationships, and introductions.</p>
+        </div>
+
+        <!-- Pillar 3: The Founding Gathering -->
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold mb-5">
+            <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="30" rx="4"/><path d="M6 18h36M14 6v8M34 6v8"/><path d="M24 24l2.5 5 5.5.8-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.5-.8z"/></svg>
+          </span>
+          <h3 class="font-serif text-xl font-semibold text-white mb-3">The Founding Gathering</h3>
+          <p class="text-cream/70 text-sm leading-relaxed">Where the doors open. In person. This fall. The community comes together.</p>
+        </div>
+      </div>
+
+      <!-- Closing Callout -->
+      <p class="font-serif italic text-xl sm:text-2xl text-gold text-center mt-14 lg:mt-16">
+        Someone opened a door for you. Who will you open one for?
+      </p>
     </div>
   </div>
 </section>
@@ -423,22 +488,26 @@
 <!-- ============================================================ -->
 <section class="bg-cream pb-20 lg:pb-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">By The Numbers</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2">Nearly three decades of proof.</h2>
+    </div>
     <div class="grid grid-cols-2 sm:grid-cols-4 rounded-3xl border border-warmgray bg-white/60 divide-y sm:divide-y-0 sm:divide-x divide-warmgray overflow-hidden">
       <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">327</p>
-        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Keys Shared</p>
+        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">28,000+</p>
+        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Women Entrepreneurs Served</p>
       </div>
       <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">18,742</p>
-        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">People Inspired</p>
+        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">$2.4M+</p>
+        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">In Business Loans Provided</p>
       </div>
       <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">32</p>
-        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">States &amp; Countries</p>
+        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">0.039%</p>
+        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Loan Write-Off Rate</p>
       </div>
       <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">1</p>
-        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Community</p>
+        <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">Since 1996</p>
+        <p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Nearly Three Decades of Access</p>
       </div>
     </div>
     <p class="text-center mt-6 font-serif italic text-navy/50 text-sm sm:text-base">The locks have changed. We&rsquo;re building new pathways.</p>
@@ -451,25 +520,68 @@
 <section id="get-involved" class="bg-warmgray/50 py-20 lg:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="text-center max-w-2xl mx-auto mb-14">
+    <div class="text-center max-w-2xl mx-auto mb-10">
       <span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">Get Involved</span>
       <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2 mb-4">Choose how you show up.</h2>
-      <p class="text-navy/60 text-base leading-relaxed">Every tier funds the Keymakers movement &mdash; from telling your own story to helping build the next chapter for others.</p>
+      <p class="text-navy/60 text-base leading-relaxed">Every level matters. The difference is how you participate. Membership is designed as a journey, not a hierarchy &mdash; from sharing your story to helping shape the capital available to the next generation of founders.</p>
+    </div>
+
+    <!-- Pillar Subtabs -->
+    <div class="flex flex-col sm:flex-row items-stretch justify-center gap-3 mb-14 max-w-4xl mx-auto">
+      <div class="flex-1 rounded-xl border border-warmgray bg-white px-5 py-4 text-center sm:text-left">
+        <span class="font-serif text-lg font-semibold text-navy">1. <span class="text-terracotta">Campaign</span></span>
+        <span class="block text-navy/60 text-sm mt-0.5">Name your key</span>
+      </div>
+      <div class="flex-1 rounded-xl border border-warmgray bg-white px-5 py-4 text-center sm:text-left">
+        <span class="font-serif text-lg font-semibold text-navy">2. <span class="text-terracotta">Community</span></span>
+        <span class="block text-navy/60 text-sm mt-0.5">Build together</span>
+      </div>
+      <div class="flex-1 rounded-xl border border-warmgray bg-white px-5 py-4 text-center sm:text-left">
+        <span class="font-serif text-lg font-semibold text-navy">3. <span class="text-terracotta">Capital</span></span>
+        <span class="block text-navy/60 text-sm mt-0.5">Enter the room</span>
+      </div>
     </div>
 
     <!-- Tier Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-16">
       <template x-for="tier in tiers" :key="tier.name">
-        <div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmgray'" class="relative flex flex-col rounded-2xl bg-white border p-7">
-          <span x-show="tier.featured" class="absolute -top-3 left-7 bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most Popular</span>
-          <div class="flex items-baseline gap-2 mb-1">
-            <span class="font-serif text-3xl font-semibold text-navy" x-text="tier.price"></span>
+        <div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmgray'" class="relative flex flex-col rounded-2xl bg-white border p-6">
+          <span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most Popular</span>
+
+          <!-- Progressive Keyhole Fill -->
+          <div class="relative w-8 h-12 mx-auto mb-4 text-gold">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="3"><use href="#icon-keyhole"/></svg>
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60">
+              <defs>
+                <clipPath :id="'keyhole-clip-' + tier.name.replace(/\s+/g,'-')">
+                  <rect x="0" :y="60 - (60 * tier.fillPct / 100)" width="40" :height="60 * tier.fillPct / 100"></rect>
+                </clipPath>
+              </defs>
+              <use href="#icon-keyhole" fill="currentColor" :clip-path="'url(#keyhole-clip-' + tier.name.replace(/\s+/g,'-') + ')'"/>
+            </svg>
           </div>
-          <h3 class="text-terracotta font-bold text-sm uppercase tracking-wide mb-4" x-text="tier.name"></h3>
-          <p class="text-navy/60 text-sm leading-relaxed mb-6 flex-1" x-text="tier.desc"></p>
-          <button type="button" @click="openModal(howItWorksStory)"
+
+          <div class="text-center mb-4">
+            <div class="flex items-baseline justify-center gap-1.5 flex-wrap">
+              <span class="font-serif text-2xl font-semibold text-navy" x-text="tier.price"></span>
+              <span class="text-navy/50 text-xs" x-text="tier.period"></span>
+            </div>
+            <h3 class="text-terracotta font-bold text-sm uppercase tracking-wide mt-2" x-text="tier.name"></h3>
+            <p class="font-serif italic text-navy/70 text-sm mt-1" x-text="tier.tagline"></p>
+          </div>
+
+          <ul class="space-y-2 mb-6 flex-1">
+            <template x-for="feature in tier.features" :key="feature">
+              <li class="flex items-start gap-2 text-navy/65 text-xs leading-snug">
+                <svg class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+                <span x-text="feature"></span>
+              </li>
+            </template>
+          </ul>
+
+          <a :href="tier.ctaHref" target="_blank" rel="noopener noreferrer"
             :class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-navy text-white hover:bg-navy/90'"
-            class="w-full rounded-full font-bold text-sm px-5 py-3 transition-colors" x-text="tier.cta"></button>
+            class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 transition-colors" x-text="tier.cta"></a>
         </div>
       </template>
     </div>
@@ -492,6 +604,37 @@
           <a href="#stories" class="text-center rounded-full border border-white/40 text-white font-semibold text-sm px-7 py-3.5 hover:bg-white/10 transition-colors">See the Stories</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7B :: FAQ ACCORDION                                   -->
+<!-- ============================================================ -->
+<section id="faq" class="bg-cream py-20 lg:py-24 border-t border-warmgray">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">FAQ</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2">Questions, answered.</h2>
+    </div>
+
+    <div x-data="{ open: null }" class="divide-y divide-warmgray rounded-2xl border border-warmgray bg-white overflow-hidden">
+      <template x-for="(faq, idx) in faqs" :key="idx">
+        <div>
+          <button
+            type="button"
+            @click="open = open === idx ? null : idx"
+            :aria-expanded="open === idx"
+            class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-warmgray/30 transition-colors"
+          >
+            <span class="font-serif text-base sm:text-lg font-semibold text-navy" x-text="faq.q"></span>
+            <svg class="w-5 h-5 text-gold shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === idx }" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+          </button>
+          <div x-show="open === idx" x-collapse>
+            <p class="px-6 pb-5 text-navy/65 text-sm sm:text-base leading-relaxed" x-text="faq.a"></p>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
 </section>
@@ -546,7 +689,7 @@
         <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
         <ul class="space-y-2.5 text-sm">
           <li><a href="#share-your-key" class="hover:text-white transition-colors">Submission Guidelines</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
           <li><a href="#" class="hover:text-white transition-colors">Press &amp; Media</a></li>
           <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
         </ul>
@@ -681,12 +824,84 @@
       ],
 
       tiers: [
-        { name: 'Key Carrier', price: '$0', desc: 'Join the movement, get story and event updates, and carry your key with you.', cta: 'Join Free' },
-        { name: 'Keyholder', price: '$25', desc: 'Help fund the tools that capture and share one more story.', cta: 'Become a Keyholder' },
-        { name: 'Keysmith', price: '$100', desc: 'Support the craft behind every story \u2014 from filming to editing to sharing.', cta: 'Become a Keysmith' },
-        { name: 'Key Shaper', price: '$250', desc: 'Shape the next chapter of the movement with deeper program support.', cta: 'Become a Key Shaper', featured: true },
-        { name: 'Key Circle', price: '$1,000', desc: 'Join an inner circle of leaders investing directly in women founders.', cta: 'Join the Key Circle' },
-        { name: 'Cornerstone', price: '$5,000', desc: 'Become a cornerstone partner powering Keymakers at scale.', cta: 'Become a Cornerstone' },
+        {
+          name: 'Key Carrier',
+          tagline: "You're carrying a key.",
+          price: 'Free',
+          period: '($0)',
+          features: ['Share "What Was Your Key?" story', 'Monthly Insight Summary', 'Stay connected to news', 'Invitations to future opportunities'],
+          cta: 'Join Free',
+          ctaHref: 'https://forms.example.com/keymakers-key-carrier',
+          fillPct: 0,
+        },
+        {
+          name: 'Keyholder',
+          tagline: 'You hold the key.',
+          price: '$50',
+          period: '/ year',
+          features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Submit questions to speakers', 'Keymakers Registry recognition', 'Early event invitations'],
+          cta: 'Become a Keyholder',
+          ctaHref: 'https://checkout.example.com/keymakers-keyholder-50',
+          fillPct: 25,
+        },
+        {
+          name: 'Keysmith',
+          tagline: 'You forge new pathways.',
+          price: '$100',
+          period: '/ year',
+          features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discussions', 'Contribute to Knowledge Library', '"Ask a Keymaker" sessions'],
+          cta: 'Become a Keysmith',
+          ctaHref: 'https://checkout.example.com/keymakers-keysmith-100',
+          fillPct: 50,
+        },
+        {
+          name: 'Key Shaper',
+          tagline: 'You shape the conversation.',
+          price: '$250',
+          period: '/ year',
+          features: ['Everything in Keysmith', 'Quarterly Spotlight feature', 'Lead roundtables', 'Share introductions', 'Recognition at Founding Gathering'],
+          cta: 'Become a Key Shaper',
+          ctaHref: 'https://checkout.example.com/keymakers-key-shaper-250',
+          fillPct: 75,
+          featured: true,
+        },
+        {
+          name: 'Key Circle',
+          tagline: "You're helping build what's next.",
+          price: '$1,000',
+          period: '/ year \u00b7 By Invitation',
+          features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversations on financing models', 'Build Keymakers Capital Network', 'Capital Network Summit invitation'],
+          cta: 'Request an Invitation',
+          ctaHref: 'https://forms.example.com/keymakers-key-circle-application',
+          fillPct: 100,
+        },
+      ],
+
+      faqs: [
+        {
+          q: 'Is Keymakers only for entrepreneurs?',
+          a: 'No. Keymakers welcomes entrepreneurs, professionals, investors, creatives, advisors, executives, philanthropists, community leaders \u2014 anyone who believes in empowering women entrepreneurs.',
+        },
+        {
+          q: 'Why are there free memberships?',
+          a: "We believe belonging should never depend on someone's ability to give. Key Carrier removes the financial barrier to joining the movement while creating opportunities for deeper engagement over time.",
+        },
+        {
+          q: 'How are memberships and partnerships different?',
+          a: "Membership is about joining and helping build the Keymakers community. Partnership provides additional philanthropic support for Women's Venture Fund and the annual Founding Gathering.",
+        },
+        {
+          q: 'What is the Keymakers Capital Network?',
+          a: 'A long-term initiative to cultivate relationships among entrepreneurs, investors, philanthropists, family offices, foundations, and strategic partners who believe women entrepreneurs deserve broader pathways to capital.',
+        },
+        {
+          q: 'Do I have to attend the Founding Gathering to be a member?',
+          a: 'No. Membership is a year-round experience \u2014 monthly forums, the Knowledge Library, and Insight Summaries continue regardless of whether you attend in person.',
+        },
+        {
+          q: 'Can my membership level change later?',
+          a: "Yes. The journey from Key Carrier to Key Circle is designed to move at your own pace \u2014 upgrade whenever you're ready for a deeper level of engagement.",
+        },
       ],
 
       get filteredStories() {
