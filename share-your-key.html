@@ -245,8 +245,9 @@
           Complete the short form below, and a member of the WVF team will contact you to arrange your conversation.
         </p>
 
-        <form @submit.prevent="submitForm()" class="space-y-6">
+        <form @submit.prevent="submitForm()" action="http://localhost:5678/webhook-test/keymakers-intake" method="POST" class="space-y-6">
 
+        
           <!-- First / Last Name -->
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
@@ -471,7 +472,32 @@
         { value: 'self-record', label: 'Record and submit my own video' },
         { value: 'more-info', label: 'I would like more information first' },
       ],
-      submitForm() {
+      async submitForm() {
+        // Collect form data cleanly
+        const formElement = event.target;
+        const formData = new FormData(formElement);
+        const data = Object.fromEntries(formData.entries());
+
+        // Append Alpine state variables explicitly if needed
+        data.participation = this.participation;
+        data.contactOptIn = this.contactOptIn;
+
+        try {
+          // Send data asynchronously to your n8n webhook listener in the background
+          await fetch(formElement.action, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+        } catch (error) {
+          console.error('Webhook transmission error:', error);
+          // Even if webhook fails or blocks due to CORS locally, 
+          // we still transition user to thank-you screen so frontend experience isn't broken
+        }
+
+        // Trigger confirmation view state
         this.formSubmitted = true;
         this.$nextTick(() => {
           document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
