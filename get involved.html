@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get Involved | Keymakers &ndash; A movement by the Women&rsquo;s Venture Fund</title>
+<meta name="description" content="Choose how you show up in the Keymakers community. From sharing your key to joining as a Founding Member, discover how you can open doors for women entrepreneurs." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+rust: { DEFAULT: '#B5651D', 50: '#fdf6f0', 100: '#f9e8d8' },
+deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
+warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+cream: { DEFAULT: '#F2EEE6' },
+gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
+},
+fontFamily: {
+serif: ['Lora', 'Georgia', 'serif'],
+sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+},
+boxShadow: {
+soft: '0 25px 60px -18px rgba(58,46,36,0.30)',
+card: '0 10px 30px -12px rgba(58,46,36,0.25)',
+},
+borderRadius: {
+'2xl': '1.25rem',
+'3xl': '1.75rem',
+},
+},
+},
+};
+</script>
+
+<!-- Alpine.js (CDN) -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+html { scroll-padding-top: 96px; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+
+[x-cloak] { display: none !important; }
+</style>
+</head>
+
+<body x-data="getInvolvedPage()" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+
+<!-- ============================================================ -->
+<!-- REUSABLE SVG SYMBOLS (Keymakers key mark & keyhole) -->
+<!-- ============================================================ -->
+<svg width="0" height="0" class="absolute" aria-hidden="true">
+<defs>
+<symbol id="icon-key-leaf" viewBox="0 0 100 210">
+  <g fill="currentColor">
+    <!-- Outer Head Ring with 3 Pointer Nodes -->
+    <path d="M 50 10 C 53 22, 57 23, 68 25 C 80 27, 83 23, 88 38 C 93 53, 89 57, 85 68 C 81 79, 70 88, 50 88 C 30 88, 19 79, 15 68 C 11 57, 7 53, 12 38 C 17 23, 20 27, 32 25 C 43 23, 47 22, 50 10 Z M 50 20 C 32 20, 22 32, 22 50 C 22 68, 32 78, 50 78 C 68 78, 78 68, 78 50 C 78 32, 68 20, 50 20 Z" />
+    
+    <!-- Central Sprout & Leaves inside Head Ring -->
+    <path d="M 49 53 C 40 50, 28 38, 32 32 C 42 32, 48 43, 49 53 Z" />
+    <path d="M 51 53 C 52 43, 58 32, 68 32 C 72 38, 60 50, 51 53 Z" />
+    <path d="M 48 51 C 48 62, 47 67, 50 73 C 53 67, 52 62, 52 51 Z" />
+
+    <!-- Top Diamond Connector -->
+    <path d="M 50 86 L 58 95 L 50 104 L 42 95 Z M 50 91 L 46 95 L 50 99 L 54 95 Z" />
+
+    <!-- Main Shaft -->
+    <rect x="47" y="102" width="6" height="88" rx="1" />
+
+    <!-- "K" Bit -->
+    <path d="M 53 130 H 70 V 135 H 60 L 70 148 H 63 L 57 139 V 148 H 53 Z" />
+    
+    <!-- "E" Bit -->
+    <path d="M 53 154 H 68 V 159 H 58 V 162 H 66 V 166 H 58 V 170 H 68 V 175 H 53 Z" />
+    
+    <!-- "Y" Bit -->
+    <path d="M 53 180 H 57 L 62 188 L 67 180 H 72 L 65 190 V 199 H 60 V 190 Z" />
+
+    <!-- Bottom Diamond Accent -->
+    <path d="M 50 190 L 57 199 L 50 208 L 43 199 Z M 50 195 L 47 199 L 50 203 L 53 199 Z" />
+  </g>
+</symbol>
+
+<symbol id="icon-keyhole" viewBox="0 0 40 60">
+<path d="M20 4c-6.6 0-12 5.4-12 12 0 4.8 2.8 8.9 6.9 10.8L10 54h20l-4.9-27.2C29.2 24.9 32 20.8 32 16c0-6.6-5.4-12-12-12z"/>
+</symbol>
+</defs>
+</svg>
+
+<!-- ============================================================ -->
+<!-- SECTION 1 :: TOP NAVIGATION -->
+<!-- ============================================================ -->
+<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
+<nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
+
+<!-- Dual Logo Lockup -->
+<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
+<span class="relative flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors">
+<svg class="w-6 h-10" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+</span>
+<span class="flex flex-col leading-tight">
+<span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
+<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
+</span>
+</a>
+
+<!-- Center Subtab Navigation -->
+<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
+<li><a href="./index.html#stories" class="hover:text-rust transition-colors py-2">Stories</a></li>
+<li><a href="./index.html#gathering" class="hover:text-rust transition-colors py-2">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-rust transition-colors py-2">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="text-rust border-b-2 border-rust py-2">Get Involved</a></li>
+<li><a href="./about.html" class="hover:text-rust transition-colors py-2">About WVF</a></li>
+</ul>
+
+<!-- Right CTAs -->
+<div class="hidden xl:flex items-center gap-3 shrink-0">
+<a href="./index.html#gathering" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
+Reserve your place
+</a>
+<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-rust/90 shadow-md transition-colors">
+Share your key
+</a>
+</div>
+
+<!-- Mobile menu toggle -->
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</nav>
+
+<!-- Mobile Menu Panel -->
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
+<ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
+<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-rust">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#gathering" class="block py-3 border-b border-white/10 hover:text-rust">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-rust">Why It Matters</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 text-rust font-bold">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-rust">About WVF</a></li>
+</ul>
+<div class="flex flex-col gap-3 mt-5">
+<a @click="mobileOpen = false" href="./index.html#gathering" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
+</div>
+</div>
+</header>
+
+<main class="flex-grow">
+
+<!-- ============================================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================================ -->
+<section class="relative bg-cream py-16 lg:py-24 border-b border-warmtan overflow-hidden">
+<div class="absolute inset-0 pointer-events-none opacity-[0.04] text-gold">
+<svg class="absolute -right-12 -top-12 w-96 h-96" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+</div>
+
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="inline-flex items-center gap-2 text-rust text-xs sm:text-sm font-bold uppercase tracking-[0.16em] mb-4">
+<span class="w-6 h-px bg-rust"></span>
+Join the movement
+<span class="w-6 h-px bg-rust"></span>
+</div>
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-deepbrown mb-6">
+Choose how you show up.
+</h1>
+<p class="text-deepbrown/75 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+Every level matters. Membership is designed as a journey, not a hierarchy &mdash; from sharing your story to helping shape the capital network for the next generation of founders.
+</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WAYS TO PARTICIPATE (3 PILLARS) -->
+<!-- ============================================================ -->
+<section class="py-16 bg-warmtan/30 border-b border-warmtan">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">Participation pillars</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2">Three ways to unlock impact.</h2>
+</div>
+
+<div class="grid sm:grid-cols-3 gap-8">
+<!-- Pillar 1 -->
+<div class="rounded-2xl bg-white border border-warmtan p-8 shadow-card flex flex-col justify-between">
+<div>
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rust/10 text-rust font-serif text-xl font-bold mb-6">1</span>
+<h3 class="font-serif text-2xl font-semibold text-deepbrown mb-3">Community</h3>
+<p class="text-deepbrown/75 text-sm leading-relaxed mb-6">
+Share the pivotal moment that opened a door for you. Your story builds clarity and inspires the next woman on her entrepreneurial journey.
+</p>
+</div>
+<a href="./share-your-key.html" class="inline-flex items-center gap-2 text-rust font-bold text-xs uppercase tracking-wide hover:gap-3 transition-all">
+Share your key
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</a>
+</div>
+
+<!-- Pillar 2 -->
+<div class="rounded-2xl bg-white border border-warmtan p-8 shadow-card flex flex-col justify-between">
+<div>
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rust/10 text-rust font-serif text-xl font-bold mb-6">2</span>
+<h3 class="font-serif text-2xl font-semibold text-deepbrown mb-3">Connection</h3>
+<p class="text-deepbrown/75 text-sm leading-relaxed mb-6">
+Bring your network, relationships, and introductions into the room. Connect with peers, mentors, and fellow Founding Members.
+</p>
+</div>
+<a href="#tiers" class="inline-flex items-center gap-2 text-rust font-bold text-xs uppercase tracking-wide hover:gap-3 transition-all">
+Explore membership
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</a>
+</div>
+
+<!-- Pillar 3 -->
+<div class="rounded-2xl bg-white border border-warmtan p-8 shadow-card flex flex-col justify-between">
+<div>
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rust/10 text-rust font-serif text-xl font-bold mb-6">3</span>
+<h3 class="font-serif text-2xl font-semibold text-deepbrown mb-3">Capital</h3>
+<p class="text-deepbrown/75 text-sm leading-relaxed mb-6">
+Help shape alternative financing models and join the Keymakers Capital Network to expand access to capital for women-led ventures.
+</p>
+</div>
+<a href="#partner" class="inline-flex items-center gap-2 text-rust font-bold text-xs uppercase tracking-wide hover:gap-3 transition-all">
+Become a Partner
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- MEMBERSHIP TIERS GRID -->
+<!-- ============================================================ -->
+<section id="tiers" class="py-20 lg:py-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">Membership tiers</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2 mb-4">Select your level of engagement.</h2>
+<p class="text-deepbrown/65 text-base leading-relaxed">
+Belonging should never depend on financial ability. Key Carrier removes barriers to join, while higher tiers enable deeper contribution and leadership.
+</p>
+</div>
+
+<!-- Tier Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+<template x-for="tier in tiers" :key="tier.name">
+<div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmtan'" class="relative flex flex-col rounded-2xl bg-white border p-6 justify-between">
+<div>
+<span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most popular</span>
+
+<!-- Progressive Keyhole Fill -->
+<div class="relative w-8 h-12 mx-auto mb-4 text-gold">
+<svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="3"><use href="#icon-keyhole"/></svg>
+<svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60">
+<defs>
+<clipPath :id="'keyhole-clip-' + tier.name.replace(/\s+/g,'-')">
+<rect x="0" :y="60 - (60 * tier.fillPct / 100)" width="40" :height="60 * tier.fillPct / 100"></rect>
+</clipPath>
+</defs>
+<use href="#icon-keyhole" fill="currentColor" :clip-path="'url(#keyhole-clip-' + tier.name.replace(/\s+/g,'-') + ')'"/>
+</svg>
+</div>
+
+<div class="text-center mb-4">
+<div class="flex items-baseline justify-center gap-1.5 flex-wrap">
+<span class="font-serif text-2xl font-semibold text-deepbrown" x-text="tier.price"></span>
+<span class="text-deepbrown/50 text-xs" x-text="tier.period"></span>
+</div>
+<!-- Proper Noun Tier Name -->
+<h3 class="text-rust font-bold text-sm uppercase tracking-wide mt-2" x-text="tier.name"></h3>
+<p class="font-serif italic text-deepbrown/70 text-sm mt-1" x-text="tier.tagline"></p>
+</div>
+
+<ul class="space-y-2.5 mb-6">
+<template x-for="feature in tier.features" :key="feature">
+<li class="flex items-start gap-2 text-deepbrown/65 text-xs leading-snug">
+<svg class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+<span x-text="feature"></span>
+</li>
+</template>
+</ul>
+</div>
+
+<a :href="tier.ctaHref" target="_blank" rel="noopener noreferrer"
+:class="tier.featured ? 'bg-rust text-white hover:bg-rust/90' : 'bg-deepbrown text-white hover:bg-deepbrown/90'"
+class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 transition-colors mt-2" x-text="tier.cta"></a>
+</div>
+</template>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- INSTITUTIONAL PARTNERSHIP SECTION -->
+<!-- ============================================================ -->
+<section id="partner" class="py-20 bg-deepbrown text-cream relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<span class="text-gold text-xs font-bold uppercase tracking-[0.16em] mb-4 block">Institutional engagement</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold mb-6">Become a Partner with Women&rsquo;s Venture Fund.</h2>
+<p class="text-cream/80 text-base sm:text-lg leading-relaxed mb-6">
+We work with corporate, foundation, and institutional Partners who share our dedication to expanding pathways to capital, mentorship, and commercial opportunities for women entrepreneurs.
+</p>
+<p class="text-cream/70 text-sm leading-relaxed mb-8">
+Partner contributions directly fund business development programs, technical assistance, CDFI loan access, and the upcoming Founding Gathering.
+</p>
+<div class="flex flex-wrap gap-4">
+<a href="mailto:info@wvf-ny.org?subject=Keymakers%20Partnership%20Inquiry" class="inline-flex items-center gap-2 rounded-full bg-rust text-white font-bold text-sm px-7 py-3.5 hover:bg-rust/90 transition-colors shadow-lg">
+Inquire about partnership
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</a>
+<a href="./about.html" class="inline-flex items-center gap-2 rounded-full border border-white/30 text-white font-semibold text-sm px-7 py-3.5 hover:bg-white/10 transition-colors">
+Learn about WVF
+</a>
+</div>
+</div>
+
+<!-- Quote Box -->
+<div class="rounded-3xl bg-white/5 border border-white/10 p-8 sm:p-10 backdrop-blur">
+<p class="font-serif italic text-xl text-gold mb-6 leading-snug">
+&ldquo;When institutional partners join as allies, they don't just open one door &mdash; they help construct an entire doorway for dozens of founders.&rdquo;
+</p>
+<div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs text-cream/60">
+<span>Women&rsquo;s Venture Fund</span>
+<span>Certified CDFI</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- SECTION 8 :: FOOTER -->
+<!-- ============================================================ -->
+<footer id="about-wvf" class="bg-deepbrown text-cream/70 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+<!-- Brand & Contact Details -->
+<div class="lg:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold">
+<svg class="w-5 h-9" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+</span>
+<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
+</div>
+<p class="text-sm leading-relaxed mb-4">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+
+<div class="text-xs space-y-1.5 mb-6 text-cream/80">
+<p class="flex items-center gap-2"><span class="text-gold font-semibold">Open now</span></p>
+<p>Phone: <a href="tel:2125630499" class="hover:text-white transition-colors">(212) 563-0499</a></p>
+<p>Email: <a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">info@wvf-ny.org</a></p>
+<p>Web: <a href="https://womensventurefund.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">womensventurefund.org</a></p>
+</div>
+
+<div class="flex items-center gap-3">
+<a href="https://instagram.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Instagram (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
+</a>
+<a href="https://facebook.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Facebook (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
+</a>
+<a href="https://linkedin.com/company/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
+</a>
+</div>
+</div>
+
+<!-- Program Links -->
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
+<ul class="space-y-2.5 text-sm">
+<li><a href="./index.html#stories" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./index.html#gathering" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
+</ul>
+</div>
+
+<!-- Resources -->
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
+<ul class="space-y-2.5 text-sm">
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
+<li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
+</ul>
+</div>
+
+<!-- Newsletter -->
+<div x-data="{ subscribed: false }">
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
+<p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
+<form @submit.prevent="subscribed = true" class="flex items-center gap-2">
+<label for="footer-email" class="sr-only">Email address</label>
+<input id="footer-email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
+<button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors" aria-label="Subscribe">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</button>
+</form>
+<p x-show="subscribed" x-cloak class="text-gold text-xs mt-2">Thanks &mdash; you&rsquo;re on the list!</p>
+</div>
+</div>
+
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a href="#" class="hover:text-white transition-colors">Privacy policy</a>
+<a href="#" class="hover:text-white transition-colors">Terms of use</a>
+<a href="#" class="hover:text-white transition-colors">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+function getInvolvedPage() {
+return {
+mobileOpen: false,
+tiers: [
+{
+name: 'Key Carrier',
+tagline: "You're carrying a key.",
+price: 'Free',
+period: '($0)',
+features: ['Share "What Was Your Key?" story', 'Monthly Insight Summary', 'Stay connected to news', 'Invitations to future opportunities'],
+cta: 'Join free',
+ctaHref: 'https://forms.example.com/keymakers-key-carrier',
+fillPct: 0,
+},
+{
+name: 'Keyholder',
+tagline: 'You hold the key.',
+price: '$50',
+period: '/ year',
+features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Submit questions to speakers', 'Keymakers Registry recognition', 'Early Gathering invitations'],
+cta: 'Become a Keyholder',
+ctaHref: 'https://checkout.example.com/keymakers-keyholder-50',
+fillPct: 25,
+},
+{
+name: 'Keysmith',
+tagline: 'You forge new pathways.',
+price: '$100',
+period: '/ year',
+features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discussions', 'Contribute to Knowledge Library', '"Ask a Keymaker" sessions'],
+cta: 'Become a Keysmith',
+ctaHref: 'https://checkout.example.com/keymakers-keysmith-100',
+fillPct: 50,
+},
+{
+name: 'Key Shaper',
+tagline: 'You shape the conversation.',
+price: '$250',
+period: '/ year',
+features: ['Everything in Keysmith', 'Quarterly Spotlight feature', 'Lead roundtables', 'Share introductions', 'Recognition at Founding Gathering'],
+cta: 'Become a Key Shaper',
+ctaHref: 'https://checkout.example.com/keymakers-key-shaper-250',
+fillPct: 75,
+featured: true,
+},
+{
+name: 'Key Circle',
+tagline: "You're helping build what's next.",
+price: '$1,000',
+period: '/ year \u00b7 By invitation',
+features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversations on financing models', 'Build Keymakers Capital Network', 'Capital Network Summit invitation'],
+cta: 'Request an invitation',
+ctaHref: 'https://forms.example.com/keymakers-key-circle-application',
+fillPct: 100,
+},
+],
+};
+}
+</script>
+
+</body>
+</html>
