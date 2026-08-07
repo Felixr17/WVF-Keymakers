@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Keymakers | A Movement by the Women&rsquo;s Venture Fund</title>
+<title>Keymakers | A movement by the Women&rsquo;s Venture Fund</title>
 <meta name="description" content="Keymakers is a storytelling movement by the Women's Venture Fund. Share the key moment that opened a door for you, and help open one for someone else." />
 
 <!-- Fonts -->
@@ -18,20 +18,19 @@ tailwind.config = {
 theme: {
 extend: {
 colors: {
-navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
-terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
-brown: { DEFAULT: '#4A3525' },
+rust: { DEFAULT: '#B5651D', 50: '#fdf6f0', 100: '#f9e8d8' },
+deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
+warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+cream: { DEFAULT: '#F2EEE6' },
 gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
-cream: { DEFAULT: '#FDFBF7' },
-warmgray: { DEFAULT: '#F1ECE4' },
 },
 fontFamily: {
 serif: ['Lora', 'Georgia', 'serif'],
 sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
 },
 boxShadow: {
-soft: '0 25px 60px -18px rgba(24,38,59,0.30)',
-card: '0 10px 30px -12px rgba(74,53,37,0.25)',
+soft: '0 25px 60px -18px rgba(58,46,36,0.30)',
+card: '0 10px 30px -12px rgba(58,46,36,0.25)',
 },
 borderRadius: {
 '2xl': '1.25rem',
@@ -85,10 +84,10 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 </style>
 </head>
 
-<body x-data="keymakers()" x-init="init()" class="bg-cream text-navy antialiased">
+<body x-data="keymakers()" x-init="init()" class="bg-cream text-deepbrown antialiased">
 
 <!-- ============================================================ -->
-<!-- REUSABLE SVG SYMBOLS (Keymakers key mark from drawing) -->
+<!-- REUSABLE SVG SYMBOLS (Keymakers key mark) -->
 <!-- ============================================================ -->
 <svg width="0" height="0" class="absolute" aria-hidden="true">
 <defs>
@@ -98,11 +97,8 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
     <path d="M 50 10 C 53 22, 57 23, 68 25 C 80 27, 83 23, 88 38 C 93 53, 89 57, 85 68 C 81 79, 70 88, 50 88 C 30 88, 19 79, 15 68 C 11 57, 7 53, 12 38 C 17 23, 20 27, 32 25 C 43 23, 47 22, 50 10 Z M 50 20 C 32 20, 22 32, 22 50 C 22 68, 32 78, 50 78 C 68 78, 78 68, 78 50 C 78 32, 68 20, 50 20 Z" />
     
     <!-- Central Sprout & Leaves inside Head Ring -->
-    <!-- Left Leaf -->
     <path d="M 49 53 C 40 50, 28 38, 32 32 C 42 32, 48 43, 49 53 Z" />
-    <!-- Right Leaf -->
     <path d="M 51 53 C 52 43, 58 32, 68 32 C 72 38, 60 50, 51 53 Z" />
-    <!-- Stem -->
     <path d="M 48 51 C 48 62, 47 67, 50 73 C 53 67, 52 62, 52 51 Z" />
 
     <!-- Top Diamond Connector -->
@@ -134,36 +130,36 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <!-- ============================================================ -->
 <!-- SECTION 1 :: TOP NAVIGATION -->
 <!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-navy/98 backdrop-blur supports-[backdrop-filter]:bg-navy/95 border-b border-white/10">
+<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
 <nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
 
 <!-- Dual Logo Lockup -->
-<a href="#top" class="flex items-center gap-3 shrink-0 group">
+<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
 <span class="relative flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors">
 <svg class="w-6 h-10" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
 </span>
 <span class="flex flex-col leading-tight">
 <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
-<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmgray/70">Women&rsquo;s Venture Fund</span>
+<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
 </span>
 </a>
 
 <!-- Center Subtab Navigation -->
 <ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
-<li><a href="#stories" class="hover:text-terracotta transition-colors py-2">Stories</a></li>
-<li><a href="#gathering" class="hover:text-terracotta transition-colors py-2">The Gathering</a></li>
-<li><a href="#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
-<li><a href="#get-involved" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
-<li><a href="#about-wvf" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
+<li><a href="./index.html#stories" class="hover:text-rust transition-colors py-2">Stories</a></li>
+<li><a href="./index.html#gathering" class="hover:text-rust transition-colors py-2">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-rust transition-colors py-2">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-rust transition-colors py-2">Get Involved</a></li>
+<li><a href="./about.html" class="hover:text-rust transition-colors py-2">About WVF</a></li>
 </ul>
 
 <!-- Right CTAs -->
 <div class="hidden xl:flex items-center gap-3 shrink-0">
-<a href="#gathering" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-navy transition-colors">
-Reserve Your Place
+<a href="./index.html#gathering" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
+Reserve your place
 </a>
-<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors">
-Share Your Key
+<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-rust/90 shadow-md transition-colors">
+Share your key
 </a>
 </div>
 
@@ -175,17 +171,17 @@ Share Your Key
 </nav>
 
 <!-- Mobile Menu Panel -->
-<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-navy px-4 sm:px-6 pb-6 pt-2">
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
 <ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
-<li><a @click="mobileOpen = false" href="#gathering" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
-<li><a @click="mobileOpen = false" href="#get-involved" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
-<li><a @click="mobileOpen = false" href="#about-wvf" class="block py-3 hover:text-terracotta">About WVF</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-rust">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#gathering" class="block py-3 border-b border-white/10 hover:text-rust">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-rust">Why It Matters</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-rust">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-rust">About WVF</a></li>
 </ul>
 <div class="flex flex-col gap-3 mt-5">
-<a @click="mobileOpen = false" href="#gathering" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve Your Place</a>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share Your Key</a>
+<a @click="mobileOpen = false" href="./index.html#gathering" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
 </div>
 </div>
 </header>
@@ -193,7 +189,7 @@ Share Your Key
 <!-- ============================================================ -->
 <!-- LIVE STROBE COUNTER BANNER -->
 <!-- ============================================================ -->
-<div class="bg-navy border-b border-white/10 py-2.5 px-4">
+<div class="bg-deepbrown border-b border-white/10 py-2.5 px-4">
 <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-1.5">
 <div class="flex items-center gap-2.5 text-xs sm:text-sm text-white/85">
 <span class="relative flex h-3 w-3 shrink-0">
@@ -206,8 +202,8 @@ Share Your Key
 <span class="font-bold text-white">327 women</span> joined the movement
 </span>
 </div>
-<a href="#stories" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-gold hover:text-white transition-colors whitespace-nowrap">
-Explore the Registry
+<a href="./index.html#stories" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-gold hover:text-white transition-colors whitespace-nowrap">
+Explore the registry
 <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
 </div>
@@ -227,36 +223,36 @@ Explore the Registry
 
 <!-- Left Column -->
 <div class="max-w-xl">
-<div class="inline-flex items-center gap-2 text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
-<span class="w-6 h-px bg-terracotta"></span>
-Keymakers &nbsp;|&nbsp; A Movement Built by Women, for Women
+<div class="inline-flex items-center gap-2 text-rust text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
+<span class="w-6 h-px bg-rust"></span>
+Keymakers &nbsp;|&nbsp; A movement built by women, for women
 </div>
 
-<h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.15rem] leading-[1.12] font-semibold text-navy mb-6">
-Open Doors. Build New Pathways. Empower Women Entrepreneurs.
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.15rem] leading-[1.12] font-semibold text-deepbrown mb-6">
+Open doors. Build new pathways. Empower women entrepreneurs.
 </h1>
 
-<p class="text-navy/70 text-base sm:text-lg leading-relaxed mb-8">
+<p class="text-deepbrown/70 text-base sm:text-lg leading-relaxed mb-8">
 Keymakers is a year-round membership community that brings together stories, relationships, knowledge, philanthropy, and capital to open new pathways for women entrepreneurs.
 </p>
 
 <div class="flex flex-wrap items-center gap-4">
-<a href="https://forms.example.com/keymakers-join" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
+<a href="./get-involved.html" class="inline-flex items-center gap-2 rounded-full bg-rust text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-rust/20 hover:bg-rust/90 transition-colors">
 Become a Keymaker
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
-<a href="#get-involved" class="inline-flex items-center gap-2 rounded-full border-2 border-gold text-gold font-bold text-sm px-6 py-3.5 hover:bg-gold hover:text-white transition-colors">
-Explore Memberships
+<a href="./get-involved.html" class="inline-flex items-center gap-2 rounded-full border-2 border-gold text-gold font-bold text-sm px-6 py-3.5 hover:bg-gold hover:text-white transition-colors">
+Explore memberships
 </a>
 </div>
 
-<div class="flex items-center gap-6 mt-10 pt-8 border-t border-warmgray">
+<div class="flex items-center gap-6 mt-10 pt-8 border-t border-warmtan">
 <div class="flex -space-x-3">
 <img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Keymakers storyteller portrait">
 <img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=100&q=80" alt="Keymakers storyteller portrait">
 <img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Keymakers storyteller portrait">
 </div>
-<p class="text-sm text-navy/60"><span class="font-bold text-navy">327 keys</span> shared so far &mdash; yours could be next.</p>
+<p class="text-sm text-deepbrown/60"><span class="font-bold text-deepbrown">327 keys</span> shared so far &mdash; yours could be next.</p>
 </div>
 </div>
 
@@ -268,7 +264,7 @@ Explore Memberships
 
 <!-- Play Button -->
 <div class="absolute inset-0 flex items-center justify-center">
-<span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-navy shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
+<span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
 <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
 </div>
@@ -296,7 +292,7 @@ Explore Memberships
 <span class="flex items-center justify-center w-9 h-9 rounded-full bg-gold/10 text-gold shrink-0">
 <svg class="w-4 h-7" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
 </span>
-<p class="text-xs text-navy/70 leading-snug">Every key shared creates more possibilities.</p>
+<p class="text-xs text-deepbrown/70 leading-snug">Every key shared creates more possibilities.</p>
 </div>
 </div>
 </div>
@@ -305,12 +301,12 @@ Explore Memberships
 <!-- ============================================================ -->
 <!-- SECTION 3 :: WHY KEYMAKERS EXISTS NOW -->
 <!-- ============================================================ -->
-<section id="why-it-matters" class="relative bg-brown text-cream">
+<section id="why-it-matters" class="relative bg-deepbrown text-cream">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-16 lg:pb-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
 <!-- Text -->
 <div>
-<span class="inline-block text-gold text-xs font-bold uppercase tracking-[0.16em] mb-5">Why Keymakers Exists Now</span>
+<span class="inline-block text-gold text-xs font-bold uppercase tracking-[0.16em] mb-5">Why Keymakers exists now</span>
 <h2 class="font-serif text-3xl sm:text-4xl leading-tight font-semibold mb-6">
 Somewhere in every entrepreneur&rsquo;s journey, someone handed her a key.
 </h2>
@@ -320,7 +316,7 @@ Sometimes it was an introduction. Sometimes a mentor, a customer, an investor &m
 <p class="text-cream/75 text-base sm:text-lg leading-relaxed mb-8">
 Keymakers exists to name those moments out loud &mdash; and to make sure the next woman finds her key a little faster than the last one did.
 </p>
-<a href="#share-your-key" class="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wide hover:gap-3 transition-all group">
+<a href="./share-your-key.html" class="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wide hover:gap-3 transition-all group">
 Share the key that opened your door
 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
@@ -369,7 +365,7 @@ Share the key that opened your door
 <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="30" rx="4"/><path d="M6 18h36M14 6v8M34 6v8"/><path d="M24 24l2.5 5 5.5.8-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.5-.8z"/></svg>
 </span>
 <h3 class="font-serif text-xl font-semibold text-white mb-3">The Founding Gathering</h3>
-<p class="text-cream/70 text-sm leading-relaxed">Where the doors open. In person. This fall. The community comes together.</p>
+<p class="text-cream/70 text-sm leading-relaxed">Where the doors open. In person. Date to be confirmed. The community comes together.</p>
 </div>
 </div>
 
@@ -382,16 +378,16 @@ Someone opened a door for you. Who will you open one for?
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 4 :: HOW IT WORKS (compact micro-pipeline) -->
+<!-- SECTION 4 :: HOW IT WORKS -->
 <!-- ============================================================ -->
-<section class="bg-warmgray/60">
+<section class="bg-warmtan/60">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-10">
 <div>
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">How It Works</span>
-<h2 class="font-serif text-2xl sm:text-3xl font-semibold text-navy mt-1">Four simple steps to share your key.</h2>
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">How it works</span>
+<h2 class="font-serif text-2xl sm:text-3xl font-semibold text-deepbrown mt-1">Four simple steps to share your key.</h2>
 </div>
-<p class="text-navy/60 text-sm max-w-xs">Every key shared creates more possibilities &mdash; <span class="text-terracotta font-semibold">be part of the movement.</span></p>
+<p class="text-deepbrown/60 text-sm max-w-xs">Every key shared creates more possibilities &mdash; <span class="text-rust font-semibold">be part of the movement.</span></p>
 </div>
 
 <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
@@ -400,32 +396,32 @@ Someone opened a door for you. Who will you open one for?
 
 <!-- Step 1 -->
 <button @click="openModal(howItWorksStory)" type="button" class="relative flex flex-col items-start text-left group">
-<span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-navy text-white font-serif font-semibold mb-4 group-hover:bg-terracotta transition-colors">
+<span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-deepbrown text-white font-serif font-semibold mb-4 group-hover:bg-rust transition-colors">
 <svg class="w-5 h-5 absolute" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
-<h3 class="font-serif font-semibold text-navy text-base mb-1">Watch How It Works</h3>
-<p class="text-navy/60 text-sm leading-snug">A 60-second preview of the movement.</p>
+<h3 class="font-serif font-semibold text-deepbrown text-base mb-1">Watch how it works</h3>
+<p class="text-deepbrown/60 text-sm leading-snug">A 60-second preview of the movement.</p>
 </button>
 
 <!-- Step 2 -->
 <div class="relative flex flex-col items-start text-left">
 <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold font-serif font-semibold mb-4">2</span>
-<h3 class="font-serif font-semibold text-navy text-base mb-1">Record</h3>
-<p class="text-navy/60 text-sm leading-snug">Share a short 30&ndash;45s video about your key moment.</p>
+<h3 class="font-serif font-semibold text-deepbrown text-base mb-1">Record</h3>
+<p class="text-deepbrown/60 text-sm leading-snug">Share a short 30&ndash;45s video about your key moment.</p>
 </div>
 
 <!-- Step 3 -->
 <div class="relative flex flex-col items-start text-left">
 <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold font-serif font-semibold mb-4">3</span>
-<h3 class="font-serif font-semibold text-navy text-base mb-1">Reflect</h3>
-<p class="text-navy/60 text-sm leading-snug">What changed? What did it unlock for you?</p>
+<h3 class="font-serif font-semibold text-deepbrown text-base mb-1">Reflect</h3>
+<p class="text-deepbrown/60 text-sm leading-snug">What changed? What did it unlock for you?</p>
 </div>
 
 <!-- Step 4 -->
 <div class="relative flex flex-col items-start text-left">
 <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold font-serif font-semibold mb-4">4</span>
-<h3 class="font-serif font-semibold text-navy text-base mb-1">Share &amp; Create Impact</h3>
-<p class="text-navy/60 text-sm leading-snug">Inspire others and open doors for the next woman.</p>
+<h3 class="font-serif font-semibold text-deepbrown text-base mb-1">Share &amp; create impact</h3>
+<p class="text-deepbrown/60 text-sm leading-snug">Inspire others and open doors for the next woman.</p>
 </div>
 </div>
 </div>
@@ -439,11 +435,11 @@ Someone opened a door for you. Who will you open one for?
 
 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
 <div>
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">Community</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-1">Stories From Our Community</h2>
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">Community</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-1">Stories from our community</h2>
 </div>
-<a href="#stories" class="inline-flex items-center gap-1.5 text-navy font-semibold text-sm hover:text-terracotta transition-colors shrink-0">
-View All Stories
+<a href="./index.html#stories" class="inline-flex items-center gap-1.5 text-deepbrown font-semibold text-sm hover:text-rust transition-colors shrink-0">
+View all stories
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
 </div>
@@ -454,7 +450,7 @@ View All Stories
 <button
 type="button"
 @click="activeFilter = filter"
-:class="activeFilter === filter ? 'bg-navy text-white border-navy' : 'bg-white text-navy/70 border-warmgray hover:border-navy/30'"
+:class="activeFilter === filter ? 'bg-deepbrown text-white border-deepbrown' : 'bg-white text-deepbrown/70 border-warmtan hover:border-deepbrown/30'"
 class="shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors"
 x-text="filter"
 ></button>
@@ -473,7 +469,7 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 <img :src="story.img" :alt="'Portrait of ' + story.name" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
 
-<span class="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 ring-1 ring-white/40 backdrop-blur text-white group-hover:bg-white group-hover:text-navy transition-colors">
+<span class="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 ring-1 ring-white/40 backdrop-blur text-white group-hover:bg-white group-hover:text-deepbrown transition-colors">
 <svg class="w-4 h-4 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
 
@@ -490,16 +486,16 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 </div>
 
 <!-- Share CTA Banner -->
-<div id="share-your-key" class="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between rounded-2xl border border-warmgray bg-white/70 px-6 sm:px-8 py-6">
+<div id="share-your-key" class="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between rounded-2xl border border-warmtan bg-white/70 px-6 sm:px-8 py-6">
 <div class="flex items-center gap-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold shrink-0">
 <svg class="w-5 h-9" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
 </span>
-<p class="font-serif text-lg text-navy font-medium">Your story has the power to unlock the next one.</p>
+<p class="font-serif text-lg text-deepbrown font-medium">Your story has the power to unlock the next one.</p>
 </div>
 <div class="flex items-center gap-3 shrink-0">
-<button @click="openModal(howItWorksStory)" type="button" class="rounded-full bg-terracotta text-white font-bold text-sm px-6 py-3 hover:bg-terracotta/90 transition-colors">Share Your Key</button>
-<a href="#get-involved" class="rounded-full border border-navy/20 text-navy font-semibold text-sm px-6 py-3 hover:border-navy/50 transition-colors">View Guidelines</a>
+<a href="./share-your-key.html" class="inline-block rounded-full bg-rust text-white font-bold text-sm px-6 py-3 hover:bg-rust/90 transition-colors">Share your key</a>
+<a href="./get-involved.html" class="rounded-full border border-deepbrown/20 text-deepbrown font-semibold text-sm px-6 py-3 hover:border-deepbrown/50 transition-colors">View guidelines</a>
 </div>
 </div>
 </div>
@@ -511,64 +507,64 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 <section class="bg-cream pb-20 lg:pb-24">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-2xl mx-auto mb-10">
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">By The Numbers</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2">Nearly three decades of proof.</h2>
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">By the numbers</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2">Nearly three decades of proof.</h2>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-4 rounded-3xl border border-warmgray bg-white/60 divide-y sm:divide-y-0 sm:divide-x divide-warmgray overflow-hidden">
+<div class="grid grid-cols-2 sm:grid-cols-4 rounded-3xl border border-warmtan bg-white/60 divide-y sm:divide-y-0 sm:divide-x divide-warmtan overflow-hidden">
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
 <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">28,000+</p>
-<p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Women Entrepreneurs Served</p>
+<p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">Women entrepreneurs served</p>
 </div>
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
 <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">$2.4M+</p>
-<p class="text-navy/60 text-xs font-bold uppercase tracking-wide">In Business Loans Provided</p>
+<p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">In business loans provided</p>
 </div>
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
 <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">0.039%</p>
-<p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Loan Write-Off Rate</p>
+<p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">Loan write-off rate</p>
 </div>
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
 <p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">Since 1996</p>
-<p class="text-navy/60 text-xs font-bold uppercase tracking-wide">Nearly Three Decades of Access</p>
+<p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">Nearly three decades of access</p>
 </div>
 </div>
-<p class="text-center mt-6 font-serif italic text-navy/50 text-sm sm:text-base">The locks have changed. We&rsquo;re building new pathways.</p>
+<p class="text-center mt-6 font-serif italic text-deepbrown/50 text-sm sm:text-base">The locks have changed. We&rsquo;re building new pathways.</p>
 </div>
 </section>
 
 <!-- ============================================================ -->
 <!-- SECTION 7 :: MEMBERSHIP TIERS & GATHERING TEASER -->
 <!-- ============================================================ -->
-<section id="get-involved" class="bg-warmgray/50 py-20 lg:py-24">
+<section id="get-involved" class="bg-warmtan/50 py-20 lg:py-24">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 <div class="text-center max-w-2xl mx-auto mb-10">
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">Get Involved</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2 mb-4">Choose how you show up.</h2>
-<p class="text-navy/60 text-base leading-relaxed">Every level matters. The difference is how you participate. Membership is designed as a journey, not a hierarchy &mdash; from sharing your story to helping shape the capital available to the next generation of founders.</p>
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">Get Involved</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2 mb-4">Choose how you show up.</h2>
+<p class="text-deepbrown/60 text-base leading-relaxed">Every level matters. The difference is how you participate. Membership is designed as a journey, not a hierarchy &mdash; from sharing your story to helping shape the capital available to the next generation of founders.</p>
 </div>
 
 <!-- Pillar Subtabs -->
 <div class="flex flex-col sm:flex-row items-stretch justify-center gap-3 mb-14 max-w-4xl mx-auto">
-<div class="flex-1 rounded-xl border border-warmgray bg-white px-5 py-4 text-center sm:text-left">
-<span class="font-serif text-lg font-semibold text-navy">1. <span class="text-terracotta">Campaign</span></span>
-<span class="block text-navy/60 text-sm mt-0.5">Name your key</span>
+<div class="flex-1 rounded-xl border border-warmtan bg-white px-5 py-4 text-center sm:text-left">
+<span class="font-serif text-lg font-semibold text-deepbrown">1. <span class="text-rust">Community</span></span>
+<span class="block text-deepbrown/60 text-sm mt-0.5">Name your key</span>
 </div>
-<div class="flex-1 rounded-xl border border-warmgray bg-white px-5 py-4 text-center sm:text-left">
-<span class="font-serif text-lg font-semibold text-navy">2. <span class="text-terracotta">Community</span></span>
-<span class="block text-navy/60 text-sm mt-0.5">Build together</span>
+<div class="flex-1 rounded-xl border border-warmtan bg-white px-5 py-4 text-center sm:text-left">
+<span class="font-serif text-lg font-semibold text-deepbrown">2. <span class="text-rust">Connection</span></span>
+<span class="block text-deepbrown/60 text-sm mt-0.5">Build together</span>
 </div>
-<div class="flex-1 rounded-xl border border-warmgray bg-white px-5 py-4 text-center sm:text-left">
-<span class="font-serif text-lg font-semibold text-navy">3. <span class="text-terracotta">Capital</span></span>
-<span class="block text-navy/60 text-sm mt-0.5">Enter the room</span>
+<div class="flex-1 rounded-xl border border-warmtan bg-white px-5 py-4 text-center sm:text-left">
+<span class="font-serif text-lg font-semibold text-deepbrown">3. <span class="text-rust">Capital</span></span>
+<span class="block text-deepbrown/60 text-sm mt-0.5">Enter the room</span>
 </div>
 </div>
 
 <!-- Tier Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-16">
 <template x-for="tier in tiers" :key="tier.name">
-<div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmgray'" class="relative flex flex-col rounded-2xl bg-white border p-6">
-<span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most Popular</span>
+<div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmtan'" class="relative flex flex-col rounded-2xl bg-white border p-6">
+<span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most popular</span>
 
 <!-- Progressive Keyhole Fill -->
 <div class="relative w-8 h-12 mx-auto mb-4 text-gold">
@@ -585,16 +581,16 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 
 <div class="text-center mb-4">
 <div class="flex items-baseline justify-center gap-1.5 flex-wrap">
-<span class="font-serif text-2xl font-semibold text-navy" x-text="tier.price"></span>
-<span class="text-navy/50 text-xs" x-text="tier.period"></span>
+<span class="font-serif text-2xl font-semibold text-deepbrown" x-text="tier.price"></span>
+<span class="text-deepbrown/50 text-xs" x-text="tier.period"></span>
 </div>
-<h3 class="text-terracotta font-bold text-sm uppercase tracking-wide mt-2" x-text="tier.name"></h3>
-<p class="font-serif italic text-navy/70 text-sm mt-1" x-text="tier.tagline"></p>
+<h3 class="text-rust font-bold text-sm uppercase tracking-wide mt-2" x-text="tier.name"></h3>
+<p class="font-serif italic text-deepbrown/70 text-sm mt-1" x-text="tier.tagline"></p>
 </div>
 
 <ul class="space-y-2 mb-6 flex-1">
 <template x-for="feature in tier.features" :key="feature">
-<li class="flex items-start gap-2 text-navy/65 text-xs leading-snug">
+<li class="flex items-start gap-2 text-deepbrown/65 text-xs leading-snug">
 <svg class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
 <span x-text="feature"></span>
 </li>
@@ -602,7 +598,7 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 </ul>
 
 <a :href="tier.ctaHref" target="_blank" rel="noopener noreferrer"
-:class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-navy text-white hover:bg-navy/90'"
+:class="tier.featured ? 'bg-rust text-white hover:bg-rust/90' : 'bg-deepbrown text-white hover:bg-deepbrown/90'"
 class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 transition-colors" x-text="tier.cta"></a>
 </div>
 </template>
@@ -611,7 +607,7 @@ class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 tr
 <!-- Gathering Teaser -->
 <div id="gathering" class="relative overflow-hidden rounded-3xl shadow-soft">
 <img src="https://images.unsplash.com/photo-1590650046871-92c887180603?auto=format&fit=crop&w=1600&q=80" alt="Women entrepreneurs gathered together around a table at a community event" class="absolute inset-0 w-full h-full object-cover">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-navy/40"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-deepbrown/40"></div>
 <div class="relative px-6 sm:px-12 py-14 sm:py-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
 <div class="max-w-xl">
 <span class="inline-flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">
@@ -619,11 +615,11 @@ class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 tr
 The Gathering
 </span>
 <h3 class="font-serif text-3xl sm:text-4xl text-white font-semibold mb-4 leading-tight">Join us in person for the first Keymakers Gathering.</h3>
-<p class="text-white/75 text-base leading-relaxed">An evening of stories, connection, and open doors &mdash; live storytelling from our community, hosted by the Women&rsquo;s Venture Fund.</p>
+<p class="text-white/75 text-base leading-relaxed">An evening of stories, connection, and open doors &mdash; live storytelling from our community, hosted by the Women&rsquo;s Venture Fund. Founding Gathering, date to be confirmed.</p>
 </div>
 <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-<a href="#gathering" class="text-center rounded-full bg-gold text-navy font-bold text-sm px-7 py-3.5 hover:bg-gold/90 transition-colors">Reserve Your Place</a>
-<a href="#stories" class="text-center rounded-full border border-white/40 text-white font-semibold text-sm px-7 py-3.5 hover:bg-white/10 transition-colors">See the Stories</a>
+<a href="./index.html#gathering" class="text-center rounded-full bg-gold text-deepbrown font-bold text-sm px-7 py-3.5 hover:bg-gold/90 transition-colors">Reserve your place</a>
+<a href="./index.html#stories" class="text-center rounded-full border border-white/40 text-white font-semibold text-sm px-7 py-3.5 hover:bg-white/10 transition-colors">See the stories</a>
 </div>
 </div>
 </div>
@@ -633,27 +629,27 @@ The Gathering
 <!-- ============================================================ -->
 <!-- SECTION 7B :: FAQ ACCORDION -->
 <!-- ============================================================ -->
-<section id="faq" class="bg-cream py-20 lg:py-24 border-t border-warmgray">
+<section id="faq" class="bg-cream py-20 lg:py-24 border-t border-warmtan">
 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">FAQ</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2">Questions, answered.</h2>
+<span class="text-rust text-xs font-bold uppercase tracking-[0.16em]">FAQ</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2">Questions, answered.</h2>
 </div>
 
-<div x-data="{ open: null }" class="divide-y divide-warmgray rounded-2xl border border-warmgray bg-white overflow-hidden">
+<div x-data="{ open: null }" class="divide-y divide-warmtan rounded-2xl border border-warmtan bg-white overflow-hidden">
 <template x-for="(faq, idx) in faqs" :key="idx">
 <div>
 <button
 type="button"
 @click="open = open === idx ? null : idx"
 :aria-expanded="open === idx"
-class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-warmgray/30 transition-colors"
+class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-warmtan/30 transition-colors"
 >
-<span class="font-serif text-base sm:text-lg font-semibold text-navy" x-text="faq.q"></span>
+<span class="font-serif text-base sm:text-lg font-semibold text-deepbrown" x-text="faq.q"></span>
 <svg class="w-5 h-5 text-gold shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === idx }" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
 </button>
 <div x-show="open === idx" x-collapse>
-<p class="px-6 pb-5 text-navy/65 text-sm sm:text-base leading-relaxed" x-text="faq.a"></p>
+<p class="px-6 pb-5 text-deepbrown/65 text-sm sm:text-base leading-relaxed" x-text="faq.a"></p>
 </div>
 </div>
 </template>
@@ -666,11 +662,11 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <!-- ============================================================ -->
 <!-- SECTION 8 :: FOOTER -->
 <!-- ============================================================ -->
-<footer id="about-wvf" class="bg-navy text-cream/70">
+<footer id="about-wvf" class="bg-deepbrown text-cream/70">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
-<!-- Brand -->
+<!-- Brand & Contact Details -->
 <div class="lg:col-span-1">
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold">
@@ -678,19 +674,25 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
-<p class="text-sm leading-relaxed mb-6">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+<p class="text-sm leading-relaxed mb-4">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+
+<!-- Updated Contact Info -->
+<div class="text-xs space-y-1.5 mb-6 text-cream/80">
+<p class="flex items-center gap-2"><span class="text-gold font-semibold">Open now</span></p>
+<p>Phone: <a href="tel:2125630499" class="hover:text-white transition-colors">(212) 563-0499</a></p>
+<p>Email: <a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">info@wvf-ny.org</a></p>
+<p>Web: <a href="https://womensventurefund.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">womensventurefund.org</a></p>
+</div>
+
 <div class="flex items-center gap-3">
-<a href="#" aria-label="Keymakers on Instagram" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<a href="https://instagram.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Instagram (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
 </a>
-<a href="#" aria-label="Keymakers on Facebook" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<a href="https://facebook.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Facebook (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
 </a>
-<a href="#" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<a href="https://linkedin.com/company/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
-</a>
-<a href="#" aria-label="Keymakers on X" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 3h2.9l-6.3 7.2L21.5 21h-5.9l-4.6-6-5.3 6H2.8l6.7-7.7L2.3 3h6l4.2 5.5L17.6 3zm-1 16.2h1.6L7.5 4.7H5.8L16.6 19.2z"/></svg>
 </a>
 </div>
 </div>
@@ -699,10 +701,10 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div>
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
 <ul class="space-y-2.5 text-sm">
-<li><a href="#stories" class="hover:text-white transition-colors">Stories</a></li>
-<li><a href="#gathering" class="hover:text-white transition-colors">The Gathering</a></li>
-<li><a href="#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
-<li><a href="#get-involved" class="hover:text-white transition-colors">Get Involved</a></li>
+<li><a href="./index.html#stories" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./index.html#gathering" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
 </ul>
 </div>
 
@@ -710,10 +712,10 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div>
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
 <ul class="space-y-2.5 text-sm">
-<li><a href="#share-your-key" class="hover:text-white transition-colors">Submission Guidelines</a></li>
-<li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
-<li><a href="#" class="hover:text-white transition-colors">Press &amp; Media</a></li>
-<li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
+<li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
 </ul>
 </div>
 
@@ -724,7 +726,7 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <form @submit.prevent="subscribed = true" class="flex items-center gap-2">
 <label for="footer-email" class="sr-only">Email address</label>
 <input id="footer-email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
-<button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-navy hover:bg-gold/90 transition-colors" aria-label="Subscribe">
+<button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors" aria-label="Subscribe">
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </button>
 </form>
@@ -735,8 +737,8 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex items-center gap-6">
-<a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-<a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+<a href="#" class="hover:text-white transition-colors">Privacy policy</a>
+<a href="#" class="hover:text-white transition-colors">Terms of use</a>
 <a href="#" class="hover:text-white transition-colors">Accessibility</a>
 </div>
 </div>
@@ -765,7 +767,7 @@ x-transition:enter-end="opacity-100 scale-100"
 x-transition:leave="transition ease-in duration-150"
 x-transition:leave-start="opacity-100 scale-100"
 x-transition:leave-end="opacity-0 scale-95"
-class="relative w-full max-w-4xl bg-navy rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
 @click.outside="closeModal()"
 >
 <button @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
@@ -777,9 +779,9 @@ class="relative w-full max-w-4xl bg-navy rounded-2xl sm:rounded-3xl overflow-hid
 <!-- 16:9 Video Container -->
 <div class="relative w-full aspect-video bg-black">
 <img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-cover opacity-70">
-<div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/10 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-deepbrown/90 via-deepbrown/10 to-transparent"></div>
 <button type="button" class="absolute inset-0 flex items-center justify-center group" aria-label="Play video">
-<span class="flex items-center justify-center w-20 h-20 rounded-full bg-white/90 backdrop-blur text-navy shadow-xl group-hover:scale-105 group-hover:bg-white transition-all">
+<span class="flex items-center justify-center w-20 h-20 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-105 group-hover:bg-white transition-all">
 <svg class="w-7 h-7 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
 </button>
@@ -891,9 +893,9 @@ featured: true,
 name: 'Key Circle',
 tagline: "You're helping build what's next.",
 price: '$1,000',
-period: '/ year \u00b7 By Invitation',
+period: '/ year \u00b7 By invitation',
 features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversations on financing models', 'Build Keymakers Capital Network', 'Capital Network Summit invitation'],
-cta: 'Request an Invitation',
+cta: 'Request an invitation',
 ctaHref: 'https://forms.example.com/keymakers-key-circle-application',
 fillPct: 100,
 },
