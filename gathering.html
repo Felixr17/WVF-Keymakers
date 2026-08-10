@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Founding Gathering | Keymakers &ndash; A movement by the Women&rsquo;s Venture Fund</title>
+<meta name="description" content="The Founding Gathering of the Keymakers community is coming soon. Join women entrepreneurs, leaders, and partners for an evening of storytelling, connection, and open doors." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
+terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
+gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
+deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
+cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
+warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+},
+fontFamily: {
+serif: ['Lora', 'Georgia', 'serif'],
+sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+},
+boxShadow: {
+soft: '0 25px 60px -18px rgba(58,46,36,0.30)',
+card: '0 10px 30px -12px rgba(58,46,36,0.25)',
+},
+borderRadius: {
+'2xl': '1.25rem',
+'3xl': '1.75rem',
+},
+},
+},
+};
+</script>
+
+<!-- Alpine.js (CDN) -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+[x-cloak] { display: none !important; }
+</style>
+</head>
+
+<body x-data="{ mobileOpen: false, rsvpSubmitted: false, submitNewsletter }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+
+<!-- ============================================================ -->
+<!-- SVG SYMBOLS -->
+<!-- ============================================================ -->
+<svg width="0" height="0" class="absolute" aria-hidden="true">
+<defs>
+<symbol id="icon-key-leaf" viewBox="0 0 100 210">
+  <g fill="currentColor">
+    <path d="M 50 10 C 53 22, 57 23, 68 25 C 80 27, 83 23, 88 38 C 93 53, 89 57, 85 68 C 81 79, 70 88, 50 88 C 30 88, 19 79, 15 68 C 11 57, 7 53, 12 38 C 17 23, 20 27, 32 25 C 43 23, 47 22, 50 10 Z M 50 20 C 32 20, 22 32, 22 50 C 22 68, 32 78, 50 78 C 68 78, 78 68, 78 50 C 78 32, 68 20, 50 20 Z" />
+    <path d="M 49 53 C 40 50, 28 38, 32 32 C 42 32, 48 43, 49 53 Z" />
+    <path d="M 51 53 C 52 43, 58 32, 68 32 C 72 38, 60 50, 51 53 Z" />
+    <path d="M 48 51 C 48 62, 47 67, 50 73 C 53 67, 52 62, 52 51 Z" />
+    <path d="M 50 86 L 58 95 L 50 104 L 42 95 Z M 50 91 L 46 95 L 50 99 L 54 95 Z" />
+    <rect x="47" y="102" width="6" height="88" rx="1" />
+    <path d="M 53 130 H 70 V 135 H 60 L 70 148 H 63 L 57 139 V 148 H 53 Z" />
+    <path d="M 53 154 H 68 V 159 H 58 V 162 H 66 V 166 H 58 V 170 H 68 V 175 H 53 Z" />
+    <path d="M 53 180 H 57 L 62 188 L 67 180 H 72 L 65 190 V 199 H 60 V 190 Z" />
+    <path d="M 50 190 L 57 199 L 50 208 L 43 199 Z M 50 195 L 47 199 L 50 203 L 53 199 Z" />
+  </g>
+</symbol>
+</defs>
+</svg>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION -->
+<!-- ============================================================ -->
+<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur border-b border-white/10">
+<nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
+<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
+<span class="relative flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors">
+<svg class="w-6 h-10" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+</span>
+<span class="flex flex-col leading-tight">
+<span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
+<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
+</span>
+</a>
+
+<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
+<li><a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a></li>
+<li><a href="./gathering.html" class="text-terracotta border-b-2 border-terracotta py-2">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
+<li><a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
+</ul>
+
+<div class="hidden xl:flex items-center gap-3 shrink-0">
+<a href="#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
+Reserve your place
+</a>
+<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors">
+Share your key
+</a>
+</div>
+
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" aria-label="Toggle navigation menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</nav>
+
+<div x-show="mobileOpen" x-cloak @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
+<ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
+<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 text-terracotta font-bold">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
+</ul>
+<div class="flex flex-col gap-3 mt-5">
+<a @click="mobileOpen = false" href="#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
+</div>
+</div>
+</header>
+
+<main class="flex-grow">
+<!-- ============================================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================================ -->
+<section class="relative bg-cream py-16 lg:py-20 border-b border-warmtan overflow-hidden">
+<div class="absolute inset-0 pointer-events-none opacity-[0.04] text-gold">
+<svg class="absolute -right-12 -top-12 w-96 h-96" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+</div>
+
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-terracotta/10 border border-terracotta/20 text-terracotta text-xs font-bold uppercase tracking-[0.16em] mb-6">
+<span class="relative flex h-2 w-2">
+  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-75"></span>
+  <span class="relative inline-flex rounded-full h-2 w-2 bg-terracotta"></span>
+</span>
+Coming soon &bull; Founding Gathering, date to be confirmed
+</div>
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-deepbrown mb-6 leading-tight">
+Where the doors open in person.
+</h1>
+<p class="text-deepbrown/75 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+An evening of stories, connection, and capital. Bringing together entrepreneurs, leaders, and Partners to open new pathways for women founders.
+</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- INFOGRAPHICS: PROGRAM SPECIFICS -->
+<!-- ============================================================ -->
+<section class="py-16 bg-warmtan/30 border-b border-warmtan">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">Event architecture</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2">What to expect at the Gathering.</h2>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Specific 1 -->
+<div class="bg-white rounded-2xl p-6 border border-warmtan shadow-card text-center flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-terracotta/10 text-terracotta flex items-center justify-center mb-4">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+</div>
+<h3 class="font-serif text-lg font-semibold text-deepbrown mb-2">Live Storytelling</h3>
+<p class="text-xs text-deepbrown/70 leading-relaxed">Curated 30-second key moments shared live on stage by community founders.</p>
+</div>
+
+<!-- Specific 2 -->
+<div class="bg-white rounded-2xl p-6 border border-warmtan shadow-card text-center flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-4">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+</div>
+<h3 class="font-serif text-lg font-semibold text-deepbrown mb-2">Founding Members</h3>
+<p class="text-xs text-deepbrown/70 leading-relaxed">Every attendee gains Founding Member status, shaping the network's charter.</p>
+</div>
+
+<!-- Specific 3 -->
+<div class="bg-white rounded-2xl p-6 border border-warmtan shadow-card text-center flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-terracotta/10 text-terracotta flex items-center justify-center mb-4">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+</div>
+<h3 class="font-serif text-lg font-semibold text-deepbrown mb-2">Capital Network</h3>
+<p class="text-xs text-deepbrown/70 leading-relaxed">Direct introductions connecting investors, family offices, and women-led ventures.</p>
+</div>
+
+<!-- Specific 4 -->
+<div class="bg-white rounded-2xl p-6 border border-warmtan shadow-card text-center flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-4">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-14 0H3m5 0h8M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"/></svg>
+</div>
+<h3 class="font-serif text-lg font-semibold text-deepbrown mb-2">Hosted by WVF</h3>
+<p class="text-xs text-deepbrown/70 leading-relaxed">Backed by the Women's Venture Fund's 30+ year CDFI track record.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- INFOGRAPHIC METRICS BAR -->
+<!-- ============================================================ -->
+<section class="py-14 bg-cream border-b border-warmtan">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-3 divide-x divide-warmtan text-center">
+<div class="px-2 sm:px-4">
+<p class="font-serif text-3xl sm:text-5xl font-semibold text-terracotta mb-1">1 Evening</p>
+<p class="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-deepbrown/60">Live gathering</p>
+</div>
+<div class="px-2 sm:px-4">
+<p class="font-serif text-3xl sm:text-5xl font-semibold text-gold mb-1">100%</p>
+<p class="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-deepbrown/60">Founding Member seats</p>
+</div>
+<div class="px-2 sm:px-4">
+<p class="font-serif text-3xl sm:text-5xl font-semibold text-terracotta mb-1">CDFI</p>
+<p class="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-deepbrown/60">Backing &amp; capital model</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- EARLY ACCESS / RESERVE FORM -->
+<!-- ============================================================ -->
+<section id="reserve" class="py-16 lg:py-24 bg-deepbrown text-cream">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<span class="text-gold text-xs font-bold uppercase tracking-[0.16em] mb-3 block">Priority access</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold mb-4">Reserve your place early.</h2>
+<p class="text-cream/75 text-sm sm:text-base leading-relaxed mb-8">
+Invitations will be released in rounds to members and Partners first. Register below to receive priority notification when the date and venue are confirmed.
+</p>
+
+<form @submit.prevent="rsvpSubmitted = true" class="max-w-md mx-auto space-y-3">
+<div class="flex flex-col sm:flex-row gap-2">
+<input type="email" required placeholder="Enter your email address" class="w-full rounded-full bg-white/10 border border-white/20 px-5 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
+<button type="submit" class="shrink-0 rounded-full bg-terracotta text-white font-bold text-sm px-7 py-3 hover:bg-terracotta/90 transition-colors shadow-md">
+Reserve
+</button>
+</div>
+<p x-show="rsvpSubmitted" x-cloak class="text-gold text-xs mt-3">Thank you &mdash; you are on the priority list for the Founding Gathering!</p>
+</form>
+</div>
+</section>
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="bg-deepbrown text-cream/70 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+<div class="lg:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold">
+<svg class="w-5 h-9" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+</span>
+<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
+</div>
+<p class="text-sm leading-relaxed mb-4">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+
+<div class="text-xs space-y-1.5 mb-6 text-cream/80">
+<p class="flex items-center gap-2"><span class="text-gold font-semibold">Open now</span></p>
+<p>Phone: <a href="tel:2125630499" class="hover:text-white transition-colors">(212) 563-0499</a></p>
+<p>Email: <a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">info@wvf-ny.org</a></p>
+<p>Web: <a href="https://womensventurefund.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">womensventurefund.org</a></p>
+</div>
+
+<div class="flex items-center gap-3">
+<a href="https://instagram.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Instagram (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
+</a>
+<a href="https://facebook.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Facebook (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
+</a>
+<a href="https://www.linkedin.com/company/womens-venture-fund/" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
+</a>
+</div>
+</div>
+
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
+<ul class="space-y-2.5 text-sm">
+<li><a href="./index.html#stories" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
+<ul class="space-y-2.5 text-sm">
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
+<li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
+<p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
+<form @submit.prevent="submitNewsletter($event)" class="flex items-center gap-2">
+<label for="footer-email" class="sr-only">Email address</label>
+<input id="footer-email" name="email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
+<button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors" aria-label="Subscribe to newsletter">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</button>
+</form>
+</div>
+</div>
+
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a href="#" class="hover:text-white transition-colors">Privacy policy</a>
+<a href="#" class="hover:text-white transition-colors">Terms of use</a>
+<a href="#" class="hover:text-white transition-colors">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+function submitNewsletter(event) {
+  const input = event.target.querySelector('input[type="email"]');
+  const email = input ? input.value.trim() : '';
+  const body = email ? 'Please subscribe this email: ' + email : '';
+  const params = new URLSearchParams({ subject: 'Keymakers Newsletter Subscription' });
+  if (body) params.set('body', body);
+  window.location.href = 'mailto:info@wvf-ny.org?' + params.toString();
+}
+
+</script>
+</body>
+</html>
