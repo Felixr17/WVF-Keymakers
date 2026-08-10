@@ -6,6 +6,9 @@
 <title>Keymakers | A movement by the Women&rsquo;s Venture Fund</title>
 <meta name="description" content="Keymakers is a storytelling movement by the Women's Venture Fund. Share the key moment that opened a door for you, and help open one for someone else." />
 
+<!-- Givebutter Widget Library Script -->
+<script async src="https://widgets.givebutter.com/latest.js"></script>
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,7 +161,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <a href="./index.html#gathering" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
 Reserve your place
 </a>
-<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-rust/90 shadow-md transition-colors">
+<a href="https://givebutter.com/keymaker-campaign" target="_blank" class="inline-flex items-center whitespace-nowrap rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-rust/90 shadow-md transition-colors">
 Share your key
 </a>
 </div>
@@ -181,7 +184,7 @@ Share your key
 </ul>
 <div class="flex flex-col gap-3 mt-5">
 <a @click="mobileOpen = false" href="./index.html#gathering" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
+<a @click="mobileOpen = false" href="https://givebutter.com/keymaker-campaign" target="_blank" class="text-center rounded-full bg-rust text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
 </div>
 </div>
 </header>
@@ -237,7 +240,7 @@ Keymakers is a year-round membership community that brings together stories, rel
 </p>
 
 <div class="flex flex-wrap items-center gap-4">
-<a href="./get-involved.html" class="inline-flex items-center gap-2 rounded-full bg-rust text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-rust/20 hover:bg-rust/90 transition-colors">
+<a href="https://givebutter.com/keymaker-campaign" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-rust text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-rust/20 hover:bg-rust/90 transition-colors">
 Become a Keymaker
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
@@ -316,7 +319,7 @@ Sometimes it was an introduction. Sometimes a mentor, a customer, an investor &m
 <p class="text-cream/75 text-base sm:text-lg leading-relaxed mb-8">
 Keymakers exists to name those moments out loud &mdash; and to make sure the next woman finds her key a little faster than the last one did.
 </p>
-<a href="./share-your-key.html" class="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wide hover:gap-3 transition-all group">
+<a href="https://givebutter.com/keymaker-campaign" target="_blank" class="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wide hover:gap-3 transition-all group">
 Share the key that opened your door
 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
@@ -494,7 +497,7 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 <p class="font-serif text-lg text-deepbrown font-medium">Your story has the power to unlock the next one.</p>
 </div>
 <div class="flex items-center gap-3 shrink-0">
-<a href="./share-your-key.html" class="inline-block rounded-full bg-rust text-white font-bold text-sm px-6 py-3 hover:bg-rust/90 transition-colors">Share your key</a>
+<a href="https://givebutter.com/keymaker-campaign" target="_blank" class="inline-block rounded-full bg-rust text-white font-bold text-sm px-6 py-3 hover:bg-rust/90 transition-colors">Share your key</a>
 <a href="./get-involved.html" class="rounded-full border border-deepbrown/20 text-deepbrown font-semibold text-sm px-6 py-3 hover:border-deepbrown/50 transition-colors">View guidelines</a>
 </div>
 </div>
@@ -560,7 +563,7 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 </div>
 </div>
 
-<!-- Tier Grid -->
+<!-- Tier Grid with Givebutter Integration -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-16">
 <template x-for="tier in tiers" :key="tier.name">
 <div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmtan'" class="relative flex flex-col rounded-2xl bg-white border p-6">
@@ -597,7 +600,7 @@ class="group relative w-72 h-96 shrink-0 rounded-2xl overflow-hidden shadow-card
 </template>
 </ul>
 
-<a :href="tier.ctaHref" target="_blank" rel="noopener noreferrer"
+<a :href="tier.ctaHref" target="_blank"
 :class="tier.featured ? 'bg-rust text-white hover:bg-rust/90' : 'bg-deepbrown text-white hover:bg-deepbrown/90'"
 class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 transition-colors" x-text="tier.cta"></a>
 </div>
@@ -712,7 +715,7 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div>
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
 <ul class="space-y-2.5 text-sm">
-<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
+<li><a href="https://givebutter.com/keymaker-campaign" target="_blank" class="hover:text-white transition-colors">Submission guidelines</a></li>
 <li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
 <li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
 <li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
@@ -854,8 +857,8 @@ tagline: "You're carrying a key.",
 price: 'Free',
 period: '($0)',
 features: ['Share "What Was Your Key?" story', 'Monthly Insight Summary', 'Stay connected to news', 'Invitations to future opportunities'],
-cta: 'Join Free',
-ctaHref: 'https://forms.example.com/keymakers-key-carrier',
+cta: 'Join free',
+ctaHref: 'https://givebutter.com/keymaker-campaign',
 fillPct: 0,
 },
 {
@@ -865,7 +868,7 @@ price: '$50',
 period: '/ year',
 features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Submit questions to speakers', 'Keymakers Registry recognition', 'Early event invitations'],
 cta: 'Become a Keyholder',
-ctaHref: 'https://checkout.example.com/keymakers-keyholder-50',
+ctaHref: 'https://givebutter.com/keymaker-campaign',
 fillPct: 25,
 },
 {
@@ -875,7 +878,7 @@ price: '$100',
 period: '/ year',
 features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discussions', 'Contribute to Knowledge Library', '"Ask a Keymaker" sessions'],
 cta: 'Become a Keysmith',
-ctaHref: 'https://checkout.example.com/keymakers-keysmith-100',
+ctaHref: 'https://givebutter.com/keymaker-campaign',
 fillPct: 50,
 },
 {
@@ -885,7 +888,7 @@ price: '$250',
 period: '/ year',
 features: ['Everything in Keysmith', 'Quarterly Spotlight feature', 'Lead roundtables', 'Share introductions', 'Recognition at Founding Gathering'],
 cta: 'Become a Key Shaper',
-ctaHref: 'https://checkout.example.com/keymakers-key-shaper-250',
+ctaHref: 'https://givebutter.com/keymaker-campaign',
 fillPct: 75,
 featured: true,
 },
@@ -896,7 +899,7 @@ price: '$1,000',
 period: '/ year \u00b7 By invitation',
 features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversations on financing models', 'Build Keymakers Capital Network', 'Capital Network Summit invitation'],
 cta: 'Request an invitation',
-ctaHref: 'https://forms.example.com/keymakers-key-circle-application',
+ctaHref: 'https://givebutter.com/keymaker-campaign',
 fillPct: 100,
 },
 ],
