@@ -262,30 +262,30 @@ Explore memberships
 
 <!-- Right Column: Featured Story Card -->
 <div class="relative">
-<div class="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] lg:aspect-[9/10] group cursor-pointer" @click="openModal(featuredStory)">
-<img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=1200&q=80" alt="Marissa L., founder of Marissa L. Bakery, smiling in her shop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+<div class="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] lg:aspect-[9/10] group cursor-pointer" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamico Maldonado's key story">
+<img src="./assets/images/tamico-maldonado.jpg" alt="Tamico Maldonado, Community Founder, portrait" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
 
 <!-- Play Button -->
-<div class="absolute inset-0 flex items-center justify-center">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
 <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
 <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
 </div>
 
 <!-- Gold Badge with Updated Key -->
-<div class="absolute top-5 left-5 flex items-center justify-center w-11 h-11 rounded-full bg-white/15 ring-1 ring-white/40 backdrop-blur text-gold">
+<div class="absolute top-5 left-5 flex items-center justify-center w-11 h-11 rounded-full bg-white/15 ring-1 ring-white/40 backdrop-blur text-gold pointer-events-none">
 <svg class="w-5 h-9" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
 </div>
 
 <!-- Quote Overlay -->
-<div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-<p class="font-serif italic text-white text-xl sm:text-2xl leading-snug mb-4">&ldquo;My key was believing I could.&rdquo;</p>
+<div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 pointer-events-none">
+<p class="font-serif italic text-white text-lg sm:text-xl leading-snug mb-4">&ldquo;My key was being in a community where there was no facility where they could have dancing and mentorship.&rdquo;</p>
 <div class="flex items-center gap-3">
 <div class="w-px h-8 bg-gold"></div>
 <div>
-<p class="text-white font-semibold text-sm">Marissa L.</p>
-<p class="text-white/70 text-xs uppercase tracking-wide">Founder, Marissa L. Bakery</p>
+<p class="text-white font-semibold text-sm">Tamico Maldonado</p>
+<p class="text-white/70 text-xs uppercase tracking-wide">Community Founder</p>
 </div>
 </div>
 </div>
@@ -779,7 +779,23 @@ class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflo
 
 <template x-if="modal.story">
 <div>
-<!-- 16:9 Video Container -->
+<!-- YouTube embed when story has a video ID -->
+<template x-if="modal.story.youtubeId">
+<div class="relative w-full aspect-[9/16] sm:aspect-video bg-black max-h-[70vh]">
+<iframe
+class="w-full h-full rounded-t-2xl sm:rounded-t-3xl"
+:src="'https://www.youtube.com/embed/' + modal.story.youtubeId + '?autoplay=1&rel=0'"
+:title="modal.story.name + ' Story'"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/40 rounded-full px-2.5 py-1 pointer-events-none" x-text="modal.story.category"></span>
+</div>
+</template>
+
+<!-- Static preview fallback for stories without YouTube -->
+<template x-if="!modal.story.youtubeId">
 <div class="relative w-full aspect-video bg-black">
 <img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-cover opacity-70">
 <div class="absolute inset-0 bg-gradient-to-t from-deepbrown/90 via-deepbrown/10 to-transparent"></div>
@@ -790,6 +806,7 @@ class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflo
 </button>
 <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/40 rounded-full px-2.5 py-1" x-text="modal.story.category"></span>
 </div>
+</template>
 
 <!-- Caption -->
 <div class="p-6 sm:p-8">
@@ -828,12 +845,13 @@ filters: ['ALL KEYS', 'FOUNDERS', 'INVESTORS', 'MENTORS', 'COMMUNITY LEADERS', '
 modal: { open: false, story: null },
 
 featuredStory: {
-id: 'featured',
-name: 'Marissa L.',
-tag: 'Founder, Marissa L. Bakery',
-quote: 'My key was believing I could.',
-category: 'FOUNDERS',
-img: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=1200&q=80',
+id: 'tamico',
+name: 'Tamico Maldonado',
+tag: 'Community Founder',
+quote: 'My key was being in a community where there was no facility where they could have dancing and mentorship.',
+category: 'COMMUNITY LEADERS',
+img: './assets/images/tamico-maldonado.jpg',
+youtubeId: 'Qe9IBmPSLSg',
 },
 howItWorksStory: {
 id: 'how-it-works',
@@ -845,6 +863,7 @@ img: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&f
 },
 
 stories: [
+{ id: 'tamico-card', name: 'Tamico Maldonado', tag: 'Community Founder', quote: 'My key was being in a community where there was no facility where they could have dancing and mentorship.', category: 'COMMUNITY LEADERS', img: './assets/images/tamico-maldonado.jpg', youtubeId: 'Qe9IBmPSLSg' },
 { id: 1, name: 'Jessica R.', tag: 'Founder, Woven Co.', quote: 'My key was starting before I was ready.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80' },
 { id: 2, name: 'Angela J.', tag: 'Investor & Advisor', quote: 'My key was saying yes to new things.', category: 'INVESTORS', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80' },
 { id: 3, name: 'Tara M.', tag: 'Founder, Tara Designs', quote: 'My key was betting on myself.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80' },
@@ -853,7 +872,7 @@ stories: [
 { id: 6, name: 'Jessica Lin', tag: 'Founder, Woven Co.', quote: "One conversation opened a door I didn't even know was there.", category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80' },
 { id: 7, name: 'Jessica K.', tag: 'Student, First-Gen Founder', quote: 'My key was starting before I was ready.', category: 'STUDENTS', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80' },
 { id: 8, name: 'Maria S.', tag: 'Community Leader', quote: 'My key was showing up, even scared.', category: 'COMMUNITY LEADERS', img: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80' },
-{ id: 9, name: 'Nina P.', tag: 'Artist & Designer', quote: 'My key was tterracottaing my own voice.', category: 'ARTISTS', img: 'https://images.unsplash.com/photo-1521252659862-eec69941b071?auto=format&fit=crop&w=800&q=80' },
+{ id: 9, name: 'Nina P.', tag: 'Artist & Designer', quote: 'My key was trusting my own voice.', category: 'ARTISTS', img: 'https://images.unsplash.com/photo-1521252659862-eec69941b071?auto=format&fit=crop&w=800&q=80' },
 { id: 10, name: 'Priya D.', tag: 'Angel Investor', quote: 'My key was writing the first check when no one else would.', category: 'INVESTORS', img: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80' },
 { id: 11, name: 'Renee C.', tag: 'Executive Coach & Mentor', quote: 'My key was learning to ask for help.', category: 'MENTORS', img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80' },
 { id: 12, name: 'Devon A.', tag: 'MBA Candidate', quote: 'My key was applying anyway, doubts and all.', category: 'STUDENTS', img: 'https://images.unsplash.com/photo-1553514029-1318c9127859?auto=format&fit=crop&w=800&q=80' },
@@ -954,6 +973,7 @@ document.body.style.overflow = 'hidden';
 },
 closeModal() {
 this.modal.open = false;
+this.modal.story = null;
 document.body.style.overflow = '';
 },
 init() {},
