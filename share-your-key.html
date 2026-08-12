@@ -57,28 +57,6 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
 <body x-data="shareYourKey()" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
 
 <!-- ============================================================ -->
-<!-- REUSABLE SVG SYMBOLS (custom Keymakers key-with-leaf mark)     -->
-<!-- ============================================================ -->
-<svg width="0" height="0" class="absolute" aria-hidden="true">
-  <defs>
-    <symbol id="icon-key-leaf" viewBox="0 0 100 210">
-  <g fill="currentColor">
-    <path d="M 50 10 C 53 22, 57 23, 68 25 C 80 27, 83 23, 88 38 C 93 53, 89 57, 85 68 C 81 79, 70 88, 50 88 C 30 88, 19 79, 15 68 C 11 57, 7 53, 12 38 C 17 23, 20 27, 32 25 C 43 23, 47 22, 50 10 Z M 50 20 C 32 20, 22 32, 22 50 C 22 68, 32 78, 50 78 C 68 78, 78 68, 78 50 C 78 32, 68 20, 50 20 Z" />
-    <path d="M 49 53 C 40 50, 28 38, 32 32 C 42 32, 48 43, 49 53 Z" />
-    <path d="M 51 53 C 52 43, 58 32, 68 32 C 72 38, 60 50, 51 53 Z" />
-    <path d="M 48 51 C 48 62, 47 67, 50 73 C 53 67, 52 62, 52 51 Z" />
-    <path d="M 50 86 L 58 95 L 50 104 L 42 95 Z M 50 91 L 46 95 L 50 99 L 54 95 Z" />
-    <rect x="47" y="102" width="6" height="88" rx="1" />
-    <path d="M 53 130 H 70 V 135 H 60 L 70 148 H 63 L 57 139 V 148 H 53 Z" />
-    <path d="M 53 154 H 68 V 159 H 58 V 162 H 66 V 166 H 58 V 170 H 68 V 175 H 53 Z" />
-    <path d="M 53 180 H 57 L 62 188 L 67 180 H 72 L 65 190 V 199 H 60 V 190 Z" />
-    <path d="M 50 190 L 57 199 L 50 208 L 43 199 Z M 50 195 L 47 199 L 50 203 L 53 199 Z" />
-  </g>
-</symbol>
-  </defs>
-</svg>
-
-<!-- ============================================================ -->
 <!-- SECTION 1 :: TOP NAVIGATION                                   -->
 <!-- ============================================================ -->
 <header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
@@ -87,7 +65,7 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
     <!-- Dual Logo Lockup -->
     <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
       <span class="relative flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors">
-        <svg class="w-6 h-10" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+        <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-6 h-10 object-contain">
       </span>
       <span class="flex flex-col leading-tight">
         <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -144,12 +122,12 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
 <!-- ============================================================ -->
 <section class="relative bg-cream overflow-hidden">
   <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-    <svg class="absolute -right-10 top-6 w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+    <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="absolute -right-10 top-6 w-64 h-64 sm:w-72 sm:h-72 object-contain">
   </div>
 
   <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-14 sm:pb-16 text-center">
     <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-6">
-      <svg class="w-6 h-10" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+      <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-6 h-10 object-contain">
     </span>
 
     <div class="inline-flex items-center justify-center gap-2 text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
@@ -200,31 +178,31 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
         <ul class="space-y-3">
           <li class="flex items-start gap-3">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5">
-              <svg class="w-3 h-6" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+              <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-3 h-6 object-contain">
             </span>
             <span class="text-deepbrown/80 text-base leading-relaxed">What your key was</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5">
-              <svg class="w-3 h-6" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+              <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-3 h-6 object-contain">
             </span>
             <span class="text-deepbrown/80 text-base leading-relaxed">What challenge or closed door you were facing</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5">
-              <svg class="w-3 h-6" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+              <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-3 h-6 object-contain">
             </span>
             <span class="text-deepbrown/80 text-base leading-relaxed">How that key changed what was possible</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5">
-              <svg class="w-3 h-6" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+              <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-3 h-6 object-contain">
             </span>
             <span class="text-deepbrown/80 text-base leading-relaxed">What you learned that could help another woman</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5">
-              <svg class="w-3 h-6" viewBox="0 0 100 210" fill="currentColor"><use href="#icon-key-leaf"/></svg>
+              <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-3 h-6 object-contain">
             </span>
             <span class="text-deepbrown/80 text-base leading-relaxed">What door you would now like to help open for someone else</span>
           </li>
@@ -357,7 +335,7 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
     >
       <div class="rounded-2xl sm:rounded-3xl border border-warmtan bg-white shadow-soft p-8 sm:p-14 text-center">
         <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-6">
-          <svg class="w-5 h-9" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+          <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-5 h-9 object-contain">
         </span>
 
         <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-deepbrown mb-4">Thank you for sharing your key.</h2>
@@ -392,7 +370,7 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
       <div class="lg:col-span-1">
         <div class="flex items-center gap-3 mb-4">
           <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold">
-            <svg class="w-5 h-9" viewBox="0 0 100 210"><use href="#icon-key-leaf"/></svg>
+            <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-5 h-9 object-contain">
           </span>
           <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
         </div>
