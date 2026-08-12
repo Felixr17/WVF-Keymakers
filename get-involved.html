@@ -79,8 +79,8 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 
 <!-- Dual Logo Lockup -->
 <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
-<span class="relative flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-6 h-10 object-contain">
+<span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
+<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="flex flex-col leading-tight">
 <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -137,7 +137,7 @@ Share your key
 <!-- ============================================================ -->
 <section class="relative bg-cream py-16 lg:py-24 border-b border-warmtan overflow-hidden">
 <div class="absolute inset-0 pointer-events-none opacity-[0.04] text-gold">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="absolute -right-12 -top-12 w-96 h-96 object-contain">
+<img src="./assets/images/Key2.svg" alt="" aria-hidden="true" class="absolute -right-12 -top-12 h-80 sm:h-[28rem] w-auto object-contain">
 </div>
 
 <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -253,7 +253,7 @@ Belonging should never depend on financial ability. Key Carrier removes barriers
 <span class="text-deepbrown/50 text-xs" x-text="tier.period"></span>
 </div>
 <!-- Proper Noun Tier Name -->
-<h3 class="text-terracotta font-bold text-sm uppercase tracking-wide mt-2" x-text="tier.name"></h3>
+<h3 class="text-terracotta font-bold text-xs uppercase tracking-wide mt-2 whitespace-nowrap" x-text="tier.name"></h3>
 <p class="font-serif italic text-deepbrown/70 text-sm mt-1" x-text="tier.tagline"></p>
 </div>
 
@@ -271,7 +271,7 @@ Belonging should never depend on financial ability. Key Carrier removes barriers
 :target="tier.ctaHref.startsWith('mailto:') ? '_self' : '_blank'"
 :rel="tier.ctaHref.startsWith('mailto:') ? '' : 'noopener noreferrer'"
 :class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-deepbrown text-white hover:bg-deepbrown/90'"
-class="w-full text-center rounded-full font-bold text-xs sm:text-sm px-4 py-3 transition-colors mt-2" x-text="tier.cta"></a>
+class="w-full min-h-[2.5rem] text-center rounded-full font-bold text-[10px] sm:text-[11px] px-3 py-2.5 whitespace-nowrap transition-colors mt-2" x-text="tier.cta"></a>
 </div>
 </template>
 </div>
@@ -330,8 +330,8 @@ Learn about WVF
 <!-- Brand & Contact Details -->
 <div class="lg:col-span-1">
 <div class="flex items-center gap-3 mb-4">
-<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="w-5 h-9 object-contain">
+<span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
+<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
