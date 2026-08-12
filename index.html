@@ -74,6 +74,9 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
   width: 100%;
   aspect-ratio: 16 / 9;
 }
+.story-card-media {
+  background-color: #3A2E24;
+}
 @media (min-width: 1024px) {
   .story-card-featured {
     max-width: 36rem;
@@ -233,7 +236,32 @@ Explore memberships
 <!-- Right Column: Featured Story Card -->
 <div class="relative w-full">
 <div class="story-card-featured relative rounded-3xl overflow-hidden shadow-soft group cursor-pointer" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamiko Maldonado's key story">
-<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
+<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-contain story-card-media group-hover:scale-[1.01] transition-transform duration-700">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
+
+<!-- Play Button -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
+<svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
+</span>
+</div>
+
+<!-- Key Badge -->
+<div class="absolute top-5 left-5 flex items-center justify-center w-12 h-12 rounded-full bg-white/15 ring-1 ring-white/40 backdrop-blur pointer-events-none p-1">
+<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+</div>
+
+<!-- Quote Overlay -->
+<div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 pointer-events-none">
+<p class="font-serif italic text-white text-lg sm:text-xl leading-snug mb-4">&ldquo;My key was being in a community where there was no facility where they could have dancing and mentorship.&rdquo;</p>
+<div class="flex items-center gap-3">
+<div class="w-px h-8 bg-gold"></div>
+<div>
+<p class="text-white font-semibold text-sm">Tamiko Maldonado</p>
+<p class="text-white/70 text-xs uppercase tracking-wide">Community Founder</p>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Floating accent card -->
@@ -423,7 +451,22 @@ type="button"
 @click="openModal(story)"
 class="story-card group relative shrink-0 rounded-2xl overflow-hidden shadow-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
 >
-<img :src="story.img" :alt="story.name + ', ' + story.tag" class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500">
+<img :src="story.img" :alt="story.name + ', ' + story.tag" class="absolute inset-0 w-full h-full object-contain story-card-media group-hover:scale-[1.01] transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
+
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
+<svg class="w-5 h-5 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
+</span>
+</div>
+
+<span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/30 rounded-full px-2.5 py-1 pointer-events-none" x-text="story.category"></span>
+
+<div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+<p class="font-serif italic text-white text-lg leading-snug mb-3" x-text="'\u201c' + story.quote + '\u201d'"></p>
+<p class="text-white font-semibold text-sm" x-text="story.name"></p>
+<p class="text-white/70 text-xs" x-text="story.tag"></p>
+</div>
 </button>
 </template>
 </div>
