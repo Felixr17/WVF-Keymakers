@@ -24,6 +24,7 @@ gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
 deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
 cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
 warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+warmgray: { DEFAULT: '#F1ECE4' },
 },
         fontFamily: {
           serif: ['Lora', 'Georgia', 'serif'],
@@ -248,6 +249,44 @@ warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
             <label for="business" class="block text-sm font-semibold text-deepbrown mb-1.5">Business or Organization <span class="text-terracotta">*</span></label>
             <input type="text" id="business" name="business" required autocomplete="organization"
               class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
+          </div>
+
+          <!-- CDFI Reporting Dropdowns (Optional) -->
+          <div class="grid sm:grid-cols-3 gap-6 mt-6">
+            <div>
+              <label for="entityType" class="block text-sm font-semibold text-navy mb-1.5">Business Structure</label>
+              <select id="entityType" name="entityType" class="w-full rounded-xl border border-warmgray bg-cream/40 px-4 py-3 text-sm text-navy focus:ring-2 focus:ring-gold">
+                <option value="">Select structure...</option>
+                <option value="LLC">LLC</option>
+                <option value="S-Corp">S-Corp</option>
+                <option value="C-Corp">C-Corp</option>
+                <option value="Sole Proprietorship">Sole Proprietorship</option>
+                <option value="Non-Profit">Non-Profit</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="ethnicity" class="block text-sm font-semibold text-navy mb-1.5">Ethnicity / Race</label>
+              <select id="ethnicity" name="ethnicity" class="w-full rounded-xl border border-warmgray bg-cream/40 px-4 py-3 text-sm text-navy focus:ring-2 focus:ring-gold">
+                <option value="">Select option...</option>
+                <option value="Hispanic/Latina">Hispanic / Latina</option>
+                <option value="Black/African American">Black / African American</option>
+                <option value="Asian">Asian</option>
+                <option value="White">White</option>
+                <option value="Native American/Indigenous">Native American / Indigenous</option>
+                <option value="Multi-racial">Multi-racial</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            <div>
+              <label for="minorityOwned" class="block text-sm font-semibold text-navy mb-1.5">Minority-Owned Business?</label>
+              <select id="minorityOwned" name="minorityOwned" class="w-full rounded-xl border border-warmgray bg-cream/40 px-4 py-3 text-sm text-navy focus:ring-2 focus:ring-gold">
+                <option value="">Select option...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="In Progress">In Progress</option>
+              </select>
+            </div>
           </div>
 
           <!-- Email / Phone -->
