@@ -783,7 +783,7 @@ allowfullscreen>
 <!-- Static preview fallback for stories without YouTube -->
 <template x-if="!modal.story.youtubeId">
 <div class="relative w-full aspect-video bg-black">
-<img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-cover opacity-70">
+<img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-contain story-card-media opacity-90">
 <div class="absolute inset-0 bg-gradient-to-t from-deepbrown/90 via-deepbrown/10 to-transparent"></div>
 <button type="button" class="absolute inset-0 flex items-center justify-center group" aria-label="Play video">
 <span class="flex items-center justify-center w-20 h-20 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-105 group-hover:bg-white transition-all">
