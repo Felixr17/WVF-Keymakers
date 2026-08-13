@@ -688,7 +688,9 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div>
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
 <p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
-<form @submit.prevent="submitNewsletter($event)" class="flex items-center gap-2">
+<form action="http://localhost:5678/webhook/keymakers-intake" method="POST" onsubmit="handleFooterSubmit(event)" class="flex items-center gap-2">
+<input type="hidden" name="source" value="Footer Newsletter">
+<input type="hidden" name="participation" value="newsletter-only">
 <label for="footer-email" class="sr-only">Email address</label>
 <input id="footer-email" name="email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
 <button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors" aria-label="Subscribe to newsletter">
@@ -788,18 +790,27 @@ allowfullscreen>
 
 <script>
 
-function submitNewsletter(event) {
-  const input = event.target.querySelector('input[type="email"]');
-  const email = input ? input.value.trim() : '';
-  const body = email ? 'Please subscribe this email: ' + email : '';
-  const params = new URLSearchParams({ subject: 'Keymakers Newsletter Subscription' });
-  if (body) params.set('body', body);
-  window.location.href = 'mailto:info@wvf-ny.org?' + params.toString();
+async function handleFooterSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  try {
+    await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.error('Footer newsletter submission error:', error);
+  }
+
+  alert('Thanks — you\'re on the list!');
+  form.reset();
 }
 
 function keymakers() {
 return {
-submitNewsletter,
 mobileOpen: false,
 subscribed: false,
 carouselHover: false,
