@@ -227,7 +227,7 @@
           Complete the short form below, and a member of the WVF team will contact you to arrange your conversation.
         </p>
 
-        <form @submit.prevent="submitForm($event)"action="http://localhost:5678/webhook/keymakers-intake" method="POST" class="space-y-6">
+        <form @submit.prevent="submitForm($event)" action="http://localhost:5678/webhook/keymakers-intake" method="POST" class="space-y-6">
           <input type="hidden" name="source" value="Main Intake Form">
 
           <!-- First / Last Name -->
@@ -500,7 +500,7 @@
       async submitForm(event) {
         const formElement = event.target;
         
-        // Extract field values directly from form
+        // Extract field values directly from form controls
         const payload = {
           source: formElement.querySelector('input[name="source"]')?.value || 'Main Intake Form',
           firstName: formElement.querySelector('#firstName')?.value || '',
@@ -518,12 +518,12 @@
         };
 
         try {
-          // Use mode: 'no-cors' so browser executes the POST request to n8n without blocking on CORS headers
+          // Send request with standard JSON headers to webhook listener
           await fetch(formElement.action, {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
               'Content-Type': 'application/json',
+              'Accept': 'application/json',
             },
             body: JSON.stringify(payload),
           });
