@@ -76,15 +76,24 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .story-card-featured {
   display: block;
   width: 100%;
-  min-width: 16rem;
-  aspect-ratio: 16 / 9;
+  max-width: 18rem;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 9 / 16;
 }
 .story-card-media {
   background-color: #3A2E24;
 }
+@media (min-width: 640px) {
+  .story-card-featured {
+    max-width: 20rem;
+  }
+}
 @media (min-width: 1024px) {
   .story-card-featured {
-    max-width: 36rem;
+    max-width: 28rem;
+    margin-right: 0;
+    margin-left: auto;
   }
 }
 
@@ -239,9 +248,9 @@ Explore memberships
 </div>
 
 <!-- Right Column: Featured Story Card -->
-<div class="relative w-full">
-<div class="story-card-featured relative rounded-3xl overflow-hidden shadow-soft group cursor-pointer" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamiko Maldonado's key story">
-<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-contain story-card-media">
+<div class="relative w-full flex justify-center lg:justify-end lg:pl-4">
+<div class="story-card-featured relative rounded-3xl overflow-hidden shadow-soft group cursor-pointer ring-1 ring-warmtan/60" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamiko Maldonado's key story">
+<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-cover story-card-media">
 <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
 <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
 <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
@@ -250,7 +259,7 @@ Explore memberships
 </div>
 
 <!-- Floating accent card -->
-<div class="hidden sm:flex absolute -top-6 -right-6 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem]">
+<div class="hidden lg:flex absolute -top-4 -left-4 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem] z-10">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
 <img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
@@ -745,7 +754,7 @@ class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflo
 <div>
 <!-- YouTube embed when story has a video ID -->
 <template x-if="modal.story.youtubeId">
-<div class="relative w-full aspect-[9/16] sm:aspect-video bg-black max-h-[70vh]">
+<div class="relative w-full max-w-md mx-auto aspect-[9/16] bg-black max-h-[85vh]">
 <iframe
 class="w-full h-full rounded-t-2xl sm:rounded-t-3xl"
 :src="'https://www.youtube.com/embed/' + modal.story.youtubeId + '?autoplay=1&rel=0'"
