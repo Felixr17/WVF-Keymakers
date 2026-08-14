@@ -18,14 +18,14 @@
     theme: {
       extend: {
         colors: {
-navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
-terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
-gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
-deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
-cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
-warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
-warmgray: { DEFAULT: '#F1ECE4' },
-},
+          navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
+          terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
+          gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
+          deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
+          cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
+          warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+          warmgray: { DEFAULT: '#F1ECE4' },
+        },
         fontFamily: {
           serif: ['Lora', 'Georgia', 'serif'],
           sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
@@ -58,7 +58,7 @@ warmgray: { DEFAULT: '#F1ECE4' },
 <body x-data="shareYourKey()" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
 
 <!-- ============================================================ -->
-<!-- SECTION 1 :: TOP NAVIGATION                                   -->
+<!-- SECTION 1 :: TOP NAVIGATION                                  -->
 <!-- ============================================================ -->
 <header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
   <nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
@@ -119,7 +119,7 @@ warmgray: { DEFAULT: '#F1ECE4' },
 <main id="top">
 
 <!-- ============================================================ -->
-<!-- SECTION 2 :: HERO / INTAKE HEADER                             -->
+<!-- SECTION 2 :: HERO / INTAKE HEADER                            -->
 <!-- ============================================================ -->
 <section class="relative bg-cream overflow-hidden">
   <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
@@ -156,7 +156,7 @@ warmgray: { DEFAULT: '#F1ECE4' },
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 3 :: WHAT TO EXPECT                                   -->
+<!-- SECTION 3 :: WHAT TO EXPECT                                  -->
 <!-- ============================================================ -->
 <section class="bg-cream pb-4 sm:pb-6">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -214,7 +214,7 @@ warmgray: { DEFAULT: '#F1ECE4' },
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 4 :: INTAKE FORM / CONFIRMATION (Alpine.js toggle)    -->
+<!-- SECTION 4 :: INTAKE FORM / CONFIRMATION                     -->
 <!-- ============================================================ -->
 <section id="intake-form" class="bg-cream py-14 sm:py-20">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -227,9 +227,9 @@ warmgray: { DEFAULT: '#F1ECE4' },
           Complete the short form below, and a member of the WVF team will contact you to arrange your conversation.
         </p>
 
-        <form @submit.prevent="submitForm()" action="http://localhost:5678/webhook-test/keymakers-intake" method="POST" class="space-y-6">
+        <form @submit.prevent="submitForm($event)" action="http://localhost:5678/webhook/keymakers-intake" method="POST" class="space-y-6">
+          <input type="hidden" name="source" value="Main Intake Form">
 
-        
           <!-- First / Last Name -->
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
@@ -399,7 +399,7 @@ warmgray: { DEFAULT: '#F1ECE4' },
 </main>
 
 <!-- ============================================================ -->
-<!-- SECTION 5 :: FOOTER                                           -->
+<!-- SECTION 5 :: FOOTER                                          -->
 <!-- ============================================================ -->
 <footer id="about-wvf" class="bg-deepbrown text-cream/70">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -510,29 +510,38 @@ warmgray: { DEFAULT: '#F1ECE4' },
         { value: 'self-record', label: 'Record and submit my own video' },
         { value: 'more-info', label: 'I would like more information first' },
       ],
-      async submitForm() {
-        // Collect form data cleanly
+      async submitForm(event) {
         const formElement = event.target;
-        const formData = new FormData(formElement);
-        const data = Object.fromEntries(formData.entries());
-
-        // Append Alpine state variables explicitly if needed
-        data.participation = this.participation;
-        data.contactOptIn = this.contactOptIn;
+        
+        // Extract field values directly from form controls
+        const payload = {
+          source: formElement.querySelector('input[name="source"]')?.value || 'Main Intake Form',
+          firstName: formElement.querySelector('#firstName')?.value || '',
+          lastName: formElement.querySelector('#lastName')?.value || '',
+          business: formElement.querySelector('#business')?.value || '',
+          entityType: formElement.querySelector('#entityType')?.value || '',
+          ethnicity: formElement.querySelector('#ethnicity')?.value || '',
+          minorityOwned: formElement.querySelector('#minorityOwned')?.value || '',
+          email: formElement.querySelector('#email')?.value || '',
+          phone: formElement.querySelector('#phone')?.value || '',
+          keyDescription: formElement.querySelector('#keyDescription')?.value || '',
+          participation: this.participation,
+          bestTime: formElement.querySelector('#bestTime')?.value || '',
+          contactOptIn: this.contactOptIn,
+        };
 
         try {
-          // Send data asynchronously to your n8n webhook listener in the background
+          // Send request with standard JSON headers to webhook listener
           await fetch(formElement.action, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              'Accept': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(payload),
           });
         } catch (error) {
           console.error('Webhook transmission error:', error);
-          // Even if webhook fails or blocks due to CORS locally, 
-          // we still transition user to thank-you screen so frontend experience isn't broken
         }
 
         // Trigger confirmation view state
