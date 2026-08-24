@@ -323,7 +323,7 @@ Share your key
 <div x-data="{ subscribed: false }">
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
 <p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
-<form action="http://localhost:5678/webhook/keymakers-intake" method="POST" onsubmit="handleFooterSubmit(event)" class="flex items-center gap-2">
+<form action="https://primary-production-a33d.up.railway.app/webhook/keymakers-intake" method="POST" onsubmit="handleFooterSubmit(event)" class="flex items-center gap-2">
 <input type="hidden" name="source" value="Footer Newsletter">
 <input type="hidden" name="participation" value="newsletter-only">
 <label for="footer-email" class="sr-only">Email address</label>
@@ -347,14 +347,16 @@ Share your key
 </div>
 </footer>
 
+<script src="./assets/js/keymakers-config.js"></script>
 <script>
 async function handleFooterSubmit(event) {
   event.preventDefault();
   const form = event.target;
   const data = Object.fromEntries(new FormData(form).entries());
+  const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL || form.action;
 
   try {
-    await fetch(form.action, {
+    await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
