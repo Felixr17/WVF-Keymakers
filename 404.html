@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicons & Preconnect -->
+<link rel="icon" type="image/svg+xml" href="./assets/images/Key1.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Primary SEO Tags -->
+<title>Page Not Found | Keymakers Movement | Women's Venture Fund</title>
+<meta name="description" content="The page you are looking for could not be found. Return to the Keymakers homepage to explore stories, community, and ways to get involved.">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
+terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
+gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
+deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
+cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
+warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+},
+fontFamily: {
+serif: ['Lora', 'Georgia', 'serif'],
+sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+},
+boxShadow: {
+soft: '0 25px 60px -18px rgba(58,46,36,0.30)',
+card: '0 10px 30px -12px rgba(58,46,36,0.25)',
+},
+borderRadius: {
+'2xl': '1.25rem',
+'3xl': '1.75rem',
+},
+},
+},
+};
+</script>
+
+<!-- Alpine.js (CDN) -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+html { scroll-padding-top: 96px; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+[x-cloak] { display: none !important; }
+</style>
+</head>
+
+<body x-data="{ mobileOpen: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+
+<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
+<nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
+
+<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
+<span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+</span>
+<span class="flex flex-col leading-tight">
+<span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
+<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
+</span>
+</a>
+
+<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
+<li><a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
+<li><a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a></li>
+<li><a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
+</ul>
+
+<div class="hidden xl:flex items-center gap-3 shrink-0">
+<a href="./gathering.html#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
+Reserve your place
+</a>
+<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors">
+Share your key
+</a>
+</div>
+
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</nav>
+
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
+<ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
+<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
+</ul>
+<div class="flex flex-col gap-3 mt-5">
+<a @click="mobileOpen = false" href="./gathering.html#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
+</div>
+</div>
+</header>
+
+<main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+<div class="max-w-xl w-full text-center">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold/10 ring-1 ring-gold/30 text-gold mb-8 p-3">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain opacity-80">
+</div>
+<p class="text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.16em] mb-4">Error 404</p>
+<h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-deepbrown mb-5 leading-tight">
+This Key Doesn&rsquo;t Match Any Door
+</h1>
+<p class="text-deepbrown/65 text-base sm:text-lg leading-relaxed mb-10">
+The page you&rsquo;re looking for may have moved, or the link might be outdated. Let&rsquo;s get you back to the movement.
+</p>
+<a href="./index.html" class="inline-flex items-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-8 py-4 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
+Return to Keymakers Home
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</a>
+</div>
+</main>
+
+<footer class="bg-deepbrown text-cream/60 py-8 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+<div class="max-w-7xl mx-auto text-center text-xs">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>
