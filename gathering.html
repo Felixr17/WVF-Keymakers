@@ -84,11 +84,11 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <!-- ============================================================ -->
 <!-- NAVIGATION -->
 <!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur border-b border-white/10">
+<header class="sticky top-0 z-50 bg-deepbrown border-b border-white/10">
 <nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
 <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
 <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="flex flex-col leading-tight">
 <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -96,24 +96,25 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </span>
 </a>
 
-<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
-<li><a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a></li>
-<li><a href="./gathering.html" class="text-terracotta border-b-2 border-terracotta py-2">The Gathering</a></li>
-<li><a href="./index.html#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
-<li><a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
-<li><a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
+<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] whitespace-nowrap">
+<li><a href="./index.html#stories" class="text-white/80 hover:text-terracotta transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Stories</a></li>
+<li><a href="./gathering.html" aria-current="page" class="text-terracotta border-b-2 border-terracotta py-2">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="text-white/80 hover:text-terracotta transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="text-white/80 hover:text-terracotta transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Get Involved</a></li>
+<li><a href="./community.html" class="text-white/80 hover:text-terracotta transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Community</a></li>
+<li><a href="./about.html" class="text-white/80 hover:text-terracotta transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">About WVF</a></li>
 </ul>
 
 <div class="hidden xl:flex items-center gap-3 shrink-0">
-<a href="#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
-Reserve your place
+<a href="#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+Reserve Your Place
 </a>
-<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors">
-Share your key
+<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+Share Your Key
 </a>
 </div>
 
-<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" aria-label="Toggle navigation menu">
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
 <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
 <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
@@ -125,11 +126,12 @@ Share your key
 <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 text-terracotta font-bold">The Gathering</a></li>
 <li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
 <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
 <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
 </ul>
 <div class="flex flex-col gap-3 mt-5">
-<a @click="mobileOpen = false" href="#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
+<a @click="mobileOpen = false" href="#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold">Reserve Your Place</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold">Share Your Key</a>
 </div>
 </div>
 </header>
@@ -140,7 +142,7 @@ Share your key
 <!-- ============================================================ -->
 <section class="relative bg-cream py-16 lg:py-20 border-b border-warmtan overflow-hidden">
 <div class="absolute inset-0 pointer-events-none opacity-[0.04] text-gold">
-<img src="./assets/images/Key2.svg" alt="" aria-hidden="true" class="absolute -right-12 -top-12 h-80 sm:h-[28rem] w-auto object-contain">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="absolute -right-12 -top-12 h-80 sm:h-[28rem] w-auto object-contain">
 </div>
 
 <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -266,7 +268,7 @@ Reserve
 <div class="lg:col-span-1">
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
@@ -312,18 +314,57 @@ Reserve
 </ul>
 </div>
 
-<div>
+<!-- Newsletter -->
+<div x-data="{ email: '', subscribed: false, loading: false }">
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
-<p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
-<form action="https://primary-production-a33d.up.railway.app/webhook/keymakers-intake" method="POST" onsubmit="handleFooterSubmit(event)" class="flex items-center gap-2">
-<input type="hidden" name="source" value="Footer Newsletter">
-<input type="hidden" name="participation" value="newsletter-only">
+<p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
+
+<form @submit.prevent="
+  if (!email) return;
+  loading = true;
+  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source: 'Footer Newsletter',
+      participation: 'newsletter-only',
+      email: email
+    })
+  })
+  .then(() => {
+    subscribed = true;
+    loading = false;
+    email = '';
+  })
+  .catch(err => {
+    console.error('Newsletter submission error:', err);
+    subscribed = true;
+    loading = false;
+  });
+" class="flex items-center gap-2">
 <label for="footer-email" class="sr-only">Email address</label>
-<input id="footer-email" name="email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
-<button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors" aria-label="Subscribe to newsletter">
+<input
+  id="footer-email"
+  name="email"
+  type="email"
+  x-model="email"
+  required
+  placeholder="you@email.com"
+  class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
+>
+<button
+  type="submit"
+  :disabled="loading"
+  class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
+  aria-label="Subscribe to newsletter"
+>
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </button>
 </form>
+
+<p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
+Thanks &mdash; you&rsquo;re on the list!
+</p>
 </div>
 </div>
 
@@ -339,27 +380,5 @@ Reserve
 </footer>
 
 <script src="./assets/js/keymakers-config.js"></script>
-<script>
-async function handleFooterSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const data = Object.fromEntries(new FormData(form).entries());
-  const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL || form.action;
-
-  try {
-    await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-  } catch (error) {
-    console.error('Footer newsletter submission error:', error);
-  }
-
-  alert('Thanks — you\'re on the list!');
-  form.reset();
-}
-
-</script>
 </body>
 </html>

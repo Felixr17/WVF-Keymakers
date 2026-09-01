@@ -385,7 +385,7 @@ data-page-title="Keymakers Community Circle"
 <form @submit.prevent="
   if (!email) return;
   loading = true;
-  fetch('http://localhost:5678/webhook/keymakers-intake', {
+  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -397,6 +397,7 @@ data-page-title="Keymakers Community Circle"
   .then(() => {
     subscribed = true;
     loading = false;
+    email = '';
   })
   .catch(err => {
     console.error('Newsletter submission error:', err);
@@ -441,5 +442,6 @@ Thanks &mdash; you&rsquo;re on the list!
 </div>
 </footer>
 
+<script src="./assets/js/keymakers-config.js"></script>
 </body>
 </html>

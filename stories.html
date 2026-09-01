@@ -97,7 +97,7 @@
     <!-- Dual Logo Lockup -->
     <a href="./index.html" class="flex items-center gap-3 shrink-0 group">
       <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-        <img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+        <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
       </span>
       <span class="flex flex-col leading-tight">
         <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -154,7 +154,7 @@
 <!-- ============================================================ -->
 <section class="relative bg-cream overflow-hidden">
   <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-    <img src="./assets/images/Key2.svg" alt="" aria-hidden="true" class="absolute -left-10 -top-6 h-80 sm:h-96 w-auto object-contain">
+    <img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="absolute -left-10 -top-6 h-80 sm:h-96 w-auto object-contain">
   </div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -193,7 +193,7 @@
       <!-- Floating accent badge -->
       <div class="hidden sm:flex absolute -top-6 -right-6 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem]">
         <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
-          <img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+          <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
         </span>
         <p class="text-xs text-navy/70 leading-snug">A community of entrepreneurs, investors, and allies.</p>
       </div>
@@ -375,7 +375,7 @@
       <div class="lg:col-span-1">
         <div class="flex items-center gap-3 mb-4">
           <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-            <img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+            <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
           </span>
           <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
         </div>
@@ -419,27 +419,56 @@
       </div>
 
       <!-- Newsletter -->
-      <div>
+      <div x-data="{ email: '', subscribed: false, loading: false }">
         <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
-        <p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
-        <div x-data="{ email: '', subscribed: false, loading: false }">
+        <p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
+
         <form @submit.prevent="
+          if (!email) return;
           loading = true;
           fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ source: 'Footer Newsletter', participation: 'newsletter-only', email })
-          }).catch((error) => console.error('Footer newsletter submission error:', error))
-            .finally(() => { loading = false; subscribed = true; email = ''; });
+            body: JSON.stringify({
+              source: 'Footer Newsletter',
+              participation: 'newsletter-only',
+              email: email
+            })
+          })
+          .then(() => {
+            subscribed = true;
+            loading = false;
+            email = '';
+          })
+          .catch(err => {
+            console.error('Newsletter submission error:', err);
+            subscribed = true;
+            loading = false;
+          });
         " class="flex items-center gap-2">
           <label for="footer-email" class="sr-only">Email address</label>
-          <input id="footer-email" x-model="email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
-          <button type="submit" :disabled="loading" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-navy hover:bg-gold/90 transition-colors disabled:opacity-60" aria-label="Subscribe">
+          <input
+            id="footer-email"
+            name="email"
+            type="email"
+            x-model="email"
+            required
+            placeholder="you@email.com"
+            class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
+          >
+          <button
+            type="submit"
+            :disabled="loading"
+            class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
+            aria-label="Subscribe to newsletter"
+          >
             <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
           </button>
         </form>
-        <p x-show="subscribed" x-cloak class="text-gold text-xs mt-2">Thanks &mdash; you&rsquo;re on the list!</p>
-        </div>
+
+        <p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
+          Thanks &mdash; you&rsquo;re on the list!
+        </p>
       </div>
     </div>
 

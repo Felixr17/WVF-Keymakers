@@ -43,6 +43,7 @@ gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
 deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
 cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
 warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+warmgray: { DEFAULT: '#F1ECE4' },
 },
 fontFamily: {
 serif: ['Lora', 'Georgia', 'serif'],
@@ -144,7 +145,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <!-- Dual Logo Lockup -->
 <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
 <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="flex flex-col leading-tight">
 <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -158,6 +159,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <li><a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a></li>
 <li><a href="./index.html#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
 <li><a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
+<li><a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a></li>
 <li><a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
 </ul>
 
@@ -185,6 +187,7 @@ Share your key
 <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
 <li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
 <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
 <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
 </ul>
 <div class="flex flex-col gap-3 mt-5">
@@ -224,7 +227,7 @@ Explore Stories
 <!-- ============================================================ -->
 <section class="relative bg-cream overflow-hidden">
 <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-<img src="./assets/images/Key2.svg" alt="" aria-hidden="true" class="absolute -right-10 top-10 h-80 sm:h-96 w-auto object-contain">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="absolute -right-10 top-10 h-80 sm:h-96 w-auto object-contain">
 </div>
 
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -278,7 +281,7 @@ Explore memberships
 <!-- Floating accent card -->
 <div class="hidden lg:flex absolute -top-4 -left-4 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem] z-10">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <p class="text-xs text-deepbrown/70 leading-snug">Every key shared creates more possibilities.</p>
 </div>
@@ -478,7 +481,7 @@ class="story-card group relative w-64 sm:w-72 aspect-[9/16] shrink-0 rounded-2xl
 <div id="share-your-key" class="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between rounded-2xl border border-warmtan bg-white/70 px-6 sm:px-8 py-6">
 <div class="flex items-center gap-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold shrink-0 p-1.5">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <p class="font-serif text-lg text-deepbrown font-medium">Your story has the power to unlock the next one.</p>
 </div>
@@ -486,6 +489,45 @@ class="story-card group relative w-64 sm:w-72 aspect-[9/16] shrink-0 rounded-2xl
 <a href="./share-your-key.html" class="inline-block rounded-full bg-terracotta text-white font-bold text-sm px-6 py-3 hover:bg-terracotta/90 transition-colors">Share your key</a>
 <a href="./get-involved.html" class="rounded-full border border-deepbrown/20 text-deepbrown font-semibold text-sm px-6 py-3 hover:border-deepbrown/50 transition-colors">View guidelines</a>
 </div>
+</div>
+</div>
+</section>
+
+<!-- Community Forum Spotlight Section -->
+<section id="community-spotlight" class="py-16 sm:py-20 bg-warmgray/50 border-y border-warmtan/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="rounded-3xl bg-white border border-warmtan shadow-soft p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+
+<!-- Left Content -->
+<div class="max-w-2xl text-left">
+<div class="inline-flex items-center gap-2 text-terracotta text-xs font-bold uppercase tracking-widest mb-4">
+<span class="w-6 h-px bg-terracotta"></span>
+Keymakers Circle
+</div>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mb-4 leading-tight">
+Where Women Founders Connect in Real Time.
+</h2>
+<p class="text-deepbrown/70 text-base sm:text-lg leading-relaxed mb-6">
+Have questions about capital, scaling, or business operations? Join our private Community Circle to exchange insights, ask advice, and build meaningful relationships with fellow entrepreneurs.
+</p>
+<div class="flex flex-wrap items-center gap-6 text-xs font-semibold text-deepbrown/60">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Live Discussion Topics
+</span>
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-gold"></span> Peer Mentorship &amp; Q&amp;A
+</span>
+</div>
+</div>
+
+<!-- Right CTA Card -->
+<div class="shrink-0 w-full lg:w-auto">
+<a href="./community.html" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto rounded-full bg-terracotta text-white font-bold text-sm px-8 py-4 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2">
+<span>Join the Discussion</span>
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</a>
+</div>
+
 </div>
 </div>
 </section>
@@ -602,7 +644,7 @@ class="w-full min-h-[2.5rem] text-center rounded-full font-bold text-[10px] sm:t
 <div class="relative px-6 sm:px-12 py-14 sm:py-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
 <div class="max-w-xl">
 <span class="inline-flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-9 w-auto object-contain shrink-0">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-9 w-auto object-contain shrink-0">
 The Gathering
 </span>
 <h3 class="font-serif text-3xl sm:text-4xl text-white font-semibold mb-4 leading-tight">Join us in person for the first Keymakers Gathering.</h3>
@@ -661,7 +703,7 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div class="lg:col-span-1">
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-<img src="./assets/images/Key2.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
@@ -711,19 +753,56 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 </div>
 
 <!-- Newsletter -->
-<div>
+<div x-data="{ email: '', subscribed: false, loading: false }">
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
-<p class="text-sm mb-4">Get new stories and Gathering updates in your inbox.</p>
-<form action="https://primary-production-a33d.up.railway.app/webhook/keymakers-intake" method="POST" onsubmit="handleFooterSubmit(event)" class="flex items-center gap-2">
-<input type="hidden" name="source" value="Footer Newsletter">
-<input type="hidden" name="participation" value="newsletter-only">
+<p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
+
+<form @submit.prevent="
+  if (!email) return;
+  loading = true;
+  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source: 'Footer Newsletter',
+      participation: 'newsletter-only',
+      email: email
+    })
+  })
+  .then(() => {
+    subscribed = true;
+    loading = false;
+    email = '';
+  })
+  .catch(err => {
+    console.error('Newsletter submission error:', err);
+    subscribed = true;
+    loading = false;
+  });
+" class="flex items-center gap-2">
 <label for="footer-email" class="sr-only">Email address</label>
-<input id="footer-email" name="email" type="email" required placeholder="you@email.com" class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
-<button type="submit" class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors" aria-label="Subscribe to newsletter">
+<input
+  id="footer-email"
+  name="email"
+  type="email"
+  x-model="email"
+  required
+  placeholder="you@email.com"
+  class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
+>
+<button
+  type="submit"
+  :disabled="loading"
+  class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
+  aria-label="Subscribe to newsletter"
+>
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </button>
 </form>
-<p x-show="subscribed" x-cloak class="text-gold text-xs mt-2">Thanks &mdash; you&rsquo;re on the list!</p>
+
+<p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
+Thanks &mdash; you&rsquo;re on the list!
+</p>
 </div>
 </div>
 
@@ -817,30 +896,9 @@ allowfullscreen>
 <script src="./assets/js/keymakers-config.js"></script>
 <script>
 
-async function handleFooterSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const data = Object.fromEntries(new FormData(form).entries());
-  const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL || form.action;
-
-  try {
-    await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-  } catch (error) {
-    console.error('Footer newsletter submission error:', error);
-  }
-
-  alert('Thanks — you\'re on the list!');
-  form.reset();
-}
-
 function keymakers() {
 return {
 mobileOpen: false,
-subscribed: false,
 carouselHover: false,
 carouselDragging: false,
 carouselDragStartX: 0,
