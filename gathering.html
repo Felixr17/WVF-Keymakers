@@ -3,12 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Founding Gathering | Keymakers &ndash; A movement by the Women&rsquo;s Venture Fund</title>
-<meta name="description" content="The Founding Gathering of the Keymakers community is coming soon. Join women entrepreneurs, leaders, and partners for an evening of storytelling, connection, and open doors." />
-
-<!-- Fonts -->
+<!-- Favicons & Preconnect -->
+<link rel="icon" type="image/svg+xml" href="./assets/images/Key1.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Primary SEO Tags -->
+<title>The Founding Gathering | Keymakers Movement | Women's Venture Fund</title>
+<meta name="description" content="Join women entrepreneurs, leaders, and partners for an evening of storytelling, connection, and open doors at the Founding Gathering.">
+<link rel="canonical" href="https://keymakers.womensventurefund.org/gathering.html">
+
+<!-- Open Graph / Social Link Previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Women's Venture Fund">
+<meta property="og:title" content="The Founding Gathering | Keymakers Movement | Women's Venture Fund">
+<meta property="og:description" content="Join women entrepreneurs for an evening of storytelling, connection, and open doors.">
+<meta property="og:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://keymakers.womensventurefund.org/gathering.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Founding Gathering | Keymakers Movement | Women's Venture Fund">
+<meta name="twitter:description" content="Join women entrepreneurs for an evening of storytelling, connection, and open doors.">
+<meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Tailwind CSS (CDN) -->
@@ -303,7 +322,7 @@ Reserve
 <form @submit.prevent="
   if (!email) return;
   loading = true;
-  fetch('http://localhost:5678/webhook/keymakers-intake', {
+  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -315,6 +334,7 @@ Reserve
   .then(() => {
     subscribed = true;
     loading = false;
+    email = '';
   })
   .catch(err => {
     console.error('Newsletter submission error:', err);
@@ -359,5 +379,6 @@ Thanks &mdash; you&rsquo;re on the list!
 </div>
 </footer>
 
+<script src="./assets/js/keymakers-config.js"></script>
 </body>
 </html>

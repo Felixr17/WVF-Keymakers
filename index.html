@@ -3,12 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Keymakers | A movement by the Women&rsquo;s Venture Fund</title>
-<meta name="description" content="Keymakers is a storytelling movement by the Women's Venture Fund. Share the key moment that opened a door for you, and help open one for someone else." />
-
-<!-- Fonts -->
+<!-- Favicons & Preconnect -->
+<link rel="icon" type="image/svg+xml" href="./assets/images/Key1.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Primary SEO Tags -->
+<title>Keymakers Movement | Women's Venture Fund</title>
+<meta name="description" content="Connecting women entrepreneurs through stories, community, and capital. A Women's Venture Fund initiative.">
+<link rel="canonical" href="https://keymakers.womensventurefund.org/">
+
+<!-- Open Graph / Social Link Previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Women's Venture Fund">
+<meta property="og:title" content="Keymakers Movement | Women's Venture Fund">
+<meta property="og:description" content="Connecting women entrepreneurs through stories, community, and capital.">
+<meta property="og:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://keymakers.womensventurefund.org/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Keymakers Movement | Women's Venture Fund">
+<meta name="twitter:description" content="Connecting women entrepreneurs through stories, community, and capital.">
+<meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Tailwind CSS (CDN) -->
@@ -69,23 +88,30 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 }
 .story-card {
   display: block;
-  width: min(100%, 28rem);
-  min-width: 16rem;
-  aspect-ratio: 16 / 9;
   flex-shrink: 0;
+  aspect-ratio: 9 / 16;
 }
 .story-card-featured {
   display: block;
   width: 100%;
-  min-width: 16rem;
-  aspect-ratio: 16 / 9;
+  max-width: 18rem;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 9 / 16;
 }
 .story-card-media {
   background-color: #3A2E24;
 }
+@media (min-width: 640px) {
+  .story-card-featured {
+    max-width: 20rem;
+  }
+}
 @media (min-width: 1024px) {
   .story-card-featured {
-    max-width: 36rem;
+    max-width: 28rem;
+    margin-right: 0;
+    margin-left: auto;
   }
 }
 
@@ -242,9 +268,9 @@ Explore memberships
 </div>
 
 <!-- Right Column: Featured Story Card -->
-<div class="relative w-full">
-<div class="story-card-featured relative rounded-3xl overflow-hidden shadow-soft group cursor-pointer" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamiko Maldonado's key story">
-<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-contain story-card-media">
+<div class="relative w-full flex justify-center lg:justify-end lg:pl-4">
+<div class="story-card-featured relative rounded-3xl overflow-hidden shadow-soft group cursor-pointer ring-1 ring-warmtan/60" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamiko Maldonado's key story">
+<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-cover story-card-media">
 <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
 <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
 <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
@@ -253,7 +279,7 @@ Explore memberships
 </div>
 
 <!-- Floating accent card -->
-<div class="hidden sm:flex absolute -top-6 -right-6 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem]">
+<div class="hidden lg:flex absolute -top-4 -left-4 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem] z-10">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
 <img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
@@ -438,9 +464,9 @@ x-text="filter"
 type="button"
 @click="openModal(story)"
 :aria-label="'Play story from ' + story.name"
-class="story-card group relative shrink-0 rounded-2xl overflow-hidden shadow-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+class="story-card group relative w-64 sm:w-72 aspect-[9/16] shrink-0 rounded-2xl overflow-hidden shadow-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
 >
-<img :src="story.img" :alt="story.name + ', ' + story.tag" class="absolute inset-0 w-full h-full object-contain story-card-media">
+<img :src="story.img" :alt="story.name + ', ' + story.tag" class="absolute inset-0 w-full h-full object-cover object-center story-card-media">
 <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
 <svg class="w-5 h-5 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
@@ -734,7 +760,7 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <form @submit.prevent="
   if (!email) return;
   loading = true;
-  fetch('http://localhost:5678/webhook/keymakers-intake', {
+  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -746,6 +772,7 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
   .then(() => {
     subscribed = true;
     loading = false;
+    email = '';
   })
   .catch(err => {
     console.error('Newsletter submission error:', err);
@@ -802,7 +829,7 @@ role="dialog"
 aria-modal="true"
 :aria-hidden="!modal.open"
 >
-<div x-show="modal.open" x-transition.opacity.duration.250ms @click="closeModal()" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+<div x-show="modal.open" x-transition.opacity.duration.250ms @click="closeModal()" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
 
 <div
 x-show="modal.open"
@@ -812,10 +839,10 @@ x-transition:enter-end="opacity-100 scale-100"
 x-transition:leave="transition ease-in duration-150"
 x-transition:leave-start="opacity-100 scale-100"
 x-transition:leave-end="opacity-0 scale-95"
-class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+class="relative w-full max-w-sm bg-deepbrown rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
 @click.outside="closeModal()"
 >
-<button @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+<button @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white text-deepbrown hover:bg-white/90 shadow-lg transition-colors">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
 
@@ -823,10 +850,10 @@ class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflo
 <div>
 <!-- YouTube embed when story has a video ID -->
 <template x-if="modal.story.youtubeId">
-<div class="relative w-full aspect-[9/16] sm:aspect-video bg-black max-h-[70vh]">
+<div class="relative w-full max-w-sm mx-auto aspect-[9/16] bg-black max-h-[85vh]">
 <iframe
 class="w-full h-full rounded-t-2xl sm:rounded-t-3xl"
-:src="'https://www.youtube.com/embed/' + modal.story.youtubeId + '?autoplay=1&rel=0'"
+:src="'https://www.youtube.com/embed/' + modal.story.youtubeId + '?autoplay=1&rel=0&modestbranding=1'"
 :title="modal.story.name + ' Story'"
 frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -838,8 +865,8 @@ allowfullscreen>
 
 <!-- Static preview fallback for stories without YouTube -->
 <template x-if="!modal.story.youtubeId">
-<div class="relative w-full aspect-video bg-black">
-<img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-contain story-card-media opacity-90">
+<div class="relative w-full max-w-sm mx-auto aspect-[9/16] bg-black max-h-[85vh]">
+<img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-cover object-center story-card-media opacity-90">
 <div class="absolute inset-0 bg-gradient-to-t from-deepbrown/90 via-deepbrown/10 to-transparent"></div>
 <button type="button" class="absolute inset-0 flex items-center justify-center group" aria-label="Play video">
 <span class="flex items-center justify-center w-20 h-20 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-105 group-hover:bg-white transition-all">
@@ -866,6 +893,7 @@ allowfullscreen>
 </div>
 </div>
 
+<script src="./assets/js/keymakers-config.js"></script>
 <script>
 
 function keymakers() {
@@ -896,6 +924,7 @@ tag: 'Program Overview',
 quote: 'See how one shared story can open a door for someone else.',
 category: 'OVERVIEW',
 img: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=1200&q=80',
+youtubeId: 'YOUR_YOUTUBE_ID_HERE',
 },
 
 stories: [
