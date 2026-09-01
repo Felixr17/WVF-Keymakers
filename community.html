@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicons & Preconnect -->
+<link rel="icon" type="image/svg+xml" href="./assets/images/Key1.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Primary SEO Tags -->
+<title>Community Circle | Keymakers Movement | Women's Venture Fund</title>
+<meta name="description" content="Join the Keymakers Community Circle — a dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors for each other.">
+<link rel="canonical" href="https://keymakers.womensventurefund.org/community.html">
+
+<!-- Open Graph / Social Link Previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Women's Venture Fund">
+<meta property="og:title" content="Community Circle | Keymakers Movement | Women's Venture Fund">
+<meta property="og:description" content="A dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors.">
+<meta property="og:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://keymakers.womensventurefund.org/community.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community Circle | Keymakers Movement | Women's Venture Fund">
+<meta name="twitter:description" content="A dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors.">
+<meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
+terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
+gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
+deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
+cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
+warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
+},
+fontFamily: {
+serif: ['Lora', 'Georgia', 'serif'],
+sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+},
+boxShadow: {
+soft: '0 25px 60px -18px rgba(58,46,36,0.30)',
+card: '0 10px 30px -12px rgba(58,46,36,0.25)',
+},
+borderRadius: {
+'2xl': '1.25rem',
+'3xl': '1.75rem',
+},
+},
+},
+};
+</script>
+
+<!-- Alpine.js (CDN) -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+html { scroll-padding-top: 96px; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+[x-cloak] { display: none !important; }
+
+/* Cusdis — WVF brand integration */
+#cusdis_thread {
+  --color-primary: #B8860B;
+  --color-text-default: #3A2E24;
+  --color-text-subtle: rgba(58, 46, 36, 0.65);
+  --color-bg-default: #FFFFFF;
+  --color-bg-subtle: #FDFBF7;
+  --color-bg-reply: #F2EEE6;
+  --color-bg-hover: rgba(184, 134, 11, 0.08);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+#cusdis_thread .cusdis-comment-body {
+  color: #3A2E24;
+}
+#cusdis_thread .cusdis-comment-nickname {
+  color: #18263B;
+  font-weight: 600;
+}
+#cusdis_thread button,
+#cusdis_thread input[type="submit"],
+#cusdis_thread .cusdis-btn {
+  background-color: #B8860B !important;
+  border-color: #B8860B !important;
+  color: #FDFBF7 !important;
+  border-radius: 9999px !important;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+#cusdis_thread button:hover,
+#cusdis_thread input[type="submit"]:hover,
+#cusdis_thread .cusdis-btn:hover {
+  background-color: #C85A32 !important;
+  border-color: #C85A32 !important;
+}
+#cusdis_thread textarea,
+#cusdis_thread input[type="text"],
+#cusdis_thread input[type="email"] {
+  border: 1px solid #D9CCB8 !important;
+  border-radius: 0.75rem !important;
+  background-color: rgba(253, 251, 247, 0.6) !important;
+  color: #3A2E24 !important;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+}
+#cusdis_thread textarea:focus,
+#cusdis_thread input[type="text"]:focus,
+#cusdis_thread input[type="email"]:focus {
+  outline: none !important;
+  border-color: #B8860B !important;
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.25) !important;
+}
+#cusdis_thread img {
+  border-radius: 9999px;
+  border: 2px solid rgba(184, 134, 11, 0.35);
+}
+</style>
+</head>
+
+<body x-data="{ mobileOpen: false, activeTopic: null }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+
+<!-- ============================================================ -->
+<!-- HEADER NAVIGATION -->
+<!-- ============================================================ -->
+<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
+<nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
+
+<!-- Dual Logo Lockup -->
+<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
+<span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+</span>
+<span class="flex flex-col leading-tight">
+<span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
+<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
+</span>
+</a>
+
+<!-- Center Subtab Navigation -->
+<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
+<li><a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
+<li><a href="./community.html" aria-current="page" class="text-terracotta border-b-2 border-terracotta py-2">Community</a></li>
+<li><a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
+</ul>
+
+<!-- Right CTAs -->
+<div class="hidden xl:flex items-center gap-3 shrink-0">
+<a href="./gathering.html#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
+Reserve Your Place
+</a>
+<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors">
+Share Your Key
+</a>
+</div>
+
+<!-- Mobile menu toggle -->
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</nav>
+
+<!-- Mobile Menu Panel -->
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
+<ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
+<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" aria-current="page" class="block py-3 border-b border-white/10 text-terracotta font-bold">Community</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
+</ul>
+<div class="flex flex-col gap-3 mt-5">
+<a @click="mobileOpen = false" href="./gathering.html#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve Your Place</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share Your Key</a>
+</div>
+</div>
+</header>
+
+<main id="top" class="flex-grow">
+
+<!-- ============================================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================================ -->
+<section class="relative bg-cream overflow-hidden">
+<div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="absolute -right-10 top-6 h-72 sm:h-96 w-auto object-contain">
+</div>
+
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-12 sm:pb-16 text-center">
+<div class="inline-flex items-center justify-center gap-2 text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
+<span class="w-6 h-px bg-terracotta"></span>
+Keymakers &nbsp;|&nbsp; Community Circle
+<span class="w-6 h-px bg-terracotta"></span>
+</div>
+
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-deepbrown tracking-wide leading-tight mb-6">
+The Conversation Continues Here
+</h1>
+
+<p class="text-deepbrown/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto">
+A dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors for each other.
+</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- DISCUSSION TOPICS + CUSDIS THREAD -->
+<!-- ============================================================ -->
+<section class="relative bg-cream pb-16 sm:pb-24 overflow-hidden">
+<!-- Decorative key watermarks -->
+<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+<img src="./assets/images/Key1.svg" alt="" class="absolute -top-8 -right-16 sm:right-4 w-56 sm:w-72 lg:w-80 opacity-[0.04] object-contain">
+<img src="./assets/images/Key1.svg" alt="" class="absolute -bottom-20 -left-16 sm:left-4 w-48 sm:w-64 lg:w-72 opacity-[0.04] object-contain rotate-180">
+</div>
+
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+
+<!-- Subject highlight cards -->
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+<article
+  @click="activeTopic = 'growth'"
+  :class="activeTopic === 'growth' ? 'ring-2 ring-gold border-gold/50 scale-[1.02]' : 'border-warmtan hover:scale-[1.02]'"
+  class="rounded-2xl sm:rounded-3xl border bg-white shadow-card p-6 sm:p-7 cursor-pointer transition-all duration-300 ease-out"
+>
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-4 p-1.5">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
+</span>
+<h2 class="font-serif text-xl font-semibold text-deepbrown mb-2">Entrepreneurship &amp; Growth</h2>
+<p class="text-deepbrown/65 text-sm leading-relaxed">Discuss scaling, hiring, and lessons learned.</p>
+</article>
+
+<article
+  @click="activeTopic = 'capital'"
+  :class="activeTopic === 'capital' ? 'ring-2 ring-gold border-gold/50 scale-[1.02]' : 'border-warmtan hover:scale-[1.02]'"
+  class="rounded-2xl sm:rounded-3xl border bg-white shadow-card p-6 sm:p-7 cursor-pointer transition-all duration-300 ease-out"
+>
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-terracotta/10 ring-1 ring-terracotta/30 text-terracotta mb-4 p-1.5">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
+</span>
+<h2 class="font-serif text-xl font-semibold text-deepbrown mb-2">Capital &amp; Resources</h2>
+<p class="text-deepbrown/65 text-sm leading-relaxed">Ask questions regarding funding, loans, and financial strategy.</p>
+</article>
+
+<article
+  @click="activeTopic = 'gathering'"
+  :class="activeTopic === 'gathering' ? 'ring-2 ring-gold border-gold/50 scale-[1.02]' : 'border-warmtan hover:scale-[1.02]'"
+  class="rounded-2xl sm:rounded-3xl border bg-white shadow-card p-6 sm:p-7 cursor-pointer transition-all duration-300 ease-out"
+>
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-4 p-1.5">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
+</span>
+<h2 class="font-serif text-xl font-semibold text-deepbrown mb-2">Gathering &amp; Connections</h2>
+<p class="text-deepbrown/65 text-sm leading-relaxed">Connect before and after our live events.</p>
+</article>
+</div>
+
+<!-- Main forum card -->
+<div class="bg-white rounded-3xl border border-warmtan/80 shadow-soft p-6 sm:p-10 mb-16 relative overflow-hidden">
+<div class="bg-gradient-to-r from-gold via-terracotta to-gold h-1.5 w-full absolute top-0 left-0" aria-hidden="true"></div>
+
+<!-- Featured discussion prompt (admin pin) -->
+<div class="bg-cream-alt/60 border border-gold/30 rounded-2xl p-6 mb-8 flex items-start gap-4">
+<span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gold/15 ring-1 ring-gold/40 p-2">
+<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
+</span>
+<div class="min-w-0 flex-1">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-gold/15 border border-gold/40 px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-gold">
+<svg class="w-3 h-3 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+WVF TEAM ANNOUNCEMENT
+</span>
+<span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-terracotta">Featured Discussion Prompt</span>
+</div>
+<h3 class="font-serif text-lg sm:text-xl font-semibold text-navy leading-snug mb-2">
+Weekly Keymaker Prompt: What was the single most impactful financial key that unlocked your business scaling?
+</h3>
+<p class="text-deepbrown/65 text-sm sm:text-base leading-relaxed">
+Share your experience below or reply directly to fellow founders in the circle.
+</p>
+</div>
+</div>
+
+<div class="bg-cream-alt/70 border border-gold/30 rounded-2xl p-4 sm:p-5 mb-6 flex items-center gap-3">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-gold/15 text-gold shrink-0">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg>
+</span>
+<p class="text-xs sm:text-sm text-deepbrown/80 leading-relaxed">
+<strong class="font-semibold text-deepbrown">Pro-Tip for Founders:</strong> When posting below, please enter your <span class="text-terracotta font-semibold">Name (Company Name / Location)</span> in the Nickname field so fellow Keymakers know who you are and what business you run!
+</p>
+</div>
+
+<!-- Cusdis discussion thread -->
+<div id="cusdis_thread"
+data-host="https://cusdis.com"
+data-app-id="691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad"
+data-page-id="keymakers-community-circle"
+data-page-url="https://keymakers.womensventurefund.org/community.html"
+data-page-title="Keymakers Community Circle"
+></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer id="about-wvf" class="bg-deepbrown text-cream/70">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+<!-- Brand -->
+<div class="lg:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
+<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+</span>
+<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
+</div>
+<p class="text-sm leading-relaxed mb-6">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+<div class="flex items-center gap-3">
+<a href="https://instagram.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Instagram (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
+</a>
+<a href="https://facebook.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Facebook (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
+</a>
+<a href="https://www.linkedin.com/company/womens-venture-fund/" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
+</a>
+</div>
+</div>
+
+<!-- Program Links -->
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
+<ul class="space-y-2.5 text-sm">
+<li><a href="./index.html#stories" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
+<li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
+<li><a href="./community.html" class="hover:text-white transition-colors">Community</a></li>
+</ul>
+</div>
+
+<!-- Resources -->
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
+<ul class="space-y-2.5 text-sm">
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
+<li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
+</ul>
+</div>
+
+<!-- Newsletter -->
+<div x-data="{ email: '', subscribed: false, loading: false }">
+<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
+<p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
+
+<form @submit.prevent="
+  if (!email) return;
+  loading = true;
+  fetch('http://localhost:5678/webhook/keymakers-intake', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source: 'Footer Newsletter',
+      participation: 'newsletter-only',
+      email: email
+    })
+  })
+  .then(() => {
+    subscribed = true;
+    loading = false;
+  })
+  .catch(err => {
+    console.error('Newsletter submission error:', err);
+    subscribed = true;
+    loading = false;
+  });
+" class="flex items-center gap-2">
+<label for="footer-email" class="sr-only">Email address</label>
+<input
+  id="footer-email"
+  name="email"
+  type="email"
+  x-model="email"
+  required
+  placeholder="you@email.com"
+  class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
+>
+<button
+  type="submit"
+  :disabled="loading"
+  class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
+  aria-label="Subscribe to newsletter"
+>
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</button>
+</form>
+
+<p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
+Thanks &mdash; you&rsquo;re on the list!
+</p>
+</div>
+</div>
+
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+<a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+<a href="#" class="hover:text-white transition-colors">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
