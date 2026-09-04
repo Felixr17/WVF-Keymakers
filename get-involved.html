@@ -65,8 +65,8 @@ borderRadius: {
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<!-- Givebutter Embed Script -->
-<script async src="https://widgets.givebutter.com/latest.js"></script>
+<!-- Givebutter Widget Library -->
+<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=YOUR_EXACT_ACCOUNT_CODE_FROM_SCREENSHOT"></script>
 
 <style>
 html { scroll-padding-top: 96px; }
@@ -119,6 +119,9 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 
 <!-- Right CTAs -->
 <div class="hidden xl:flex items-center gap-3 shrink-0">
+<a href="https://givebutter.com/keymaker-campaign" data-givebutter-widget="keymaker-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-semibold text-xs font-bold uppercase tracking-wide px-4 py-2.5 shadow hover:bg-gold/90 transition-all hover:scale-[1.02]">
+Donate to Keymakers
+</a>
 <a href="./gathering.html#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
 Reserve your place
 </a>
@@ -145,6 +148,7 @@ Share your key
 <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
 </ul>
 <div class="flex flex-col gap-3 mt-5">
+<a @click="mobileOpen = false" href="https://givebutter.com/keymaker-campaign" data-givebutter-widget="keymaker-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 shadow hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
 <a @click="mobileOpen = false" href="./gathering.html#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
 <a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
 </div>
@@ -288,11 +292,19 @@ Belonging should never depend on financial ability. Key Carrier removes barriers
 </ul>
 </div>
 
+<template x-if="tier.givebutter">
+<a :href="tier.ctaHref"
+data-givebutter-widget="keymaker-campaign"
+:class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-deepbrown text-white hover:bg-deepbrown/90'"
+class="w-full min-h-[2.5rem] text-center rounded-full font-bold text-[10px] sm:text-[11px] px-3 py-2.5 whitespace-nowrap transition-colors mt-2" x-text="tier.cta"></a>
+</template>
+<template x-if="!tier.givebutter">
 <a :href="tier.ctaHref"
 :target="tier.ctaHref.startsWith('mailto:') ? '_self' : '_blank'"
 :rel="tier.ctaHref.startsWith('mailto:') ? '' : 'noopener noreferrer'"
 :class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-deepbrown text-white hover:bg-deepbrown/90'"
 class="w-full min-h-[2.5rem] text-center rounded-full font-bold text-[10px] sm:text-[11px] px-3 py-2.5 whitespace-nowrap transition-colors mt-2" x-text="tier.cta"></a>
+</template>
 </div>
 </template>
 </div>
@@ -315,6 +327,9 @@ We work with corporate, foundation, and institutional Partners who share our ded
 Partner contributions directly fund business development programs, technical assistance, CDFI loan access, and the upcoming Founding Gathering.
 </p>
 <div class="flex flex-wrap gap-4">
+<a href="https://givebutter.com/keymaker-campaign" data-givebutter-widget="keymaker-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-semibold text-sm px-7 py-3.5 shadow hover:bg-gold/90 transition-all hover:scale-[1.02]">
+Support the Movement
+</a>
 <a href="mailto:info@wvf-ny.org?subject=Keymakers%20Partnership%20Inquiry" class="inline-flex items-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-7 py-3.5 hover:bg-terracotta/90 transition-colors shadow-lg">
 Inquire about partnership
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
@@ -480,6 +495,7 @@ period: '($0)',
 features: ['Share "What Was Your Key?" story', 'Monthly Insight Summary', 'Stay connected to news', 'Invitations to future opportunities'],
 cta: 'Join free',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
+givebutter: true,
 fillPct: 0,
 },
 {
@@ -490,6 +506,7 @@ period: '/ year',
 features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Submit questions to speakers', 'Keymakers Registry recognition', 'Early Gathering invitations'],
 cta: 'Become a Keyholder',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
+givebutter: true,
 fillPct: 25,
 },
 {
@@ -500,6 +517,7 @@ period: '/ year',
 features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discussions', 'Contribute to Knowledge Library', '"Ask a Keymaker" sessions'],
 cta: 'Become a Keysmith',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
+givebutter: true,
 fillPct: 50,
 },
 {
@@ -510,6 +528,7 @@ period: '/ year',
 features: ['Everything in Keysmith', 'Quarterly Spotlight feature', 'Lead roundtables', 'Share introductions', 'Recognition at Founding Gathering'],
 cta: 'Become a Key Shaper',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
+givebutter: true,
 fillPct: 75,
 featured: true,
 },
@@ -521,6 +540,7 @@ period: '/ year \u00b7 By invitation',
 features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversations on financing models', 'Build Keymakers Capital Network', 'Capital Network Summit invitation'],
 cta: 'Request an invitation',
 ctaHref: 'mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request',
+givebutter: false,
 fillPct: 100,
 },
 ],
