@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Favicons & Preconnect -->
-<link rel="icon" type="image/svg+xml" href="./assets/images/Key1.svg">
+<link rel="icon" type="image/svg+xml" href="./assets/images/Keymakers_Logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -80,17 +80,6 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <body x-data="getInvolvedPage()" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
 
 <!-- ============================================================ -->
-<!-- REUSABLE SVG SYMBOLS (keyhole tier fill) -->
-<!-- ============================================================ -->
-<svg width="0" height="0" class="absolute" aria-hidden="true">
-<defs>
-<symbol id="icon-keyhole" viewBox="0 0 40 60">
-<path d="M20 4c-6.6 0-12 5.4-12 12 0 4.8 2.8 8.9 6.9 10.8L10 54h20l-4.9-27.2C29.2 24.9 32 20.8 32 16c0-6.6-5.4-12-12-12z"/>
-</symbol>
-</defs>
-</svg>
-
-<!-- ============================================================ -->
 <!-- SECTION 1 :: TOP NAVIGATION -->
 <!-- ============================================================ -->
 <header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
@@ -99,7 +88,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <!-- Dual Logo Lockup -->
 <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
 <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="flex flex-col leading-tight">
 <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -162,7 +151,7 @@ Share your key
 <!-- ============================================================ -->
 <section class="relative bg-cream py-16 lg:py-24 border-b border-warmtan overflow-hidden">
 <div class="absolute inset-0 pointer-events-none opacity-[0.04] text-gold">
-<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="absolute -right-12 -top-12 h-80 sm:h-[28rem] w-auto object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-12 -top-12 h-80 sm:h-[28rem] w-auto object-contain">
 </div>
 
 <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -259,17 +248,9 @@ Belonging should never depend on financial ability. Key Carrier removes barriers
 <div>
 <span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most popular</span>
 
-<!-- Progressive Keyhole Fill -->
-<div class="relative w-8 h-12 mx-auto mb-4 text-gold">
-<svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="3"><use href="#icon-keyhole"/></svg>
-<svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60">
-<defs>
-<clipPath :id="'keyhole-clip-' + tier.name.replace(/\s+/g,'-')">
-<rect x="0" :y="60 - (60 * tier.fillPct / 100)" width="40" :height="60 * tier.fillPct / 100"></rect>
-</clipPath>
-</defs>
-<use href="#icon-keyhole" fill="currentColor" :clip-path="'url(#keyhole-clip-' + tier.name.replace(/\s+/g,'-') + ')'"/>
-</svg>
+<!-- Tier Emblem -->
+<div class="flex items-center justify-center w-12 h-12 mx-auto mb-4">
+<img :src="tier.emblem" :alt="tier.emblemAlt" class="w-12 h-12 object-contain">
 </div>
 
 <div class="text-center mb-4">
@@ -279,7 +260,14 @@ Belonging should never depend on financial ability. Key Carrier removes barriers
 </div>
 <!-- Proper Noun Tier Name -->
 <h3 class="text-terracotta font-bold text-xs uppercase tracking-wide mt-2 whitespace-nowrap" x-text="tier.name"></h3>
+<template x-if="tier.name === 'Key Circle'">
+<p class="text-sm text-deepbrown/80 leading-relaxed mt-1">
+You&rsquo;re helping build <br class="hidden sm:inline">what&rsquo;s next.
+</p>
+</template>
+<template x-if="tier.name !== 'Key Circle'">
 <p class="font-serif italic text-deepbrown/70 text-sm mt-1" x-text="tier.tagline"></p>
+</template>
 </div>
 
 <ul class="space-y-2.5 mb-6">
@@ -367,7 +355,7 @@ Learn about WVF
 <div class="lg:col-span-1">
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
@@ -496,7 +484,8 @@ features: ['Share "What Was Your Key?" story', 'Monthly Insight Summary', 'Stay 
 cta: 'Join free',
 ctaHref: 'https://live.givebutter.com/c/keymakers-campaign',
 givebutter: true,
-fillPct: 0,
+emblem: './assets/images/Key_Carrier.svg',
+emblemAlt: 'Key Carrier tier emblem',
 },
 {
 name: 'Keyholder',
@@ -507,7 +496,8 @@ features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Su
 cta: 'Become a Keyholder',
 ctaHref: 'https://live.givebutter.com/c/keymakers-campaign',
 givebutter: true,
-fillPct: 25,
+emblem: './assets/images/Keyholder.svg',
+emblemAlt: 'Keyholder tier emblem',
 },
 {
 name: 'Keysmith',
@@ -518,7 +508,8 @@ features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discu
 cta: 'Become a Keysmith',
 ctaHref: 'https://live.givebutter.com/c/keymakers-campaign',
 givebutter: true,
-fillPct: 50,
+emblem: './assets/images/Keysmith.svg',
+emblemAlt: 'Keysmith tier emblem',
 },
 {
 name: 'Key Shaper',
@@ -529,8 +520,9 @@ features: ['Everything in Keysmith', 'Quarterly Spotlight feature', 'Lead roundt
 cta: 'Become a Key Shaper',
 ctaHref: 'https://live.givebutter.com/c/keymakers-campaign',
 givebutter: true,
-fillPct: 75,
 featured: true,
+emblem: './assets/images/Key_Shaper.svg',
+emblemAlt: 'Key Shaper tier emblem',
 },
 {
 name: 'Key Circle',
@@ -541,7 +533,8 @@ features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversatio
 cta: 'Request an invitation',
 ctaHref: 'mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request',
 givebutter: false,
-fillPct: 100,
+emblem: './assets/images/Key_Circle.svg',
+emblemAlt: 'Key Circle tier emblem',
 },
 ],
 };
