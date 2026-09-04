@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Favicons & Preconnect -->
-<link rel="icon" type="image/svg+xml" href="./assets/images/Key1.svg">
+<link rel="icon" type="image/svg+xml" href="./assets/images/Keymakers_Logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -126,17 +126,6 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <body x-data="keymakers()" x-init="init()" class="bg-cream text-deepbrown antialiased">
 
 <!-- ============================================================ -->
-<!-- REUSABLE SVG SYMBOLS (keyhole tier fill) -->
-<!-- ============================================================ -->
-<svg width="0" height="0" class="absolute" aria-hidden="true">
-<defs>
-<symbol id="icon-keyhole" viewBox="0 0 40 60">
-<path d="M20 4c-6.6 0-12 5.4-12 12 0 4.8 2.8 8.9 6.9 10.8L10 54h20l-4.9-27.2C29.2 24.9 32 20.8 32 16c0-6.6-5.4-12-12-12z"/>
-</symbol>
-</defs>
-</svg>
-
-<!-- ============================================================ -->
 <!-- SECTION 1 :: TOP NAVIGATION -->
 <!-- ============================================================ -->
 <header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
@@ -145,7 +134,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <!-- Dual Logo Lockup -->
 <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
 <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="flex flex-col leading-tight">
 <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
@@ -231,7 +220,7 @@ Explore Stories
 <!-- ============================================================ -->
 <section class="relative bg-cream overflow-hidden">
 <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-<img src="./assets/images/Key1.svg" alt="" aria-hidden="true" class="absolute -right-10 top-10 h-80 sm:h-96 w-auto object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-10 top-10 h-80 sm:h-96 w-auto object-contain">
 </div>
 
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -285,7 +274,7 @@ Explore memberships
 <!-- Floating accent card -->
 <div class="hidden lg:flex absolute -top-4 -left-4 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem] z-10">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <p class="text-xs text-deepbrown/70 leading-snug">Every key shared creates more possibilities.</p>
 </div>
@@ -485,7 +474,7 @@ class="story-card group relative w-64 sm:w-72 aspect-[9/16] shrink-0 rounded-2xl
 <div id="share-your-key" class="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between rounded-2xl border border-warmtan bg-white/70 px-6 sm:px-8 py-6">
 <div class="flex items-center gap-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold shrink-0 p-1.5">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <p class="font-serif text-lg text-deepbrown font-medium">Your story has the power to unlock the next one.</p>
 </div>
@@ -601,17 +590,9 @@ Have questions about capital, scaling, or business operations? Join our private 
 <div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-warmtan'" class="relative flex flex-col rounded-2xl bg-white border p-6">
 <span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most popular</span>
 
-<!-- Progressive Keyhole Fill -->
-<div class="relative w-8 h-12 mx-auto mb-4 text-gold">
-<svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="3"><use href="#icon-keyhole"/></svg>
-<svg class="absolute inset-0 w-full h-full" viewBox="0 0 40 60">
-<defs>
-<clipPath :id="'keyhole-clip-' + tier.name.replace(/\s+/g,'-')">
-<rect x="0" :y="60 - (60 * tier.fillPct / 100)" width="40" :height="60 * tier.fillPct / 100"></rect>
-</clipPath>
-</defs>
-<use href="#icon-keyhole" fill="currentColor" :clip-path="'url(#keyhole-clip-' + tier.name.replace(/\s+/g,'-') + ')'"/>
-</svg>
+<!-- Tier Emblem -->
+<div class="flex items-center justify-center w-12 h-12 mx-auto mb-4">
+<img :src="tier.emblem" :alt="tier.emblemAlt" class="w-12 h-12 object-contain">
 </div>
 
 <div class="text-center mb-4">
@@ -620,7 +601,14 @@ Have questions about capital, scaling, or business operations? Join our private 
 <span class="text-deepbrown/50 text-xs" x-text="tier.period"></span>
 </div>
 <h3 class="text-terracotta font-bold text-xs uppercase tracking-wide mt-2 whitespace-nowrap" x-text="tier.name"></h3>
+<template x-if="tier.name === 'Key Circle'">
+<p class="text-sm text-deepbrown/80 leading-relaxed mt-1">
+You&rsquo;re helping build <br class="hidden sm:inline">what&rsquo;s next.
+</p>
+</template>
+<template x-if="tier.name !== 'Key Circle'">
 <p class="font-serif italic text-deepbrown/70 text-sm mt-1" x-text="tier.tagline"></p>
+</template>
 </div>
 
 <ul class="space-y-2 mb-6 flex-1">
@@ -656,7 +644,7 @@ class="w-full min-h-[2.5rem] text-center rounded-full font-bold text-[10px] sm:t
 <div class="relative px-6 sm:px-12 py-14 sm:py-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
 <div class="max-w-xl">
 <span class="inline-flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-[0.16em] mb-4">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-9 w-auto object-contain shrink-0">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-9 w-auto object-contain shrink-0">
 The Gathering
 </span>
 <h3 class="font-serif text-3xl sm:text-4xl text-white font-semibold mb-4 leading-tight">Join us in person for the first Keymakers Gathering.</h3>
@@ -715,7 +703,7 @@ class="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:
 <div class="lg:col-span-1">
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-<img src="./assets/images/Key1.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
@@ -968,7 +956,8 @@ features: ['Share "What Was Your Key?" story', 'Monthly Insight Summary', 'Stay 
 cta: 'Join Free',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
 givebutter: true,
-fillPct: 0,
+emblem: './assets/images/Key_Carrier.svg',
+emblemAlt: 'Key Carrier tier emblem',
 },
 {
 name: 'Keyholder',
@@ -979,7 +968,8 @@ features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Su
 cta: 'Become a Keyholder',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
 givebutter: true,
-fillPct: 25,
+emblem: './assets/images/Keyholder.svg',
+emblemAlt: 'Keyholder tier emblem',
 },
 {
 name: 'Keysmith',
@@ -990,7 +980,8 @@ features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discu
 cta: 'Become a Keysmith',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
 givebutter: true,
-fillPct: 50,
+emblem: './assets/images/Keysmith.svg',
+emblemAlt: 'Keysmith tier emblem',
 },
 {
 name: 'Key Shaper',
@@ -1001,8 +992,9 @@ features: ['Everything in Keysmith', 'Quarterly Spotlight feature', 'Lead roundt
 cta: 'Become a Key Shaper',
 ctaHref: 'https://givebutter.com/keymaker-campaign',
 givebutter: true,
-fillPct: 75,
 featured: true,
+emblem: './assets/images/Key_Shaper.svg',
+emblemAlt: 'Key Shaper tier emblem',
 },
 {
 name: 'Key Circle',
@@ -1013,7 +1005,8 @@ features: ['Everything in Key Shaper', 'Founder Showcases', 'Capital Conversatio
 cta: 'Request an invitation',
 ctaHref: 'mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request',
 givebutter: false,
-fillPct: 100,
+emblem: './assets/images/Key_Circle.svg',
+emblemAlt: 'Key Circle tier emblem',
 },
 ],
 
