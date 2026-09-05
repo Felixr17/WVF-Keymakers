@@ -85,6 +85,9 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.6;
+  width: 100%;
+  min-height: 750px;
+  overflow: visible;
 }
 #cusdis_thread .cusdis-comment-body {
   color: #3A2E24;
@@ -240,7 +243,7 @@ A dedicated space for women founders, mentors, and partners to ask questions, ex
 <img src="./assets/images/Keymakers_Logo.svg" alt="" class="absolute -bottom-20 -left-16 sm:left-4 w-48 sm:w-64 lg:w-72 opacity-[0.04] object-contain rotate-180">
 </div>
 
-<div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+<div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
 <!-- Subject highlight cards -->
 <div class="grid md:grid-cols-3 gap-6 mb-10">
@@ -282,7 +285,7 @@ A dedicated space for women founders, mentors, and partners to ask questions, ex
 </div>
 
 <!-- Main forum card -->
-<div class="bg-white rounded-3xl border border-warmtan/80 shadow-soft p-6 sm:p-10 mb-16 relative overflow-hidden">
+<div class="bg-white rounded-3xl border border-warmtan/80 shadow-soft p-6 sm:p-10 mb-16 relative overflow-visible">
 <div class="bg-gradient-to-r from-gold via-terracotta to-gold h-1.5 w-full absolute top-0 left-0" aria-hidden="true"></div>
 
 <!-- Featured discussion prompt (admin pin) -->
@@ -318,6 +321,7 @@ Share your experience below or reply directly to fellow founders in the circle.
 
 <!-- Cusdis discussion thread -->
 <div id="cusdis_thread"
+class="w-full min-h-[750px] overflow-visible"
 data-host="https://cusdis.com"
 data-app-id="691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad"
 data-page-id="keymakers-community-circle"
