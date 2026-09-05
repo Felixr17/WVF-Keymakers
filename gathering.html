@@ -74,7 +74,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </style>
 </head>
 
-<body x-data="{ mobileOpen: false, rsvpSubmitted: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+<body x-data="{ mobileOpen: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
 
 <!-- ============================================================ -->
 <!-- SVG SYMBOLS -->
@@ -252,15 +252,51 @@ An evening of stories, connection, and capital. Bringing together entrepreneurs,
 Invitations will be released in rounds to members and Partners first. Register below to receive priority notification when the date and venue are confirmed.
 </p>
 
-<form @submit.prevent="rsvpSubmitted = true" class="max-w-md mx-auto space-y-3">
-<div class="flex flex-col sm:flex-row gap-2">
-<input type="email" required placeholder="Enter your email address" class="w-full rounded-full bg-white/10 border border-white/20 px-5 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold">
-<button type="submit" class="shrink-0 rounded-full bg-terracotta text-white font-bold text-sm px-7 py-3 hover:bg-terracotta/90 transition-colors shadow-md">
-Reserve
+<div x-data="{ email: '', submitted: false, loading: false }">
+<form @submit.prevent="
+  if (!email) return;
+  loading = true;
+  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL || 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source: 'Priority Gathering Access',
+      participation: 'gathering-rsvp',
+      email: email
+    })
+  })
+  .then(() => {
+    submitted = true;
+    loading = false;
+  })
+  .catch(err => {
+    console.error('RSVP submission error:', err);
+    submitted = true;
+    loading = false;
+  });
+" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+<label for="priority-email" class="sr-only">Email address</label>
+<input
+  id="priority-email"
+  name="email"
+  type="email"
+  x-model="email"
+  required
+  placeholder="Enter your email address"
+  class="w-full rounded-full bg-white/10 border border-white/20 px-6 py-3.5 text-sm text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-gold"
+>
+<button
+  type="submit"
+  :disabled="loading"
+  class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center rounded-full bg-terracotta text-white font-bold text-sm px-8 py-3.5 shadow-md hover:bg-terracotta/90 transition-all disabled:opacity-50"
+>
+<span x-text="loading ? 'Reserving...' : 'Reserve'"></span>
 </button>
-</div>
-<p x-show="rsvpSubmitted" x-cloak class="text-gold text-xs mt-3">Thank you &mdash; you are on the priority list for the Founding Gathering!</p>
 </form>
+<p x-show="submitted" x-cloak class="text-gold text-sm font-semibold mt-3 text-center">
+You're on the priority list! We'll notify you as soon as dates are confirmed.
+</p>
+</div>
 </div>
 </section>
 </main>
