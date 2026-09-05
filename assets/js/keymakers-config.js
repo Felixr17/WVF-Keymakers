@@ -7,7 +7,7 @@
     ...window.KEYMAKERS_CONFIG,
     GIVEBUTTER_ACCOUNT_ID: 'c0DdlWYvuGmd2igp',
     GIVEBUTTER_CAMPAIGN: 'keymakers-campaign',
-    GIVEBUTTER_CAMPAIGN_URL: 'https://live.givebutter.com/c/keymakers-campaign',
+    GIVEBUTTER_CAMPAIGN_URL: 'https://givebutter.com/keymakers-campaign',
     N8N_INTAKE_WEBHOOK_URL: 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake'
   };
   window.KEYMAKERS_CONFIG = KEYMAKERS_CONFIG;
