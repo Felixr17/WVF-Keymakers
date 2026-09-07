@@ -86,8 +86,15 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
   font-size: 0.9375rem;
   line-height: 1.6;
   width: 100%;
-  min-height: 750px;
+  min-height: 800px;
   overflow: visible;
+}
+/* Force the Cusdis injected iframe to expand fully */
+#cusdis_thread iframe {
+  width: 100% !important;
+  min-height: 800px !important;
+  border: none !important;
+  overflow: visible !important;
 }
 #cusdis_thread .cusdis-comment-body {
   color: #3A2E24;
@@ -321,7 +328,7 @@ Share your experience below or reply directly to fellow founders in the circle.
 
 <!-- Cusdis discussion thread -->
 <div id="cusdis_thread"
-class="w-full min-h-[750px] overflow-visible"
+class="w-full min-h-[800px] overflow-visible"
 data-host="https://cusdis.com"
 data-app-id="691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad"
 data-page-id="keymakers-community-circle"
@@ -329,6 +336,23 @@ data-page-url="https://keymakers.womensventurefund.org/community.html"
 data-page-title="Keymakers Community Circle"
 ></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script>
+  window.addEventListener('message', function (e) {
+    if (e.origin.includes('cusdis.com')) {
+      try {
+        var data = JSON.parse(e.data);
+        if (data && data.type === 'resize' && data.data) {
+          var iframe = document.querySelector('#cusdis_thread iframe');
+          if (iframe) {
+            iframe.style.height = Math.max(data.data, 800) + 'px';
+          }
+        }
+      } catch (err) {
+        // Non-JSON postMessage from other extensions; ignore safely
+      }
+    }
+  });
+</script>
 </div>
 
 </div>
