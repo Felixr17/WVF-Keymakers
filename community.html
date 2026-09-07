@@ -167,7 +167,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 
 <!-- Center Navigation -->
 <div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
-<a href="./stories.html" class="hover:text-terracotta transition-colors py-2">Stories</a>
+<a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a>
 <a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
 <a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
 <a href="./community.html" class="text-terracotta border-b-2 border-terracotta py-2" aria-current="page">Community</a>
@@ -190,7 +190,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <!-- Mobile Menu Panel -->
 <div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
 <ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
 <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
 <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
 <li><a @click="mobileOpen = false" href="./community.html" aria-current="page" class="block py-3 border-b border-white/10 text-terracotta font-bold">Community</a></li>
