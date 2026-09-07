@@ -129,7 +129,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <!-- SECTION 1 :: TOP NAVIGATION -->
 <!-- ============================================================ -->
 <header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
-<nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
 
 <!-- Dual Logo Lockup -->
 <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
@@ -142,27 +142,19 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 </span>
 </a>
 
-<!-- Center Subtab Navigation -->
-<ul class="hidden xl:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.1em] text-white/75 whitespace-nowrap">
-<li><a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a></li>
-<li><a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a></li>
-<li><a href="./index.html#why-it-matters" class="hover:text-terracotta transition-colors py-2">Why It Matters</a></li>
-<li><a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a></li>
-<li><a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a></li>
-<li><a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a></li>
-</ul>
+<!-- Center Navigation -->
+<div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
+<a href="./stories.html" class="hover:text-terracotta transition-colors py-2">Stories</a>
+<a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
+<a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
+<a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a>
+<a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a>
+</div>
 
 <!-- Right CTAs -->
 <div class="hidden xl:flex items-center gap-3 shrink-0">
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-semibold text-xs font-bold uppercase tracking-wide px-4 py-2.5 shadow hover:bg-gold/90 transition-all hover:scale-[1.02]">
-Donate to Keymakers
-</a>
-<a href="./gathering.html#reserve" class="inline-flex items-center whitespace-nowrap rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-gold hover:text-deepbrown transition-colors">
-Reserve your place
-</a>
-<a href="./share-your-key.html" class="inline-flex items-center whitespace-nowrap rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-2.5 hover:bg-terracotta/90 shadow-md transition-colors">
-Share your key
-</a>
+<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-5 py-2.5 hover:bg-gold/90 transition-all">Donate to Keymakers</a>
+<a href="./share-your-key.html" class="inline-flex items-center justify-center rounded-full border border-white/25 text-white text-xs uppercase tracking-wide font-semibold px-4 py-2 hover:bg-white/10 transition-colors">Share Your Key</a>
 </div>
 
 <!-- Mobile menu toggle -->
@@ -175,17 +167,15 @@ Share your key
 <!-- Mobile Menu Panel -->
 <div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
 <ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
 <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="./index.html#why-it-matters" class="block py-3 border-b border-white/10 hover:text-terracotta">Why It Matters</a></li>
 <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
 <li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
 <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
 </ul>
 <div class="flex flex-col gap-3 mt-5">
-<a @click="mobileOpen = false" href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 shadow hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
-<a @click="mobileOpen = false" href="./gathering.html#reserve" class="text-center rounded-full border border-gold/70 text-gold text-xs font-bold uppercase tracking-wide px-4 py-3">Reserve your place</a>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wide px-4 py-3">Share your key</a>
+<a @click="mobileOpen = false" href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full border border-white/25 text-white text-xs font-semibold uppercase tracking-wide px-4 py-3 hover:bg-white/10 transition-colors">Share Your Key</a>
 </div>
 </div>
 </header>
@@ -286,44 +276,8 @@ Explore memberships
 <!-- SECTION 3 :: WHY KEYMAKERS EXISTS NOW -->
 <!-- ============================================================ -->
 <section id="why-it-matters" class="relative bg-deepbrown text-cream">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-16 lg:pb-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-<!-- Text -->
-<div>
-<span class="inline-block text-gold text-xs font-bold uppercase tracking-[0.16em] mb-5">Why Keymakers exists now</span>
-<h2 class="font-serif text-3xl sm:text-4xl leading-tight font-semibold mb-6">
-Somewhere in every entrepreneur&rsquo;s journey, someone handed her a key.
-</h2>
-<p class="text-cream/75 text-base sm:text-lg leading-relaxed mb-6">
-Sometimes it was an introduction. Sometimes a mentor, a customer, an investor &mdash; or simply one person who believed in her before anyone else did. Whatever it was, someone opened a door.
-</p>
-<p class="text-cream/75 text-base sm:text-lg leading-relaxed mb-8">
-Keymakers exists to name those moments out loud &mdash; and to make sure the next woman finds her key a little faster than the last one did.
-</p>
-<a href="./share-your-key.html" class="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wide hover:gap-3 transition-all group">
-Share the key that opened your door
-<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-</a>
-</div>
-
-<!-- Photo Collage -->
-<div class="grid grid-cols-2 gap-4">
-<div class="col-span-2 rounded-2xl overflow-hidden shadow-soft aspect-[16/10]">
-<img src="https://images.unsplash.com/photo-1573167243872-43c6433b9d40?auto=format&fit=crop&w=1200&q=80" alt="Women founders collaborating around a laptop together" class="w-full h-full object-cover">
-</div>
-<div class="rounded-2xl overflow-hidden shadow-soft aspect-square">
-<img src="https://images.unsplash.com/photo-1573496130141-209d200cebd8?auto=format&fit=crop&w=800&q=80" alt="Two women business partners smiling in front of a whiteboard" class="w-full h-full object-cover">
-</div>
-<div class="rounded-2xl overflow-hidden shadow-soft aspect-square">
-<img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=800&q=80" alt="Two women entrepreneurs in candid conversation" class="w-full h-full object-cover">
-</div>
-</div>
-</div>
-
-<!-- Three Pillar Cards -->
-<div class="border-t border-white/10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-<div class="grid sm:grid-cols-3 gap-6 lg:gap-8">
+<div class="py-16 sm:py-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
 
 <!-- Pillar 1: Keymakers -->
 <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
@@ -353,11 +307,7 @@ Share the key that opened your door
 </div>
 </div>
 
-<!-- Closing Callout -->
-<p class="font-serif italic text-xl sm:text-2xl text-gold text-center mt-14 lg:mt-16">
-Someone opened a door for you. Who will you open one for?
-</p>
-</div>
+<p class="text-gold font-serif italic text-lg sm:text-xl text-center mt-12">&ldquo;Someone opened a door for you. Who will you open one for?&rdquo;</p>
 </div>
 </section>
 
