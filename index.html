@@ -144,7 +144,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 
 <!-- Center Navigation -->
 <div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
-<a href="./stories.html" class="hover:text-terracotta transition-colors py-2">Stories</a>
+<a href="#stories" class="hover:text-terracotta transition-colors py-2">Stories</a>
 <a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
 <a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
 <a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a>
@@ -167,7 +167,7 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <!-- Mobile Menu Panel -->
 <div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
 <ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
+<li><a @click="mobileOpen = false" href="#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
 <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
 <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
 <li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
@@ -364,14 +364,22 @@ Explore memberships
 <section id="stories" class="bg-cream py-20 lg:py-24">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
 <div>
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">Community</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-1">Stories from our community</h2>
+<span class="text-xs uppercase font-bold tracking-widest text-terracotta">Community</span>
+<h2 class="text-3xl sm:text-4xl font-serif text-deepbrown font-bold mt-1">Stories from our community</h2>
+<p class="text-sm text-deepbrown/70 mt-2 max-w-xl">
+Watch how women founders, mentors, and allies unlocked their breakthrough moments.
+</p>
 </div>
-<a href="./index.html#stories" class="inline-flex items-center gap-1.5 text-deepbrown font-semibold text-sm hover:text-terracotta transition-colors shrink-0">
-View all stories
-<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+<a
+href="https://www.youtube.com/playlist?list=YOUR_UNLISTED_PLAYLIST_ID"
+target="_blank"
+rel="noopener noreferrer"
+class="inline-flex items-center gap-2 self-start sm:self-auto text-xs font-bold uppercase tracking-wider text-deepbrown border border-deepbrown/25 px-5 py-2.5 rounded-full hover:bg-deepbrown hover:text-white transition-all shadow-sm shrink-0"
+>
+<span>Open Full Story Library</span>
+<svg class="w-4 h-4 text-terracotta" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
 </a>
 </div>
 
@@ -381,7 +389,7 @@ View all stories
 <button
 type="button"
 @click="activeFilter = filter"
-:class="activeFilter === filter ? 'bg-deepbrown text-white border-deepbrown' : 'bg-white text-deepbrown/70 border-warmtan hover:border-deepbrown/30'"
+:class="activeFilter === filter ? 'bg-deepbrown text-white border-deepbrown' : 'bg-[#F3EFEA] text-deepbrown/80 border-deepbrown/15 hover:border-deepbrown/30'"
 class="shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors"
 x-text="filter"
 ></button>
@@ -421,7 +429,7 @@ class="story-card group relative w-64 sm:w-72 aspect-[9/16] shrink-0 rounded-2xl
 </div>
 
 <!-- Share CTA Banner -->
-<div id="share-your-key" class="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between rounded-2xl border border-warmtan bg-white/70 px-6 sm:px-8 py-6">
+<div id="share-your-key" class="mt-10 flex flex-col sm:flex-row items-center gap-6 justify-between rounded-2xl border border-deepbrown/10 bg-[#F3EFEA] px-6 sm:px-8 py-6">
 <div class="flex items-center gap-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 text-gold shrink-0 p-1.5">
 <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
@@ -478,31 +486,31 @@ Have questions about capital, scaling, or business operations? Join our private 
 <!-- ============================================================ -->
 <!-- SECTION 6 :: IMPACT METRICS BAR -->
 <!-- ============================================================ -->
-<section class="bg-cream pb-20 lg:pb-24">
+<section class="bg-[#F3EFEA] border-y border-deepbrown/10 py-16 sm:py-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-2xl mx-auto mb-10">
 <span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">By the numbers</span>
 <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepbrown mt-2">Nearly three decades of proof.</h2>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-4 rounded-3xl border border-warmtan bg-white/60 divide-y sm:divide-y-0 sm:divide-x divide-warmtan overflow-hidden">
+<div class="grid grid-cols-2 sm:grid-cols-4 rounded-3xl border border-deepbrown/10 bg-cream/60 divide-y sm:divide-y-0 sm:divide-x divide-deepbrown/10 overflow-hidden">
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-<p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">28,000+</p>
+<p class="font-serif text-4xl sm:text-5xl font-semibold text-deepbrown mb-2">28,000+</p>
 <p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">Women entrepreneurs served</p>
 </div>
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-<p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">$2.4M+</p>
+<p class="font-serif text-4xl sm:text-5xl font-semibold text-deepbrown mb-2">$2.4M+</p>
 <p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">In business loans provided</p>
 </div>
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-<p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">0.039%</p>
+<p class="font-serif text-4xl sm:text-5xl font-semibold text-deepbrown mb-2">0.039%</p>
 <p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">Loan write-off rate</p>
 </div>
 <div class="flex flex-col items-center justify-center text-center px-4 py-10">
-<p class="font-serif text-4xl sm:text-5xl font-semibold text-gold mb-2">Since 1996</p>
+<p class="font-serif text-4xl sm:text-5xl font-semibold text-deepbrown mb-2">Since 1996</p>
 <p class="text-deepbrown/60 text-xs font-bold uppercase tracking-wide">Nearly three decades of access</p>
 </div>
 </div>
-<p class="text-center mt-6 font-serif italic text-deepbrown/50 text-sm sm:text-base">The locks have changed. We&rsquo;re building new pathways.</p>
+<p class="text-center mt-6 font-serif italic text-deepbrown/60 text-sm sm:text-base">The locks have changed. We&rsquo;re building new pathways.</p>
 </div>
 </section>
 
