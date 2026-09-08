@@ -65,6 +65,116 @@ borderRadius: {
 <script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=c0DdlWYvuGmd2igp&p=other"></script>
 
 <!-- Alpine.js (CDN) -->
+<script>
+function communityForum() {
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
+  ];
+  const monthlyPrompts = [
+    'What intention or goal are you setting for access—to capital, mentorship, or new markets—this year?',
+    'Who opened a door for you through mentorship, and how are you paying it forward?',
+    'What milestone are you celebrating this quarter, and what key made it possible?',
+    'What barrier to access have you recently overcome in your business journey?',
+    'What was your first meaningful conversation about capital, and what did it teach you?',
+    'Halfway through the year—what resource or connection has accelerated your growth most?',
+    'What summer lesson about scaling, hiring, or operations would you share with another founder?',
+    'What tool, grant, or program gave you unexpected access when you needed it most?',
+    'What was the single most impactful financial key that unlocked your business scaling?',
+    'As you plan ahead, what capital pathway are you exploring—and what support do you need?',
+    'Who in your network deserves a key from you right now, and how will you offer it?',
+    'Looking back at the year, which milestone are you most proud of—and what unlocked it?',
+  ];
+  const now = new Date();
+
+  return {
+    activeTopic: null,
+    activeTab: 'featured',
+    monthNames,
+    monthlyPrompts,
+    currentMonthIndex: now.getMonth(),
+    currentYear: now.getFullYear(),
+
+    get currentMonthName() {
+      return this.monthNames[this.currentMonthIndex];
+    },
+
+    get activeMonthlyPrompt() {
+      return this.monthlyPrompts[this.currentMonthIndex];
+    },
+
+    get cusdisPageId() {
+      if (this.activeTab === 'featured') {
+        return `monthly-prompt-${this.currentYear}-${this.currentMonthIndex + 1}`;
+      }
+      return 'community-general';
+    },
+
+    get cusdisPageTitle() {
+      if (this.activeTab === 'featured') {
+        return `Keymakers Monthly Prompt - ${this.currentMonthName}`;
+      }
+      return 'Keymakers General Community Discussion';
+    },
+
+    init() {
+      this.loadCusdisAndRender();
+    },
+
+    switchTab(tab) {
+      if (this.activeTab === tab) return;
+      this.activeTab = tab;
+      this.$nextTick(() => this.renderCusdis());
+    },
+
+    loadCusdisAndRender() {
+      if (window.CUSDIS && window.CUSDIS.renderTo) {
+        this.renderCusdis();
+        return;
+      }
+      if (document.getElementById('cusdis-script')) {
+        this.waitForCusdis();
+        return;
+      }
+      const script = document.createElement('script');
+      script.id = 'cusdis-script';
+      script.src = 'https://cusdis.com/js/cusdis.es.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => this.renderCusdis();
+      document.body.appendChild(script);
+    },
+
+    waitForCusdis() {
+      const check = () => {
+        if (window.CUSDIS && window.CUSDIS.renderTo) {
+          this.renderCusdis();
+        } else {
+          setTimeout(check, 50);
+        }
+      };
+      check();
+    },
+
+    renderCusdis() {
+      const el = document.getElementById('cusdis_thread');
+      if (!el) return;
+
+      el.innerHTML = '';
+      el.className = 'w-full min-h-[800px] overflow-visible';
+      el.setAttribute('data-host', 'https://cusdis.com');
+      el.setAttribute('data-app-id', '691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad');
+      el.setAttribute('data-page-id', this.cusdisPageId);
+      el.setAttribute('data-page-url', 'https://keymakers.womensventurefund.org/community.html');
+      el.setAttribute('data-page-title', this.cusdisPageTitle);
+
+      if (window.CUSDIS && window.CUSDIS.renderTo) {
+        window.CUSDIS.renderTo(el);
+      }
+    },
+  };
+}
+</script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
@@ -146,7 +256,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </style>
 </head>
 
-<body x-data="{ mobileOpen: false, activeTopic: null }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+<body x-data="{ mobileOpen: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
 
 <!-- ============================================================ -->
 <!-- HEADER NAVIGATION -->
@@ -233,7 +343,7 @@ A dedicated space for women founders, mentors, and partners to ask questions, ex
 <!-- ============================================================ -->
 <!-- DISCUSSION TOPICS + CUSDIS THREAD -->
 <!-- ============================================================ -->
-<section class="relative bg-cream pb-16 sm:pb-24 overflow-hidden">
+<section x-data="communityForum()" class="relative bg-cream pb-16 sm:pb-24 overflow-hidden">
 <!-- Decorative key watermarks -->
 <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
 <img src="./assets/images/Keymakers_Logo.svg" alt="" class="absolute -top-8 -right-16 sm:right-4 w-56 sm:w-72 lg:w-80 opacity-[0.04] object-contain">
@@ -285,8 +395,32 @@ A dedicated space for women founders, mentors, and partners to ask questions, ex
 <div class="bg-white rounded-3xl border border-warmtan/80 shadow-soft p-6 sm:p-10 mb-16 relative overflow-visible">
 <div class="bg-gradient-to-r from-gold via-terracotta to-gold h-1.5 w-full absolute top-0 left-0" aria-hidden="true"></div>
 
-<!-- Featured discussion prompt (admin pin) -->
-<div class="bg-cream-alt/60 border border-gold/30 rounded-2xl p-6 mb-8 flex items-start gap-4">
+<!-- Two-channel forum tabs -->
+<div class="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Community discussion channels">
+<button
+  type="button"
+  role="tab"
+  :aria-selected="activeTab === 'featured'"
+  @click="switchTab('featured')"
+  :class="activeTab === 'featured' ? 'bg-deepbrown text-white border-deepbrown' : 'bg-cream text-deepbrown/70 border-warmtan hover:border-deepbrown/30'"
+  class="shrink-0 rounded-full border px-4 py-2.5 text-xs font-bold uppercase tracking-wide transition-colors"
+>
+Featured Monthly Prompt
+</button>
+<button
+  type="button"
+  role="tab"
+  :aria-selected="activeTab === 'general'"
+  @click="switchTab('general')"
+  :class="activeTab === 'general' ? 'bg-deepbrown text-white border-deepbrown' : 'bg-cream text-deepbrown/70 border-warmtan hover:border-deepbrown/30'"
+  class="shrink-0 rounded-full border px-4 py-2.5 text-xs font-bold uppercase tracking-wide transition-colors"
+>
+Open Community Circle
+</button>
+</div>
+
+<!-- Featured monthly prompt banner -->
+<div x-show="activeTab === 'featured'" x-cloak class="bg-cream-alt/60 border border-gold/30 rounded-2xl p-6 mb-8 flex items-start gap-4">
 <span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gold/15 ring-1 ring-gold/40 p-2">
 <img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
 </span>
@@ -296,13 +430,24 @@ A dedicated space for women founders, mentors, and partners to ask questions, ex
 <svg class="w-3 h-3 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
 WVF TEAM ANNOUNCEMENT
 </span>
-<span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-terracotta">Featured Discussion Prompt</span>
+<span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-terracotta">Monthly Keymaker Prompt</span>
 </div>
-<h3 class="font-serif text-lg sm:text-xl font-semibold text-navy leading-snug mb-2">
-Weekly Keymaker Prompt: What was the single most impactful financial key that unlocked your business scaling?
-</h3>
+<h3 class="font-serif text-lg sm:text-xl font-semibold text-navy leading-snug mb-2" x-text="activeMonthlyPrompt"></h3>
 <p class="text-deepbrown/65 text-sm sm:text-base leading-relaxed">
 Share your experience below or reply directly to fellow founders in the circle.
+</p>
+</div>
+</div>
+
+<!-- General discussion welcome banner -->
+<div x-show="activeTab === 'general'" x-cloak class="bg-cream-alt/60 border border-warmtan/80 rounded-2xl p-6 mb-8 flex items-start gap-4">
+<span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-terracotta/10 ring-1 ring-terracotta/30 p-2">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
+</span>
+<div class="min-w-0 flex-1">
+<h3 class="font-serif text-lg sm:text-xl font-semibold text-navy leading-snug mb-2">Welcome to the Open Community Circle</h3>
+<p class="text-deepbrown/65 text-sm sm:text-base leading-relaxed">
+Ask questions, share resources, and connect with fellow founders.
 </p>
 </div>
 </div>
@@ -317,32 +462,7 @@ Share your experience below or reply directly to fellow founders in the circle.
 </div>
 
 <!-- Cusdis discussion thread -->
-<div id="cusdis_thread"
-class="w-full min-h-[800px] overflow-visible"
-data-host="https://cusdis.com"
-data-app-id="691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad"
-data-page-id="keymakers-community-circle"
-data-page-url="https://keymakers.womensventurefund.org/community.html"
-data-page-title="Keymakers Community Circle"
-></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-<script>
-  window.addEventListener('message', function (e) {
-    if (e.origin.includes('cusdis.com')) {
-      try {
-        var data = JSON.parse(e.data);
-        if (data && data.type === 'resize' && data.data) {
-          var iframe = document.querySelector('#cusdis_thread iframe');
-          if (iframe) {
-            iframe.style.height = Math.max(data.data, 800) + 'px';
-          }
-        }
-      } catch (err) {
-        // Non-JSON postMessage from other extensions; ignore safely
-      }
-    }
-  });
-</script>
+<div id="cusdis_thread" class="w-full min-h-[800px] overflow-visible"></div>
 </div>
 
 </div>
@@ -468,5 +588,22 @@ Thanks &mdash; you&rsquo;re on the list!
 </footer>
 
 <script src="./assets/js/keymakers-config.js"></script>
+<script>
+  window.addEventListener('message', function (e) {
+    if (e.origin.includes('cusdis.com')) {
+      try {
+        var data = JSON.parse(e.data);
+        if (data && data.type === 'resize' && data.data) {
+          var iframe = document.querySelector('#cusdis_thread iframe');
+          if (iframe) {
+            iframe.style.height = Math.max(data.data, 800) + 'px';
+          }
+        }
+      } catch (err) {
+        // Non-JSON postMessage from other extensions; ignore safely
+      }
+    }
+  });
+</script>
 </body>
 </html>
