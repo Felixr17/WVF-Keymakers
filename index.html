@@ -91,28 +91,11 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
   flex-shrink: 0;
   aspect-ratio: 9 / 16;
 }
-.story-card-featured {
-  display: block;
-  width: 100%;
-  max-width: 18rem;
-  margin-left: auto;
-  margin-right: auto;
-  aspect-ratio: 9 / 16;
+.hero-gallery-card {
+  aspect-ratio: 4 / 3;
 }
 .story-card-media {
   background-color: #3A2E24;
-}
-@media (min-width: 640px) {
-  .story-card-featured {
-    max-width: 20rem;
-  }
-}
-@media (min-width: 1024px) {
-  .story-card-featured {
-    max-width: 28rem;
-    margin-right: 0;
-    margin-left: auto;
-  }
 }
 
 [x-cloak] { display: none !important; }
@@ -191,9 +174,9 @@ background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent
 <span class="relative inline-flex rounded-full h-3 w-3 bg-gold"></span>
 </span>
 <span>
-<span class="font-bold text-white">47 new keys</span> shared this month
+<span class="font-bold text-white" x-text="storyCountLabel"></span>
 <span class="text-white/40 mx-1">&bull;</span>
-<span class="font-bold text-white">327 women</span> joined the movement
+<span class="text-white/85">Filmed stories from our founding Keymakers</span>
 </span>
 </div>
 <a href="./index.html#stories" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-gold hover:text-white transition-colors whitespace-nowrap">
@@ -242,31 +225,37 @@ Explore memberships
 
 <div class="flex items-center gap-6 mt-10 pt-8 border-t border-warmtan">
 <div class="flex -space-x-3">
-<img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Keymakers storyteller portrait">
-<img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=100&q=80" alt="Keymakers storyteller portrait">
-<img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Keymakers storyteller portrait">
+<template x-for="story in stories.slice(0, 3)" :key="'hero-avatar-' + story.id">
+<img class="w-10 h-10 rounded-full ring-2 ring-cream object-cover" :src="story.img" :alt="story.name + ', Keymaker storyteller'">
+</template>
 </div>
-<p class="text-sm text-deepbrown/60"><span class="font-bold text-deepbrown">327 keys</span> shared so far &mdash; yours could be next.</p>
+<p class="text-sm text-deepbrown/60"><span class="font-bold text-deepbrown" x-text="stories.length + ' key' + (stories.length === 1 ? '' : 's')"></span> shared so far &mdash; yours could be next.</p>
 </div>
 </div>
 
-<!-- Right Column: Featured Story Card -->
-<div class="relative w-full flex justify-center lg:justify-end lg:pl-4">
-<div class="story-card-featured relative rounded-3xl overflow-hidden shadow-soft group cursor-pointer ring-1 ring-warmtan/60" @click="openModal(featuredStory)" role="button" tabindex="0" @keydown.enter="openModal(featuredStory)" @keydown.space.prevent="openModal(featuredStory)" aria-label="Play Tamiko Maldonado's key story">
-<img src="./assets/images/tamiko-maldonado.png" alt="Tamiko Maldonado, Community Founder" class="absolute inset-0 w-full h-full object-cover story-card-media">
+<!-- Right Column: Hero Video Gallery -->
+<div class="w-full lg:pl-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl sm:max-w-none lg:max-w-lg xl:max-w-xl ml-auto">
+<template x-for="(story, index) in stories" :key="'hero-' + story.id">
+<button
+type="button"
+@click="openModalAtIndex(index)"
+:aria-label="'Play ' + story.name + '\'s key story'"
+class="hero-gallery-card aspect-[4/3] w-full group relative rounded-2xl overflow-hidden shadow-card ring-1 ring-warmtan/60 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+>
+<img :src="story.img" :alt="story.name + ', ' + story.tag" class="absolute inset-0 w-full h-full object-cover story-card-media">
+<div class="absolute inset-0 bg-gradient-to-t from-deepbrown/90 via-deepbrown/25 to-transparent"></div>
 <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-<span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
-<svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-white/90 backdrop-blur text-deepbrown shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
+<svg class="w-5 h-5 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
 </div>
+<div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+<p class="text-white font-semibold text-sm leading-tight" x-text="story.name"></p>
+<p class="text-white/70 text-[11px] uppercase tracking-wide mt-0.5" x-text="story.tag"></p>
 </div>
-
-<!-- Floating accent card -->
-<div class="hidden lg:flex absolute -top-4 -left-4 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem] z-10">
-<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-</span>
-<p class="text-xs text-deepbrown/70 leading-snug">Every key shared creates more possibilities.</p>
+</button>
+</template>
 </div>
 </div>
 </div>
@@ -326,7 +315,7 @@ Explore memberships
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
 <!-- Step 1 -->
-<button @click="openModal(howItWorksStory)" type="button" class="relative flex flex-col items-start text-left group">
+<button @click="openHowItWorksModal()" type="button" class="relative flex flex-col items-start text-left group">
 <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-deepbrown text-white font-serif font-semibold mb-4 group-hover:bg-terracotta transition-colors">
 <svg class="w-5 h-5 absolute" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
@@ -782,6 +771,8 @@ Thanks &mdash; you&rsquo;re on the list!
 x-show="modal.open"
 x-cloak
 @keydown.escape.window="closeModal()"
+@keydown.arrowright.window="if (modal.open && storyPlaybackActive) nextStory()"
+@keydown.arrowleft.window="if (modal.open && storyPlaybackActive) prevStory()"
 class="fixed inset-0 z-[100] flex items-center justify-center p-4"
 role="dialog"
 aria-modal="true"
@@ -807,6 +798,7 @@ class="relative w-full max-w-4xl bg-deepbrown rounded-2xl sm:rounded-3xl overflo
 <template x-if="modal.story">
 <div>
 <!-- Video Modal Container -->
+<div class="relative px-4 sm:px-6 pt-4 sm:pt-6">
 <template x-if="activeVideoUrl">
 <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
 <iframe
@@ -818,6 +810,26 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
 allowfullscreen>
 </iframe>
 <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/40 rounded-full px-2.5 py-1 pointer-events-none" x-text="modal.story.category"></span>
+
+<!-- Floating chevron navigation -->
+<template x-if="storyPlaybackActive && stories.length > 1">
+<button
+type="button"
+@click="prevStory()"
+aria-label="Previous story"
+class="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/55 text-white hover:bg-black/75 transition-colors"
+>
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+</button>
+<button
+type="button"
+@click="nextStory()"
+aria-label="Next story"
+class="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/55 text-white hover:bg-black/75 transition-colors"
+>
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+</button>
+</template>
 </div>
 </template>
 
@@ -832,6 +844,32 @@ allowfullscreen>
 </span>
 </button>
 <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/40 rounded-full px-2.5 py-1" x-text="modal.story.category"></span>
+</div>
+</template>
+</div>
+
+<!-- Story playback footer -->
+<template x-if="storyPlaybackActive">
+<div class="flex items-center justify-between gap-3 px-6 sm:px-8 py-4 border-t border-white/10 bg-deepbrown/95">
+<button
+type="button"
+@click="prevStory()"
+:disabled="stories.length <= 1"
+:class="stories.length <= 1 ? 'opacity-40 cursor-not-allowed' : 'hover:text-white'"
+class="text-sm font-semibold text-white/75 transition-colors"
+>
+&larr; Previous Story
+</button>
+<p class="text-xs sm:text-sm font-semibold text-white/80 text-center whitespace-nowrap" x-text="'Story ' + (activeStoryIndex + 1) + ' of ' + stories.length"></p>
+<button
+type="button"
+@click="nextStory()"
+:disabled="stories.length <= 1"
+:class="stories.length <= 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gold/90'"
+class="bg-gold text-deepbrown font-bold px-4 py-1.5 rounded-full text-sm transition-colors"
+>
+Next Story &rarr;
+</button>
 </div>
 </template>
 
@@ -866,16 +904,9 @@ activeFilter: 'ALL KEYS',
 filters: ['ALL KEYS', 'FOUNDERS', 'INVESTORS', 'MENTORS', 'COMMUNITY LEADERS', 'STUDENTS', 'ARTISTS'],
 modal: { open: false, story: null },
 activeVideoUrl: '',
+activeStoryIndex: 0,
+storyPlaybackActive: false,
 
-featuredStory: {
-id: 'tamiko',
-name: 'Tamiko Maldonado',
-tag: 'Community Founder',
-quote: 'My key was being in a community where there was no facility where they could have dancing and mentorship.',
-category: 'COMMUNITY LEADERS',
-img: './assets/images/tamiko-maldonado.png',
-youtubeId: 'Qe9IBmPSLSg',
-},
 howItWorksStory: {
 id: 'how-it-works',
 name: 'The Keymakers Movement',
@@ -887,21 +918,7 @@ youtubeId: 'bJ5xF7DMHmg',
 },
 
 stories: [
-{ id: 'tamiko-card', name: 'Tamiko Maldonado', tag: 'Community Founder', quote: 'My key was being in a community where there was no facility where they could have dancing and mentorship.', category: 'COMMUNITY LEADERS', img: './assets/images/tamiko-maldonado.png', youtubeId: 'Qe9IBmPSLSg' },
-{ id: 1, name: 'Jessica R.', tag: 'Founder, Woven Co.', quote: 'My key was starting before I was ready.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80' },
-{ id: 2, name: 'Angela J.', tag: 'Investor & Advisor', quote: 'My key was saying yes to new things.', category: 'INVESTORS', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80' },
-{ id: 3, name: 'Tara M.', tag: 'Founder, Tara Designs', quote: 'My key was betting on myself.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80' },
-{ id: 4, name: 'Aliya R.', tag: 'Mentor', quote: 'My key was finding my community.', category: 'MENTORS', img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80' },
-{ id: 5, name: 'Loretta G.', tag: 'Founder, LA Sweets', quote: 'My key was turning pain into purpose.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80' },
-{ id: 6, name: 'Jessica Lin', tag: 'Founder, Woven Co.', quote: "One conversation opened a door I didn't even know was there.", category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80' },
-{ id: 7, name: 'Jessica K.', tag: 'Student, First-Gen Founder', quote: 'My key was starting before I was ready.', category: 'STUDENTS', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80' },
-{ id: 8, name: 'Maria S.', tag: 'Community Leader', quote: 'My key was showing up, even scared.', category: 'COMMUNITY LEADERS', img: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80' },
-{ id: 9, name: 'Nina P.', tag: 'Artist & Designer', quote: 'My key was trusting my own voice.', category: 'ARTISTS', img: 'https://images.unsplash.com/photo-1521252659862-eec69941b071?auto=format&fit=crop&w=800&q=80' },
-{ id: 10, name: 'Priya D.', tag: 'Angel Investor', quote: 'My key was writing the first check when no one else would.', category: 'INVESTORS', img: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80' },
-{ id: 11, name: 'Renee C.', tag: 'Executive Coach & Mentor', quote: 'My key was learning to ask for help.', category: 'MENTORS', img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80' },
-{ id: 12, name: 'Devon A.', tag: 'MBA Candidate', quote: 'My key was applying anyway, doubts and all.', category: 'STUDENTS', img: 'https://images.unsplash.com/photo-1553514029-1318c9127859?auto=format&fit=crop&w=800&q=80' },
-{ id: 13, name: 'Sofia T.', tag: 'Community Organizer', quote: 'My key was building the table, not waiting for a seat.', category: 'COMMUNITY LEADERS', img: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=800&q=80' },
-{ id: 14, name: 'Elena V.', tag: 'Ceramicist & Studio Owner', quote: 'My key was making something ugly on purpose, then finishing it.', category: 'ARTISTS', img: 'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=800&q=80' },
+{ id: 'tamiko', name: 'Tamiko Maldonado', tag: 'Community Founder', quote: 'My key was being in a community where there was no facility where they could have dancing and mentorship.', category: 'COMMUNITY LEADERS', img: './assets/images/tamiko-maldonado.png', youtubeId: 'Qe9IBmPSLSg' },
 ],
 
 tiers: [
@@ -1000,18 +1017,63 @@ if (this.activeFilter === 'ALL KEYS') return this.stories;
 return this.stories.filter((s) => s.category === this.activeFilter);
 },
 
-openModal(story) {
+get storyCountLabel() {
+const count = this.stories.length;
+return count + ' Key' + (count === 1 ? '' : 's') + ' Shared';
+},
+
+setActiveStory() {
+const story = this.stories[this.activeStoryIndex];
+if (!story) return;
 this.modal.story = story;
 this.modal.open = true;
+this.storyPlaybackActive = true;
 this.activeVideoUrl = story.youtubeId
   ? `https://www.youtube.com/embed/${story.youtubeId}?autoplay=1&rel=0&modestbranding=1`
   : '';
 document.body.style.overflow = 'hidden';
 },
+
+openModalAtIndex(index) {
+if (!this.stories.length) return;
+this.activeStoryIndex = index;
+this.setActiveStory();
+},
+
+openModal(story) {
+const idx = this.stories.findIndex((s) => s.id === story.id);
+if (idx >= 0) {
+  this.openModalAtIndex(idx);
+}
+},
+
+openHowItWorksModal() {
+this.storyPlaybackActive = false;
+this.modal.story = this.howItWorksStory;
+this.modal.open = true;
+this.activeVideoUrl = this.howItWorksStory.youtubeId
+  ? `https://www.youtube.com/embed/${this.howItWorksStory.youtubeId}?autoplay=1&rel=0&modestbranding=1`
+  : '';
+document.body.style.overflow = 'hidden';
+},
+
+nextStory() {
+if (!this.stories.length) return;
+this.activeStoryIndex = (this.activeStoryIndex + 1) % this.stories.length;
+this.setActiveStory();
+},
+
+prevStory() {
+if (!this.stories.length) return;
+this.activeStoryIndex = (this.activeStoryIndex - 1 + this.stories.length) % this.stories.length;
+this.setActiveStory();
+},
+
 closeModal() {
 this.modal.open = false;
 this.modal.story = null;
 this.activeVideoUrl = '';
+this.storyPlaybackActive = false;
 document.body.style.overflow = '';
 },
 pauseCarousel() {
