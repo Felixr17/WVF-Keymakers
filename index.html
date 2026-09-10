@@ -62,6 +62,7 @@ tailwind.config = {
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <style>
+html, body { margin: 0; padding: 0; }
 html { scroll-padding-top: 88px; }
 body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .font-serif { font-family: 'Lora', Georgia, serif; }
@@ -75,34 +76,35 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </style>
 </head>
 
-<body x-data="keymakers()" x-init="init()" class="bg-cream text-deepgreen antialiased">
+<body x-data="keymakers()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
 
-<!-- ============================================================ -->
-<!-- NAVIGATION (above the crease) -->
-<!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-deepgreen/97 backdrop-blur border-b border-white/10">
-<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
-<a href="#top" class="flex items-center gap-3 shrink-0 group">
-<span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/15 ring-1 ring-gold/40 p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers" class="h-full w-auto object-contain">
-</span>
-<span class="flex flex-col leading-tight">
-<span class="font-serif text-lg font-semibold text-white tracking-wide">KEYMAKERS</span>
-<span class="text-[10px] uppercase tracking-[0.2em] text-cream/55">Women&rsquo;s Venture Fund</span>
-</span>
-</a>
-
-<div class="hidden xl:flex items-center gap-5 text-[11px] font-semibold tracking-editorial text-white/75 uppercase">
-<a href="#top" class="hover:text-gold transition-colors py-2">Home</a>
-<a href="#featured-keymakers" class="hover:text-gold transition-colors py-2">Stories</a>
-<a href="./community.html" class="hover:text-gold transition-colors py-2">Community</a>
-<a href="./gathering.html" class="hover:text-gold transition-colors py-2">The Gathering</a>
-<a href="#membership" class="hover:text-gold transition-colors py-2">Get Involved</a>
-<a href="#connectors" class="hover:text-gold transition-colors py-2">Connectors</a>
-<a href="./about.html" class="hover:text-gold transition-colors py-2">About WVF</a>
+<!-- Unified above-the-crease canvas: nav + hero -->
+<header id="top" class="relative bg-gradient-to-b from-[#062117] via-[#0A2E20] to-[#0D3827] overflow-hidden">
+<div class="absolute inset-0 pointer-events-none opacity-[0.04]">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-20 top-0 h-[28rem] w-auto">
 </div>
 
-<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-gold text-deepgreen font-bold text-xs uppercase tracking-editorial px-6 py-2.5 hover:bg-gold-bright transition-colors shadow-sm">
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-transparent backdrop-blur-[2px]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
+<a href="#top" class="flex items-center gap-3 shrink-0 group">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto object-contain">
+</span>
+<span class="font-serif text-lg font-bold text-[#D4AF37] tracking-widest">KEYMAKERS</span>
+</a>
+
+<div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
+<a href="#top" class="hover:text-white transition-colors py-2">Home</a>
+<a href="#explore" class="hover:text-white transition-colors py-2">Stories</a>
+<a href="./community.html" class="hover:text-white transition-colors py-2">Community</a>
+<a href="./gathering.html" class="hover:text-white transition-colors py-2">The Gathering</a>
+<a href="#membership" class="hover:text-white transition-colors py-2">Get Involved</a>
+<a href="#connectors" class="hover:text-white transition-colors py-2">Connectors</a>
+<a href="./about.html" class="hover:text-white transition-colors py-2">About WVF</a>
+</div>
+
+<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs px-5 py-2 shadow-md hover:bg-[#E2C15E] transition-colors">
 Share Your Key
 </a>
 
@@ -110,69 +112,69 @@ Share Your Key
 <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
 <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
+</div>
+
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden px-4 pb-6 pt-2 bg-[#062117]/95">
+<ul class="flex flex-col text-sm font-semibold uppercase tracking-widest text-white/80">
+<li><a @click="mobileOpen = false" href="#top" class="block py-3 border-b border-white/10 hover:text-white">Home</a></li>
+<li><a @click="mobileOpen = false" href="#explore" class="block py-3 border-b border-white/10 hover:text-white">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-white">Community</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-white">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="#membership" class="block py-3 border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="#connectors" class="block py-3 border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-white">About WVF</a></li>
+</ul>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 hover:bg-[#E2C15E]">Share Your Key</a>
+</div>
 </nav>
 
-<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepgreen px-4 pb-6 pt-2">
-<ul class="flex flex-col text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="#top" class="block py-3 border-b border-white/10 hover:text-gold">Home</a></li>
-<li><a @click="mobileOpen = false" href="#featured-keymakers" class="block py-3 border-b border-white/10 hover:text-gold">Stories</a></li>
-<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-gold">Community</a></li>
-<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-gold">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="#membership" class="block py-3 border-b border-white/10 hover:text-gold">Get Involved</a></li>
-<li><a @click="mobileOpen = false" href="#connectors" class="block py-3 border-b border-white/10 hover:text-gold">Connectors</a></li>
-<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-gold">About WVF</a></li>
-</ul>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-gold text-deepgreen text-xs font-bold uppercase tracking-editorial px-4 py-3">Share Your Key</a>
-</div>
-</header>
-
-<main id="top">
-
-<!-- ============================================================ -->
-<!-- HERO (above the crease — no stats, no video, no tiers) -->
-<!-- ============================================================ -->
-<section class="relative bg-deepgreen overflow-hidden">
-<div class="absolute inset-0 pointer-events-none opacity-[0.06]">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-16 top-8 h-96 w-auto">
-</div>
-
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<!-- Hero -->
+<section class="relative">
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 pt-8 lg:pt-12 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 <div class="max-w-xl">
-<h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] font-semibold text-white mb-6 tracking-tight">
+<h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-white font-normal leading-[1.08] tracking-tight mb-6">
 What&rsquo;s your key?
 </h1>
-<p class="text-cream/80 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
-Someone opened a door for you. What was the key? And whose door will you open next? The locks have changed. We&rsquo;re building new pathways.
+<p class="text-white/80 text-base sm:text-lg leading-relaxed max-w-lg mb-4 font-light">
+Someone opened a door for you. What was the key? <br>
+And whose door will you open next?
+</p>
+<p class="text-white/60 text-sm leading-relaxed max-w-lg mb-8 font-light">
+The locks have changed. <br>
+We&rsquo;re building new pathways.
 </p>
 <div class="flex flex-wrap items-center gap-4">
-<a href="./share-your-key.html" class="inline-flex items-center gap-2 rounded-full bg-gold text-deepgreen font-bold text-sm px-7 py-3.5 hover:bg-gold-bright transition-colors shadow-md">
-Share Your Key
-<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+<a href="./share-your-key.html" class="inline-flex items-center gap-2 bg-[#D4AF37] text-[#0A2E20] font-bold text-sm px-7 py-3 rounded-full hover:bg-[#E2C15E] transition-all shadow-lg">
+Share Your Key &rarr;
 </a>
-<a href="#featured-keymakers" class="inline-flex items-center gap-2 rounded-full border border-white/30 text-white font-semibold text-sm px-7 py-3.5 hover:bg-white/10 transition-colors">
+<a href="#explore" class="inline-flex items-center border border-white/30 text-white text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-all">
 Explore Keymakers
 </a>
 </div>
 </div>
 
-<div class="relative w-full max-w-md lg:max-w-none lg:ml-auto">
-<div class="relative rounded-3xl overflow-hidden shadow-editorial ring-1 ring-gold/25 aspect-[4/5] sm:aspect-[3/4]">
-<img src="./assets/images/tamiko-maldonado.png" alt="Keymaker founder portrait" class="absolute inset-0 w-full h-full object-cover object-top">
-<div class="absolute inset-0 bg-gradient-to-t from-deepgreen/50 via-transparent to-transparent"></div>
-<div class="absolute top-5 left-5 right-5">
-<span class="inline-flex items-center rounded-full bg-gold/95 text-deepgreen text-[10px] sm:text-xs font-bold uppercase tracking-editorial px-4 py-2 shadow-sm">
-More Women. Brighter Tomorrows.
-</span>
+<div class="relative w-full lg:ml-auto">
+<div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative min-h-[480px] lg:min-h-[580px] w-full">
+<img src="./assets/images/hero-editorial.jpg" alt="Inspired woman founder in a warm editorial portrait" class="absolute inset-0 w-full h-full object-cover object-center">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/40 via-transparent to-[#062117]/10"></div>
+<div class="absolute top-6 right-6 font-serif italic text-[#D4AF37] text-xl sm:text-2xl drop-shadow-md text-right leading-snug">
+More Women.<br>Brighter Tomorrows.
+</div>
+<div class="absolute bottom-6 right-6 hidden sm:block text-[10px] tracking-[0.25em] text-white/50 uppercase leading-relaxed text-right font-mono">
+PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 </div>
 </div>
 </div>
 </div>
 </section>
+</header>
+
+<main>
 
 <!-- ============================================================ -->
 <!-- FEATURED KEYMAKERS (below the crease) -->
 <!-- ============================================================ -->
-<section id="featured-keymakers" class="bg-cream-alt border-y border-deepgreen/10 py-16 lg:py-20">
+<section id="explore" class="bg-cream-alt border-y border-deepgreen/10 py-16 lg:py-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
 <div>
@@ -428,7 +430,7 @@ Get Updates
 <div>
 <h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Program</h4>
 <ul class="space-y-2 text-sm">
-<li><a href="#featured-keymakers" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="#explore" class="hover:text-white transition-colors">Stories</a></li>
 <li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
 <li><a href="#membership" class="hover:text-white transition-colors">Membership</a></li>
 <li><a href="./community.html" class="hover:text-white transition-colors">Community</a></li>
