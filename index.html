@@ -22,6 +22,7 @@
 <meta name="twitter:description" content="Someone opened a door for you. What was the key? And whose door will you open next?">
 <meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 
+<link rel="preload" as="image" href="./assets/images/hero-editorial.webp" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
@@ -58,7 +59,6 @@ tailwind.config = {
 
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
 
 <style>
 html, body { margin: 0; padding: 0; }
@@ -156,9 +156,9 @@ Explore Keymakers
   x-data="{
     activeHero: 0,
     heroList: [
-      'assets/images/hero-editorial.jpg',
-      'assets/images/gathering-collaborate.jpg',
-      'assets/images/gathering-crowd.jpg'
+      './assets/images/hero-editorial.webp',
+      './assets/images/gathering-collaborate.webp',
+      './assets/images/gathering-crowd.webp'
     ]
   }"
   x-init="setInterval(() => { activeHero = (activeHero + 1) % heroList.length }, 6000)"
@@ -169,6 +169,8 @@ Explore Keymakers
   :src="imgSrc"
   alt="Keymaker Editorial Portrait"
   class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out"
+  decoding="async"
+  :fetchpriority="idx === 0 ? 'high' : 'auto'"
   :class="activeHero === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'"
 />
 </template>
@@ -200,20 +202,41 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-<template x-for="(keymaker, index) in featuredKeymakers" :key="keymaker.id">
-<button
-type="button"
-@click="openKeymakerAtIndex(index)"
-:aria-label="'Watch ' + keymaker.name + '\'s key story'"
-class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2"
->
-<img :src="keymaker.img" :alt="keymaker.name" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+<div role="button" tabindex="0" @click="openStory(0)" @keydown.enter.prevent="openStory(0)" aria-label="Watch Brenda Braxton's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Brenda Braxton" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
-<p class="text-white font-semibold text-sm" x-text="keymaker.name"></p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1" x-text="keymaker.tag"></p>
+<p class="text-white font-semibold text-sm">Brenda Braxton</p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient</p>
 </div>
-</button>
-</template>
+</div>
+<div role="button" tabindex="0" @click="openStory(1)" @keydown.enter.prevent="openStory(1)" aria-label="Watch Angela Long's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Angela Long" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-semibold text-sm">Angela Long</p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair</p>
+</div>
+</div>
+<div role="button" tabindex="0" @click="openStory(2)" @keydown.enter.prevent="openStory(2)" aria-label="Watch Nikki's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Nikki" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-semibold text-sm">Nikki</p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Get Fit With Nik | Keymaker</p>
+</div>
+</div>
+<div role="button" tabindex="0" @click="openStory(3)" @keydown.enter.prevent="openStory(3)" aria-label="Watch Loretta's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Loretta" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-semibold text-sm">Loretta</p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">LA Sweets | Keymaker</p>
+</div>
+</div>
+<div role="button" tabindex="0" @click="openStory(4)" @keydown.enter.prevent="openStory(4)" aria-label="Watch Michelle's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80" alt="Michelle" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-semibold text-sm">Michelle</p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Michelle&rsquo;s Beauty Salon | Keymaker</p>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -232,10 +255,10 @@ class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer sh
 
 <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
 <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-[#FAF7F2]">
-<img src="assets/images/gathering-collaborate.jpg" alt="Keymakers in conversation" class="w-full h-full object-cover object-center" />
+<img src="./assets/images/gathering-collaborate.webp" alt="Keymakers in conversation" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
 </div>
 <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-[#FAF7F2] group">
-<img src="assets/images/gathering-crowd.jpg" alt="Community growing together" class="w-full h-full object-cover object-center" />
+<img src="./assets/images/gathering-crowd.webp" alt="Community growing together" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-[#062117]/40 to-transparent flex items-end p-5">
 <span class="font-serif italic text-sm sm:text-base text-[#D4AF37] tracking-wider leading-snug">A STRONGER TOMORROW GROWS HERE.</span>
 </div>
@@ -316,7 +339,7 @@ class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer sh
 <div><a href="./gathering.html" class="inline-flex bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-wider px-6 py-2.5 rounded-full hover:bg-[#E5C158] transition-all">Get Updates &rarr;</a></div>
 </div>
 <div class="lg:col-span-5 relative min-h-[240px] w-full h-full">
-<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="A lively community gathering" class="absolute inset-0 w-full h-full object-cover">
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="A lively community gathering" width="1200" height="800" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover">
 <div class="absolute inset-0 bg-[#062117]/20"></div>
 <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-3xl sm:text-4xl text-[#D4AF37] drop-shadow-lg whitespace-nowrap">Bigger Together</span>
 </div>
@@ -333,11 +356,11 @@ class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer sh
 <span class="text-[10px] tracking-widest text-[#0D281E]/60 uppercase ml-2">Multiple ways to belong</span>
 </div>
 <div class="flex items-center justify-between gap-6 sm:gap-10 overflow-x-auto no-scrollbar w-full md:w-auto text-center pb-1">
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Carrier.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Carrier</span><span class="block text-[10px] text-[#C25E38]">Free</span></a>
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keyholder.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keyholder</span><span class="block text-[10px] text-[#C25E38]">$25</span></a>
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keysmith.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keysmith</span><span class="block text-[10px] text-[#C25E38]">$100</span></a>
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Shaper.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Shaper</span><span class="block text-[10px] text-[#C25E38]">$250</span></a>
-<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" class="shrink-0 group"><img src="./assets/images/Key_Circle.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Circle</span><span class="block text-[10px] text-[#C25E38]">$1,000</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Carrier.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Carrier</span><span class="block text-[10px] text-[#C25E38]">Free</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keyholder.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keyholder</span><span class="block text-[10px] text-[#C25E38]">$25</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keysmith.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keysmith</span><span class="block text-[10px] text-[#C25E38]">$100</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Shaper.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Shaper</span><span class="block text-[10px] text-[#C25E38]">$250</span></a>
+<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" class="shrink-0 group"><img src="./assets/images/Key_Circle.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Circle</span><span class="block text-[10px] text-[#C25E38]">$1,000</span></a>
 </div>
 </div>
 </section>
@@ -364,7 +387,7 @@ class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer sh
 <div>
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/30 p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers" class="h-full w-auto">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers" loading="lazy" decoding="async" class="h-full w-auto">
 </span>
 <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
 </div>
@@ -472,14 +495,6 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 
 <script src="./assets/js/keymakers-config.js"></script>
 <script>
-/* YouTube IFrame API bridge */
-window.__keymakersPendingIndex = null;
-window.onYouTubeIframeAPIReady = function () {
-  if (window.__keymakersApp && typeof window.__keymakersApp.onYtApiReady === 'function') {
-    window.__keymakersApp.onYtApiReady();
-  }
-};
-
 function keymakers() {
   return {
     mobileOpen: false,
@@ -488,6 +503,7 @@ function keymakers() {
     autoAdvanceSequence: false,
     ytPlayer: null,
     ytApiReady: false,
+    _ytApiPromise: null,
 
     /*
      * Production video IDs — replace empty strings with WVF YouTube asset IDs.
@@ -548,20 +564,44 @@ function keymakers() {
 
     init() {
       window.__keymakersApp = this;
-      if (window.YT && window.YT.Player) {
+    },
+
+    ensureYouTubeApi() {
+      if (this.ytApiReady || (window.YT && window.YT.Player)) {
         this.ytApiReady = true;
+        return Promise.resolve();
       }
+      if (this._ytApiPromise) return this._ytApiPromise;
+
+      this._ytApiPromise = new Promise((resolve) => {
+        const finish = () => {
+          this.ytApiReady = true;
+          resolve();
+        };
+
+        const previousReady = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => {
+          if (typeof previousReady === 'function') previousReady();
+          this.onYtApiReady();
+          finish();
+        };
+
+        if (!document.getElementById('yt-iframe-api')) {
+          const tag = document.createElement('script');
+          tag.id = 'yt-iframe-api';
+          tag.src = 'https://www.youtube.com/iframe_api';
+          document.head.appendChild(tag);
+        }
+      });
+
+      return this._ytApiPromise;
     },
 
     onYtApiReady() {
       this.ytApiReady = true;
-      if (this.modal.open && window.__keymakersPendingIndex !== null) {
-        this.loadKeymakerPlayer(window.__keymakersPendingIndex);
-        window.__keymakersPendingIndex = null;
-      }
     },
 
-    openKeymakerAtIndex(index, fromAutoAdvance = false) {
+    openStory(index, fromAutoAdvance = false) {
       const wasOpen = this.modal.open;
       this.destroyPlayer();
       this.activeKeymakerIndex = index;
@@ -583,11 +623,9 @@ function keymakers() {
           this.autoAdvanceSequence = false;
           return;
         }
-        if (this.ytApiReady) {
+        this.ensureYouTubeApi().then(() => {
           this.loadKeymakerPlayer(index);
-        } else {
-          window.__keymakersPendingIndex = index;
-        }
+        });
       });
     },
 
@@ -638,7 +676,7 @@ function keymakers() {
     advanceToNextKeymaker() {
       const next = this.findNextVideoIndex(this.activeKeymakerIndex + 1);
       if (next !== -1) {
-        this.openKeymakerAtIndex(next, true);
+        this.openStory(next, true);
       } else {
         this.autoAdvanceSequence = false;
       }
@@ -660,7 +698,6 @@ function keymakers() {
       this.destroyPlayer();
       this.modal.open = false;
       this.modal.keymaker = null;
-      window.__keymakersPendingIndex = null;
       document.body.style.overflow = '';
     },
   };
