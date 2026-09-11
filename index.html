@@ -58,7 +58,6 @@ tailwind.config = {
 
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=c0DdlWYvuGmd2igp&p=other"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <style>
@@ -66,6 +65,12 @@ html, body { margin: 0; padding: 0; }
 html { scroll-padding-top: 88px; }
 body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .font-serif { font-family: 'Lora', Georgia, serif; }
+.editorial-cream {
+  background-color: #FAF7F2;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(194, 94, 56, 0.035), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(13, 40, 30, 0.04), transparent 32%);
+}
 [x-cloak] { display: none !important; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -75,15 +80,20 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <body x-data="keymakers()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
 
 <!-- Unified above-the-crease canvas: nav + hero -->
-<header id="top" class="relative bg-gradient-to-b from-[#062117] to-[#0D2E22] overflow-hidden">
+<header id="top" class="relative bg-gradient-to-b from-[#062117] via-[#0A2E20] to-[#0D3827] overflow-hidden">
 <div class="absolute inset-0 pointer-events-none opacity-[0.04]">
 <img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-20 top-0 h-[28rem] w-auto">
 </div>
 
 <!-- Navigation -->
-<nav class="sticky top-0 z-50 bg-transparent">
+<nav class="sticky top-0 z-50 bg-transparent backdrop-blur-[2px]">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
-<a href="./index.html" class="font-serif tracking-[0.2em] text-gold font-bold text-lg shrink-0 hover:text-[#E5C158] transition-colors">KEYMAKERS</a>
+<a href="./index.html" class="flex items-center gap-3 shrink-0 group">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto object-contain">
+</span>
+<span class="font-serif text-lg font-bold text-[#D4AF37] tracking-widest">KEYMAKERS</span>
+</a>
 
 <div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
 <a href="#explore" class="hover:text-white transition-colors py-2">Stories</a>
@@ -94,7 +104,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <a href="./about.html" class="hover:text-white transition-colors py-2">About WVF</a>
 </div>
 
-<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0D281E] font-bold text-xs uppercase tracking-wider px-5 py-2.5 hover:bg-[#E5C158] transition-colors shadow-sm">
+<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs px-5 py-2 shadow-md hover:bg-[#E2C15E] transition-colors">
 Share Your Key
 </a>
 
@@ -113,33 +123,62 @@ Share Your Key
 <li><a @click="mobileOpen = false" href="#connectors" class="block py-3 border-b border-white/10 hover:text-white">Connectors</a></li>
 <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-white">About WVF</a></li>
 </ul>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0D281E] text-xs font-bold uppercase tracking-widest px-4 py-3 hover:bg-[#E5C158]">Share Your Key</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 hover:bg-[#E2C15E]">Share Your Key</a>
 </div>
 </nav>
 
 <!-- Hero -->
 <section class="relative">
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 pt-8 lg:pt-12 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<div class="relative max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12 grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
 <div class="max-w-xl">
-<h1 class="font-serif text-5xl sm:text-6xl text-white font-normal leading-[1.08] mb-6">What&rsquo;s your key?</h1>
-<p class="text-white/85 text-base sm:text-lg mb-3">
+<h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-white font-normal leading-[1.08] tracking-tight mb-6">
+What&rsquo;s your key?
+</h1>
+<p class="text-white/80 text-base sm:text-lg leading-relaxed max-w-lg mb-4 font-light">
 Someone opened a door for you. What was the key? <br>
 And whose door will you open next?
 </p>
-<p class="text-white/60 text-sm mb-8">
+<p class="text-white/60 text-sm leading-relaxed max-w-lg mb-8 font-light">
 The locks have changed. <br>
 We&rsquo;re building new pathways.
 </p>
 <div class="flex flex-wrap items-center gap-4">
-<a href="./share-your-key.html" class="bg-[#D4AF37] text-[#0D281E] font-bold text-sm px-7 py-3 rounded-full hover:bg-[#E5C158] shadow-lg">Share Your Key &rarr;</a>
-<a href="#explore" class="border border-white/30 text-white text-sm px-6 py-3 rounded-full hover:bg-white/10">Explore Keymakers</a>
+<a href="./share-your-key.html" class="inline-flex items-center gap-2 bg-[#D4AF37] text-[#0A2E20] font-bold text-sm px-7 py-3 rounded-full hover:bg-[#E2C15E] transition-all shadow-lg">
+Share Your Key &rarr;
+</a>
+<a href="#explore" class="inline-flex items-center border border-white/30 text-white text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-all">
+Explore Keymakers
+</a>
 </div>
 </div>
 
-<div class="rounded-3xl overflow-hidden relative shadow-2xl min-h-[520px]">
-<img src="./assets/images/hero-editorial.jpg" alt="Inspired woman founder in a warm editorial portrait" class="object-cover object-center w-full h-full absolute inset-0">
-<span class="absolute top-6 right-6 font-serif italic text-2xl sm:text-3xl text-[#D4AF37] drop-shadow-md text-right leading-tight">More Women.<br>Brighter Tomorrows.</span>
-<div class="absolute bottom-6 right-6 text-[10px] tracking-[0.25em] text-white/60 uppercase font-mono text-right leading-loose hidden sm:block">PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW</div>
+<div
+  x-data="{
+    activeHero: 0,
+    heroList: [
+      'assets/images/hero-editorial.jpg',
+      'assets/images/gathering-collaborate.jpg',
+      'assets/images/gathering-crowd.jpg'
+    ]
+  }"
+  x-init="setInterval(() => { activeHero = (activeHero + 1) % heroList.length }, 6000)"
+  class="relative w-full aspect-[4/5] max-h-[620px] rounded-3xl overflow-hidden shadow-2xl bg-[#062117]"
+>
+<template x-for="(imgSrc, idx) in heroList" :key="idx">
+<img
+  :src="imgSrc"
+  alt="Keymaker Editorial Portrait"
+  class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out"
+  :class="activeHero === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'"
+/>
+</template>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/60 via-transparent to-transparent z-20 pointer-events-none"></div>
+<div class="absolute top-6 right-6 z-30 font-serif italic text-2xl sm:text-3xl text-[#D4AF37] drop-shadow-md text-right leading-tight pointer-events-none">
+More Women.<br>Brighter Tomorrows.
+</div>
+<div class="absolute bottom-6 right-6 z-30 text-[10px] tracking-[0.25em] text-white/70 uppercase font-mono text-right leading-relaxed hidden sm:block pointer-events-none">
+PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
+</div>
 </div>
 </div>
 </section>
@@ -150,12 +189,14 @@ We&rsquo;re building new pathways.
 <!-- ============================================================ -->
 <!-- FEATURED KEYMAKERS (below the crease) -->
 <!-- ============================================================ -->
-<section id="explore" class="bg-[#FAF7F2] py-16 lg:py-20 px-4 sm:px-8">
-<div class="max-w-6xl mx-auto">
-<div class="mb-8">
-<span class="text-[#C25E38] text-xs uppercase tracking-[0.2em] font-bold">Featured Keymakers</span>
-<h2 class="font-serif text-3xl text-[#0D281E] font-normal mt-1">Real keys. Real doors.</h2>
-<p class="text-xs text-[#0D281E]/60 mt-1 mb-8">Click any Keymaker to watch their story. Videos play in sequence until you pause or close.</p>
+<section id="explore" class="bg-cream-alt border-y border-deepgreen/10 py-10 sm:py-12">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+<div>
+<span class="text-terracotta text-xs font-bold uppercase tracking-[0.18em]">Featured Keymakers</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen mt-2">Real keys. Real doors.</h2>
+<p class="text-deepgreen/65 text-sm mt-2 max-w-xl">Click any Keymaker to watch their story. Videos play in sequence until you pause or close.</p>
+</div>
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -166,7 +207,7 @@ type="button"
 :aria-label="'Watch ' + keymaker.name + '\'s key story'"
 class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2"
 >
-<img :src="keymaker.img" :alt="keymaker.name" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+<img :src="keymaker.img" :alt="keymaker.name" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm" x-text="keymaker.name"></p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1" x-text="keymaker.tag"></p>
@@ -178,97 +219,87 @@ class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer sh
 </section>
 
 <!-- ============================================================ -->
-<!-- THE IDEA: PEOPLE OPEN PEOPLE -->
+<!-- THE IDEA + THREE WAYS -->
 <!-- ============================================================ -->
-<section id="the-idea" class="bg-[#FAF7F2] py-20 px-4 sm:px-8">
-<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-<div>
-<span class="text-[#C25E38] text-xs uppercase tracking-[0.2em] font-bold">The Idea</span>
-<h2 class="font-serif text-4xl text-[#0D281E] font-normal mb-6 mt-2">People open people.</h2>
-<p class="text-[#0D281E]/75 text-base leading-relaxed max-w-md">
-A more connected world creates more opportunity. When people share experience, access, and belief, extraordinary things happen.
-</p>
-<a href="./about.html" class="text-xs uppercase tracking-widest text-[#C25E38] font-bold hover:underline mt-4 inline-block">Learn more about the movement &rarr;</a>
-</div>
-<div class="relative min-h-[420px]">
-<img src="https://images.unsplash.com/photo-1573167243872-43c6433b9d40?auto=format&fit=crop&w=1200&q=80" alt="Women entrepreneurs collaborating over coffee" class="w-full h-64 sm:h-72 object-cover rounded-2xl shadow-lg">
-<div class="absolute -bottom-6 right-0 w-[72%] sm:w-[68%] rounded-2xl overflow-hidden shadow-xl ring-4 ring-[#FAF7F2]">
-<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Community members connecting together" class="w-full h-48 sm:h-56 object-cover">
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/80 via-[#062117]/30 to-transparent"></div>
-<span class="absolute bottom-4 left-4 text-xs font-serif italic text-[#D4AF37] tracking-wider uppercase">A stronger tomorrow grows here.</span>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- THREE WAYS THE MOVEMENT GROWS -->
-<!-- ============================================================ -->
-<section id="three-ways" class="py-16 lg:py-24 bg-[#FAF7F2]">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-10">
-<p class="text-[11px] uppercase tracking-[0.2em] text-[#C25E38] font-bold">How it grows</p>
-<h2 class="font-serif text-3xl sm:text-4xl text-[#0F2E22] font-normal mt-1 mb-10">Three ways the movement grows</h2>
+<section id="the-idea" class="editorial-cream">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<div class="lg:col-span-5 flex flex-col justify-center">
+<p class="text-[#C25E38] text-xs font-bold tracking-widest uppercase">The Idea</p>
+<h2 class="font-serif text-3xl sm:text-4xl text-[#0D281E] mt-1 mb-4">People open people.</h2>
+<p class="text-sm sm:text-base text-[#0D281E]/70 leading-relaxed max-w-lg">A more connected world creates more opportunity. When people share experience, access, and belief, extraordinary things happen.</p>
+<a href="./about.html" class="text-xs uppercase tracking-widest text-[#C25E38] font-bold inline-flex items-center gap-1 mt-4">Learn more about the movement &rarr;</a>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto px-4 divide-y md:divide-y-0 md:divide-x divide-[#0F2E22]/10">
-<div class="py-8 md:py-0 md:px-8 text-center md:text-left first:md:pl-0 last:md:pr-0">
-<span class="inline-flex items-center justify-center w-12 h-12 text-[#C5A059] mb-5 mx-auto md:mx-0">
-<svg class="w-7 h-7" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="24" r="9"/><path d="M23 24h19M36 24v7M42 24v7"/></svg>
-</span>
-<h3 class="font-serif text-2xl text-[#0F2E22] font-normal mb-2">Stories</h3>
-<p class="text-sm text-[#0F2E22]/70 leading-relaxed">Real experiences. Greater possibility.</p>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+<div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-[#FAF7F2]">
+<img src="assets/images/gathering-collaborate.jpg" alt="Keymakers in conversation" class="w-full h-full object-cover object-center" />
 </div>
-<div class="py-8 md:py-0 md:px-8 text-center md:text-left">
-<span class="inline-flex items-center justify-center w-12 h-12 text-[#C5A059] mb-5 mx-auto md:mx-0">
-<svg class="w-7 h-7" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M14 15l7 16M34 15l-7 16M15 12h18"/></svg>
-</span>
-<h3 class="font-serif text-2xl text-[#0F2E22] font-normal mb-2">Connections</h3>
-<p class="text-sm text-[#0F2E22]/70 leading-relaxed">People, resources and opportunities.</p>
+<div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-[#FAF7F2] group">
+<img src="assets/images/gathering-crowd.jpg" alt="Community growing together" class="w-full h-full object-cover object-center" />
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-[#062117]/40 to-transparent flex items-end p-5">
+<span class="font-serif italic text-sm sm:text-base text-[#D4AF37] tracking-wider leading-snug">A STRONGER TOMORROW GROWS HERE.</span>
 </div>
-<div class="py-8 md:py-0 md:px-8 text-center md:text-left last:md:pr-0">
-<span class="inline-flex items-center justify-center w-12 h-12 text-[#C5A059] mb-5 mx-auto md:mx-0">
-<svg class="w-7 h-7" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36V20M24 36V8M40 36V16"/><path d="M8 20l16-12 16 4"/></svg>
-</span>
-<h3 class="font-serif text-2xl text-[#0F2E22] font-normal mb-2">Capital</h3>
-<p class="text-sm text-[#0F2E22]/70 leading-relaxed">Fueling women-led businesses.</p>
 </div>
 </div>
 
-<p class="font-serif italic text-xl text-[#C5A059] text-center mt-12">&ldquo;A rising tide lifts everyone.&rdquo;</p>
+<div id="three-ways" class="lg:col-span-12 border-t border-[#0D281E]/15 pt-8">
+<p class="text-[#C25E38] text-[10px] font-bold tracking-widest uppercase">How it grows</p>
+<h2 class="font-serif text-2xl text-[#0D281E] mt-1 mb-6">Three ways the movement grows</h2>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-7 lg:gap-6">
+<article class="flex items-start gap-3">
+<span class="text-[#C5A059] shrink-0 mt-0.5">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="22" r="8"/><path d="M23 22h20M35 22v7M41 22v7"/></svg>
+</span>
+<div><h3 class="font-serif text-lg text-[#0D281E] font-semibold">Stories</h3><p class="text-xs text-[#0D281E]/65 leading-relaxed mt-1">Real experiences. Greater possibility.</p></div>
+</article>
+<article class="flex items-start gap-3">
+<span class="text-[#C5A059] shrink-0 mt-0.5">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M14 15l7 16M34 15l-7 16M15 12h18"/></svg>
+</span>
+<div><h3 class="font-serif text-lg text-[#0D281E] font-semibold">Connections</h3><p class="text-xs text-[#0D281E]/65 leading-relaxed mt-1">People, resources, and opportunities.</p></div>
+</article>
+<article class="flex items-start gap-3">
+<span class="text-[#C5A059] shrink-0 mt-0.5">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M39 8C23 10 13 20 12 38c8-9 15-14 27-30Z"/><path d="M12 38c7-10 14-17 24-24"/></svg>
+</span>
+<div><h3 class="font-serif text-lg text-[#0D281E] font-semibold">Capital</h3><p class="text-xs text-[#0D281E]/65 leading-relaxed mt-1">Fueling women-led businesses.</p></div>
+</article>
+<aside class="border-l border-[#0D281E]/20 pl-6 hidden lg:flex items-center">
+<p class="font-serif italic text-lg text-[#C5A059] leading-snug">&ldquo;A rising tide lifts everyone.&rdquo;</p>
+</aside>
+</div>
 </div>
 </section>
 
 <!-- ============================================================ -->
 <!-- HOW YOU CAN BE PART OF IT -->
 <!-- ============================================================ -->
-<section id="connectors" class="bg-[#0A2E20] text-white py-20">
-<div class="max-w-7xl mx-auto">
-<p class="text-[11px] tracking-[0.25em] text-[#C5A059] uppercase font-bold text-center">Participate</p>
-<h2 class="font-serif text-3xl sm:text-4xl text-white font-normal mt-1 mb-12 text-center">How you can be part of it</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4">
-<a href="./share-your-key.html" class="group flex items-center justify-between gap-6 bg-[#0F3827]/80 border border-white/10 rounded-2xl p-8 hover:bg-[#0F3827] transition-colors">
-<div>
-<span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#C5A059]/15 ring-1 ring-[#C5A059]/30 p-2 mb-5">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto">
-</span>
-<h3 class="font-serif text-2xl text-white font-normal mb-2">Keymakers</h3>
-<p class="text-white/75 text-sm leading-relaxed">Share your story. Mentor. Support. Open doors.</p>
+<section id="connectors" class="bg-[#062117] py-8 px-6 text-white">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-8 max-w-6xl mx-auto">
+<div class="text-center lg:text-left shrink-0">
+<p class="text-[#C5A059] text-[10px] tracking-[0.25em] font-bold uppercase">Participate</p>
+<h2 class="font-serif text-2xl sm:text-3xl text-white">How you can be part of it</h2>
+<p class="text-[11px] tracking-widest text-white/50 uppercase font-mono mt-1">Different roles. A bigger tomorrow.</p>
 </div>
-<span class="shrink-0 text-[#C5A059] group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-</a>
-
-<a href="./get-involved.html" class="group flex items-center justify-between gap-6 bg-[#0F3827]/80 border border-white/10 rounded-2xl p-8 hover:bg-[#0F3827] transition-colors">
-<div>
-<span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#C5A059]/15 ring-1 ring-[#C5A059]/30 text-[#C5A059] mb-5">
-<svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M14 15l7 16M34 15l-7 16M15 12h18"/></svg>
+<div class="grid sm:grid-cols-2 gap-4 w-full lg:max-w-2xl">
+<article class="bg-[#0D2E22] border border-white/10 rounded-xl p-4 sm:p-5 flex items-center justify-between gap-4 min-w-[280px]">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#C5A059]/10 text-[#D4AF37] shrink-0">
+<svg class="w-5 h-5" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="22" r="8"/><path d="M23 22h20M35 22v7M41 22v7"/></svg>
 </span>
-<h3 class="font-serif text-2xl text-white font-normal mb-2">Connectors</h3>
-<p class="text-white/75 text-sm leading-relaxed">Bring people together. Create opportunities. Multiply impact.</p>
+<div><h3 class="font-serif text-lg text-white font-semibold">Keymakers</h3><p class="text-xs text-white/70 leading-snug mt-0.5">Share your story. Mentor. Support. Open doors.</p></div>
 </div>
-<span class="shrink-0 text-[#C5A059] group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-</a>
+<a href="./share-your-key.html" aria-label="Learn about Keymakers" class="text-gold font-bold text-lg shrink-0">&rarr;</a>
+</article>
+<article class="bg-[#0D2E22] border border-white/10 rounded-xl p-4 sm:p-5 flex items-center justify-between gap-4 min-w-[280px]">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#C5A059]/10 text-[#D4AF37] shrink-0">
+<svg class="w-5 h-5" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M14 15l7 16M34 15l-7 16M15 12h18"/></svg>
+</span>
+<div><h3 class="font-serif text-lg text-white font-semibold">Connectors</h3><p class="text-xs text-white/70 leading-snug mt-0.5">Bring people together. Create opportunities. Multiply impact.</p></div>
+</div>
+<a href="./get-involved.html" aria-label="Learn about Connectors" class="text-gold font-bold text-lg shrink-0">&rarr;</a>
+</article>
 </div>
 </div>
 </section>
@@ -276,16 +307,18 @@ A more connected world creates more opportunity. When people share experience, a
 <!-- ============================================================ -->
 <!-- THE GATHERING PREVIEW -->
 <!-- ============================================================ -->
-<section id="gathering" class="py-16 lg:py-20 bg-[#FAF7F2]">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-[#0F2E22] to-[#164433] border border-white/10 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-<div class="max-w-xl text-center md:text-left">
-<p class="text-[10px] tracking-[0.2em] text-[#C5A059] uppercase font-bold">The Gathering</p>
-<h2 class="font-serif text-2xl sm:text-3xl text-white mt-1 leading-snug">Join us in person for the first Keymakers Gathering.</h2>
-<p class="text-xs text-white/60 mt-1">Fall 2026 &bull; date &amp; venue TBA</p>
-<p class="text-xs text-white/75 mt-3 max-w-lg leading-relaxed">An evening of stories, connection, and open doors &mdash; live storytelling from our community, hosted by the Women&rsquo;s Venture Fund.</p>
+<section id="gathering" class="editorial-cream px-4 sm:px-8 py-10 sm:py-12">
+<div class="max-w-6xl mx-auto rounded-3xl overflow-hidden bg-[#0A2E20] border border-white/10 grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
+<div class="lg:col-span-7 p-7 sm:p-10 flex flex-col justify-center">
+<p class="text-[10px] tracking-widest text-[#C5A059] uppercase">The Gathering / A place for bold ideas. Real connections. And what&rsquo;s next.</p>
+<h2 class="font-serif text-2xl sm:text-3xl text-white mt-2 mb-3">Join us in person for the first Keymakers Gathering.</h2>
+<p class="text-xs text-white/60 mb-6">Fall 2026 &bull; date &amp; venue to be announced.</p>
+<div><a href="./gathering.html" class="inline-flex bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-wider px-6 py-2.5 rounded-full hover:bg-[#E5C158] transition-all">Get Updates &rarr;</a></div>
 </div>
-<a href="./gathering.html" class="shrink-0 bg-[#C5A059] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-7 py-3 rounded-full hover:bg-[#E2C15E] transition-all shadow-md">Get Updates</a>
+<div class="lg:col-span-5 relative min-h-[240px] w-full h-full">
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="A lively community gathering" class="absolute inset-0 w-full h-full object-cover">
+<div class="absolute inset-0 bg-[#062117]/20"></div>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-3xl sm:text-4xl text-[#D4AF37] drop-shadow-lg whitespace-nowrap">Bigger Together</span>
 </div>
 </div>
 </section>
@@ -293,46 +326,18 @@ A more connected world creates more opportunity. When people share experience, a
 <!-- ============================================================ -->
 <!-- MEMBERSHIP -->
 <!-- ============================================================ -->
-<section id="membership" class="py-16 lg:py-24 bg-cream-alt">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-2xl mx-auto mb-12">
-<span class="text-terracotta text-xs font-bold uppercase tracking-[0.18em]">Membership</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen mt-2">Choose your level of engagement</h2>
-<p class="text-deepgreen/65 text-sm mt-3">Every level matters. Community Circle access begins at Keyholder.</p>
+<section id="membership" class="bg-[#F5F2EB] border-y border-[#0D281E]/10 py-6 px-4">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="shrink-0 text-center md:text-left">
+<span class="font-serif text-xl text-[#0D281E] font-semibold">Membership</span>
+<span class="text-[10px] tracking-widest text-[#0D281E]/60 uppercase ml-2">Multiple ways to belong</span>
 </div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-<template x-for="tier in tiers" :key="tier.name">
-<div :class="tier.featured ? 'border-gold ring-1 ring-gold shadow-soft' : 'border-deepgreen/10'" class="relative flex flex-col rounded-2xl bg-white border p-6">
-<span x-show="tier.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-deepgreen text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most popular</span>
-<div class="flex items-center justify-center w-12 h-12 mx-auto mb-4">
-<img :src="tier.emblem" :alt="tier.emblemAlt" class="w-12 h-12 object-contain">
-</div>
-<div class="text-center mb-4">
-<div class="flex items-baseline justify-center gap-1 flex-wrap">
-<span class="font-serif text-2xl font-semibold text-deepgreen" x-text="tier.price"></span>
-<span class="text-deepgreen/50 text-xs" x-text="tier.period"></span>
-</div>
-<h3 class="text-terracotta font-bold text-xs uppercase tracking-editorial mt-2" x-text="tier.name"></h3>
-<p class="font-serif italic text-deepgreen/70 text-sm mt-1" x-text="tier.tagline"></p>
-<p x-show="tier.note" class="text-[11px] text-deepgreen/55 mt-2 leading-snug" x-text="tier.note"></p>
-</div>
-<ul class="space-y-2 mb-6 flex-1">
-<template x-for="feature in tier.features" :key="feature">
-<li class="flex items-start gap-2 text-deepgreen/65 text-xs leading-snug">
-<svg class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
-<span x-text="feature"></span>
-</li>
-</template>
-</ul>
-<template x-if="tier.givebutter">
-<a :href="tier.ctaHref" data-givebutter-widget="keymakers-campaign" :class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-deepgreen text-white hover:bg-deepgreen-light'" class="w-full text-center rounded-full font-bold text-[10px] sm:text-[11px] px-3 py-2.5 transition-colors" x-text="tier.cta"></a>
-</template>
-<template x-if="!tier.givebutter">
-<a :href="tier.ctaHref" :class="tier.featured ? 'bg-terracotta text-white hover:bg-terracotta/90' : 'bg-deepgreen text-white hover:bg-deepgreen-light'" class="w-full text-center rounded-full font-bold text-[10px] sm:text-[11px] px-3 py-2.5 transition-colors" x-text="tier.cta"></a>
-</template>
-</div>
-</template>
+<div class="flex items-center justify-between gap-6 sm:gap-10 overflow-x-auto no-scrollbar w-full md:w-auto text-center pb-1">
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Carrier.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Carrier</span><span class="block text-[10px] text-[#C25E38]">Free</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keyholder.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keyholder</span><span class="block text-[10px] text-[#C25E38]">$25</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keysmith.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keysmith</span><span class="block text-[10px] text-[#C25E38]">$100</span></a>
+<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Shaper.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Shaper</span><span class="block text-[10px] text-[#C25E38]">$250</span></a>
+<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" class="shrink-0 group"><img src="./assets/images/Key_Circle.svg" alt="" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Circle</span><span class="block text-[10px] text-[#C25E38]">$1,000</span></a>
 </div>
 </div>
 </section>
@@ -342,22 +347,11 @@ A more connected world creates more opportunity. When people share experience, a
 <!-- ============================================================ -->
 <!-- LOCKED FOOTER STATS BAR -->
 <!-- ============================================================ -->
-<section class="bg-deepgreen border-t border-white/10 py-10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10 text-center">
-<div class="px-4 py-6 sm:py-0">
-<p class="font-serif text-3xl sm:text-4xl font-semibold text-gold mb-1">Since 1996</p>
-<p class="text-cream/60 text-xs font-bold uppercase tracking-editorial">Nearly three decades of access</p>
-</div>
-<div class="px-4 py-6 sm:py-0">
-<p class="font-serif text-3xl sm:text-4xl font-semibold text-gold mb-1">28,000+</p>
-<p class="text-cream/60 text-xs font-bold uppercase tracking-editorial">Women entrepreneurs served</p>
-</div>
-<div class="px-4 py-6 sm:py-0">
-<p class="font-serif text-3xl sm:text-4xl font-semibold text-gold mb-1">$2.4M+</p>
-<p class="text-cream/60 text-xs font-bold uppercase tracking-editorial">Business loans provided</p>
-</div>
-</div>
+<section class="bg-[#062117] py-6 border-t border-white/10">
+<div class="grid grid-cols-3 max-w-4xl mx-auto text-center">
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">Since 1996</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Nearly three decades of access</p></div>
+<div class="px-2 border-x border-white/10"><p class="font-serif text-xl sm:text-2xl text-white">28,000+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Women entrepreneurs served</p></div>
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">$2.4M+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Business loans provided</p></div>
 </div>
 </section>
 
@@ -365,8 +359,8 @@ A more connected world creates more opportunity. When people share experience, a
 <!-- FOOTER -->
 <!-- ============================================================ -->
 <footer class="bg-deepgreen-dark text-cream/70">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
 <div>
 <div class="flex items-center gap-3 mb-4">
 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/30 p-1">
@@ -549,75 +543,6 @@ function keymakers() {
         start: null,
         end: null,
         img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80',
-      },
-    ],
-
-    tiers: [
-      {
-        name: 'Key Carrier',
-        tagline: "You're carrying a key.",
-        price: 'Free',
-        period: '($0)',
-        note: '',
-        features: ['Share your key story', 'Monthly insight summary', 'Movement news & invitations'],
-        cta: 'Join Free',
-        ctaHref: 'https://givebutter.com/keymakers-campaign',
-        givebutter: true,
-        emblem: './assets/images/Key_Carrier.svg',
-        emblemAlt: 'Key Carrier emblem',
-      },
-      {
-        name: 'Keyholder',
-        tagline: 'You hold the key.',
-        price: '$25',
-        period: '/ year',
-        note: 'Community Circle access begins here',
-        features: ['Everything in Key Carrier', 'Member-only virtual conversations', 'Keymakers Registry recognition', 'Early Gathering invitations'],
-        cta: 'Become a Keyholder',
-        ctaHref: 'https://givebutter.com/keymakers-campaign',
-        givebutter: true,
-        emblem: './assets/images/Keyholder.svg',
-        emblemAlt: 'Keyholder emblem',
-      },
-      {
-        name: 'Keysmith',
-        tagline: 'You forge new pathways.',
-        price: '$100',
-        period: '/ year',
-        note: '',
-        features: ['Everything in Keyholder', 'Monthly member forums', 'Facilitate discussions', 'Knowledge Library access'],
-        cta: 'Become a Keysmith',
-        ctaHref: 'https://givebutter.com/keymakers-campaign',
-        givebutter: true,
-        emblem: './assets/images/Keysmith.svg',
-        emblemAlt: 'Keysmith emblem',
-      },
-      {
-        name: 'Key Shaper',
-        tagline: 'You shape the conversation.',
-        price: '$250',
-        period: '/ year',
-        note: '',
-        featured: true,
-        features: ['Everything in Keysmith', 'Quarterly spotlight feature', 'Lead roundtables', 'Recognition at The Gathering'],
-        cta: 'Become a Key Shaper',
-        ctaHref: 'https://givebutter.com/keymakers-campaign',
-        givebutter: true,
-        emblem: './assets/images/Key_Shaper.svg',
-        emblemAlt: 'Key Shaper emblem',
-      },
-      {
-        name: 'Key Circle',
-        tagline: "You're helping build what's next.",
-        price: '$1,000',
-        period: '/ year · By invitation',
-        note: '',
-        features: ['Everything in Key Shaper', 'Founder showcases', 'Capital conversations', 'Capital Network Summit invitation'],
-        cta: 'Request an invitation',
-        ctaHref: 'mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request',
-        givebutter: false,
-        emblem: './assets/images/Key_Circle.svg',
-        emblemAlt: 'Key Circle emblem',
       },
     ],
 
