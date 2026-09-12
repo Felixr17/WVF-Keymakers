@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="Someone opened a door for you. What was the key? And whose door will you open next?">
 <meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 
-<link rel="preload" as="image" href="./assets/images/hero-editorial.jpg">
+<link rel="preload" as="image" href="./assets/images/hero-editorial.webp" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
@@ -153,9 +153,9 @@ Explore Keymakers
 </div>
 
 <div class="relative w-full aspect-[4/5] max-h-[620px] rounded-3xl overflow-hidden shadow-2xl bg-[#062117]">
-<img src="./assets/images/hero-editorial.jpg" alt="Inspired woman founder in a warm editorial portrait" width="1200" height="1800" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover object-center">
+<img src="./assets/images/hero-editorial.webp" alt="Inspired woman founder in a warm editorial portrait" width="1200" height="1800" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover object-center">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/60 via-transparent to-transparent z-20 pointer-events-none"></div>
-<div class="absolute top-6 right-6 z-30 font-serif italic text-2xl sm:text-3xl text-[#D4AF37] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] text-right leading-tight pointer-events-none">
+<div class="absolute top-6 right-6 z-30 font-serif italic text-2xl sm:text-3xl text-[#D4AF37] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] text-right leading-tight pointer-events-none">
 More Women.<br>Brighter Tomorrows.
 </div>
 <div class="absolute bottom-6 right-6 z-30 text-[10px] tracking-[0.25em] text-white/70 uppercase font-mono text-right leading-relaxed hidden sm:block pointer-events-none">
@@ -183,35 +183,35 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
 <div role="button" tabindex="0" @click="openStory(0)" @keydown.enter.prevent="openStory(0)" aria-label="Watch Brenda Braxton's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/brenda-braxton.jpg" alt="Brenda Braxton" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+<img src="./assets/images/keymakers/brenda-braxton.webp" alt="Brenda Braxton, CEO of Pause" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Brenda Braxton</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient</p>
 </div>
 </div>
 <div role="button" tabindex="0" @click="openStory(1)" @keydown.enter.prevent="openStory(1)" aria-label="Watch Angela Long's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/angela-long.jpg" alt="Angela Long" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+<img src="./assets/images/keymakers/angela-long.webp" alt="Angela Long, Legacy Jewelry Co." width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Angela Long</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair</p>
 </div>
 </div>
 <div role="button" tabindex="0" @click="openStory(2)" @keydown.enter.prevent="openStory(2)" aria-label="Watch Nikki's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/nikki.jpg" alt="Nikki" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+<img src="./assets/images/keymakers/nikki.webp" alt="Nikki, Get Fit With Nik" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Nikki</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Get Fit With Nik | Keymaker</p>
 </div>
 </div>
 <div role="button" tabindex="0" @click="openStory(3)" @keydown.enter.prevent="openStory(3)" aria-label="Watch Loretta's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/loretta.jpg" alt="Loretta" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+<img src="./assets/images/keymakers/loretta.webp" alt="Loretta, LA Sweets" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Loretta</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">LA Sweets | Keymaker</p>
 </div>
 </div>
 <div role="button" tabindex="0" @click="openStory(4)" @keydown.enter.prevent="openStory(4)" aria-label="Watch Michelle's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/michelle.jpg" alt="Michelle" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+<img src="./assets/images/keymakers/michelle.webp" alt="Michelle, Michelle's Beauty Salon" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Michelle</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Michelle&rsquo;s Beauty Salon | Keymaker</p>
@@ -235,10 +235,10 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 
 <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
 <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-[#FAF7F2]">
-<img src="./assets/images/gathering-collaborate.jpg" alt="Women entrepreneurs collaborating together" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
+<img src="./assets/images/gathering-collaborate.webp" alt="Women entrepreneurs collaborating together" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
 </div>
 <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-[#FAF7F2] group">
-<img src="./assets/images/gathering-networking.jpg" alt="Women founders networking and connecting" width="1200" height="675" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
+<img src="./assets/images/gathering-networking.webp" alt="Women founders in a workshop interaction" width="1200" height="675" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-[#062117]/40 to-transparent flex items-end p-5">
 <span class="font-serif italic text-sm sm:text-base text-[#D4AF37] tracking-wider leading-snug">A STRONGER TOMORROW GROWS HERE.</span>
 </div>
@@ -318,11 +318,11 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 <p class="text-xs text-white/60 mb-6">Fall 2026 &bull; date &amp; venue to be announced.</p>
 <div><a href="./gathering.html" class="inline-flex bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-wider px-6 py-2.5 rounded-full hover:bg-[#E5C158] transition-all">Get Updates &rarr;</a></div>
 </div>
-<div class="lg:col-span-5 relative min-h-[240px] w-full h-full">
-<img src="./assets/images/gathering-crowd.jpg" alt="A lively Keymakers event crowd scene" width="1200" height="800" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover">
+<div class="lg:col-span-5 relative aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden">
+<img src="./assets/images/gathering-crowd.webp" alt="A lively Keymakers event crowd scene" width="1200" height="800" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/55 via-[#062117]/25 to-transparent"></div>
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,33,23,0.4)_0%,transparent_65%)]"></div>
-<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-3xl sm:text-4xl text-[#D4AF37] drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] whitespace-nowrap bg-black/30 backdrop-blur-[1px] px-4 py-1 rounded-full">Bigger Together</span>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.45)_0%,transparent_70%)]"></div>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-3xl sm:text-4xl text-[#D4AF37] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] whitespace-nowrap bg-black/30 backdrop-blur-[1px] px-4 py-1 rounded-full">Bigger Together</span>
 </div>
 </div>
 </section>
@@ -412,50 +412,55 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 </footer>
 
 <!-- ============================================================ -->
-<!-- KEYMAKER VIDEO MODAL (YouTube IFrame API + auto-advance) -->
+<!-- KEYMAKER VIDEO MODAL (sequential playlist + lazy YouTube API) -->
 <!-- ============================================================ -->
 <div
-x-show="modal.open"
+x-show="isOpen"
 x-cloak
 @keydown.escape.window="closeModal()"
+@keydown.arrow-left.window.prevent="isOpen && prevStory()"
+@keydown.arrow-right.window.prevent="isOpen && nextStory()"
 class="fixed inset-0 z-[100] flex items-center justify-center p-4"
 role="dialog"
 aria-modal="true"
-:aria-hidden="!modal.open"
+:aria-hidden="!isOpen"
 >
-<div x-show="modal.open" x-transition.opacity @click="closeModal()" class="absolute inset-0 bg-black/85 backdrop-blur-sm"></div>
+<div x-show="isOpen" x-transition.opacity @click="closeModal()" class="absolute inset-0 bg-black/85 backdrop-blur-sm"></div>
 
 <div
-x-show="modal.open"
+x-show="isOpen"
 x-transition:enter="transition ease-out duration-300"
 x-transition:enter-start="opacity-0 scale-95"
 x-transition:enter-end="opacity-100 scale-100"
 class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
 @click.outside="closeModal()"
 >
-<button @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-30 rounded-full bg-white/90 text-deepgreen p-2 hover:bg-white shadow-lg">
+<button @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-40 rounded-full bg-white/90 text-deepgreen p-2 hover:bg-white shadow-lg">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
 
-<template x-if="modal.keymaker">
+<template x-if="currentStory">
 <div>
 <div class="relative px-4 sm:px-6 pt-4 sm:pt-6">
 <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl" data-yt-wrapper>
 <div id="keymaker-yt-player" class="w-full h-full"></div>
-<template x-if="!modal.keymaker.youtubeId">
+<template x-if="!currentStory.youtubeId">
 <div class="absolute inset-0 flex flex-col items-center justify-center bg-deepgreen text-center p-6">
-<img :src="modal.keymaker.img" :alt="modal.keymaker.name" class="absolute inset-0 w-full h-full object-cover opacity-40">
+<img :src="currentStory.img" :alt="currentStory.name" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-40">
 <div class="relative z-10">
-<p class="text-white font-serif text-lg mb-2" x-text="modal.keymaker.name"></p>
+<p class="text-white font-serif text-lg mb-2" x-text="currentStory.name"></p>
 <p class="text-cream/70 text-sm">Video asset pending upload</p>
 </div>
 </div>
 </template>
+
+<button @click="prevStory()" type="button" aria-label="Previous story" class="absolute left-3 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 backdrop-blur-sm transition-colors">&lt;</button>
+<button @click="nextStory()" type="button" aria-label="Next story" class="absolute right-3 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 backdrop-blur-sm transition-colors">&gt;</button>
 </div>
 </div>
 
 <div class="flex items-center justify-between gap-3 px-6 sm:px-8 py-4 border-t border-white/10">
-<p class="text-xs sm:text-sm font-semibold text-white/80" x-text="'Story ' + (activeKeymakerIndex + 1) + ' of ' + featuredKeymakers.length"></p>
+<span class="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-white/90" x-text="'Story ' + (currentIndex + 1) + ' of ' + playlist.length"></span>
 <p class="text-[10px] uppercase tracking-editorial text-gold" x-show="autoAdvanceSequence">Auto-advancing</p>
 </div>
 
@@ -463,11 +468,11 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 <div class="flex items-center gap-3 mb-3">
 <div class="w-px h-8 bg-gold"></div>
 <div>
-<p class="text-white font-semibold" x-text="modal.keymaker.name"></p>
-<p class="text-cream/55 text-xs uppercase tracking-wide mt-0.5" x-text="modal.keymaker.tag"></p>
+<p class="text-white font-semibold" x-text="currentStory.name"></p>
+<p class="text-cream/55 text-xs uppercase tracking-wide mt-0.5" x-text="currentStory.title"></p>
 </div>
 </div>
-<p x-show="modal.keymaker.quote" class="font-serif italic text-cream/85 text-lg leading-snug" x-text="'\u201c' + modal.keymaker.quote + '\u201d'"></p>
+<p x-show="currentStory.quote" class="font-serif italic text-cream/85 text-lg leading-snug" x-text="'\u201c' + currentStory.quote + '\u201d'"></p>
 </div>
 </div>
 </template>
@@ -479,8 +484,8 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 function keymakers() {
   return {
     mobileOpen: false,
-    modal: { open: false, keymaker: null },
-    activeKeymakerIndex: 0,
+    isOpen: false,
+    currentIndex: 0,
     autoAdvanceSequence: false,
     ytPlayer: null,
     ytApiReady: false,
@@ -490,58 +495,62 @@ function keymakers() {
      * Production video IDs — replace empty strings with WVF YouTube asset IDs.
      * Brenda: set start/end seconds for clip "My advice..." → "...there's always a way to get to a yes."
      */
-    featuredKeymakers: [
+    playlist: [
       {
         id: 'brenda',
         name: 'Brenda Braxton',
-        tag: 'CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient',
+        title: 'CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient',
         quote: 'My advice... there\u2019s always a way to get to a yes.',
         youtubeId: '',
         start: null,
         end: null,
-        img: './assets/images/keymakers/brenda-braxton.jpg',
+        img: './assets/images/keymakers/brenda-braxton.webp',
       },
       {
         id: 'angela',
         name: 'Angela Long',
-        tag: 'Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair',
+        title: 'Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair',
         quote: '',
         youtubeId: '',
         start: null,
         end: null,
-        img: './assets/images/keymakers/angela-long.jpg',
+        img: './assets/images/keymakers/angela-long.webp',
       },
       {
         id: 'nikki',
         name: 'Nikki',
-        tag: 'Get Fit With Nik | Keymaker',
+        title: 'Get Fit With Nik | Keymaker',
         quote: '',
         youtubeId: '',
         start: null,
         end: null,
-        img: './assets/images/keymakers/nikki.jpg',
+        img: './assets/images/keymakers/nikki.webp',
       },
       {
         id: 'loretta',
         name: 'Loretta',
-        tag: 'LA Sweets | Keymaker',
+        title: 'LA Sweets | Keymaker',
         quote: '',
         youtubeId: '',
         start: null,
         end: null,
-        img: './assets/images/keymakers/loretta.jpg',
+        img: './assets/images/keymakers/loretta.webp',
       },
       {
         id: 'michelle',
         name: 'Michelle',
-        tag: 'Michelle\u2019s Beauty Salon | Keymaker',
+        title: 'Michelle\u2019s Beauty Salon | Keymaker',
         quote: '',
         youtubeId: '',
         start: null,
         end: null,
-        img: './assets/images/keymakers/michelle.jpg',
+        img: './assets/images/keymakers/michelle.webp',
       },
     ],
+
+    get currentStory() {
+      return this.playlist[this.currentIndex] ?? null;
+    },
 
     init() {
       window.__keymakersApp = this;
@@ -583,11 +592,10 @@ function keymakers() {
     },
 
     openStory(index, fromAutoAdvance = false) {
-      const wasOpen = this.modal.open;
+      const wasOpen = this.isOpen;
       this.destroyPlayer();
-      this.activeKeymakerIndex = index;
-      this.modal.keymaker = this.featuredKeymakers[index];
-      this.modal.open = true;
+      this.currentIndex = index;
+      this.isOpen = true;
 
       if (fromAutoAdvance) {
         this.autoAdvanceSequence = true;
@@ -600,26 +608,32 @@ function keymakers() {
       document.body.style.overflow = 'hidden';
 
       this.$nextTick(() => {
-        if (!this.modal.keymaker.youtubeId) {
+        const story = this.currentStory;
+        if (!story || !story.youtubeId) {
           this.autoAdvanceSequence = false;
           return;
         }
         this.ensureYouTubeApi().then(() => {
-          this.loadKeymakerPlayer(index);
+          this.loadStoryPlayer(this.currentIndex);
         });
       });
     },
 
-    findNextVideoIndex(fromIndex) {
-      for (let i = fromIndex; i < this.featuredKeymakers.length; i++) {
-        if (this.featuredKeymakers[i].youtubeId) return i;
-      }
-      return -1;
+    prevStory() {
+      this.autoAdvanceSequence = false;
+      const prev = (this.currentIndex - 1 + this.playlist.length) % this.playlist.length;
+      this.openStory(prev, false);
     },
 
-    loadKeymakerPlayer(index) {
-      const keymaker = this.featuredKeymakers[index];
-      if (!keymaker || !keymaker.youtubeId) return;
+    nextStory() {
+      this.autoAdvanceSequence = false;
+      const next = (this.currentIndex + 1) % this.playlist.length;
+      this.openStory(next, false);
+    },
+
+    loadStoryPlayer(index) {
+      const story = this.playlist[index];
+      if (!story || !story.youtubeId) return;
 
       this.destroyPlayer();
 
@@ -631,11 +645,11 @@ function keymakers() {
         origin: window.location.origin,
         playsinline: 1,
       };
-      if (keymaker.start != null) playerVars.start = keymaker.start;
-      if (keymaker.end != null) playerVars.end = keymaker.end;
+      if (story.start != null) playerVars.start = story.start;
+      if (story.end != null) playerVars.end = story.end;
 
       this.ytPlayer = new YT.Player('keymaker-yt-player', {
-        videoId: keymaker.youtubeId,
+        videoId: story.youtubeId,
         width: '100%',
         height: '100%',
         playerVars,
@@ -650,17 +664,13 @@ function keymakers() {
         this.autoAdvanceSequence = false;
       }
       if (event.data === YT.PlayerState.ENDED && this.autoAdvanceSequence) {
-        this.advanceToNextKeymaker();
+        this.advancePlaylist();
       }
     },
 
-    advanceToNextKeymaker() {
-      const next = this.findNextVideoIndex(this.activeKeymakerIndex + 1);
-      if (next !== -1) {
-        this.openStory(next, true);
-      } else {
-        this.autoAdvanceSequence = false;
-      }
+    advancePlaylist() {
+      const next = (this.currentIndex + 1) % this.playlist.length;
+      this.openStory(next, true);
     },
 
     destroyPlayer() {
@@ -677,8 +687,7 @@ function keymakers() {
     closeModal() {
       this.autoAdvanceSequence = false;
       this.destroyPlayer();
-      this.modal.open = false;
-      this.modal.keymaker = null;
+      this.isOpen = false;
       document.body.style.overflow = '';
     },
   };
