@@ -82,58 +82,40 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <!-- ============================================================ -->
 <!-- SECTION 1 :: TOP NAVIGATION -->
 <!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
-<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+<header class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-sm border-b border-white/10">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
+<a href="./index.html" class="font-serif tracking-[0.2em] text-[#D4AF37] font-bold text-lg shrink-0">KEYMAKERS</a>
 
-<!-- Dual Logo Lockup -->
-<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
-<span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-</span>
-<span class="flex flex-col leading-tight">
-<span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
-<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
-</span>
-</a>
-
-<!-- Center Navigation -->
-<div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
-<a href="./stories.html" class="hover:text-terracotta transition-colors py-2">Stories</a>
-<a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
-<a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
-<a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a>
-<a href="./about.html" class="text-terracotta border-b-2 border-terracotta py-2">About WVF</a>
+<div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
+<a href="./stories.html" class="hover:text-white transition-colors py-2">Stories</a>
+<a href="./community.html" class="hover:text-white transition-colors py-2">Community</a>
+<a href="./gathering.html" class="hover:text-white transition-colors py-2">The Gathering</a>
+<a href="./get-involved.html" class="hover:text-white transition-colors py-2">Get Involved</a>
+<a href="./connectors.html" class="hover:text-white transition-colors py-2">Connectors</a>
+<a href="./about.html" aria-current="page" class="text-[#D4AF37] border-b-2 border-[#D4AF37] py-2">About WVF</a>
 </div>
 
-<!-- Right CTAs -->
-<div class="hidden xl:flex items-center gap-3 shrink-0">
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-5 py-2.5 hover:bg-gold/90 transition-all">Donate to Keymakers</a>
-<a href="./share-your-key.html" class="inline-flex items-center justify-center rounded-full border border-white/25 text-white text-xs uppercase tracking-wide font-semibold px-4 py-2 hover:bg-white/10 transition-colors">Share Your Key</a>
-</div>
+<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full hover:bg-[#E5C158] min-h-[44px]">Share Your Key</a>
 
-<!-- Mobile menu toggle -->
-<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold" :aria-expanded="mobileOpen" aria-label="Toggle menu">
 <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
 <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
-</nav>
+</div>
 
-<!-- Mobile Menu Panel -->
-<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
-<ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
-<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
-<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
-<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 text-terracotta font-bold">About WVF</a></li>
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden px-4 pb-6 pt-2 bg-[#062117]/98 border-t border-white/10">
+<ul class="flex flex-col text-sm font-semibold uppercase tracking-widest text-white/80">
+<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Community</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./connectors.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" aria-current="page" class="block py-3 min-h-[44px] text-[#D4AF37]">About WVF</a></li>
 </ul>
-<div class="flex flex-col gap-3 mt-5">
-<a @click="mobileOpen = false" href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full border border-white/25 text-white text-xs font-semibold uppercase tracking-wide px-4 py-3 hover:bg-white/10 transition-colors">Share Your Key</a>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-widest px-4 py-3 min-h-[44px] hover:bg-[#E5C158]">Share Your Key</a>
 </div>
-</div>
+</nav>
 </header>
-
 <main class="flex-grow">
 <!-- ============================================================ -->
 <!-- HERO SECTION -->
