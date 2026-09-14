@@ -3,592 +3,577 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Favicons & Preconnect -->
 <link rel="icon" type="image/svg+xml" href="./assets/images/Keymakers_Logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Primary SEO Tags -->
-<title>Share Your Key | Keymakers Movement | Women's Venture Fund</title>
-<meta name="description" content="Tell Women's Venture Fund about the key that changed what was possible for your business. A short intake form is all it takes to start the conversation.">
+<title>Share Your Key | Keymakers Movement | Women&rsquo;s Venture Fund</title>
+<meta name="description" content="Share your work, your journey, and the key that helped open a door. A short form starts the conversation with the Women&rsquo;s Venture Fund team.">
 <link rel="canonical" href="https://keymakers.womensventurefund.org/share-your-key.html">
 
-<!-- Open Graph / Social Link Previews -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Women's Venture Fund">
-<meta property="og:title" content="Share Your Key | Keymakers Movement | Women's Venture Fund">
-<meta property="og:description" content="Tell us about the key that changed what was possible for your business.">
+<meta property="og:title" content="Share Your Key | Keymakers Movement">
+<meta property="og:description" content="Your story can open doors for others. Share your key with the WVF team.">
 <meta property="og:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://keymakers.womensventurefund.org/share-your-key.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Share Your Key | Keymakers Movement | Women's Venture Fund">
-<meta name="twitter:description" content="Tell us about the key that changed what was possible for your business.">
+<meta name="twitter:title" content="Share Your Key | Keymakers Movement">
+<meta name="twitter:description" content="Your story can open doors for others.">
 <meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 
-<!-- Fonts -->
+<link rel="preload" as="image" href="./assets/images/keymakers/loretta.webp" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS (CDN) -->
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
-          terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
-          gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
-          deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
-          cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
-          warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
-          warmgray: { DEFAULT: '#F1ECE4' },
-        },
-        fontFamily: {
-          serif: ['Lora', 'Georgia', 'serif'],
-          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        },
-        boxShadow: {
-          soft: '0 25px 60px -18px rgba(24,38,59,0.30)',
-          card: '0 10px 30px -12px rgba(74,53,37,0.25)',
-        },
-        borderRadius: {
-          '2xl': '1.25rem',
-          '3xl': '1.75rem',
-        },
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        deepgreen: { DEFAULT: '#0D281E', light: '#0F2E22', dark: '#081912' },
+        cream: { DEFAULT: '#FAF8F5', alt: '#F5F2EB' },
+        gold: { DEFAULT: '#C5A059', bright: '#D4AF37', 50: '#fbf6ea' },
+        terracotta: { DEFAULT: '#C25E38', 50: '#fbeee7' },
+        deepbrown: { DEFAULT: '#0D281E' },
+        warmtan: { DEFAULT: '#E8E0D4' },
+        warmgray: { DEFAULT: '#F5F2EB' },
       },
+      fontFamily: {
+        serif: ['Lora', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      letterSpacing: { editorial: '0.04em' },
     },
-  };
+  },
+};
 </script>
 
-<!-- Givebutter Widget Library -->
-<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=c0DdlWYvuGmd2igp&p=other"></script>
-
-<!-- Alpine.js (CDN) -->
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
-  html { scroll-padding-top: 96px; }
-  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-  .font-serif { font-family: 'Lora', Georgia, serif; }
-  [x-cloak] { display: none !important; }
+html, body { margin: 0; padding: 0; }
+html { scroll-padding-top: 88px; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+.editorial-cream {
+  background-color: #FAF7F2;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(194, 94, 56, 0.035), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(13, 40, 30, 0.04), transparent 32%);
+}
+[x-cloak] { display: none !important; }
 </style>
 </head>
 
-<body x-data="shareYourKey()" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+<body x-data="shareYourKey()" class="bg-cream text-deepgreen antialiased m-0 p-0">
 
-<!-- ============================================================ -->
-<!-- SECTION 1 :: TOP NAVIGATION                                  -->
-<!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+<header class="relative bg-[#062117]">
+<nav class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-sm border-b border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
+<a href="./index.html" class="flex items-center gap-3 shrink-0 group">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto object-contain">
+</span>
+<span class="font-serif text-lg font-bold text-[#D4AF37] tracking-widest">KEYMAKERS</span>
+</a>
 
-    <!-- Dual Logo Lockup -->
-    <a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
-      <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-        <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-      </span>
-      <span class="flex flex-col leading-tight">
-        <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
-        <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
-      </span>
-    </a>
+<div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
+<a href="./index.html#explore" class="hover:text-white transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Stories</a>
+<a href="./community.html" class="hover:text-white transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Community</a>
+<a href="./gathering.html" class="hover:text-white transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">The Gathering</a>
+<a href="./get-involved.html" class="hover:text-white transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Get Involved</a>
+<a href="./index.html#connectors" class="hover:text-white transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">Connectors</a>
+<a href="./about.html" class="hover:text-white transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm">About WVF</a>
+</div>
 
-    <!-- Center Navigation -->
-    <div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
-      <a href="./index.html#stories" class="hover:text-terracotta transition-colors py-2">Stories</a>
-      <a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
-      <a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
-      <a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a>
-      <a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a>
-    </div>
+<a href="./share-your-key.html" aria-current="page" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs px-5 py-2.5 min-h-[44px] shadow-md ring-2 ring-white/30 hover:bg-[#E2C15E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+Share Your Key
+</a>
 
-    <!-- Right CTAs -->
-    <div class="hidden xl:flex items-center gap-3 shrink-0">
-      <a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-5 py-2.5 hover:bg-gold/90 transition-all">Donate to Keymakers</a>
-      <a href="./gathering.html#reserve" class="inline-flex items-center justify-center rounded-full border border-white/25 text-white text-xs uppercase tracking-wide font-semibold px-4 py-2 hover:bg-white/10 transition-colors">Reserve Your Place</a>
-    </div>
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold" :aria-expanded="mobileOpen" aria-label="Toggle menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</div>
 
-    <!-- Mobile menu toggle -->
-    <button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
-      <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-      <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-    </button>
-  </nav>
+<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden px-4 pb-6 pt-2 bg-[#062117]/98 border-t border-white/10">
+<ul class="flex flex-col text-sm font-semibold uppercase tracking-widest text-white/80">
+<li><a @click="mobileOpen = false" href="./index.html#explore" class="block py-3 border-b border-white/10 hover:text-white">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-white">Community</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-white">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#connectors" class="block py-3 border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-white">About WVF</a></li>
+</ul>
+<a @click="mobileOpen = false" href="./share-your-key.html" aria-current="page" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 min-h-[44px] ring-2 ring-white/30">Share Your Key</a>
+</div>
+</nav>
 
-  <!-- Mobile Menu Panel -->
-  <div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
-    <ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-      <li><a @click="mobileOpen = false" href="./index.html#stories" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
-      <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
-      <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
-      <li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
-      <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
-    </ul>
-    <div class="flex flex-col gap-3 mt-5">
-      <a @click="mobileOpen = false" href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
-      <a @click="mobileOpen = false" href="./gathering.html#reserve" class="text-center rounded-full border border-white/25 text-white text-xs font-semibold uppercase tracking-wide px-4 py-3 hover:bg-white/10 transition-colors">Reserve Your Place</a>
-    </div>
-  </div>
+<section class="relative min-h-[min(100vh,720px)] max-h-[880px] flex items-end lg:items-center">
+<div class="absolute inset-0">
+<img src="./assets/images/keymakers/loretta.webp" alt="Keymaker Loretta in a warm, reflective moment" width="800" height="1067" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/93 via-[#062117]/78 to-[#062117]/45"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/70 via-transparent to-[#062117]/35"></div>
+</div>
+<p class="absolute top-6 right-4 sm:right-8 z-10 font-serif italic text-lg sm:text-2xl text-[#D4AF37] text-right leading-snug pointer-events-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+Real People.<br>Brighter Tomorrows.
+</p>
+<p class="absolute top-24 right-4 sm:right-8 z-10 text-[9px] sm:text-[10px] tracking-[0.22em] text-white/60 uppercase text-right pointer-events-none hidden sm:block">People open people.</p>
+<div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12">
+<div class="max-w-xl">
+<h1 class="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-white font-semibold leading-[1.12] mb-4">Your story can open doors for others.</h1>
+<p class="text-white/85 text-sm sm:text-base leading-relaxed mb-6">Share your work, your journey, and the key that helped open a door. Your experience can spark possibility for someone else.</p>
+<button type="button" @click="scrollToForm()" class="inline-flex items-center justify-center gap-2 min-h-[44px] rounded-full bg-[#D4AF37] text-[#062117] font-bold text-sm px-7 py-3 hover:bg-[#E2C15E] transition-colors shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+Start Your Story <span aria-hidden="true">&rarr;</span>
+</button>
+</div>
+</div>
+</section>
 </header>
 
-<main id="top">
+<main>
 
-<!-- ============================================================ -->
-<!-- SECTION 2 :: HERO / INTAKE HEADER                            -->
-<!-- ============================================================ -->
-<section class="relative bg-cream overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-    <img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-10 top-6 h-72 sm:h-96 w-auto object-contain">
-  </div>
-
-  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-14 sm:pb-16 text-center">
-    <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-6 p-1.5">
-      <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-    </span>
-
-    <div class="inline-flex items-center justify-center gap-2 text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
-      <span class="w-6 h-px bg-terracotta"></span>
-      Keymakers &nbsp;|&nbsp; Story Intake Portal
-      <span class="w-6 h-px bg-terracotta"></span>
-    </div>
-
-    <h1 class="font-serif uppercase text-4xl sm:text-5xl lg:text-6xl tracking-wide leading-tight font-semibold text-deepbrown mb-6">
-      Share Your Key
-    </h1>
-
-    <p class="font-serif italic text-xl sm:text-2xl leading-snug text-deepbrown mb-6">
-      What was the key that changed what was possible for your business?
-    </p>
-
-    <p class="text-deepbrown/70 text-base sm:text-lg leading-relaxed mb-6">
-      It may have been a person who opened a door, access to capital, an important relationship, a difficult decision, a lesson learned the hard way, or a resource you finally found.
-    </p>
-
-    <p class="text-deepbrown/70 text-base sm:text-lg leading-relaxed">
-      Women&rsquo;s Venture Fund would like to record a brief conversation with you about your key and the story behind it. Your experience will become part of the Keymakers library&mdash;a growing collection of stories, knowledge, resources, and connections designed to help more women entrepreneurs find their way forward.
-    </p>
-  </div>
+<!-- How It Works -->
+<section class="editorial-cream border-b border-deepgreen/10 py-10 sm:py-12">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+<div class="lg:max-w-xl">
+<h2 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold mb-2">How It Works</h2>
+<p class="text-sm text-deepgreen/70 mb-6">Sharing your key is simple. Here&rsquo;s how it works.</p>
+<ol class="border border-deepgreen/15 rounded-lg overflow-hidden divide-y divide-deepgreen/10">
+<li class="flex gap-4 p-4 sm:p-5 bg-white/40">
+<span class="flex items-center justify-center w-9 h-9 shrink-0 rounded-full bg-[#062117] text-[#D4AF37] text-sm font-bold">1</span>
+<div>
+<p class="font-semibold text-deepgreen text-sm mb-1">Share your key</p>
+<p class="text-xs sm:text-sm text-deepgreen/70 leading-relaxed">Tell us about your work, your journey, and the key that helped open a door for you.</p>
+</div>
+</li>
+<li class="flex gap-4 p-4 sm:p-5">
+<span class="flex items-center justify-center w-9 h-9 shrink-0 rounded-full bg-[#062117] text-[#D4AF37] text-sm font-bold">2</span>
+<div>
+<p class="font-semibold text-deepgreen text-sm mb-1">Choose how you&rsquo;d like to participate</p>
+<p class="text-xs sm:text-sm text-deepgreen/70 leading-relaxed">We&rsquo;ll follow up with options for sharing your story in the way that feels right for you.</p>
+</div>
+</li>
+<li class="flex gap-4 p-4 sm:p-5 bg-white/40">
+<span class="flex items-center justify-center w-9 h-9 shrink-0 rounded-full bg-[#062117] text-[#D4AF37] text-sm font-bold">3</span>
+<div>
+<p class="font-semibold text-deepgreen text-sm mb-1">We&rsquo;ll follow up</p>
+<p class="text-xs sm:text-sm text-deepgreen/70 leading-relaxed">Our team will contact you to learn more, answer questions, and explore possible next steps.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="lg:w-56 shrink-0 flex flex-col justify-center items-center lg:items-end text-center lg:text-right">
+<div class="relative w-full max-w-[14rem] aspect-square rounded-sm overflow-hidden mb-4 hidden sm:block">
+<img src="./assets/images/gathering-networking.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-90">
+<div class="absolute inset-0 bg-[#062117]/40"></div>
+</div>
+<p class="font-serif italic text-lg text-[#C5A059] leading-snug">&ldquo;A rising tide lifts everyone.&rdquo;</p>
+</div>
+</div>
+</div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SECTION 3 :: WHAT TO EXPECT                                  -->
-<!-- ============================================================ -->
-<section class="bg-cream pb-4 sm:pb-6">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="rounded-2xl sm:rounded-3xl bg-warmgray p-7 sm:p-10">
-      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-deepbrown mb-6">What to expect</h2>
+<!-- Form + participation panel -->
+<section id="intake-form" class="editorial-cream py-10 sm:py-14">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div id="form-intro" tabindex="-1" class="sr-only">Share your key intake form</div>
 
-      <ul class="space-y-4 mb-8">
-        <li class="flex items-start gap-3">
-          <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
-          <span class="text-deepbrown/80 text-base leading-relaxed">The conversation will take approximately 15&ndash;20 minutes.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
-          <span class="text-deepbrown/80 text-base leading-relaxed">You do not need to prepare a speech or produce your own video. A member of the WVF team will guide the conversation and record your answers.</span>
-        </li>
-      </ul>
+<div x-show="formSubmitted" x-cloak class="max-w-2xl mx-auto text-center py-8">
+<h2 id="success-heading" tabindex="-1" class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold mb-4">Thank you for sharing your key.</h2>
+<p class="text-sm sm:text-base text-deepgreen/75 leading-relaxed">A member of the WVF team will review your submission and contact you if there is a potential next step. Nothing will be published without a further conversation and appropriate permission.</p>
+<a href="./index.html#explore" class="inline-flex items-center justify-center min-h-[44px] mt-8 rounded-full bg-terracotta text-white font-bold text-sm px-8 py-3 hover:bg-terracotta/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold">Explore Keymakers</a>
+</div>
 
-      <div class="pt-6 border-t border-deepbrown/10">
-        <p class="font-serif text-lg font-semibold text-deepbrown mb-4">During the conversation, we&rsquo;ll ask about:</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5 p-0.5">
-              <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-            </span>
-            <span class="text-deepbrown/80 text-base leading-relaxed">What your key was</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5 p-0.5">
-              <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-            </span>
-            <span class="text-deepbrown/80 text-base leading-relaxed">What challenge or closed door you were facing</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5 p-0.5">
-              <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-            </span>
-            <span class="text-deepbrown/80 text-base leading-relaxed">How that key changed what was possible</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5 p-0.5">
-              <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-            </span>
-            <span class="text-deepbrown/80 text-base leading-relaxed">What you learned that could help another woman</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-gold/15 text-gold shrink-0 mt-0.5 p-0.5">
-              <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-            </span>
-            <span class="text-deepbrown/80 text-base leading-relaxed">What door you would now like to help open for someone else</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div x-show="!formSubmitted" class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+<!-- Form (first on mobile) -->
+<div class="lg:col-span-7 order-1">
+<div class="border-t-4 border-[#D4AF37] pt-6">
+<h2 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold mb-1">Share Your Key</h2>
+<p class="text-sm text-deepgreen/65 mb-6">A few quick details to get started. We&rsquo;ll take it from there.</p>
+
+<div x-show="formError" x-cloak role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
+<p class="font-semibold mb-1">We couldn&rsquo;t submit your story</p>
+<p x-text="formError" class="text-deepgreen/80"></p>
+<p class="text-xs mt-2 text-deepgreen/60">Please check your connection and try again. Your entries are still here.</p>
+</div>
+
+<div x-show="fieldErrors.length" x-cloak role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
+<p class="font-semibold mb-2">Please correct the following:</p>
+<ul class="list-disc pl-5 space-y-1 text-deepgreen/80">
+<template x-for="err in fieldErrors" :key="err.id">
+<li><a :href="'#' + err.id" class="underline hover:text-deepgreen" x-text="err.message"></a></li>
+</template>
+</ul>
+</div>
+
+<form @submit.prevent="submitForm($event)" novalidate class="space-y-5">
+<input type="hidden" name="source" value="Main Intake Form">
+<label class="sr-only" for="companyWebsite">Leave blank</label>
+<input type="text" id="companyWebsite" name="companyWebsite" x-model="honeypot" tabindex="-1" autocomplete="off" class="absolute opacity-0 pointer-events-none h-0 w-0" aria-hidden="true">
+
+<div>
+<label for="fullName" class="block text-sm font-semibold text-deepgreen mb-1.5">Name <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="text" id="fullName" name="fullName" required autocomplete="name" x-model="fullName"
+  :aria-invalid="hasError('fullName')"
+  :aria-describedby="hasError('fullName') ? 'fullName-error' : null"
+  class="w-full min-h-[44px] rounded-lg border bg-white/80 px-4 py-2.5 text-sm text-deepgreen focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
+  :class="hasError('fullName') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('fullName')" id="fullName-error" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
+</div>
+
+<div class="grid sm:grid-cols-2 gap-5">
+<div>
+<label for="email" class="block text-sm font-semibold text-deepgreen mb-1.5">Email <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="email" id="email" name="email" required autocomplete="email" x-model="email"
+  :aria-invalid="hasError('email')"
+  :aria-describedby="hasError('email') ? 'email-error' : null"
+  class="w-full min-h-[44px] rounded-lg border bg-white/80 px-4 py-2.5 text-sm text-deepgreen focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+  :class="hasError('email') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('email')" id="email-error" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
+</div>
+<div>
+<label for="phone" class="block text-sm font-semibold text-deepgreen mb-1.5">Phone <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="tel" id="phone" name="phone" required autocomplete="tel" x-model="phone"
+  :aria-invalid="hasError('phone')"
+  :aria-describedby="hasError('phone') ? 'phone-error' : null"
+  class="w-full min-h-[44px] rounded-lg border bg-white/80 px-4 py-2.5 text-sm text-deepgreen focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+  :class="hasError('phone') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('phone')" id="phone-error" class="text-xs text-terracotta mt-1" x-text="errorFor('phone')"></p>
+</div>
+</div>
+
+<div>
+<label for="business" class="block text-sm font-semibold text-deepgreen mb-1.5">Business or Organization <span class="text-deepgreen/50 font-normal">(optional)</span></label>
+<input type="text" id="business" name="business" autocomplete="organization" x-model="business"
+  class="w-full min-h-[44px] rounded-lg border border-deepgreen/20 bg-white/80 px-4 py-2.5 text-sm text-deepgreen focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+</div>
+
+<div>
+<label for="keyDescription" class="block text-sm font-semibold text-deepgreen mb-1.5">Your Key <span class="text-terracotta" aria-hidden="true">*</span></label>
+<p id="keyDescription-hint" class="text-xs text-deepgreen/60 mb-2">In a few sentences, what helped open a door for you, and what became possible afterward?</p>
+<textarea id="keyDescription" name="keyDescription" rows="4" required x-model="keyDescription"
+  :aria-invalid="hasError('keyDescription')"
+  :aria-describedby="'keyDescription-hint' + (hasError('keyDescription') ? ' keyDescription-error' : '')"
+  class="w-full rounded-lg border bg-white/80 px-4 py-3 text-sm text-deepgreen resize-y min-h-[6rem] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+  :class="hasError('keyDescription') ? 'border-terracotta' : 'border-deepgreen/20'"></textarea>
+<p x-show="hasError('keyDescription')" id="keyDescription-error" class="text-xs text-terracotta mt-1" x-text="errorFor('keyDescription')"></p>
+</div>
+
+<div>
+<label for="participation" class="block text-sm font-semibold text-deepgreen mb-1.5">Participation Preference <span class="text-terracotta" aria-hidden="true">*</span></label>
+<select id="participation" name="participation" required x-model="participation"
+  :aria-invalid="hasError('participation')"
+  :aria-describedby="hasError('participation') ? 'participation-error' : null"
+  class="w-full min-h-[44px] rounded-lg border bg-white/80 px-4 py-2.5 text-sm text-deepgreen focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+  :class="hasError('participation') ? 'border-terracotta' : 'border-deepgreen/20'">
+<option value="">Select an option</option>
+<template x-for="option in participationOptions" :key="option.value">
+<option :value="option.value" x-text="option.label"></option>
+</template>
+</select>
+<p x-show="hasError('participation')" id="participation-error" class="text-xs text-terracotta mt-1" x-text="errorFor('participation')"></p>
+</div>
+
+<div class="flex items-start gap-3">
+<input type="checkbox" id="contactPermission" name="contactPermission" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-deepgreen/30 text-[#D4AF37] focus:ring-[#D4AF37]"
+  :aria-invalid="hasError('contactPermission')"
+  :aria-describedby="hasError('contactPermission') ? 'contactPermission-error' : 'contactPermission-hint'">
+<div>
+<label for="contactPermission" class="text-sm text-deepgreen leading-snug">Yes, the WVF team may contact me about this submission. <span class="text-terracotta" aria-hidden="true">*</span></label>
+<p id="contactPermission-hint" class="text-xs text-deepgreen/55 mt-1">This is not permission to publish or use your likeness. See our <a href="#" class="underline hover:text-deepgreen">privacy policy</a>.</p>
+<p x-show="hasError('contactPermission')" id="contactPermission-error" class="text-xs text-terracotta mt-1" x-text="errorFor('contactPermission')"></p>
+</div>
+</div>
+
+<button type="submit" :disabled="submitting" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] rounded-full bg-[#D4AF37] text-[#062117] font-bold text-sm px-8 py-3 hover:bg-[#E2C15E] transition-colors disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-deepgreen">
+<span x-text="submitting ? 'Submitting…' : 'Submit My Story'"></span>
+<span x-show="!submitting" aria-hidden="true">&rarr;</span>
+</button>
+</form>
+</div>
+</div>
+
+<!-- Ways to participate (after form on mobile) -->
+<aside class="lg:col-span-5 order-2 lg:order-2 border-l-0 lg:border-l border-deepgreen/10 lg:pl-10 pt-2 lg:pt-6">
+<h2 class="font-serif text-xl sm:text-2xl text-deepgreen font-semibold mb-1">Ways You Can Participate</h2>
+<p class="text-sm text-deepgreen/65 mb-6">After you submit, we&rsquo;ll reach out to explore the best fit.</p>
+<ul class="space-y-5">
+<li class="flex gap-3">
+<span class="text-terracotta shrink-0 mt-0.5" aria-hidden="true">
+<svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8h22a4 4 0 014 4v24H14a4 4 0 01-4-4V8z"/><path d="M10 12H6v24a4 4 0 004 4h4"/><path d="M18 16h12M18 24h8"/></svg>
+</span>
+<div>
+<p class="font-semibold text-sm text-deepgreen">Be Featured in a Story</p>
+<p class="text-xs text-deepgreen/65 leading-relaxed mt-0.5">A written profile showcasing your journey and impact.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<span class="text-terracotta shrink-0 mt-0.5" aria-hidden="true">
+<svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="28" height="20" rx="2"/><path d="M34 20l8 5v-10l-8 5z"/></svg>
+</span>
+<div>
+<p class="font-semibold text-sm text-deepgreen">Share in a Video</p>
+<p class="text-xs text-deepgreen/65 leading-relaxed mt-0.5">A short video feature about your work and what&rsquo;s next.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<span class="text-terracotta shrink-0 mt-0.5" aria-hidden="true">
+<svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="5"/><circle cx="38" cy="14" r="5"/><circle cx="24" cy="34" r="5"/><path d="M14 17l8 14M34 17l-8 14M15 14h18"/></svg>
+</span>
+<div>
+<p class="font-semibold text-sm text-deepgreen">Speak at the Gathering</p>
+<p class="text-xs text-deepgreen/65 leading-relaxed mt-0.5">A possible panel or conversation opportunity.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<span class="text-terracotta shrink-0 mt-0.5" aria-hidden="true">
+<svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8v8M24 32v8M8 24h8M32 24h8"/><circle cx="24" cy="24" r="6"/></svg>
+</span>
+<div>
+<p class="font-semibold text-sm text-deepgreen">Be a Mentor or Connector</p>
+<p class="text-xs text-deepgreen/65 leading-relaxed mt-0.5">Explore ways to help open doors for others.</p>
+</div>
+</li>
+</ul>
+<p class="font-serif italic text-[#C5A059] text-sm mt-8">Different paths. A brighter tomorrow.</p>
+</aside>
+</div>
+</div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SECTION 4 :: INTAKE FORM / CONFIRMATION                     -->
-<!-- ============================================================ -->
-<section id="intake-form" class="bg-cream py-14 sm:py-20">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <!-- Intake Form -->
-    <div x-show="!formSubmitted">
-      <div class="rounded-2xl sm:rounded-3xl border border-warmtan bg-white shadow-soft p-7 sm:p-10">
-        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-deepbrown mb-2">Tell us you are interested</h2>
-        <p class="text-deepbrown/60 text-base leading-relaxed mb-8">
-          Complete the short form below, and a member of the WVF team will contact you to arrange your conversation.
-        </p>
-
-        <form @submit.prevent="submitForm($event)" action="https://primary-production-a33d.up.railway.app/webhook/keymakers-intake" method="POST" class="space-y-6">
-          <input type="hidden" name="source" value="Main Intake Form">
-
-          <!-- First / Last Name -->
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="firstName" class="block text-sm font-semibold text-deepbrown mb-1.5">First Name <span class="text-terracotta">*</span></label>
-              <input type="text" id="firstName" name="firstName" required autocomplete="given-name"
-                class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
-            </div>
-            <div>
-              <label for="lastName" class="block text-sm font-semibold text-deepbrown mb-1.5">Last Name <span class="text-terracotta">*</span></label>
-              <input type="text" id="lastName" name="lastName" required autocomplete="family-name"
-                class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
-            </div>
-          </div>
-
-          <!-- Business / Organization -->
-          <div>
-            <label for="business" class="block text-sm font-semibold text-deepbrown mb-1.5">Business or Organization <span class="text-terracotta">*</span></label>
-            <input type="text" id="business" name="business" required autocomplete="organization"
-              class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
-          </div>
-
-          <!-- CDFI Reporting Dropdowns (Optional) -->
-          <div class="grid sm:grid-cols-3 gap-6 mt-6">
-            <div>
-              <label for="entityType" class="block text-sm font-semibold text-navy mb-1.5">Business Structure</label>
-              <select id="entityType" name="entityType" class="w-full rounded-xl border border-warmgray bg-cream/40 px-4 py-3 text-sm text-navy focus:ring-2 focus:ring-gold">
-                <option value="">Select structure...</option>
-                <option value="LLC">LLC</option>
-                <option value="S-Corp">S-Corp</option>
-                <option value="C-Corp">C-Corp</option>
-                <option value="Sole Proprietorship">Sole Proprietorship</option>
-                <option value="Non-Profit">Non-Profit</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label for="ethnicity" class="block text-sm font-semibold text-navy mb-1.5">Ethnicity / Race</label>
-              <select id="ethnicity" name="ethnicity" class="w-full rounded-xl border border-warmgray bg-cream/40 px-4 py-3 text-sm text-navy focus:ring-2 focus:ring-gold">
-                <option value="">Select option...</option>
-                <option value="Hispanic/Latina">Hispanic / Latina</option>
-                <option value="Black/African American">Black / African American</option>
-                <option value="Asian">Asian</option>
-                <option value="White">White</option>
-                <option value="Native American/Indigenous">Native American / Indigenous</option>
-                <option value="Multi-racial">Multi-racial</option>
-                <option value="Prefer not to say">Prefer not to say</option>
-              </select>
-            </div>
-            <div>
-              <label for="minorityOwned" class="block text-sm font-semibold text-navy mb-1.5">Minority-Owned Business?</label>
-              <select id="minorityOwned" name="minorityOwned" class="w-full rounded-xl border border-warmgray bg-cream/40 px-4 py-3 text-sm text-navy focus:ring-2 focus:ring-gold">
-                <option value="">Select option...</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-                <option value="In Progress">In Progress</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Email / Phone -->
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="email" class="block text-sm font-semibold text-deepbrown mb-1.5">Email Address <span class="text-terracotta">*</span></label>
-              <input type="email" id="email" name="email" required autocomplete="email"
-                class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
-            </div>
-            <div>
-              <label for="phone" class="block text-sm font-semibold text-deepbrown mb-1.5">Phone Number <span class="text-terracotta">*</span></label>
-              <input type="tel" id="phone" name="phone" required autocomplete="tel"
-                class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
-            </div>
-          </div>
-
-          <!-- What was your key -->
-          <div>
-            <label for="keyDescription" class="block text-sm font-semibold text-deepbrown mb-1.5">What do you believe your key was?</label>
-            <textarea id="keyDescription" name="keyDescription" rows="3"
-              class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors resize-none"></textarea>
-            <p class="text-deepbrown/50 text-xs mt-1.5">A few words are enough. We will explore the full story during the conversation.</p>
-          </div>
-
-          <!-- Preferred participation method -->
-          <fieldset>
-            <legend class="block text-sm font-semibold text-deepbrown mb-3">How would you prefer to participate?</legend>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <template x-for="option in participationOptions" :key="option.value">
-                <label
-                  :class="participation === option.value ? 'border-gold bg-gold/5 ring-1 ring-gold' : 'border-warmtan bg-cream/40 hover:border-deepbrown/20'"
-                  class="flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors"
-                >
-                  <input type="radio" name="participation" class="w-4 h-4 text-gold focus:ring-gold border-warmtan shrink-0" :value="option.value" x-model="participation">
-                  <span class="text-sm text-deepbrown" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </fieldset>
-
-          <!-- Best days/times -->
-          <div>
-            <label for="bestTime" class="block text-sm font-semibold text-deepbrown mb-1.5">Best days or times to reach you</label>
-            <input type="text" id="bestTime" name="bestTime" placeholder="e.g. Weekday afternoons, after 5pm ET"
-              class="w-full rounded-xl border border-warmtan bg-cream/40 px-4 py-3 text-sm text-deepbrown placeholder-navy/35 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors">
-          </div>
-
-          <!-- Contact opt-in -->
-          <fieldset>
-            <legend class="block text-sm font-semibold text-deepbrown mb-3">May WVF contact you about other Keymakers opportunities?</legend>
-            <div class="flex items-center gap-3">
-              <label
-                :class="contactOptIn === 'yes' ? 'border-gold bg-gold/5 ring-1 ring-gold' : 'border-warmtan bg-cream/40 hover:border-deepbrown/20'"
-                class="flex items-center gap-2.5 rounded-xl border px-5 py-3 cursor-pointer transition-colors"
-              >
-                <input type="radio" name="contactOptIn" value="yes" x-model="contactOptIn" class="w-4 h-4 text-gold focus:ring-gold border-warmtan">
-                <span class="text-sm text-deepbrown">Yes</span>
-              </label>
-              <label
-                :class="contactOptIn === 'no' ? 'border-gold bg-gold/5 ring-1 ring-gold' : 'border-warmtan bg-cream/40 hover:border-deepbrown/20'"
-                class="flex items-center gap-2.5 rounded-xl border px-5 py-3 cursor-pointer transition-colors"
-              >
-                <input type="radio" name="contactOptIn" value="no" x-model="contactOptIn" class="w-4 h-4 text-gold focus:ring-gold border-warmtan">
-                <span class="text-sm text-deepbrown">No</span>
-              </label>
-            </div>
-          </fieldset>
-
-          <!-- Submit -->
-          <div class="pt-2">
-            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-8 py-3.5 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
-              Share My Key
-              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Confirmation Message -->
-    <div x-show="formSubmitted" x-cloak
-      x-transition:enter="transition ease-out duration-400"
-      x-transition:enter-start="opacity-0 translate-y-4"
-      x-transition:enter-end="opacity-100 translate-y-0"
-    >
-      <div class="rounded-2xl sm:rounded-3xl border border-warmtan bg-white shadow-soft p-8 sm:p-14 text-center">
-        <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-6 p-2">
-          <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-        </span>
-
-        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-deepbrown mb-4">Thank you for sharing your key.</h2>
-
-        <p class="text-deepbrown/70 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-4">
-          A member of the Women&rsquo;s Venture Fund team will contact you shortly to arrange your recorded conversation or provide the information you requested.
-        </p>
-
-        <p class="font-serif italic text-deepbrown/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-8">
-          Your story can help another woman recognize an opportunity, avoid a mistake, find a resource, or see a path forward that she could not see before.
-        </p>
-
-        <a href="./index.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-8 py-3.5 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
-          Explore Keymakers
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
+<!-- Closing CTA -->
+<section class="relative py-14 sm:py-16 overflow-hidden">
+<img src="./assets/images/gathering-crowd.webp" alt="" width="1200" height="800" loading="lazy" decoding="async" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover">
+<div class="absolute inset-0 bg-[#062117]/85"></div>
+<div class="relative max-w-6xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+<div class="max-w-md">
+<h2 class="font-serif text-2xl sm:text-3xl text-white font-semibold mb-3">More stories. More possibility.</h2>
+<p class="text-white/80 text-sm sm:text-base leading-relaxed mb-6">Your story can be the key that opens a door for someone else.</p>
+<button type="button" @click="scrollToForm(true)" class="inline-flex items-center justify-center gap-2 min-h-[44px] rounded-full bg-[#D4AF37] text-[#062117] font-bold text-sm px-7 py-3 hover:bg-[#E2C15E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+Start Your Story <span aria-hidden="true">&rarr;</span>
+</button>
+</div>
+<p class="text-[10px] sm:text-xs tracking-[0.2em] text-[#D4AF37]/90 uppercase leading-relaxed lg:text-right max-w-xs">People open people.<br>A brighter tomorrow together.</p>
+</div>
 </section>
 
 </main>
 
-<!-- ============================================================ -->
-<!-- SECTION 5 :: FOOTER                                          -->
-<!-- ============================================================ -->
-<footer id="about-wvf" class="bg-deepbrown text-cream/70">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+<section class="bg-[#062117] py-6 border-t border-white/10">
+<div class="grid grid-cols-3 max-w-4xl mx-auto text-center">
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">Since 1996</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Nearly three decades of access</p></div>
+<div class="px-2 border-x border-white/10"><p class="font-serif text-xl sm:text-2xl text-white">28,000+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Women entrepreneurs served</p></div>
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">$2.4M+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Business loans provided</p></div>
+</div>
+</section>
 
-      <!-- Brand -->
-      <div class="lg:col-span-1">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-            <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-          </span>
-          <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
-        </div>
-        <p class="text-sm leading-relaxed mb-6">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
-        <div class="flex items-center gap-3">
-          <a href="https://instagram.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Instagram (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
-          </a>
-          <a href="https://facebook.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Facebook (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/womens-venture-fund/" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Program Links -->
-      <div>
-        <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
-        <ul class="space-y-2.5 text-sm">
-          <li><a href="./index.html#stories" class="hover:text-white transition-colors">Stories</a></li>
-          <li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
-          <li><a href="./index.html#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
-          <li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
-        <ul class="space-y-2.5 text-sm">
-          <li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
-          <li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
-          <li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
-          <li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div x-data="{ email: '', subscribed: false, loading: false }">
-        <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
-        <p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
-
-        <form @submit.prevent="
-          if (!email) return;
-          loading = true;
-          fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              source: 'Footer Newsletter',
-              participation: 'newsletter-only',
-              email: email
-            })
-          })
-          .then(() => {
-            subscribed = true;
-            loading = false;
-            email = '';
-          })
-          .catch(err => {
-            console.error('Newsletter submission error:', err);
-            subscribed = true;
-            loading = false;
-          });
-        " class="flex items-center gap-2">
-          <label for="footer-email" class="sr-only">Email address</label>
-          <input
-            id="footer-email"
-            name="email"
-            type="email"
-            x-model="email"
-            required
-            placeholder="you@email.com"
-            class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
-          >
-          <button
-            type="submit"
-            :disabled="loading"
-            class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
-            aria-label="Subscribe to newsletter"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-          </button>
-        </form>
-
-        <p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
-          Thanks &mdash; you&rsquo;re on the list!
-        </p>
-      </div>
-    </div>
-
-    <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
-      <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
-        <a href="#" class="hover:text-white transition-colors">Accessibility</a>
-      </div>
-    </div>
-  </div>
+<footer class="bg-deepgreen-dark text-cream/70">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers" loading="lazy" decoding="async" class="h-full w-auto">
+</span>
+<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
+</div>
+<p class="text-sm leading-relaxed mb-4">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+<div class="text-xs space-y-1 text-cream/75">
+<p>Phone: <a href="tel:2125630499" class="hover:text-white">(212) 563-0499</a></p>
+<p>Email: <a href="mailto:info@wvf-ny.org" class="hover:text-white">info@wvf-ny.org</a></p>
+</div>
+</div>
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Program</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="./index.html#explore" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#membership" class="hover:text-white transition-colors">Membership</a></li>
+<li><a href="./community.html" class="hover:text-white transition-colors">Community</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Resources</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Share your key</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Stay in the loop</h4>
+<p class="text-sm text-cream/60 mb-3">Gathering updates and new Keymaker stories.</p>
+<a href="./gathering.html#reserve" class="inline-flex rounded-full border border-white/20 text-white text-xs font-semibold px-5 py-2.5 min-h-[44px] items-center hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold">Get Updates</a>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+<div class="flex gap-6">
+<a href="#" class="hover:text-white">Privacy</a>
+<a href="#" class="hover:text-white">Terms</a>
+</div>
+</div>
+</div>
 </footer>
 
 <script src="./assets/js/keymakers-config.js"></script>
 <script>
-  function shareYourKey() {
-    return {
-      mobileOpen: false,
-      formSubmitted: false,
-      participation: '',
-      contactOptIn: '',
-      participationOptions: [
-        { value: 'virtual', label: 'Schedule a virtual interview' },
-        { value: 'in-person', label: 'Schedule an in-person interview' },
-        { value: 'self-record', label: 'Record and submit my own video' },
-        { value: 'more-info', label: 'I would like more information first' },
-      ],
-      async submitForm(event) {
-        const formElement = event.target;
-        
-        // Extract field values directly from form controls
-        const payload = {
-          source: formElement.querySelector('input[name="source"]')?.value || 'Main Intake Form',
-          firstName: formElement.querySelector('#firstName')?.value || '',
-          lastName: formElement.querySelector('#lastName')?.value || '',
-          business: formElement.querySelector('#business')?.value || '',
-          entityType: formElement.querySelector('#entityType')?.value || '',
-          ethnicity: formElement.querySelector('#ethnicity')?.value || '',
-          minorityOwned: formElement.querySelector('#minorityOwned')?.value || '',
-          email: formElement.querySelector('#email')?.value || '',
-          phone: formElement.querySelector('#phone')?.value || '',
-          keyDescription: formElement.querySelector('#keyDescription')?.value || '',
-          participation: this.participation,
-          bestTime: formElement.querySelector('#bestTime')?.value || '',
-          contactOptIn: this.contactOptIn,
-        };
+function shareYourKey() {
+  return {
+    mobileOpen: false,
+    formSubmitted: false,
+    submitting: false,
+    formError: '',
+    fieldErrors: [],
+    errors: {},
+    honeypot: '',
+    fullName: '',
+    email: '',
+    phone: '',
+    business: '',
+    keyDescription: '',
+    participation: '',
+    contactPermission: false,
+    participationOptions: [
+      { value: 'virtual', label: 'Be Featured in a Story' },
+      { value: 'self-record', label: 'Share in a Video' },
+      { value: 'in-person', label: 'Speak at the Gathering' },
+      { value: 'more-info', label: 'Be a Mentor or Connector' },
+    ],
 
-        try {
-          const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL || formElement.action;
-          // Send request with standard JSON headers to webhook listener
-          await fetch(webhookUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-            body: JSON.stringify(payload),
-          });
-        } catch (error) {
-          console.error('Webhook transmission error:', error);
+    scrollToForm(focusName) {
+      const section = document.getElementById('intake-form');
+      section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.$nextTick(() => {
+        const target = focusName ? document.getElementById('fullName') : document.getElementById('form-intro');
+        target?.focus({ preventScroll: true });
+      });
+    },
+
+    hasError(id) {
+      return Boolean(this.errors[id]);
+    },
+
+    errorFor(id) {
+      return this.errors[id] || '';
+    },
+
+    normalizeEmail(value) {
+      return String(value || '').trim().toLowerCase();
+    },
+
+    normalizePhone(value) {
+      const trimmed = String(value || '').trim();
+      if (trimmed.startsWith('+')) {
+        return '+' + trimmed.slice(1).replace(/\D/g, '');
+      }
+      return trimmed.replace(/\D/g, '');
+    },
+
+    splitName(fullName) {
+      const parts = String(fullName || '').trim().split(/\s+/).filter(Boolean);
+      if (!parts.length) return { firstName: '', lastName: '' };
+      if (parts.length === 1) return { firstName: parts[0], lastName: '' };
+      return { firstName: parts[0], lastName: parts.slice(1).join(' ') };
+    },
+
+    validateClient() {
+      this.errors = {};
+      this.fieldErrors = [];
+
+      if (!String(this.fullName).trim()) {
+        this.errors.fullName = 'Please enter your name.';
+      }
+      const email = this.normalizeEmail(this.email);
+      if (!email) {
+        this.errors.email = 'Please enter your email address.';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        this.errors.email = 'Please enter a valid email address.';
+      }
+      const phoneDigits = this.normalizePhone(this.phone);
+      if (!phoneDigits || phoneDigits.length < 10) {
+        this.errors.phone = 'Please enter a valid phone number.';
+      }
+      if (!String(this.keyDescription).trim()) {
+        this.errors.keyDescription = 'Please share your key in a few sentences.';
+      }
+      if (!this.participation) {
+        this.errors.participation = 'Please select a participation preference.';
+      }
+      if (!this.contactPermission) {
+        this.errors.contactPermission = 'Contact permission is required to submit.';
+      }
+      if (String(this.honeypot).trim()) {
+        this.errors.fullName = 'Unable to submit. Please try again later.';
+      }
+
+      this.fieldErrors = Object.keys(this.errors).map((id) => ({
+        id,
+        message: this.errors[id],
+      }));
+
+      return this.fieldErrors.length === 0;
+    },
+
+    async submitForm(event) {
+      if (this.submitting) return;
+
+      this.formError = '';
+      if (!this.validateClient()) {
+        const first = this.fieldErrors[0];
+        if (first) {
+          document.getElementById(first.id)?.focus();
+        }
+        return;
+      }
+
+      this.submitting = true;
+      const { firstName, lastName } = this.splitName(this.fullName);
+      const payload = {
+        source: 'Main Intake Form',
+        firstName,
+        lastName,
+        business: String(this.business || '').trim(),
+        email: this.normalizeEmail(this.email),
+        phone: this.normalizePhone(this.phone),
+        keyDescription: String(this.keyDescription || '').trim(),
+        participation: this.participation,
+        contactOptIn: 'yes',
+      };
+
+      const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL
+        || 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake';
+
+      try {
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          throw new Error('server');
         }
 
-        // Trigger confirmation view state
         this.formSubmitted = true;
         this.$nextTick(() => {
+          document.getElementById('success-heading')?.focus();
           document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-      },
-    };
-  }
+      } catch (_err) {
+        this.formError = 'Something went wrong while sending your submission.';
+      } finally {
+        this.submitting = false;
+      }
+    },
+  };
+}
 </script>
 
 </body>
