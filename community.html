@@ -3,70 +3,546 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Favicons & Preconnect -->
 <link rel="icon" type="image/svg+xml" href="./assets/images/Keymakers_Logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Primary SEO Tags -->
-<title>Community Circle | Keymakers Movement | Women's Venture Fund</title>
-<meta name="description" content="Join the Keymakers Community Circle — a dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors for each other.">
+<title>The Keymakers Community Circle | Women's Venture Fund</title>
+<meta name="description" content="The Keymakers Community Circle is a members-only space to connect, share, ask questions, and seek guidance. Access begins at Keyholder membership.">
 <link rel="canonical" href="https://keymakers.womensventurefund.org/community.html">
 
-<!-- Open Graph / Social Link Previews -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Women's Venture Fund">
-<meta property="og:title" content="Community Circle | Keymakers Movement | Women's Venture Fund">
-<meta property="og:description" content="A dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors.">
+<meta property="og:title" content="The Keymakers Community Circle | Women's Venture Fund">
+<meta property="og:description" content="A members-only space to connect, share, ask questions and seek guidance. Access begins at Keyholder membership.">
 <meta property="og:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://keymakers.womensventurefund.org/community.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Community Circle | Keymakers Movement | Women's Venture Fund">
-<meta name="twitter:description" content="A dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors.">
+<meta name="twitter:title" content="The Keymakers Community Circle | Women's Venture Fund">
+<meta name="twitter:description" content="A members-only space to connect, share, ask questions and seek guidance.">
 <meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 
-<!-- Fonts -->
+<link rel="preload" as="image" href="./assets/images/community/hero.webp" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS (CDN) -->
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <script>
 tailwind.config = {
-theme: {
-extend: {
-colors: {
-navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
-terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
-gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
-deepbrown: { DEFAULT: '#3A2E24', 50: '#f5f3f1', 100: '#e7e2de' },
-cream: { DEFAULT: '#FDFBF7', alt: '#F2EEE6' },
-warmtan: { DEFAULT: '#D9CCB8', 50: '#faf8f5', 100: '#f2ece2' },
-},
-fontFamily: {
-serif: ['Lora', 'Georgia', 'serif'],
-sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-},
-boxShadow: {
-soft: '0 25px 60px -18px rgba(58,46,36,0.30)',
-card: '0 10px 30px -12px rgba(58,46,36,0.25)',
-},
-borderRadius: {
-'2xl': '1.25rem',
-'3xl': '1.75rem',
-},
-},
-},
+  theme: {
+    extend: {
+      colors: {
+        deepgreen: { DEFAULT: '#0D281E', light: '#0F2E22', dark: '#081912' },
+        cream: { DEFAULT: '#FAF8F5', alt: '#F5F2EB' },
+        gold: { DEFAULT: '#C5A059', bright: '#D4AF37', 50: '#fbf6ea' },
+        terracotta: { DEFAULT: '#C25E38', 50: '#fbeee7' },
+        deepbrown: { DEFAULT: '#0D281E' },
+        warmtan: { DEFAULT: '#E8E0D4' },
+        warmgray: { DEFAULT: '#F5F2EB' },
+      },
+      fontFamily: {
+        serif: ['Lora', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        soft: '0 25px 60px -18px rgba(13,40,30,0.28)',
+        card: '0 10px 30px -12px rgba(13,40,30,0.18)',
+        editorial: '0 20px 50px -15px rgba(13,40,30,0.35)',
+      },
+      letterSpacing: {
+        editorial: '0.04em',
+      },
+    },
+  },
 };
 </script>
 
-<!-- Givebutter Widget Library -->
-<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=c0DdlWYvuGmd2igp&p=other"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<!-- Alpine.js (CDN) -->
+<style>
+html, body { margin: 0; padding: 0; }
+html { scroll-padding-top: 88px; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+.editorial-cream {
+  background-color: #FAF7F2;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(194, 94, 56, 0.035), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(13, 40, 30, 0.04), transparent 32%);
+}
+[x-cloak] { display: none !important; }
+.focus-ring:focus { outline: none; }
+.focus-ring:focus-visible { outline: 2px solid #D4AF37; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Cusdis — homepage palette */
+#cusdis_thread {
+  --color-primary: #C5A059;
+  --color-text-default: #0D281E;
+  --color-text-subtle: rgba(13, 40, 30, 0.65);
+  --color-bg-default: #FFFFFF;
+  --color-bg-subtle: #FAF8F5;
+  --color-bg-reply: #F5F2EB;
+  --color-bg-hover: rgba(197, 160, 89, 0.08);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  width: 100%;
+  min-height: 0;
+  overflow: visible;
+}
+#cusdis_thread iframe {
+  width: 100% !important;
+  min-height: 240px;
+  border: none !important;
+  overflow: visible !important;
+  display: block;
+}
+#cusdis_thread button,
+#cusdis_thread input[type="submit"],
+#cusdis_thread .cusdis-btn {
+  background-color: #C5A059 !important;
+  border-color: #C5A059 !important;
+  color: #0A2E20 !important;
+  border-radius: 9999px !important;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+#cusdis_thread textarea,
+#cusdis_thread input[type="text"],
+#cusdis_thread input[type="email"] {
+  border: 1px solid #E8E0D4 !important;
+  border-radius: 0.75rem !important;
+  background-color: rgba(250, 248, 245, 0.7) !important;
+  color: #0D281E !important;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+}
+#cusdis_thread textarea:focus,
+#cusdis_thread input[type="text"]:focus,
+#cusdis_thread input[type="email"]:focus {
+  outline: none !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.25) !important;
+}
+</style>
+</head>
+
+<body x-data="communityPage()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
+
+<!-- ============================================================ -->
+<!-- GLOBAL HEADER (homepage chrome) -->
+<!-- ============================================================ -->
+<nav class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-[2px] border-b border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
+<a href="./index.html" class="flex items-center gap-3 shrink-0 group focus-ring rounded-full">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto object-contain">
+</span>
+<span class="font-serif text-lg font-bold text-[#D4AF37] tracking-widest">KEYMAKERS</span>
+</a>
+
+<div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
+<a href="./stories.html" class="hover:text-white transition-colors py-2">Stories</a>
+<a href="./community.html" aria-current="page" class="text-[#D4AF37] border-b-2 border-[#D4AF37] py-2">Community</a>
+<a href="./gathering.html" class="hover:text-white transition-colors py-2">The Gathering</a>
+<a href="./index.html#membership" class="hover:text-white transition-colors py-2">Get Involved</a>
+<a href="./index.html#connectors" class="hover:text-white transition-colors py-2">Connectors</a>
+<a href="./about.html" class="hover:text-white transition-colors py-2">About WVF</a>
+</div>
+
+<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs px-5 py-2 min-h-[44px] shadow-md hover:bg-[#E2C15E] transition-colors focus-ring">
+Share Your Key
+</a>
+
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-white hover:bg-white/10 focus-ring" :aria-expanded="mobileOpen.toString()" aria-controls="mobile-nav" aria-label="Toggle menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</div>
+
+<div id="mobile-nav" x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden px-4 pb-6 pt-2 bg-[#062117]/95">
+<ul class="flex flex-col text-sm font-semibold uppercase tracking-widest text-white/80">
+<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" aria-current="page" class="flex items-center justify-between py-3 min-h-[44px] border-b border-white/10 text-[#D4AF37]">Community</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#membership" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#connectors" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 min-h-[44px] hover:text-white">About WVF</a></li>
+</ul>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 min-h-[44px] hover:bg-[#E2C15E]">Share Your Key</a>
+</div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- COMMUNITY HERO (above the crease) -->
+<!-- ============================================================ -->
+<header class="relative overflow-hidden -mt-[4.5rem] pt-[4.5rem]">
+<picture>
+  <source srcset="./assets/images/community/hero.webp" type="image/webp">
+  <img
+    src="./assets/images/community/hero.jpg"
+    alt="Women sharing a warm, sunlit moment together"
+    width="1800"
+    height="1200"
+    fetchpriority="high"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-[center_35%]"
+  >
+</picture>
+<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/92 via-[#062117]/62 to-[#062117]/20 pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/70 via-transparent to-[#062117]/30 pointer-events-none"></div>
+
+<section class="relative z-10">
+<div class="max-w-6xl mx-auto w-full px-4 sm:px-8 pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-14 lg:pb-16">
+<div class="grid lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-7 max-w-xl">
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.35rem] text-white font-normal leading-[1.08] tracking-tight mb-4">
+The Keymakers Community Circle
+</h1>
+<p class="text-white/90 text-base sm:text-lg leading-snug mb-4 font-medium">
+A members-only space to connect, share, ask questions and seek guidance.
+</p>
+<p class="text-white/75 text-sm sm:text-base leading-relaxed max-w-lg mb-8 font-light">
+The Community Circle is exclusively for Keymakers members. It&rsquo;s a trusted space to learn from each other, find support, and open doors&mdash;together.
+</p>
+<a href="./index.html#membership" class="inline-flex items-center gap-2 bg-[#D4AF37] text-[#0A2E20] font-bold text-sm px-7 py-3 min-h-[44px] rounded-full hover:bg-[#E2C15E] transition-all shadow-lg focus-ring">
+Become a Member
+</a>
+</div>
+<div class="hidden lg:flex lg:col-span-5 flex-col items-end justify-between min-h-[12rem] pb-2">
+<p class="font-serif italic text-2xl sm:text-3xl text-[#D4AF37] drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)] text-right leading-tight">
+Real People.<br>Brighter Tomorrows.
+</p>
+<p class="text-[10px] tracking-[0.25em] text-white/70 uppercase font-mono text-right leading-relaxed">
+PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
+</p>
+</div>
+</div>
+</div>
+</section>
+</header>
+
+<main id="community">
+
+<!-- ============================================================ -->
+<!-- INSIDE THE CIRCLE -->
+<!-- ============================================================ -->
+<section id="inside-the-circle" class="editorial-cream border-y border-deepgreen/10 py-10 sm:py-12" aria-labelledby="inside-heading">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+<div>
+<h2 id="inside-heading" class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen">Inside the Circle</h2>
+<p class="text-deepgreen/65 text-sm sm:text-base mt-2">Different experiences. A stronger tomorrow.</p>
+</div>
+<p class="text-xs sm:text-sm text-deepgreen/70 max-w-sm lg:text-right leading-relaxed">
+Community Circle access begins at Keyholder membership ($25).
+</p>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white/50 border border-deepgreen/10 rounded-2xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x-0 lg:divide-x divide-deepgreen/10">
+<article class="p-6 sm:p-7 sm:border-b lg:border-b-0 sm:border-r border-deepgreen/10">
+<span class="inline-flex text-[#C5A059] mb-3" aria-hidden="true">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M14 15l7 16M34 15l-7 16M15 12h18"/></svg>
+</span>
+<h3 class="font-serif text-xl text-deepgreen font-semibold">Connect</h3>
+<p class="text-deepgreen/65 text-sm leading-relaxed mt-2">Meet and build meaningful relationships with women who get it.</p>
+</article>
+<article class="p-6 sm:p-7 sm:border-b lg:border-b-0 border-deepgreen/10">
+<span class="inline-flex text-[#C5A059] mb-3" aria-hidden="true">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16h14l4 4 4-4h10v20H8V16z"/><path d="M16 24h16M16 30h10"/></svg>
+</span>
+<h3 class="font-serif text-xl text-deepgreen font-semibold">Share</h3>
+<p class="text-deepgreen/65 text-sm leading-relaxed mt-2">Exchange experiences, insights, and resources in a supportive space.</p>
+</article>
+<article class="p-6 sm:p-7 sm:border-r lg:border-r-0 border-deepgreen/10">
+<span class="inline-flex text-[#C5A059] mb-3" aria-hidden="true">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16"/><path d="M24 22v2c0 2 3 2 3 5 0 2.2-1.8 4-4 4s-3-.8-3.6-2"/><circle cx="24" cy="16" r="1.5" fill="currentColor" stroke="none"/></svg>
+</span>
+<h3 class="font-serif text-xl text-deepgreen font-semibold">Ask</h3>
+<p class="text-deepgreen/65 text-sm leading-relaxed mt-2">Get guidance from fellow members and experienced Key Guides.</p>
+</article>
+<article class="p-6 sm:p-7">
+<span class="inline-flex text-[#C5A059] mb-3" aria-hidden="true">
+<svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="22" r="8"/><path d="M23 22h20M35 22v7M41 22v7"/></svg>
+</span>
+<h3 class="font-serif text-xl text-deepgreen font-semibold">Open Doors</h3>
+<p class="text-deepgreen/65 text-sm leading-relaxed mt-2">Discover opportunities, collaborations, and what&rsquo;s next&mdash;together.</p>
+</article>
+</div>
+<p class="font-serif italic text-[#C5A059] text-sm sm:text-base mt-6 lg:text-right">Together we grow further.</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- KEY GUIDES -->
+<!-- ============================================================ -->
+<section id="key-guides" class="bg-[#062117] text-white overflow-hidden" aria-labelledby="key-guides-heading">
+<div class="max-w-6xl mx-auto grid lg:grid-cols-12 items-stretch">
+<div class="lg:col-span-6 p-7 sm:p-10 lg:p-12 flex flex-col justify-center">
+<p class="text-[#C5A059] text-[10px] tracking-[0.25em] font-bold uppercase">Experience creates opportunity.</p>
+<h2 id="key-guides-heading" class="font-serif text-3xl sm:text-4xl text-white mt-2 mb-4">Key Guides</h2>
+<p class="text-white/80 text-sm sm:text-base leading-relaxed max-w-lg mb-6">
+Key Guides are experienced Keymakers and Connectors approved by WVF to offer practical guidance, share insight, and help open doors for fellow members. Key Guide is a role of service&mdash;not a membership tier.
+</p>
+<a href="#apply-key-guide" class="inline-flex items-center gap-2 text-[#D4AF37] font-bold text-xs uppercase tracking-wider hover:text-[#E2C15E] min-h-[44px] focus-ring rounded-sm">
+Learn More About Key Guides &rarr;
+</a>
+</div>
+<div class="lg:col-span-6 relative min-h-[16rem] sm:min-h-[20rem] lg:min-h-full">
+<picture>
+  <source srcset="./assets/images/community/key-guides.webp" type="image/webp">
+  <img
+    src="./assets/images/community/key-guides.jpg"
+    alt="Two women in conversation across a sunlit table"
+    width="1800"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  >
+</picture>
+<div class="absolute inset-0 bg-gradient-to-l from-transparent via-[#062117]/25 to-[#062117]/55"></div>
+<p class="absolute bottom-6 right-6 font-serif italic text-xl sm:text-2xl text-[#D4AF37] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] text-right leading-tight max-w-[12rem]">
+Guidance today.<br>Greater possibility tomorrow.
+</p>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- APPLY TO BE A KEY GUIDE -->
+<!-- ============================================================ -->
+<section id="apply-key-guide" class="bg-cream-alt border-y border-deepgreen/10 py-8 sm:py-9" aria-labelledby="apply-guide-heading">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+<div class="flex items-start gap-4 max-w-2xl">
+<span class="hidden sm:inline-flex text-[#C5A059] shrink-0 mt-1" aria-hidden="true">
+<svg class="w-10 h-10" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="16" r="7"/><path d="M6 38c1.5-8 6-12 12-12s10.5 4 12 12"/><path d="M32 18h10M37 13v10"/></svg>
+</span>
+<div>
+<h2 id="apply-guide-heading" class="font-serif text-2xl sm:text-3xl font-semibold text-deepgreen">Apply to Be a Key Guide</h2>
+<p class="text-deepgreen/70 text-sm sm:text-base leading-relaxed mt-2">
+Share your experience. Make a bigger impact. Key Guide is a role for experienced Keymakers and Connectors&mdash;not something you purchase. Applications are opening soon.
+</p>
+</div>
+</div>
+<a href="mailto:info@wvf-ny.org?subject=Key%20Guide%20Interest" class="inline-flex items-center justify-center shrink-0 rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#0D3827] transition-colors focus-ring">
+Contact WVF
+</a>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- MEMBER CONVERSATIONS + DISCUSSION -->
+<!-- ============================================================ -->
+<section id="member-conversations" class="editorial-cream py-10 sm:py-12" aria-labelledby="conversations-heading">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+<div>
+<h2 id="conversations-heading" class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen">Member Conversations</h2>
+<p class="text-deepgreen/65 text-sm sm:text-base mt-2">Real topics. Real people. Real progress.</p>
+</div>
+</div>
+
+<div class="border border-deepgreen/10 bg-white/60 rounded-2xl p-6 sm:p-8 mb-10">
+<p class="font-serif text-lg text-deepgreen">New member conversations are being scheduled.</p>
+<p class="text-deepgreen/70 text-sm leading-relaxed mt-2 max-w-2xl">
+Become a member to receive the next invitation.
+</p>
+<a href="./index.html#membership" class="mt-5 inline-flex items-center justify-center rounded-full border border-deepgreen/20 text-deepgreen font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-deepgreen hover:text-white transition-colors focus-ring">
+Become a Member
+</a>
+</div>
+
+<div id="discussion" class="border border-deepgreen/15 bg-white rounded-2xl p-5 sm:p-8">
+<div class="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Community discussion channels">
+<button
+  type="button"
+  role="tab"
+  id="tab-featured"
+  aria-controls="panel-featured"
+  :aria-selected="(activeTab === 'featured').toString()"
+  :tabindex="activeTab === 'featured' ? '0' : '-1'"
+  @click="switchTab('featured')"
+  @keydown="onTabKey($event)"
+  :class="activeTab === 'featured' ? 'bg-[#0A2E20] text-white border-[#0A2E20]' : 'bg-cream text-deepgreen/70 border-warmtan hover:border-deepgreen/30'"
+  class="shrink-0 rounded-full border px-4 py-2.5 min-h-[44px] text-xs font-bold uppercase tracking-wide transition-colors focus-ring"
+>
+Featured Monthly Prompt
+</button>
+<button
+  type="button"
+  role="tab"
+  id="tab-general"
+  aria-controls="panel-general"
+  :aria-selected="(activeTab === 'general').toString()"
+  :tabindex="activeTab === 'general' ? '0' : '-1'"
+  @click="switchTab('general')"
+  @keydown="onTabKey($event)"
+  :class="activeTab === 'general' ? 'bg-[#0A2E20] text-white border-[#0A2E20]' : 'bg-cream text-deepgreen/70 border-warmtan hover:border-deepgreen/30'"
+  class="shrink-0 rounded-full border px-4 py-2.5 min-h-[44px] text-xs font-bold uppercase tracking-wide transition-colors focus-ring"
+>
+Community Discussion
+</button>
+</div>
+
+<div
+  id="panel-featured"
+  role="tabpanel"
+  aria-labelledby="tab-featured"
+  x-show="activeTab === 'featured'"
+>
+<div class="bg-cream-alt/80 border border-gold/30 rounded-xl p-5 mb-6">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="inline-flex items-center rounded-full bg-gold/15 border border-gold/40 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#C5A059]">Monthly Keymaker Prompt</span>
+<span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-terracotta" x-text="currentMonthName"></span>
+</div>
+<h3 class="font-serif text-lg sm:text-xl font-semibold text-deepgreen leading-snug mb-2" x-text="activeMonthlyPrompt"></h3>
+<p class="text-deepgreen/65 text-sm leading-relaxed">
+Share your experience below or reply directly to fellow members in the circle.
+</p>
+</div>
+</div>
+
+<div
+  id="panel-general"
+  role="tabpanel"
+  aria-labelledby="tab-general"
+  x-show="activeTab === 'general'"
+  x-cloak
+>
+<div class="bg-cream-alt/80 border border-warmtan/80 rounded-xl p-5 mb-6">
+<h3 class="font-serif text-lg sm:text-xl font-semibold text-deepgreen leading-snug mb-2">Welcome to the Community Circle</h3>
+<p class="text-deepgreen/65 text-sm leading-relaxed">
+Ask questions, share resources, and connect with fellow members.
+</p>
+</div>
+</div>
+
+<div class="bg-[#FAF7F2] border border-gold/25 rounded-xl p-4 mb-6 flex items-start gap-3">
+<p class="text-xs sm:text-sm text-deepgreen/80 leading-relaxed">
+<strong class="font-semibold text-deepgreen">When posting,</strong> enter your <span class="text-terracotta font-semibold">Name (Company Name / Location)</span> in the nickname field so fellow Keymakers know who you are.
+</p>
+</div>
+
+<div x-show="threadStatus === 'loading'" class="rounded-xl border border-dashed border-deepgreen/15 bg-cream-alt/50 px-5 py-8 text-center mb-4" role="status" aria-live="polite">
+<p class="text-sm text-deepgreen/70">Loading the conversation&hellip;</p>
+</div>
+<div x-show="threadStatus === 'error'" x-cloak class="rounded-xl border border-terracotta/30 bg-terracotta/5 px-5 py-8 text-center mb-4" role="alert">
+<p class="text-sm text-deepgreen mb-4">The discussion couldn&rsquo;t load right now. Please try again.</p>
+<button type="button" @click="retryCusdis()" class="inline-flex items-center justify-center rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#0D3827] focus-ring">Retry</button>
+</div>
+
+<div id="cusdis_thread" class="w-full overflow-visible" :class="threadStatus === 'error' ? 'hidden' : ''"></div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- JOIN KEYMAKERS CTA -->
+<!-- ============================================================ -->
+<section id="join-keymakers" class="px-4 sm:px-8 py-10 sm:py-12 editorial-cream" aria-labelledby="join-heading">
+<div class="max-w-6xl mx-auto relative rounded-3xl overflow-hidden min-h-[18rem] sm:min-h-[20rem] shadow-2xl">
+<picture>
+  <source srcset="./assets/images/community/join.webp" type="image/webp">
+  <img
+    src="./assets/images/community/join.jpg"
+    alt="Three people watching a sunset together with arms raised"
+    width="1800"
+    height="1202"
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  >
+</picture>
+<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/90 via-[#062117]/60 to-[#062117]/25"></div>
+<div class="relative z-10 max-w-lg p-7 sm:p-12">
+<p class="text-[#C5A059] text-[10px] tracking-[0.25em] font-bold uppercase mb-2">Be part of a community that opens doors</p>
+<h2 id="join-heading" class="font-serif text-3xl sm:text-4xl text-white">Join Keymakers</h2>
+<p class="text-white/80 text-sm sm:text-base leading-relaxed mt-4 mb-6">
+Access the Community Circle and so much more, starting at Keyholder membership ($25). Membership means more connection, more opportunity, and a brighter tomorrow&mdash;together.
+</p>
+<a href="./index.html#membership" class="inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring">
+Join Keymakers
+</a>
+</div>
+<p class="hidden sm:block absolute bottom-6 right-6 font-serif italic text-xl text-[#D4AF37] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">More Women. Brighter Tomorrows.</p>
+</div>
+</section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- LOCKED FOOTER STATS BAR -->
+<!-- ============================================================ -->
+<section class="bg-[#062117] py-6 border-t border-white/10" aria-label="Women's Venture Fund impact">
+<div class="grid grid-cols-3 max-w-4xl mx-auto text-center">
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">Since 1996</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Nearly three decades of access</p></div>
+<div class="px-2 border-x border-white/10"><p class="font-serif text-xl sm:text-2xl text-white">28,000+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Women entrepreneurs served</p></div>
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">$2.4M+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Business loans provided</p></div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="bg-deepgreen-dark text-cream/70">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers" loading="lazy" decoding="async" class="h-full w-auto">
+</span>
+<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
+</div>
+<p class="text-sm leading-relaxed mb-4">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+<div class="text-xs space-y-1 text-cream/75">
+<p>Phone: <a href="tel:2125630499" class="hover:text-white">(212) 563-0499</a></p>
+<p>Email: <a href="mailto:info@wvf-ny.org" class="hover:text-white">info@wvf-ny.org</a></p>
+</div>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Program</h3>
+<ul class="space-y-2 text-sm">
+<li><a href="./stories.html" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#membership" class="hover:text-white transition-colors">Membership</a></li>
+<li><a href="./community.html" aria-current="page" class="hover:text-white transition-colors">Community</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Resources</h3>
+<ul class="space-y-2 text-sm">
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Share your key</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Stay in the loop</h3>
+<p class="text-sm text-cream/60 mb-3">Gathering updates and new Keymaker stories.</p>
+<a href="./gathering.html#reserve" class="inline-flex rounded-full border border-white/20 text-white text-xs font-semibold px-5 py-2.5 min-h-[44px] items-center hover:bg-white/10 transition-colors focus-ring">Get Updates</a>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+<div class="flex gap-6">
+<a href="mailto:info@wvf-ny.org?subject=Privacy%20Policy" class="hover:text-white">Privacy</a>
+<a href="mailto:info@wvf-ny.org?subject=Terms%20of%20Use" class="hover:text-white">Terms</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="./assets/js/keymakers-config.js"></script>
 <script>
-function communityForum() {
+function communityPage() {
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December',
@@ -86,14 +562,22 @@ function communityForum() {
     'Looking back at the year, which milestone are you most proud of—and what unlocked it?',
   ];
   const now = new Date();
+  const TAB_KEY = 'keymakersCommunityTab';
+  const CUSDIS_APP_ID = '691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad';
+  const CUSDIS_HOST = 'https://cusdis.com';
+  const LOAD_TIMEOUT_MS = 10000;
 
   return {
-    activeTopic: null,
+    mobileOpen: false,
     activeTab: 'featured',
+    threadStatus: 'idle',
     monthNames,
     monthlyPrompts,
     currentMonthIndex: now.getMonth(),
     currentYear: now.getFullYear(),
+    _loadTimer: null,
+    _iframePoll: null,
+    _messageBound: false,
 
     get currentMonthName() {
       return this.monthNames[this.currentMonthIndex];
@@ -105,26 +589,59 @@ function communityForum() {
 
     get cusdisPageId() {
       if (this.activeTab === 'featured') {
-        return `monthly-prompt-${this.currentYear}-${this.currentMonthIndex + 1}`;
+        return 'monthly-prompt-' + this.currentYear + '-' + (this.currentMonthIndex + 1);
       }
       return 'community-general';
     },
 
     get cusdisPageTitle() {
       if (this.activeTab === 'featured') {
-        return `Keymakers Monthly Prompt - ${this.currentMonthName}`;
+        return 'Keymakers Monthly Prompt - ' + this.currentMonthName;
       }
-      return 'Keymakers General Community Discussion';
+      return 'Keymakers Community Circle Discussion';
     },
 
     init() {
+      try {
+        const saved = sessionStorage.getItem(TAB_KEY);
+        if (saved === 'featured' || saved === 'general') this.activeTab = saved;
+      } catch (e) { /* private mode */ }
+
+      if (!this._messageBound) {
+        this._onCusdisMessage = (event) => this.handleCusdisMessage(event);
+        window.addEventListener('message', this._onCusdisMessage);
+        this._messageBound = true;
+      }
+
       this.loadCusdisAndRender();
+    },
+
+    onTabKey(event) {
+      const tabs = ['featured', 'general'];
+      const index = tabs.indexOf(this.activeTab);
+      let next = index;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      this.switchTab(tabs[next]);
+      this.$nextTick(() => {
+        const el = document.getElementById('tab-' + tabs[next]);
+        if (el) el.focus();
+      });
     },
 
     switchTab(tab) {
       if (this.activeTab === tab) return;
       this.activeTab = tab;
+      try { sessionStorage.setItem(TAB_KEY, tab); } catch (e) { /* private mode */ }
       this.$nextTick(() => this.renderCusdis());
+    },
+
+    retryCusdis() {
+      this.renderCusdis();
     },
 
     loadCusdisAndRender() {
@@ -136,474 +653,102 @@ function communityForum() {
         this.waitForCusdis();
         return;
       }
+      this.threadStatus = 'loading';
       const script = document.createElement('script');
       script.id = 'cusdis-script';
       script.src = 'https://cusdis.com/js/cusdis.es.js';
       script.async = true;
       script.defer = true;
       script.onload = () => this.renderCusdis();
+      script.onerror = () => { this.threadStatus = 'error'; };
       document.body.appendChild(script);
+      this.startLoadTimeout();
     },
 
     waitForCusdis() {
+      this.threadStatus = 'loading';
+      this.startLoadTimeout();
+      const started = Date.now();
       const check = () => {
         if (window.CUSDIS && window.CUSDIS.renderTo) {
           this.renderCusdis();
+        } else if (Date.now() - started > LOAD_TIMEOUT_MS) {
+          this.threadStatus = 'error';
         } else {
-          setTimeout(check, 50);
+          setTimeout(check, 80);
         }
       };
       check();
+    },
+
+    startLoadTimeout() {
+      this.clearTimers();
+      this._loadTimer = setTimeout(() => {
+        if (this.threadStatus === 'loading') this.threadStatus = 'error';
+      }, LOAD_TIMEOUT_MS);
+    },
+
+    clearTimers() {
+      if (this._loadTimer) { clearTimeout(this._loadTimer); this._loadTimer = null; }
+      if (this._iframePoll) { clearTimeout(this._iframePoll); this._iframePoll = null; }
     },
 
     renderCusdis() {
       const el = document.getElementById('cusdis_thread');
       if (!el) return;
 
+      this.threadStatus = 'loading';
+      this.startLoadTimeout();
       el.innerHTML = '';
-      el.className = 'w-full min-h-[800px] overflow-visible';
-      el.setAttribute('data-host', 'https://cusdis.com');
-      el.setAttribute('data-app-id', '691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad');
+      el.className = 'w-full overflow-visible';
+      el.setAttribute('data-host', CUSDIS_HOST);
+      el.setAttribute('data-app-id', CUSDIS_APP_ID);
       el.setAttribute('data-page-id', this.cusdisPageId);
       el.setAttribute('data-page-url', 'https://keymakers.womensventurefund.org/community.html');
       el.setAttribute('data-page-title', this.cusdisPageTitle);
 
       if (window.CUSDIS && window.CUSDIS.renderTo) {
         window.CUSDIS.renderTo(el);
+        this.pollForIframe();
+      }
+    },
+
+    pollForIframe() {
+      const started = Date.now();
+      const check = () => {
+        const iframe = document.querySelector('#cusdis_thread iframe');
+        if (iframe) {
+          this.clearTimers();
+          this.threadStatus = 'ready';
+          iframe.addEventListener('error', () => { this.threadStatus = 'error'; });
+          return;
+        }
+        if (Date.now() - started > LOAD_TIMEOUT_MS) {
+          this.threadStatus = 'error';
+          return;
+        }
+        this._iframePoll = setTimeout(check, 120);
+      };
+      check();
+    },
+
+    handleCusdisMessage(event) {
+      if (!event.origin || event.origin.indexOf('cusdis.com') === -1) return;
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        if (data && data.type === 'resize' && data.data) {
+          const iframe = document.querySelector('#cusdis_thread iframe');
+          if (iframe) {
+            const height = Math.max(Number(data.data) || 0, 240);
+            iframe.style.height = height + 'px';
+          }
+        }
+      } catch (err) {
+        /* Non-JSON postMessage from other extensions */
       }
     },
   };
 }
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<style>
-html { scroll-padding-top: 96px; }
-body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-.font-serif { font-family: 'Lora', Georgia, serif; }
-[x-cloak] { display: none !important; }
-
-/* Cusdis — WVF brand integration */
-#cusdis_thread {
-  --color-primary: #B8860B;
-  --color-text-default: #3A2E24;
-  --color-text-subtle: rgba(58, 46, 36, 0.65);
-  --color-bg-default: #FFFFFF;
-  --color-bg-subtle: #FDFBF7;
-  --color-bg-reply: #F2EEE6;
-  --color-bg-hover: rgba(184, 134, 11, 0.08);
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  width: 100%;
-  min-height: 800px;
-  overflow: visible;
-}
-/* Force the Cusdis injected iframe to expand fully */
-#cusdis_thread iframe {
-  width: 100% !important;
-  min-height: 800px !important;
-  border: none !important;
-  overflow: visible !important;
-}
-#cusdis_thread .cusdis-comment-body {
-  color: #3A2E24;
-}
-#cusdis_thread .cusdis-comment-nickname {
-  color: #18263B;
-  font-weight: 600;
-}
-#cusdis_thread button,
-#cusdis_thread input[type="submit"],
-#cusdis_thread .cusdis-btn {
-  background-color: #B8860B !important;
-  border-color: #B8860B !important;
-  color: #FDFBF7 !important;
-  border-radius: 9999px !important;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 0.8125rem !important;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-#cusdis_thread button:hover,
-#cusdis_thread input[type="submit"]:hover,
-#cusdis_thread .cusdis-btn:hover {
-  background-color: #C85A32 !important;
-  border-color: #C85A32 !important;
-}
-#cusdis_thread textarea,
-#cusdis_thread input[type="text"],
-#cusdis_thread input[type="email"] {
-  border: 1px solid #D9CCB8 !important;
-  border-radius: 0.75rem !important;
-  background-color: rgba(253, 251, 247, 0.6) !important;
-  color: #3A2E24 !important;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
-}
-#cusdis_thread textarea:focus,
-#cusdis_thread input[type="text"]:focus,
-#cusdis_thread input[type="email"]:focus {
-  outline: none !important;
-  border-color: #B8860B !important;
-  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.25) !important;
-}
-#cusdis_thread img {
-  border-radius: 9999px;
-  border: 2px solid rgba(184, 134, 11, 0.35);
-}
-</style>
-</head>
-
-<body x-data="{ mobileOpen: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
-
-<!-- ============================================================ -->
-<!-- HEADER NAVIGATION -->
-<!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
-<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-
-<!-- Dual Logo Lockup -->
-<a href="./index.html#top" class="flex items-center gap-3 shrink-0 group">
-<span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-</span>
-<span class="flex flex-col leading-tight">
-<span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
-<span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmtan/70">Women&rsquo;s Venture Fund</span>
-</span>
-</a>
-
-<!-- Center Navigation -->
-<div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
-<a href="./stories.html" class="hover:text-terracotta transition-colors py-2">Stories</a>
-<a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
-<a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
-<a href="./community.html" class="text-terracotta border-b-2 border-terracotta py-2" aria-current="page">Community</a>
-<a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a>
-</div>
-
-<!-- Right CTAs -->
-<div class="hidden xl:flex items-center gap-3 shrink-0">
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-5 py-2.5 hover:bg-gold/90 transition-all">Donate to Keymakers</a>
-<a href="./share-your-key.html" class="inline-flex items-center justify-center rounded-full border border-white/25 text-white text-xs uppercase tracking-wide font-semibold px-4 py-2 hover:bg-white/10 transition-colors">Share Your Key</a>
-</div>
-
-<!-- Mobile menu toggle -->
-<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
-<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-</button>
-</nav>
-
-<!-- Mobile Menu Panel -->
-<div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-deepbrown px-4 sm:px-6 pb-6 pt-2">
-<ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Stories</a></li>
-<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
-<li><a @click="mobileOpen = false" href="./community.html" aria-current="page" class="block py-3 border-b border-white/10 text-terracotta font-bold">Community</a></li>
-<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
-</ul>
-<div class="flex flex-col gap-3 mt-5">
-<a @click="mobileOpen = false" href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
-<a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full border border-white/25 text-white text-xs font-semibold uppercase tracking-wide px-4 py-3 hover:bg-white/10 transition-colors">Share Your Key</a>
-</div>
-</div>
-</header>
-
-<main id="top" class="flex-grow">
-
-<!-- ============================================================ -->
-<!-- HERO SECTION -->
-<!-- ============================================================ -->
-<section class="relative bg-cream overflow-hidden">
-<div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -right-10 top-6 h-72 sm:h-96 w-auto object-contain">
-</div>
-
-<div class="relative max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-12 sm:pb-16 text-center">
-<div class="inline-flex items-center justify-center gap-2 text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
-<span class="w-6 h-px bg-terracotta"></span>
-Keymakers &nbsp;|&nbsp; Community Circle
-<span class="w-6 h-px bg-terracotta"></span>
-</div>
-
-<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-deepbrown tracking-wide leading-tight mb-6">
-The Conversation Continues Here
-</h1>
-
-<p class="text-deepbrown/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto">
-A dedicated space for women founders, mentors, and partners to ask questions, exchange lessons, and open new doors for each other.
-</p>
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- DISCUSSION TOPICS + CUSDIS THREAD -->
-<!-- ============================================================ -->
-<section x-data="communityForum()" class="relative bg-cream pb-16 sm:pb-24 overflow-hidden">
-<!-- Decorative key watermarks -->
-<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" class="absolute -top-8 -right-16 sm:right-4 w-56 sm:w-72 lg:w-80 opacity-[0.04] object-contain">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" class="absolute -bottom-20 -left-16 sm:left-4 w-48 sm:w-64 lg:w-72 opacity-[0.04] object-contain rotate-180">
-</div>
-
-<div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-<!-- Subject highlight cards -->
-<div class="grid md:grid-cols-3 gap-6 mb-10">
-<article
-  @click="activeTopic = 'growth'"
-  :class="activeTopic === 'growth' ? 'ring-2 ring-gold border-gold/50 scale-[1.02]' : 'border-warmtan hover:scale-[1.02]'"
-  class="rounded-2xl sm:rounded-3xl border bg-white shadow-card p-6 sm:p-7 cursor-pointer transition-all duration-300 ease-out"
->
-<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-4 p-1.5">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
-</span>
-<h2 class="font-serif text-xl font-semibold text-deepbrown mb-2">Entrepreneurship &amp; Growth</h2>
-<p class="text-deepbrown/65 text-sm leading-relaxed">Discuss scaling, hiring, and lessons learned.</p>
-</article>
-
-<article
-  @click="activeTopic = 'capital'"
-  :class="activeTopic === 'capital' ? 'ring-2 ring-gold border-gold/50 scale-[1.02]' : 'border-warmtan hover:scale-[1.02]'"
-  class="rounded-2xl sm:rounded-3xl border bg-white shadow-card p-6 sm:p-7 cursor-pointer transition-all duration-300 ease-out"
->
-<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-terracotta/10 ring-1 ring-terracotta/30 text-terracotta mb-4 p-1.5">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
-</span>
-<h2 class="font-serif text-xl font-semibold text-deepbrown mb-2">Capital &amp; Resources</h2>
-<p class="text-deepbrown/65 text-sm leading-relaxed">Ask questions regarding funding, loans, and financial strategy.</p>
-</article>
-
-<article
-  @click="activeTopic = 'gathering'"
-  :class="activeTopic === 'gathering' ? 'ring-2 ring-gold border-gold/50 scale-[1.02]' : 'border-warmtan hover:scale-[1.02]'"
-  class="rounded-2xl sm:rounded-3xl border bg-white shadow-card p-6 sm:p-7 cursor-pointer transition-all duration-300 ease-out"
->
-<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold mb-4 p-1.5">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
-</span>
-<h2 class="font-serif text-xl font-semibold text-deepbrown mb-2">Gathering &amp; Connections</h2>
-<p class="text-deepbrown/65 text-sm leading-relaxed">Connect before and after our live events.</p>
-</article>
-</div>
-
-<!-- Main forum card -->
-<div class="bg-white rounded-3xl border border-warmtan/80 shadow-soft p-6 sm:p-10 mb-16 relative overflow-visible">
-<div class="bg-gradient-to-r from-gold via-terracotta to-gold h-1.5 w-full absolute top-0 left-0" aria-hidden="true"></div>
-
-<!-- Two-channel forum tabs -->
-<div class="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Community discussion channels">
-<button
-  type="button"
-  role="tab"
-  :aria-selected="activeTab === 'featured'"
-  @click="switchTab('featured')"
-  :class="activeTab === 'featured' ? 'bg-deepbrown text-white border-deepbrown' : 'bg-cream text-deepbrown/70 border-warmtan hover:border-deepbrown/30'"
-  class="shrink-0 rounded-full border px-4 py-2.5 text-xs font-bold uppercase tracking-wide transition-colors"
->
-Featured Monthly Prompt
-</button>
-<button
-  type="button"
-  role="tab"
-  :aria-selected="activeTab === 'general'"
-  @click="switchTab('general')"
-  :class="activeTab === 'general' ? 'bg-deepbrown text-white border-deepbrown' : 'bg-cream text-deepbrown/70 border-warmtan hover:border-deepbrown/30'"
-  class="shrink-0 rounded-full border px-4 py-2.5 text-xs font-bold uppercase tracking-wide transition-colors"
->
-Open Community Circle
-</button>
-</div>
-
-<!-- Featured monthly prompt banner -->
-<div x-show="activeTab === 'featured'" x-cloak class="bg-cream-alt/60 border border-gold/30 rounded-2xl p-6 mb-8 flex items-start gap-4">
-<span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gold/15 ring-1 ring-gold/40 p-2">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
-</span>
-<div class="min-w-0 flex-1">
-<div class="flex flex-wrap items-center gap-2 mb-3">
-<span class="inline-flex items-center gap-1.5 rounded-full bg-gold/15 border border-gold/40 px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-gold">
-<svg class="w-3 h-3 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
-WVF TEAM ANNOUNCEMENT
-</span>
-<span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-terracotta">Monthly Keymaker Prompt</span>
-</div>
-<h3 class="font-serif text-lg sm:text-xl font-semibold text-navy leading-snug mb-2" x-text="activeMonthlyPrompt"></h3>
-<p class="text-deepbrown/65 text-sm sm:text-base leading-relaxed">
-Share your experience below or reply directly to fellow founders in the circle.
-</p>
-</div>
-</div>
-
-<!-- General discussion welcome banner -->
-<div x-show="activeTab === 'general'" x-cloak class="bg-cream-alt/60 border border-warmtan/80 rounded-2xl p-6 mb-8 flex items-start gap-4">
-<span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-terracotta/10 ring-1 ring-terracotta/30 p-2">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain">
-</span>
-<div class="min-w-0 flex-1">
-<h3 class="font-serif text-lg sm:text-xl font-semibold text-navy leading-snug mb-2">Welcome to the Open Community Circle</h3>
-<p class="text-deepbrown/65 text-sm sm:text-base leading-relaxed">
-Ask questions, share resources, and connect with fellow founders.
-</p>
-</div>
-</div>
-
-<div class="bg-cream-alt/70 border border-gold/30 rounded-2xl p-4 sm:p-5 mb-6 flex items-center gap-3">
-<span class="flex items-center justify-center w-8 h-8 rounded-full bg-gold/15 text-gold shrink-0">
-<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg>
-</span>
-<p class="text-xs sm:text-sm text-deepbrown/80 leading-relaxed">
-<strong class="font-semibold text-deepbrown">Pro-Tip for Founders:</strong> When posting below, please enter your <span class="text-terracotta font-semibold">Name (Company Name / Location)</span> in the Nickname field so fellow Keymakers know who you are and what business you run!
-</p>
-</div>
-
-<!-- Cusdis discussion thread -->
-<div id="cusdis_thread" class="w-full min-h-[800px] overflow-visible"></div>
-</div>
-
-</div>
-</section>
-
-</main>
-
-<!-- ============================================================ -->
-<!-- FOOTER -->
-<!-- ============================================================ -->
-<footer id="about-wvf" class="bg-deepbrown text-cream/70">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
-<!-- Brand -->
-<div class="lg:col-span-1">
-<div class="flex items-center gap-3 mb-4">
-<span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-</span>
-<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
-</div>
-<p class="text-sm leading-relaxed mb-6">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
-<div class="flex items-center gap-3">
-<a href="https://instagram.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Instagram (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
-</a>
-<a href="https://facebook.com/womensventfund" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on Facebook (@womensventfund)" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
-</a>
-<a href="https://www.linkedin.com/company/womens-venture-fund/" target="_blank" rel="noopener noreferrer" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
-</a>
-</div>
-</div>
-
-<!-- Program Links -->
-<div>
-<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
-<ul class="space-y-2.5 text-sm">
-<li><a href="./stories.html" class="hover:text-white transition-colors">Stories</a></li>
-<li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
-<li><a href="./index.html#why-it-matters" class="hover:text-white transition-colors">Why It Matters</a></li>
-<li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
-<li><a href="./community.html" class="hover:text-white transition-colors">Community</a></li>
-</ul>
-</div>
-
-<!-- Resources -->
-<div>
-<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
-<ul class="space-y-2.5 text-sm">
-<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
-<li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
-<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
-<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
-</ul>
-</div>
-
-<!-- Newsletter -->
-<div x-data="{ email: '', subscribed: false, loading: false }">
-<h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
-<p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
-
-<form @submit.prevent="
-  if (!email) return;
-  loading = true;
-  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      source: 'Footer Newsletter',
-      participation: 'newsletter-only',
-      email: email
-    })
-  })
-  .then(() => {
-    subscribed = true;
-    loading = false;
-    email = '';
-  })
-  .catch(err => {
-    console.error('Newsletter submission error:', err);
-    subscribed = true;
-    loading = false;
-  });
-" class="flex items-center gap-2">
-<label for="footer-email" class="sr-only">Email address</label>
-<input
-  id="footer-email"
-  name="email"
-  type="email"
-  x-model="email"
-  required
-  placeholder="you@email.com"
-  class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
->
-<button
-  type="submit"
-  :disabled="loading"
-  class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
-  aria-label="Subscribe to newsletter"
->
-<svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-</button>
-</form>
-
-<p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
-Thanks &mdash; you&rsquo;re on the list!
-</p>
-</div>
-</div>
-
-<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
-<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
-<div class="flex items-center gap-6">
-<a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-<a href="#" class="hover:text-white transition-colors">Terms of Use</a>
-<a href="#" class="hover:text-white transition-colors">Accessibility</a>
-</div>
-</div>
-</div>
-</footer>
-
-<script src="./assets/js/keymakers-config.js"></script>
-<script>
-  window.addEventListener('message', function (e) {
-    if (e.origin.includes('cusdis.com')) {
-      try {
-        var data = JSON.parse(e.data);
-        if (data && data.type === 'resize' && data.data) {
-          var iframe = document.querySelector('#cusdis_thread iframe');
-          if (iframe) {
-            iframe.style.height = Math.max(data.data, 800) + 'px';
-          }
-        }
-      } catch (err) {
-        // Non-JSON postMessage from other extensions; ignore safely
-      }
-    }
-  });
 </script>
 </body>
 </html>
