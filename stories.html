@@ -3,598 +3,678 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Favicons & Preconnect -->
 <link rel="icon" type="image/svg+xml" href="./assets/images/Keymakers_Logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Primary SEO Tags -->
-<title>Stories | Keymakers Movement | Women's Venture Fund</title>
-<meta name="description" content="Keymakers is a growing community of entrepreneurs, investors, advisors, and allies creating new pathways to capital, connections, and opportunities.">
+<title>Stories | Every Key Has a Story — Keymakers | Women's Venture Fund</title>
+<meta name="description" content="Every key has a story. Discover the stories of women who turned possibility into progress—different paths, real turning points, and doors opened for others.">
 <link rel="canonical" href="https://keymakers.womensventurefund.org/stories.html">
 
-<!-- Open Graph / Social Link Previews -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Women's Venture Fund">
-<meta property="og:title" content="Stories | Keymakers Movement | Women's Venture Fund">
-<meta property="og:description" content="Stories from entrepreneurs, investors, advisors, and allies creating new pathways for women founders.">
+<meta property="og:title" content="Stories | Every Key Has a Story — Keymakers">
+<meta property="og:description" content="Real women. Real keys. New pathways. Discover the stories of women who turned possibility into progress.">
 <meta property="og:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://keymakers.womensventurefund.org/stories.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Stories | Keymakers Movement | Women's Venture Fund">
-<meta name="twitter:description" content="Stories from entrepreneurs, investors, advisors, and allies creating new pathways for women founders.">
+<meta name="twitter:title" content="Stories | Every Key Has a Story — Keymakers">
+<meta name="twitter:description" content="Real women. Real keys. New pathways. Discover the stories of women who turned possibility into progress.">
 <meta name="twitter:image" content="https://keymakers.womensventurefund.org/assets/images/og-share-card.png">
 
-<!-- Fonts -->
+<link rel="preload" as="image" href="./assets/images/stories/hero.webp" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS (CDN) -->
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          navy: { DEFAULT: '#18263B', 50: '#eef1f5', 100: '#d9dfe8' },
-          terracotta: { DEFAULT: '#C85A32', 50: '#fbeee7' },
-          brown: { DEFAULT: '#4A3525' },
-          gold: { DEFAULT: '#B8860B', 50: '#fbf3e0' },
-          cream: { DEFAULT: '#FDFBF7' },
-          warmgray: { DEFAULT: '#F1ECE4' },
-        },
-        fontFamily: {
-          serif: ['Lora', 'Georgia', 'serif'],
-          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        },
-        boxShadow: {
-          soft: '0 25px 60px -18px rgba(24,38,59,0.30)',
-          card: '0 10px 30px -12px rgba(74,53,37,0.25)',
-        },
-        borderRadius: {
-          '2xl': '1.25rem',
-          '3xl': '1.75rem',
-        },
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        deepgreen: { DEFAULT: '#0D281E', light: '#0F2E22', dark: '#081912' },
+        cream: { DEFAULT: '#FAF8F5', alt: '#F5F2EB' },
+        gold: { DEFAULT: '#C5A059', bright: '#D4AF37', 50: '#fbf6ea' },
+        terracotta: { DEFAULT: '#C25E38', 50: '#fbeee7' },
+        deepbrown: { DEFAULT: '#0D281E' },
+        warmtan: { DEFAULT: '#E8E0D4' },
+        warmgray: { DEFAULT: '#F5F2EB' },
+      },
+      fontFamily: {
+        serif: ['Lora', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        soft: '0 25px 60px -18px rgba(13,40,30,0.28)',
+        card: '0 10px 30px -12px rgba(13,40,30,0.18)',
+        editorial: '0 20px 50px -15px rgba(13,40,30,0.35)',
+      },
+      letterSpacing: {
+        editorial: '0.04em',
       },
     },
-  };
+  },
+};
 </script>
 
-<!-- Givebutter Widget Library -->
-<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=c0DdlWYvuGmd2igp&p=other"></script>
-
-<!-- Alpine.js (CDN) -->
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
-  html { scroll-padding-top: 96px; }
-  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-  .font-serif { font-family: 'Lora', Georgia, serif; }
-  [x-cloak] { display: none !important; }
-
-  .step-connector {
-    background-image: repeating-linear-gradient(to right, #B8860B 0 8px, transparent 8px 16px);
-  }
-
-  .story-card {
-    display: block;
-    flex-shrink: 0;
-    aspect-ratio: 9 / 16;
-  }
-  .story-card-media {
-    background-color: #3A2E24;
-  }
+html, body { margin: 0; padding: 0; }
+html { scroll-padding-top: 88px; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.font-serif { font-family: 'Lora', Georgia, serif; }
+.editorial-cream {
+  background-color: #FAF7F2;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(194, 94, 56, 0.035), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(13, 40, 30, 0.04), transparent 32%);
+}
+[x-cloak] { display: none !important; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.theme-grade { filter: saturate(0.88) contrast(1.06); }
+.snap-x { scroll-snap-type: x mandatory; }
+.snap-start { scroll-snap-align: start; }
+.focus-ring:focus { outline: none; }
+.focus-ring:focus-visible { outline: 2px solid #D4AF37; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .motion-safe-scale { transform: none !important; }
+}
 </style>
 </head>
 
-<body x-data="storiesPage()" class="bg-cream text-navy antialiased">
+<body x-data="storiesPage()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
 
 <!-- ============================================================ -->
-<!-- SECTION 1 :: TOP NAVIGATION                                   -->
+<!-- GLOBAL HEADER (homepage chrome) -->
 <!-- ============================================================ -->
-<header class="sticky top-0 z-50 bg-navy/98 backdrop-blur supports-[backdrop-filter]:bg-navy/95 border-b border-white/10">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+<nav class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-[2px] border-b border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
+<a href="./index.html" class="flex items-center gap-3 shrink-0 group focus-ring rounded-full">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto object-contain">
+</span>
+<span class="font-serif text-lg font-bold text-[#D4AF37] tracking-widest">KEYMAKERS</span>
+</a>
 
-    <!-- Dual Logo Lockup -->
-    <a href="./index.html" class="flex items-center gap-3 shrink-0 group">
-      <span class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold group-hover:bg-gold/20 transition-colors p-1">
-        <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-      </span>
-      <span class="flex flex-col leading-tight">
-        <span class="font-serif text-lg sm:text-xl font-semibold text-white tracking-wide">KEYMAKERS</span>
-        <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-warmgray/70">Women&rsquo;s Venture Fund</span>
-      </span>
-    </a>
+<div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
+<a href="./stories.html" aria-current="page" class="text-[#D4AF37] border-b-2 border-[#D4AF37] py-2">Stories</a>
+<a href="./community.html" class="hover:text-white transition-colors py-2">Community</a>
+<a href="./gathering.html" class="hover:text-white transition-colors py-2">The Gathering</a>
+<a href="./index.html#membership" class="hover:text-white transition-colors py-2">Get Involved</a>
+<a href="./index.html#connectors" class="hover:text-white transition-colors py-2">Connectors</a>
+<a href="./about.html" class="hover:text-white transition-colors py-2">About WVF</a>
+</div>
 
-    <!-- Center Navigation -->
-    <div class="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wider text-white/80 uppercase">
-      <a href="./stories.html" aria-current="page" class="text-terracotta border-b-2 border-terracotta py-2">Stories</a>
-      <a href="./gathering.html" class="hover:text-terracotta transition-colors py-2">The Gathering</a>
-      <a href="./get-involved.html" class="hover:text-terracotta transition-colors py-2">Get Involved</a>
-      <a href="./community.html" class="hover:text-terracotta transition-colors py-2">Community</a>
-      <a href="./about.html" class="hover:text-terracotta transition-colors py-2">About WVF</a>
-    </div>
+<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs px-5 py-2 min-h-[44px] shadow-md hover:bg-[#E2C15E] transition-colors focus-ring">
+Share Your Key
+</a>
 
-    <!-- Right CTAs -->
-    <div class="hidden xl:flex items-center gap-3 shrink-0">
-      <a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="inline-flex items-center justify-center rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-5 py-2.5 hover:bg-gold/90 transition-all">Donate to Keymakers</a>
-      <a href="./share-your-key.html" class="inline-flex items-center justify-center rounded-full border border-white/25 text-white text-xs uppercase tracking-wide font-semibold px-4 py-2 hover:bg-white/10 transition-colors">Share Your Key</a>
-    </div>
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-white hover:bg-white/10 focus-ring" :aria-expanded="mobileOpen.toString()" aria-controls="mobile-nav" aria-label="Toggle menu">
+<svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+<svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+</div>
 
-    <!-- Mobile menu toggle -->
-    <button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle navigation menu">
-      <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-      <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-    </button>
-  </nav>
+<div id="mobile-nav" x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden px-4 pb-6 pt-2 bg-[#062117]/95">
+<ul class="flex flex-col text-sm font-semibold uppercase tracking-widest text-white/80">
+<li><a @click="mobileOpen = false" href="./stories.html" aria-current="page" class="flex items-center justify-between py-3 min-h-[44px] border-b border-white/10 text-[#D4AF37]">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Community</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#membership" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./index.html#connectors" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 min-h-[44px] hover:text-white">About WVF</a></li>
+</ul>
+<a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 min-h-[44px] hover:bg-[#E2C15E]">Share Your Key</a>
+</div>
+</nav>
 
-  <!-- Mobile Menu Panel -->
-  <div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden border-t border-white/10 bg-navy px-4 sm:px-6 pb-6 pt-2">
-    <ul class="flex flex-col gap-1 text-sm font-semibold uppercase tracking-wide text-white/80">
-      <li><a @click="mobileOpen = false" href="./stories.html" aria-current="page" class="flex items-center justify-between py-3 border-b border-white/10 text-terracotta">Stories <span class="w-1.5 h-1.5 rounded-full bg-terracotta"></span></a></li>
-      <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-terracotta">The Gathering</a></li>
-      <li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Get Involved</a></li>
-      <li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-terracotta">Community</a></li>
-      <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-terracotta">About WVF</a></li>
-    </ul>
-    <div class="flex flex-col gap-3 mt-5">
-      <a @click="mobileOpen = false" href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="text-center rounded-full bg-gold text-deepbrown text-xs font-bold uppercase tracking-wide px-4 py-3 hover:bg-gold/90 transition-colors">Donate to Keymakers</a>
-      <a @click="mobileOpen = false" href="./share-your-key.html" class="text-center rounded-full border border-white/25 text-white text-xs font-semibold uppercase tracking-wide px-4 py-3 hover:bg-white/10 transition-colors">Share Your Key</a>
-    </div>
-  </div>
+<!-- ============================================================ -->
+<!-- STORIES HERO (above the crease) -->
+<!-- ============================================================ -->
+<header class="relative overflow-hidden -mt-[4.5rem] pt-[4.5rem] min-h-[100svh] lg:min-h-[40rem]">
+<img
+  src="./assets/images/stories/hero.webp"
+  alt="A woman entrepreneur completing a sale in a sunlit studio"
+  width="1800"
+  height="1012"
+  fetchpriority="high"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+>
+<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/90 via-[#062117]/55 to-[#062117]/25 pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/80 via-transparent to-[#062117]/35 pointer-events-none"></div>
+
+<section class="relative z-10 flex flex-col justify-end lg:justify-center min-h-[calc(100svh-4.5rem)] lg:min-h-[36rem]">
+<div class="max-w-6xl mx-auto w-full px-4 sm:px-8 pb-12 pt-10 sm:pb-16 lg:py-16">
+<div class="max-w-xl">
+<p class="font-serif italic text-[#D4AF37] text-lg sm:text-xl mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">Different paths. Real turning points.</p>
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-normal leading-[1.08] tracking-tight mb-4">
+Every key has a story.
+</h1>
+<p class="text-[#D4AF37] text-sm sm:text-base font-semibold tracking-wide mb-5">Real women. Real keys. New pathways.</p>
+<p class="text-white/80 text-sm sm:text-base leading-relaxed max-w-lg mb-8 font-light">
+Discover the stories of women who turned possibility into progress&mdash;different paths, real turning points, and doors opened for others.
+</p>
+<button
+  type="button"
+  @click="exploreLibrary()"
+  class="inline-flex items-center gap-2 bg-[#D4AF37] text-[#0A2E20] font-bold text-sm px-7 py-3 min-h-[44px] rounded-full hover:bg-[#E2C15E] transition-all shadow-lg focus-ring"
+>
+  Explore the Stories &rarr;
+</button>
+</div>
+</div>
+</section>
 </header>
 
-<main id="top">
+<main id="stories">
 
 <!-- ============================================================ -->
-<!-- SECTION 2 :: HERO — THE MOVEMENT                              -->
+<!-- FEATURED STORY -->
 <!-- ============================================================ -->
-<section class="relative bg-cream overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none opacity-[0.05] text-gold">
-    <img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="absolute -left-10 -top-6 h-80 sm:h-96 w-auto object-contain">
-  </div>
+<section id="featured-story" class="bg-cream-alt border-y border-deepgreen/10 py-10 sm:py-12" aria-labelledby="featured-heading">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="flex items-end justify-between gap-4 mb-6">
+<div>
+<span class="text-terracotta text-xs font-bold uppercase tracking-[0.18em]">Featured Story</span>
+<h2 id="featured-heading" class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen mt-2">Real keys. Real doors.</h2>
+</div>
+</div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<!-- Published state -->
+<template x-if="featuredStory">
+<div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+<div class="lg:col-span-7">
+<button
+  type="button"
+  @click="openStory(featuredStory)"
+  class="group relative w-full aspect-video rounded-2xl overflow-hidden shadow-editorial text-left focus-ring"
+  :aria-label="'Play ' + featuredStory.name + '\'s story'"
+>
+<img
+  :src="featuredStory.img"
+  :alt="featuredStory.imgAlt"
+  :width="featuredStory.imgWidth"
+  :height="featuredStory.imgHeight"
+  loading="lazy"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover motion-safe-scale group-hover:scale-[1.03] transition-transform duration-500"
+>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/80 via-[#062117]/15 to-transparent"></div>
+<span class="absolute inset-0 flex items-center justify-center">
+<span class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/95 text-deepgreen shadow-xl group-hover:bg-[#D4AF37] transition-colors">
+<svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
+</span>
+</span>
+<span x-show="featuredStory.duration" class="absolute bottom-4 right-4 text-[10px] font-bold uppercase tracking-wider text-white bg-black/50 rounded-full px-2.5 py-1" x-text="featuredStory.duration"></span>
+</button>
+</div>
 
-    <!-- Left Column -->
-    <div class="max-w-xl">
-      <div class="inline-flex items-center gap-2 text-terracotta text-xs sm:text-sm font-bold uppercase tracking-[0.14em] mb-6">
-        <span class="w-6 h-px bg-terracotta"></span>
-        Page 2 &mdash; The Movement
-      </div>
+<div class="lg:col-span-3 flex flex-col justify-center">
+<p class="text-[10px] font-bold uppercase tracking-[0.18em] text-terracotta mb-2" x-text="[featuredStory.organization, featuredStory.role].filter(Boolean).join(' · ')"></p>
+<h3 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold leading-tight" x-text="featuredStory.title || featuredStory.name"></h3>
+<p x-show="featuredStory.quote" class="font-serif italic text-deepgreen/75 text-base leading-relaxed mt-4" x-text="'\u201c' + featuredStory.quote + '\u201d'"></p>
+<p x-show="featuredStory.summary && !featuredStory.quote" class="text-deepgreen/70 text-sm leading-relaxed mt-4" x-text="featuredStory.summary"></p>
+<button
+  type="button"
+  @click="openStory(featuredStory)"
+  class="mt-6 inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring self-start"
+>
+  Watch Her Story
+</button>
+</div>
 
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.15rem] leading-[1.12] font-semibold text-navy mb-6">
-        A movement built by women, for women.
-      </h1>
+<div class="hidden lg:block lg:col-span-2">
+<div class="relative h-full min-h-[18rem] rounded-2xl overflow-hidden shadow-card">
+<img
+  :src="featuredStory.portrait"
+  :alt="featuredStory.portraitAlt"
+  :width="featuredStory.portraitWidth"
+  :height="featuredStory.portraitHeight"
+  loading="lazy"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover object-top"
+>
+</div>
+</div>
+</div>
+</template>
 
-      <p class="text-navy/70 text-base sm:text-lg leading-relaxed mb-8">
-        Keymakers is a growing community of entrepreneurs, investors, advisors, and allies creating new pathways to capital, connections, and opportunities.
-      </p>
-
-      <a href="./get-involved.html" class="inline-flex items-center gap-2 rounded-full bg-terracotta text-white font-bold text-sm px-6 py-3.5 shadow-lg shadow-terracotta/20 hover:bg-terracotta/90 transition-colors">
-        Join the Movement
-        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-      </a>
-    </div>
-
-    <!-- Right Column: Hero Image -->
-    <div class="relative">
-      <div class="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] lg:aspect-[9/10]">
-        <img src="https://images.unsplash.com/photo-1573167243872-43c6433b9d40?auto=format&fit=crop&w=1200&q=80" alt="Three women founders laughing and collaborating together over a laptop" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-          <p class="text-white font-semibold text-sm">Every key shared makes room for the next one.</p>
-        </div>
-      </div>
-
-      <!-- Floating accent badge -->
-      <div class="hidden sm:flex absolute -top-6 -right-6 items-center gap-3 bg-white rounded-2xl shadow-card px-5 py-4 max-w-[15rem]">
-        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold shrink-0 p-1">
-          <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-        </span>
-        <p class="text-xs text-navy/70 leading-snug">A community of entrepreneurs, investors, and allies.</p>
-      </div>
-    </div>
-  </div>
+<!-- Pre-launch state -->
+<template x-if="!featuredStory">
+<div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+<div class="lg:col-span-7">
+<div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-editorial">
+<img
+  src="./assets/images/stories/featured-support.webp"
+  alt="A quiet sunlit lounge prepared for conversation"
+  width="960"
+  height="1200"
+  loading="lazy"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover"
+>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/55 via-transparent to-transparent"></div>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col justify-center">
+<h3 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold leading-tight">The first stories are opening soon.</h3>
+<p class="text-deepgreen/70 text-sm sm:text-base leading-relaxed mt-4">We&rsquo;re preparing the first Keymaker conversations. In the meantime, tell us about the key that changed what was possible for you.</p>
+<a href="./share-your-key.html" class="mt-6 inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring self-start">Share Your Key</a>
+</div>
+</div>
+</template>
+</div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 3 :: BY THE NUMBERS (6-COLUMN RIBBON)                 -->
+<!-- MORE KEYMAKERS -->
 <!-- ============================================================ -->
-<section class="bg-cream pb-16 lg:pb-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">By The Numbers</span>
-      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-2">The movement, measured.</h2>
-    </div>
-    <div class="grid grid-cols-3 lg:grid-cols-6 rounded-3xl border border-warmgray bg-white/60 divide-x divide-y sm:divide-y-0 divide-warmgray overflow-hidden">
-      <div class="flex flex-col items-center justify-center text-center px-3 py-8">
-        <p class="font-serif text-2xl sm:text-3xl font-semibold text-gold mb-1.5">209</p>
-        <p class="text-navy/60 text-[10px] sm:text-xs font-bold uppercase tracking-wide">Keys Shared</p>
-      </div>
-      <div class="flex flex-col items-center justify-center text-center px-3 py-8">
-        <p class="font-serif text-2xl sm:text-3xl font-semibold text-gold mb-1.5">87</p>
-        <p class="text-navy/60 text-[10px] sm:text-xs font-bold uppercase tracking-wide">Stories Published</p>
-      </div>
-      <div class="flex flex-col items-center justify-center text-center px-3 py-8">
-        <p class="font-serif text-2xl sm:text-3xl font-semibold text-gold mb-1.5">412</p>
-        <p class="text-navy/60 text-[10px] sm:text-xs font-bold uppercase tracking-wide">Women Registered</p>
-      </div>
-      <div class="flex flex-col items-center justify-center text-center px-3 py-8">
-        <p class="font-serif text-2xl sm:text-3xl font-semibold text-gold mb-1.5">73</p>
-        <p class="text-navy/60 text-[10px] sm:text-xs font-bold uppercase tracking-wide">Sponsors &amp; Partners</p>
-      </div>
-      <div class="flex flex-col items-center justify-center text-center px-3 py-8">
-        <p class="font-serif text-2xl sm:text-3xl font-semibold text-gold mb-1.5">56</p>
-        <p class="text-navy/60 text-[10px] sm:text-xs font-bold uppercase tracking-wide">Host Committee Members</p>
-      </div>
-      <div class="flex flex-col items-center justify-center text-center px-3 py-8">
-        <p class="font-serif text-2xl sm:text-3xl font-semibold text-gold mb-1.5">68</p>
-        <p class="text-navy/60 text-[10px] sm:text-xs font-bold uppercase tracking-wide">Founding Gathering Attendees</p>
-      </div>
-    </div>
-  </div>
+<section id="more-keymakers" class="editorial-cream py-10 sm:py-12" aria-labelledby="keymakers-heading" x-show="keymakers.length" x-cloak>
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="flex items-end justify-between gap-4 mb-6">
+<div>
+<span class="text-terracotta text-xs font-bold uppercase tracking-[0.18em]">The Collection</span>
+<h2 id="keymakers-heading" class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen mt-2">More Keymakers</h2>
+</div>
+</div>
+
+<!-- Single verified person: larger editorial feature -->
+<template x-if="keymakers.length === 1">
+<article class="grid md:grid-cols-12 gap-6 lg:gap-10 items-center max-w-4xl">
+<div class="md:col-span-5">
+<div class="relative aspect-[3/4] max-h-[28rem] rounded-2xl overflow-hidden shadow-editorial">
+<img
+  :src="keymakers[0].img"
+  :alt="keymakers[0].alt"
+  :width="keymakers[0].width"
+  :height="keymakers[0].height"
+  loading="lazy"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover object-top"
+>
+</div>
+</div>
+<div class="md:col-span-7">
+<p class="text-[10px] font-bold uppercase tracking-[0.18em] text-terracotta mb-2" x-text="[keymakers[0].organization, keymakers[0].role].filter(Boolean).join(' · ')"></p>
+<h3 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold" x-text="keymakers[0].name"></h3>
+<p class="text-deepgreen/65 text-sm mt-3 max-w-md">A verified Keymaker in the collection. Her conversation is part of the first stories being shared.</p>
+<button
+  x-show="keymakers[0].hasVideo"
+  type="button"
+  @click="openStoryById(keymakers[0].storyId)"
+  class="mt-6 inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring"
+  x-text="keymakers[0].statusLabel"
+></button>
+<p x-show="!keymakers[0].hasVideo" class="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-deepgreen/55" x-text="keymakers[0].statusLabel"></p>
+</div>
+</article>
+</template>
+
+<!-- Multiple verified people: compact magazine strip / scroll-snap -->
+<template x-if="keymakers.length > 1">
+<div class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x no-scrollbar pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+<template x-for="person in keymakers" :key="person.id">
+<article class="snap-start shrink-0 w-[78vw] sm:w-72 md:w-auto">
+<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card mb-3">
+<img :src="person.img" :alt="person.alt" :width="person.width" :height="person.height" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<p class="text-white font-semibold text-sm" x-text="person.name"></p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1" x-text="[person.organization, person.role].filter(Boolean).join(' · ')"></p>
+</div>
+</div>
+<button
+  x-show="person.hasVideo"
+  type="button"
+  @click="openStoryById(person.storyId)"
+  class="text-xs font-bold uppercase tracking-wider text-terracotta hover:text-deepgreen focus-ring rounded-sm min-h-[44px]"
+  x-text="person.statusLabel"
+></button>
+<p x-show="!person.hasVideo" class="text-xs font-bold uppercase tracking-wider text-deepgreen/50 min-h-[44px] flex items-center" x-text="person.statusLabel"></p>
+</article>
+</template>
+</div>
+</template>
+</div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 4 :: VOICES OF THE MOVEMENT (VIDEO GRID)              -->
+<!-- STORY LIBRARY -->
 <!-- ============================================================ -->
-<section id="voices" class="bg-warmgray/50 py-20 lg:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-      <div>
-        <span class="text-terracotta text-xs font-bold uppercase tracking-[0.16em]">Community</span>
-        <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy mt-1">Voices of the movement</h2>
-      </div>
-      <a href="#voices" class="inline-flex items-center gap-1.5 text-navy font-semibold text-sm hover:text-terracotta transition-colors shrink-0">
-        View All Stories
-        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-      </a>
-    </div>
+<section id="story-library" class="bg-cream py-10 sm:py-12 border-y border-deepgreen/10" aria-labelledby="library-heading">
+<div class="max-w-6xl mx-auto px-4 sm:px-8">
+<div class="mb-8 max-w-2xl">
+<span class="text-terracotta text-xs font-bold uppercase tracking-[0.18em]">Story Library</span>
+<h2 id="library-heading" tabindex="-1" class="font-serif text-3xl sm:text-4xl font-semibold text-deepgreen mt-2 outline-none">Browse by the door it opened.</h2>
+<p class="text-deepgreen/65 text-sm mt-3">Themes to explore while the video library grows. Each collection holds verified stories&mdash;never stand-ins.</p>
+</div>
 
-    <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-2 mb-8 -mx-1 px-1">
-      <template x-for="filter in filters" :key="filter">
-        <button
-          type="button"
-          @click="activeFilter = filter"
-          :class="activeFilter === filter ? 'bg-navy text-white border-navy' : 'bg-white text-navy/70 border-warmgray hover:border-navy/30'"
-          class="shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors"
-          x-text="filter"
-        ></button>
-      </template>
-    </div>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4" role="list">
+<template x-for="theme in themes" :key="theme.id">
+<button
+  type="button"
+  role="listitem"
+  @click="selectTheme(theme.id)"
+  :aria-pressed="(activeTheme === theme.id).toString()"
+  :aria-label="'Filter stories: ' + theme.label"
+  class="group relative aspect-[4/5] rounded-2xl overflow-hidden text-left shadow-card focus-ring min-h-[44px]"
+  :class="activeTheme === theme.id ? 'ring-2 ring-[#D4AF37] ring-offset-2 ring-offset-cream' : ''"
+>
+<img
+  :src="theme.img"
+  :alt="theme.alt"
+  :width="theme.width"
+  :height="theme.height"
+  loading="lazy"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover theme-grade motion-safe-scale group-hover:scale-[1.04] transition-transform duration-500"
+>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-[#062117]/35 to-[#062117]/10"></div>
+<span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#D4AF37]/15 ring-1 ring-[#D4AF37]/40 p-1.5">
+<img src="./assets/images/Keymakers_Logo.svg" alt="" class="w-full h-full object-contain">
+</span>
+<span class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+<span class="font-serif text-white text-base sm:text-lg leading-snug" x-text="theme.label"></span>
+</span>
+</button>
+</template>
+</div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <template x-for="voice in filteredVoices" :key="voice.id">
-        <button
-          type="button"
-          @click="openModal(voice)"
-          :aria-label="'Play story from ' + voice.name"
-          class="story-card group relative w-64 sm:w-72 aspect-[9/16] shrink-0 rounded-2xl overflow-hidden shadow-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold mx-auto"
-        >
-          <img :src="voice.img" :alt="voice.name + ', ' + voice.tag" class="absolute inset-0 w-full h-full object-cover object-center story-card-media">
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-            <span class="flex items-center justify-center w-12 h-12 rounded-full bg-white/90 backdrop-blur text-navy shadow-xl group-hover:scale-110 group-hover:bg-white transition-all">
-              <svg class="w-5 h-5 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
-            </span>
-          </div>
-        </button>
-      </template>
-    </div>
-  </div>
+<div class="mt-6 min-h-[3rem]" aria-live="polite">
+<template x-if="activeTheme">
+<div class="rounded-2xl border border-deepgreen/10 bg-cream-alt/80 p-5 sm:p-6">
+<p class="text-[10px] font-bold uppercase tracking-[0.18em] text-terracotta mb-3" x-text="activeThemeLabel"></p>
+
+<template x-if="filteredStories.length">
+<ul class="space-y-3">
+<template x-for="story in filteredStories" :key="story.id">
+<li>
+<button
+  type="button"
+  @click="openStory(story)"
+  class="w-full flex items-center gap-4 text-left rounded-xl p-2 -m-2 hover:bg-white/70 focus-ring min-h-[44px]"
+>
+<img :src="story.portrait || story.img" :alt="story.portraitAlt || story.imgAlt" width="72" height="72" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover object-top shrink-0">
+<span class="min-w-0">
+<span class="block font-semibold text-deepgreen text-sm" x-text="story.name"></span>
+<span class="block text-deepgreen/60 text-xs mt-0.5 truncate" x-text="story.organization"></span>
+</span>
+<span class="ml-auto shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Watch</span>
+</button>
+</li>
+</template>
+</ul>
+</template>
+
+<template x-if="!filteredStories.length">
+<div>
+<p class="font-serif text-lg text-deepgreen">Stories in this collection are coming soon.</p>
+<a href="./share-your-key.html" class="mt-4 inline-flex items-center justify-center rounded-full border border-deepgreen/20 text-deepgreen font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-deepgreen hover:text-white transition-colors focus-ring">Share Your Key</a>
+</div>
+</template>
+</div>
+</template>
+</div>
+</div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 5 :: FEATURED SPOTLIGHT QUOTE BANNER                  -->
+<!-- SHARE YOUR KEY BANNER -->
 <!-- ============================================================ -->
-<section class="bg-cream">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-    <div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-soft">
-
-      <!-- Left: Photo -->
-      <div class="relative min-h-[20rem] lg:min-h-[26rem]">
-        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=1200&q=80" alt="Angela Johnson, investor, advisor, and Keymaker" class="absolute inset-0 w-full h-full object-cover">
-      </div>
-
-      <!-- Right: Navy/Cream Quote Block -->
-      <div class="relative bg-navy text-cream flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-        <span class="font-serif text-gold text-7xl sm:text-8xl leading-none mb-4">&ldquo;</span>
-        <p class="font-serif text-2xl sm:text-3xl leading-snug text-white mb-8">
-          We&rsquo;re not waiting for the old system to change. We&rsquo;re building what&rsquo;s next.
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-px bg-gold"></div>
-          <div>
-            <p class="text-white font-semibold text-base">Angela Johnson</p>
-            <p class="text-cream/60 text-sm uppercase tracking-wide">Investor, Advisor, Keymaker</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 6 :: FROM FIRST KEY TO LASTING IMPACT (TIMELINE)      -->
-<!-- ============================================================ -->
-<section class="bg-brown text-cream">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="text-gold text-xs font-bold uppercase tracking-[0.16em]">The Path Forward</span>
-      <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-2">From first key to lasting impact.</h2>
-    </div>
-
-    <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
-      <!-- connector line (desktop only) -->
-      <div class="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-px step-connector"></div>
-
-      <!-- Step 1 -->
-      <div class="relative flex flex-col items-start text-left">
-        <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-gold text-navy font-serif font-semibold mb-5">1</span>
-        <h3 class="font-serif font-semibold text-white text-lg mb-2">Share your story</h3>
-        <p class="text-cream/70 text-sm leading-relaxed">Open doors by sharing the moment that changed everything.</p>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="relative flex flex-col items-start text-left">
-        <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-white/10 ring-1 ring-gold/50 text-gold font-serif font-semibold mb-5">2</span>
-        <h3 class="font-serif font-semibold text-white text-lg mb-2">Connect &amp; grow</h3>
-        <p class="text-cream/70 text-sm leading-relaxed">Build relationships through monthly forums, mentorship, and capital.</p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="relative flex flex-col items-start text-left">
-        <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-white/10 ring-1 ring-gold/50 text-gold font-serif font-semibold mb-5">3</span>
-        <h3 class="font-serif font-semibold text-white text-lg mb-2">Create opportunity</h3>
-        <p class="text-cream/70 text-sm leading-relaxed">Open doors for the next woman in the network.</p>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="relative flex flex-col items-start text-left">
-        <span class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-white/10 ring-1 ring-gold/50 text-gold font-serif font-semibold mb-5">4</span>
-        <h3 class="font-serif font-semibold text-white text-lg mb-2">Multiply impact</h3>
-        <p class="text-cream/70 text-sm leading-relaxed">Together we build a future where three women succeed for every one today.</p>
-      </div>
-    </div>
-  </div>
+<section id="share-banner" class="px-4 sm:px-8 py-10 sm:py-12 editorial-cream" aria-labelledby="share-heading">
+<div class="max-w-6xl mx-auto relative rounded-3xl overflow-hidden min-h-[18rem] sm:min-h-[20rem] shadow-2xl">
+<img
+  src="./assets/images/stories/cta-share.webp"
+  alt="Friends standing together at sunset, seen from behind"
+  width="1600"
+  height="899"
+  loading="lazy"
+  decoding="async"
+  class="absolute inset-0 w-full h-full object-cover"
+>
+<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/88 via-[#062117]/55 to-[#062117]/25"></div>
+<div class="relative z-10 max-w-lg p-7 sm:p-12">
+<h2 id="share-heading" class="font-serif text-3xl sm:text-4xl text-white">What&rsquo;s your key?</h2>
+<p class="text-white/80 text-sm sm:text-base leading-relaxed mt-4 mb-6">Your story can open doors for someone else. Share your experience and become part of a brighter tomorrow.</p>
+<a href="./share-your-key.html" class="inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring">Share Your Story</a>
+</div>
+</div>
 </section>
 
 </main>
 
 <!-- ============================================================ -->
-<!-- SECTION 7 :: FOOTER                                           -->
+<!-- LOCKED FOOTER STATS BAR -->
 <!-- ============================================================ -->
-<footer id="about-wvf" class="bg-navy text-cream/70">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+<section class="bg-[#062117] py-6 border-t border-white/10" aria-label="Women's Venture Fund impact">
+<div class="grid grid-cols-3 max-w-4xl mx-auto text-center">
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">Since 1996</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Nearly three decades of access</p></div>
+<div class="px-2 border-x border-white/10"><p class="font-serif text-xl sm:text-2xl text-white">28,000+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Women entrepreneurs served</p></div>
+<div class="px-2"><p class="font-serif text-xl sm:text-2xl text-[#D4AF37]">$2.4M+</p><p class="text-[9px] tracking-widest text-white/50 uppercase mt-1">Business loans provided</p></div>
+</div>
+</section>
 
-      <!-- Brand -->
-      <div class="lg:col-span-1">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/10 ring-1 ring-gold/40 text-gold p-1">
-            <img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers key symbol" class="h-full w-auto max-w-full object-contain">
-          </span>
-          <span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
-        </div>
-        <p class="text-sm leading-relaxed mb-6">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
-        <div class="flex items-center gap-3">
-          <a href="#" aria-label="Keymakers on Instagram" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.6.36 3.5 1.28.94.94 1.22 2.3 1.28 3.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.34 2.6-1.28 3.5-.94.94-2.3 1.22-3.5 1.28-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.6-.34-3.5-1.28-.94-.94-1.22-2.3-1.28-3.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.34-2.56 1.28-3.5.94-.94 2.3-1.22 3.5-1.28C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.53 0-4.77.07-1.02.05-1.94.24-2.66.96-.72.72-.9 1.64-.96 2.66C3.5 8.47 3.5 8.85 3.5 12s0 3.53.07 4.77c.05 1.02.24 1.94.96 2.66.72.72 1.64.9 2.66.96 1.24.06 1.62.07 4.77.07s3.53 0 4.77-.07c1.02-.05 1.94-.24 2.66-.96.72-.72.9-1.64.96-2.66.06-1.24.07-1.62.07-4.77s0-3.53-.07-4.77c-.05-1.02-.24-1.94-.96-2.66-.72-.72-1.64-.9-2.66-.96C15.53 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 1.8a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm5.85-2.75a1.05 1.05 0 11-2.1 0 1.05 1.05 0 012.1 0z"/></svg>
-          </a>
-          <a href="#" aria-label="Keymakers on Facebook" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.6h2.55l.48-3H13.5V8.4c0-.87.24-1.47 1.5-1.47h1.6V4.24c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.3H8v3h2.4V21h3.1z"/></svg>
-          </a>
-          <a href="#" aria-label="Keymakers on LinkedIn" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.4a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.4 20h-3.38v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9.55V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.43 0 4.36 2.26 4.36 5.2V20z"/></svg>
-          </a>
-          <a href="#" aria-label="Keymakers on X" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 hover:bg-white/10 hover:text-white transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 3h2.9l-6.3 7.2L21.5 21h-5.9l-4.6-6-5.3 6H2.8l6.7-7.7L2.3 3h6l4.2 5.5L17.6 3zm-1 16.2h1.6L7.5 4.7H5.8L16.6 19.2z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Program Links -->
-      <div>
-        <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Program</h4>
-        <ul class="space-y-2.5 text-sm">
-          <li><a href="./stories.html" class="hover:text-white transition-colors">Stories</a></li>
-          <li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
-          <li><a href="./why-it-matters.html" class="hover:text-white transition-colors">Why It Matters</a></li>
-          <li><a href="./get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
-        <ul class="space-y-2.5 text-sm">
-          <li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission Guidelines</a></li>
-          <li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Press &amp; Media</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div x-data="{ email: '', subscribed: false, loading: false }">
-        <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
-        <p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
-
-        <form @submit.prevent="
-          if (!email) return;
-          loading = true;
-          fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              source: 'Footer Newsletter',
-              participation: 'newsletter-only',
-              email: email
-            })
-          })
-          .then(() => {
-            subscribed = true;
-            loading = false;
-            email = '';
-          })
-          .catch(err => {
-            console.error('Newsletter submission error:', err);
-            subscribed = true;
-            loading = false;
-          });
-        " class="flex items-center gap-2">
-          <label for="footer-email" class="sr-only">Email address</label>
-          <input
-            id="footer-email"
-            name="email"
-            type="email"
-            x-model="email"
-            required
-            placeholder="you@email.com"
-            class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
-          >
-          <button
-            type="submit"
-            :disabled="loading"
-            class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gold text-deepbrown hover:bg-gold/90 transition-colors disabled:opacity-50"
-            aria-label="Subscribe to newsletter"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-          </button>
-        </form>
-
-        <p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
-          Thanks &mdash; you&rsquo;re on the list!
-        </p>
-      </div>
-    </div>
-
-    <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
-      <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
-        <a href="#" class="hover:text-white transition-colors">Accessibility</a>
-      </div>
-    </div>
-  </div>
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="bg-deepgreen-dark text-cream/70">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 ring-1 ring-gold/30 p-1">
+<img src="./assets/images/Keymakers_Logo.svg" alt="Keymakers" loading="lazy" decoding="async" class="h-full w-auto">
+</span>
+<span class="font-serif text-lg font-semibold text-white">KEYMAKERS</span>
+</div>
+<p class="text-sm leading-relaxed mb-4">A storytelling movement by the Women&rsquo;s Venture Fund, connecting women entrepreneurs through the keys that opened their doors.</p>
+<div class="text-xs space-y-1 text-cream/75">
+<p>Phone: <a href="tel:2125630499" class="hover:text-white">(212) 563-0499</a></p>
+<p>Email: <a href="mailto:info@wvf-ny.org" class="hover:text-white">info@wvf-ny.org</a></p>
+</div>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Program</h3>
+<ul class="space-y-2 text-sm">
+<li><a href="./stories.html" aria-current="page" class="hover:text-white transition-colors">Stories</a></li>
+<li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
+<li><a href="./index.html#membership" class="hover:text-white transition-colors">Membership</a></li>
+<li><a href="./community.html" class="hover:text-white transition-colors">Community</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Resources</h3>
+<ul class="space-y-2 text-sm">
+<li><a href="./share-your-key.html" class="hover:text-white transition-colors">Share your key</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
+<li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Stay in the loop</h3>
+<p class="text-sm text-cream/60 mb-3">Gathering updates and new Keymaker stories.</p>
+<a href="./gathering.html#reserve" class="inline-flex rounded-full border border-white/20 text-white text-xs font-semibold px-5 py-2.5 min-h-[44px] items-center hover:bg-white/10 transition-colors focus-ring">Get Updates</a>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
+<p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
+<div class="flex gap-6">
+<a href="mailto:info@wvf-ny.org?subject=Privacy%20Policy" class="hover:text-white">Privacy</a>
+<a href="mailto:info@wvf-ny.org?subject=Terms%20of%20Use" class="hover:text-white">Terms</a>
+</div>
+</div>
+</div>
 </footer>
 
 <!-- ============================================================ -->
-<!-- VIDEO POPUP MODAL (Alpine.js)                                  -->
+<!-- VIDEO MODAL (real videos only) -->
 <!-- ============================================================ -->
 <div
-  x-show="modal.open"
+  x-show="modalOpen"
   x-cloak
+  x-ref="dialog"
   @keydown.escape.window="closeModal()"
+  @keydown.tab="trapFocus($event)"
   class="fixed inset-0 z-[100] flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
-  :aria-hidden="!modal.open"
+  :aria-labelledby="modal-title"
+  :aria-hidden="(!modalOpen).toString()"
 >
-  <div x-show="modal.open" x-transition.opacity.duration.250ms @click="closeModal()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+<div x-show="modalOpen" x-transition.opacity @click="closeModal()" class="absolute inset-0 bg-black/85 backdrop-blur-sm"></div>
 
-  <div
-    x-show="modal.open"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 scale-95"
-    x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-in duration-150"
-    x-transition:leave-start="opacity-100 scale-100"
-    x-transition:leave-end="opacity-0 scale-95"
-    class="relative w-full max-w-4xl bg-navy rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
-    @click.outside="closeModal()"
-  >
-    <button @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-20 rounded-full bg-white/90 text-deepbrown p-2 hover:bg-white shadow-lg transition-colors">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-    </button>
+<div
+  x-show="modalOpen"
+  x-transition:enter="transition ease-out duration-300"
+  x-transition:enter-start="opacity-0 scale-95"
+  x-transition:enter-end="opacity-100 scale-100"
+  class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+>
+<button x-ref="closeBtn" @click="closeModal()" type="button" aria-label="Close video" class="absolute top-4 right-4 z-40 rounded-full bg-white/90 text-deepgreen p-2.5 min-h-[44px] min-w-[44px] inline-flex items-center justify-center hover:bg-white shadow-lg focus-ring">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
 
-    <template x-if="modal.story">
-      <div>
-        <template x-if="activeVideoUrl">
-          <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
-            <iframe
-              x-show="activeVideoUrl"
-              :src="activeVideoUrl"
-              :title="modal.story.name + ' Story'"
-              class="w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/40 rounded-full px-2.5 py-1 pointer-events-none" x-text="modal.story.category"></span>
-          </div>
-        </template>
-
-        <template x-if="!activeVideoUrl">
-          <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden">
-            <img :src="modal.story.img" :alt="'Video preview for ' + modal.story.name" class="absolute inset-0 w-full h-full object-cover object-center story-card-media opacity-90">
-            <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/10 to-transparent"></div>
-            <button type="button" class="absolute inset-0 flex items-center justify-center group" aria-label="Play video">
-              <span class="flex items-center justify-center w-20 h-20 rounded-full bg-white/90 backdrop-blur text-navy shadow-xl group-hover:scale-105 group-hover:bg-white transition-all">
-                <svg class="w-7 h-7 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
-              </span>
-            </button>
-            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wide text-gold bg-black/40 rounded-full px-2.5 py-1" x-text="modal.story.category"></span>
-          </div>
-        </template>
-
-        <!-- Caption -->
-        <div class="p-6 sm:p-8">
-          <p class="font-serif italic text-white text-xl sm:text-2xl leading-snug mb-4" x-text="'\u201c' + modal.story.quote + '\u201d'"></p>
-          <div class="flex items-center gap-3">
-            <div class="w-px h-8 bg-gold"></div>
-            <div>
-              <p class="text-white font-semibold text-sm" x-text="modal.story.name"></p>
-              <p class="text-white/60 text-xs uppercase tracking-wide" x-text="modal.story.tag"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-  </div>
+<template x-if="modalStory && modalStory.youtubeId">
+<div>
+<div class="relative px-4 sm:px-6 pt-4 sm:pt-6">
+<div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
+<iframe
+  x-ref="player"
+  :src="embedUrl"
+  :title="(modalStory.title || modalStory.name) + ' story video'"
+  class="w-full h-full border-0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+</div>
+</div>
+<div class="p-6 sm:p-8">
+<p id="modal-title" class="text-white font-semibold" x-text="modalStory.name"></p>
+<p class="text-cream/55 text-xs uppercase tracking-wide mt-0.5" x-text="[modalStory.organization, modalStory.role].filter(Boolean).join(' · ')"></p>
+<p x-show="modalStory.quote" class="font-serif italic text-cream/85 text-lg leading-snug mt-4" x-text="'\u201c' + modalStory.quote + '\u201d'"></p>
+</div>
+</div>
+</template>
+</div>
 </div>
 
 <script src="./assets/js/keymakers-config.js"></script>
+<script src="./assets/js/stories-data.js"></script>
 <script>
-  function storiesPage() {
-    return {
-      mobileOpen: false,
-      activeFilter: 'ALL KEYS',
-      filters: ['ALL KEYS', 'FOUNDERS', 'INVESTORS', 'MENTORS', 'COMMUNITY LEADERS', 'STUDENTS', 'ARTISTS'],
-      modal: { open: false, story: null },
-      activeVideoUrl: '',
+function storiesPage() {
+  const data = window.KEYMAKERS_STORIES || { THEMES: [], STORIES: [], KEYMAKERS: [], isPublishable: () => false, featuredStory: null };
+  return {
+    mobileOpen: false,
+    modalOpen: false,
+    modalStory: null,
+    embedUrl: '',
+    activeTheme: null,
+    lastFocus: null,
+    themes: data.THEMES,
+    stories: data.STORIES,
+    keymakers: data.KEYMAKERS,
+    featuredStory: data.featuredStory,
 
-      voices: [
-        { id: 1, name: 'Aliya R.', tag: 'Investor & Advisor', quote: 'The investor who changed my future.', category: 'INVESTORS', img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80' },
-        { id: 2, name: 'Marissa L.', tag: 'Founder', quote: 'One customer believed in me.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=1200&q=80' },
-        { id: 3, name: 'Tara M.', tag: 'Founder', quote: 'A mentor who opened the door.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80' },
-        { id: 4, name: 'Loretta G.', tag: 'Founder, LA Sweets', quote: 'Funding that helped me grow.', category: 'FOUNDERS', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80' },
-        { id: 5, name: 'Ranielle A.', tag: 'Community Leader', quote: 'A community that lifted me up.', category: 'COMMUNITY LEADERS', img: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1200&q=80' },
-      ],
+    get activeThemeLabel() {
+      const theme = this.themes.find((t) => t.id === this.activeTheme);
+      return theme ? theme.label : '';
+    },
 
-      get filteredVoices() {
-        if (this.activeFilter === 'ALL KEYS') return this.voices;
-        return this.voices.filter((v) => v.category === this.activeFilter);
-      },
+    get filteredStories() {
+      const published = this.stories.filter((s) => data.isPublishable(s));
+      if (!this.activeTheme) return [];
+      if (this.activeTheme === 'more') return published;
+      return published.filter((s) => s.theme === this.activeTheme);
+    },
 
-      openModal(story) {
-        this.modal.story = story;
-        this.modal.open = true;
-        this.activeVideoUrl = story.youtubeId
-          ? `https://www.youtube.com/embed/${story.youtubeId}?autoplay=1&rel=0&modestbranding=1`
-          : '';
-        document.body.style.overflow = 'hidden';
-      },
-      closeModal() {
-        this.modal.open = false;
-        this.modal.story = null;
-        this.activeVideoUrl = '';
-        document.body.style.overflow = '';
-      },
-    };
-  }
+    init() {
+      const params = new URLSearchParams(window.location.search);
+      const theme = params.get('theme');
+      if (theme && this.themes.some((t) => t.id === theme)) {
+        this.activeTheme = theme;
+      }
+      if (window.location.hash === '#story-library') {
+        this.$nextTick(() => this.exploreLibrary(false));
+      }
+    },
+
+    prefersReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    },
+
+    exploreLibrary(updateHash = true) {
+      const heading = document.getElementById('library-heading');
+      const section = document.getElementById('story-library');
+      if (section) {
+        section.scrollIntoView({ behavior: this.prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+      }
+      if (heading) heading.focus({ preventScroll: true });
+      if (updateHash) {
+        const url = new URL(window.location);
+        url.hash = 'story-library';
+        history.replaceState({}, '', url);
+      }
+    },
+
+    selectTheme(id) {
+      this.activeTheme = this.activeTheme === id ? null : id;
+      const url = new URL(window.location);
+      if (this.activeTheme) url.searchParams.set('theme', this.activeTheme);
+      else url.searchParams.delete('theme');
+      url.hash = 'story-library';
+      history.replaceState({}, '', url);
+    },
+
+    openStoryById(id) {
+      const story = this.stories.find((s) => s.id === id);
+      if (story) this.openStory(story);
+    },
+
+    openStory(story) {
+      if (!data.isPublishable(story)) return;
+      this.lastFocus = document.activeElement;
+      this.modalStory = story;
+      this.embedUrl = `https://www.youtube.com/embed/${story.youtubeId}?rel=0&modestbranding=1&enablejsapi=1&autoplay=1`;
+      this.modalOpen = true;
+      document.body.style.overflow = 'hidden';
+      this.$nextTick(() => {
+        if (this.$refs.closeBtn) this.$refs.closeBtn.focus();
+      });
+    },
+
+    closeModal() {
+      this.modalOpen = false;
+      this.embedUrl = '';
+      this.modalStory = null;
+      document.body.style.overflow = '';
+      if (this.lastFocus && typeof this.lastFocus.focus === 'function') {
+        this.lastFocus.focus();
+      }
+    },
+
+    trapFocus(event) {
+      if (!this.modalOpen || !this.$refs.dialog) return;
+      const nodes = this.$refs.dialog.querySelectorAll('button, [href], iframe, [tabindex]:not([tabindex="-1"])');
+      const list = Array.from(nodes).filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
+      if (!list.length) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    },
+  };
+}
 </script>
 
 </body>
