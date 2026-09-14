@@ -109,6 +109,7 @@
       height: story.portraitHeight || 1200,
       alt: story.portraitAlt || story.name,
       storyId: story.id,
+      quote: story.quote || '',
       hasVideo: isPublishable(story),
       statusLabel: isPublishable(story) ? 'Watch her story' : 'Story coming soon',
     }));

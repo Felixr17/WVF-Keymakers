@@ -193,7 +193,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <button
   type="button"
   @click="openStory(featuredStory)"
-  class="group relative w-full aspect-video rounded-2xl overflow-hidden shadow-editorial text-left focus-ring"
+  class="group relative w-full aspect-video rounded-2xl overflow-hidden shadow-editorial text-left focus-ring bg-[#0A2E20]"
   :aria-label="'Play ' + featuredStory.name + '\'s story'"
 >
 <img
@@ -230,15 +230,15 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 </div>
 
 <div class="hidden lg:block lg:col-span-2">
-<div class="relative h-full min-h-[18rem] rounded-2xl overflow-hidden shadow-card">
+<div class="relative h-full min-h-[18rem] rounded-2xl overflow-hidden shadow-card bg-[#0A2E20]">
 <img
-  :src="featuredStory.portrait"
-  :alt="featuredStory.portraitAlt"
-  :width="featuredStory.portraitWidth"
-  :height="featuredStory.portraitHeight"
+  src="./assets/images/stories/featured-support.webp"
+  alt=""
+  width="960"
+  height="1200"
   loading="lazy"
   decoding="async"
-  class="absolute inset-0 w-full h-full object-cover object-top"
+  class="absolute inset-0 w-full h-full object-cover"
 >
 </div>
 </div>
@@ -249,7 +249,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <template x-if="!featuredStory">
 <div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
 <div class="lg:col-span-7">
-<div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-editorial">
+<div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-editorial bg-[#0A2E20]">
 <img
   src="./assets/images/stories/featured-support.webp"
   alt="A quiet sunlit lounge prepared for conversation"
@@ -286,9 +286,9 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 
 <!-- Single verified person: larger editorial feature -->
 <template x-if="keymakers.length === 1">
-<article class="grid md:grid-cols-12 gap-6 lg:gap-10 items-center max-w-4xl">
+<article class="grid md:grid-cols-12 gap-6 lg:gap-12 items-center">
 <div class="md:col-span-5">
-<div class="relative aspect-[3/4] max-h-[28rem] rounded-2xl overflow-hidden shadow-editorial">
+<div class="relative aspect-[3/4] max-h-[32rem] rounded-2xl overflow-hidden shadow-editorial bg-[#0A2E20]">
 <img
   :src="keymakers[0].img"
   :alt="keymakers[0].alt"
@@ -300,10 +300,10 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 >
 </div>
 </div>
-<div class="md:col-span-7">
+<div class="md:col-span-7 max-w-xl">
 <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-terracotta mb-2" x-text="[keymakers[0].organization, keymakers[0].role].filter(Boolean).join(' · ')"></p>
 <h3 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold" x-text="keymakers[0].name"></h3>
-<p class="text-deepgreen/65 text-sm mt-3 max-w-md">A verified Keymaker in the collection. Her conversation is part of the first stories being shared.</p>
+<p x-show="keymakers[0].quote" class="font-serif italic text-deepgreen/75 text-base leading-relaxed mt-4" x-text="'\u201c' + keymakers[0].quote + '\u201d'"></p>
 <button
   x-show="keymakers[0].hasVideo"
   type="button"
@@ -321,7 +321,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <div class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x no-scrollbar pb-2 -mx-4 px-4 md:mx-0 md:px-0">
 <template x-for="person in keymakers" :key="person.id">
 <article class="snap-start shrink-0 w-[78vw] sm:w-72 md:w-auto">
-<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card mb-3">
+<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card mb-3 bg-[#0A2E20]">
 <img :src="person.img" :alt="person.alt" :width="person.width" :height="person.height" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-transparent to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-4">
@@ -355,15 +355,15 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <p class="text-deepgreen/65 text-sm mt-3">Themes to explore while the video library grows. Each collection holds verified stories&mdash;never stand-ins.</p>
 </div>
 
-<div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4" role="list">
+<ul class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
 <template x-for="theme in themes" :key="theme.id">
+<li>
 <button
   type="button"
-  role="listitem"
   @click="selectTheme(theme.id)"
   :aria-pressed="(activeTheme === theme.id).toString()"
   :aria-label="'Filter stories: ' + theme.label"
-  class="group relative aspect-[4/5] rounded-2xl overflow-hidden text-left shadow-card focus-ring min-h-[44px]"
+  class="group relative w-full aspect-[4/5] rounded-2xl overflow-hidden text-left shadow-card focus-ring min-h-[44px] bg-[#0A2E20]"
   :class="activeTheme === theme.id ? 'ring-2 ring-[#D4AF37] ring-offset-2 ring-offset-cream' : ''"
 >
 <img
@@ -371,20 +371,20 @@ Discover the stories of women who turned possibility into progress&mdash;differe
   :alt="theme.alt"
   :width="theme.width"
   :height="theme.height"
-  loading="lazy"
   decoding="async"
   class="absolute inset-0 w-full h-full object-cover theme-grade motion-safe-scale group-hover:scale-[1.04] transition-transform duration-500"
 >
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-[#062117]/35 to-[#062117]/10"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/70 via-[#062117]/10 to-transparent"></div>
 <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#D4AF37]/15 ring-1 ring-[#D4AF37]/40 p-1.5">
 <img src="./assets/images/Keymakers_Logo.svg" alt="" class="w-full h-full object-contain">
 </span>
 <span class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-<span class="font-serif text-white text-base sm:text-lg leading-snug" x-text="theme.label"></span>
+<span class="font-serif text-white text-base sm:text-lg leading-snug drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)]" x-text="theme.label"></span>
 </span>
 </button>
+</li>
 </template>
-</div>
+</ul>
 
 <div class="mt-6 min-h-[3rem]" aria-live="polite">
 <template x-if="activeTheme">
@@ -428,7 +428,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <!-- SHARE YOUR KEY BANNER -->
 <!-- ============================================================ -->
 <section id="share-banner" class="px-4 sm:px-8 py-10 sm:py-12 editorial-cream" aria-labelledby="share-heading">
-<div class="max-w-6xl mx-auto relative rounded-3xl overflow-hidden min-h-[18rem] sm:min-h-[20rem] shadow-2xl">
+<div class="max-w-6xl mx-auto relative rounded-3xl overflow-hidden min-h-[18rem] sm:min-h-[20rem] shadow-2xl bg-[#062117]">
 <img
   src="./assets/images/stories/cta-share.webp"
   alt="Friends standing together at sunset, seen from behind"
@@ -438,7 +438,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
   decoding="async"
   class="absolute inset-0 w-full h-full object-cover"
 >
-<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/88 via-[#062117]/55 to-[#062117]/25"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#062117]/92 via-[#062117]/62 to-[#062117]/30"></div>
 <div class="relative z-10 max-w-lg p-7 sm:p-12">
 <h2 id="share-heading" class="font-serif text-3xl sm:text-4xl text-white">What&rsquo;s your key?</h2>
 <p class="text-white/80 text-sm sm:text-base leading-relaxed mt-4 mb-6">Your story can open doors for someone else. Share your experience and become part of a brighter tomorrow.</p>
@@ -480,7 +480,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 </div>
 </div>
 <div>
-<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Program</h3>
+<h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Program</h4>
 <ul class="space-y-2 text-sm">
 <li><a href="./stories.html" aria-current="page" class="hover:text-white transition-colors">Stories</a></li>
 <li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
@@ -489,7 +489,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 </ul>
 </div>
 <div>
-<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Resources</h3>
+<h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Resources</h4>
 <ul class="space-y-2 text-sm">
 <li><a href="./share-your-key.html" class="hover:text-white transition-colors">Share your key</a></li>
 <li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
@@ -497,7 +497,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 </ul>
 </div>
 <div>
-<h3 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Stay in the loop</h3>
+<h4 class="text-white font-semibold text-sm uppercase tracking-editorial mb-4">Stay in the loop</h4>
 <p class="text-sm text-cream/60 mb-3">Gathering updates and new Keymaker stories.</p>
 <a href="./gathering.html#reserve" class="inline-flex rounded-full border border-white/20 text-white text-xs font-semibold px-5 py-2.5 min-h-[44px] items-center hover:bg-white/10 transition-colors focus-ring">Get Updates</a>
 </div>
@@ -524,7 +524,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
   class="fixed inset-0 z-[100] flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
-  :aria-labelledby="modal-title"
+  aria-labelledby="modal-title"
   :aria-hidden="(!modalOpen).toString()"
 >
 <div x-show="modalOpen" x-transition.opacity @click="closeModal()" class="absolute inset-0 bg-black/85 backdrop-blur-sm"></div>
@@ -640,7 +640,7 @@ function storiesPage() {
       if (!data.isPublishable(story)) return;
       this.lastFocus = document.activeElement;
       this.modalStory = story;
-      this.embedUrl = `https://www.youtube.com/embed/${story.youtubeId}?rel=0&modestbranding=1&enablejsapi=1&autoplay=1`;
+      this.embedUrl = `https://www.youtube.com/embed/${story.youtubeId}?rel=0&modestbranding=1&enablejsapi=1`;
       this.modalOpen = true;
       document.body.style.overflow = 'hidden';
       this.$nextTick(() => {
