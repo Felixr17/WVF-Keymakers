@@ -88,25 +88,18 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 <!-- Navigation -->
 <nav class="sticky top-0 z-50 bg-transparent backdrop-blur-[2px]">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
-<a href="./index.html" class="flex items-center gap-3 shrink-0 group">
-<span class="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37]/10 ring-1 ring-[#D4AF37]/30 p-1">
-<img src="./assets/images/Keymakers_Logo.svg" alt="" class="h-full w-auto object-contain">
-</span>
-<span class="font-serif text-lg font-bold text-[#D4AF37] tracking-widest">KEYMAKERS</span>
-</a>
+<a href="./index.html" class="font-serif tracking-[0.2em] text-[#D4AF37] font-bold text-lg shrink-0">KEYMAKERS</a>
 
 <div class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-widest text-white/80">
 <a href="./stories.html" class="hover:text-white transition-colors py-2">Stories</a>
 <a href="./community.html" class="hover:text-white transition-colors py-2">Community</a>
 <a href="./gathering.html" class="hover:text-white transition-colors py-2">The Gathering</a>
-<a href="#membership" class="hover:text-white transition-colors py-2">Get Involved</a>
-<a href="#connectors" class="hover:text-white transition-colors py-2">Connectors</a>
+<a href="./get-involved.html" class="hover:text-white transition-colors py-2">Get Involved</a>
+<a href="./connectors.html" class="hover:text-white transition-colors py-2">Connectors</a>
 <a href="./about.html" class="hover:text-white transition-colors py-2">About WVF</a>
 </div>
 
-<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs px-5 py-2 shadow-md hover:bg-[#E2C15E] transition-colors">
-Share Your Key
-</a>
+<a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full hover:bg-[#E5C158] min-h-[44px]">Share Your Key</a>
 
 <button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle menu">
 <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -119,8 +112,8 @@ Share Your Key
 <li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-white">Stories</a></li>
 <li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-white">Community</a></li>
 <li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-white">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="#membership" class="block py-3 border-b border-white/10 hover:text-white">Get Involved</a></li>
-<li><a @click="mobileOpen = false" href="#connectors" class="block py-3 border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./connectors.html" class="block py-3 border-b border-white/10 hover:text-white">Connectors</a></li>
 <li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-white">About WVF</a></li>
 </ul>
 <a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 hover:bg-[#E2C15E]">Share Your Key</a>
@@ -146,7 +139,7 @@ We&rsquo;re building new pathways.
 <a href="./share-your-key.html" class="inline-flex items-center gap-2 bg-[#D4AF37] text-[#0A2E20] font-bold text-sm px-7 py-3 rounded-full hover:bg-[#E2C15E] transition-all shadow-lg">
 Share Your Key &rarr;
 </a>
-<a href="#explore" class="inline-flex items-center border border-white/30 text-white text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-all">
+<a href="./stories.html" class="inline-flex items-center border border-white/30 text-white text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-all">
 Explore Keymakers
 </a>
 </div>
@@ -301,7 +294,7 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 </span>
 <div><h3 class="font-serif text-lg text-white font-semibold">Connectors</h3><p class="text-xs text-white/70 leading-snug mt-0.5">Bring people together. Create opportunities. Multiply impact.</p></div>
 </div>
-<a href="./get-involved.html" aria-label="Learn about Connectors" class="text-gold font-bold text-lg shrink-0">&rarr;</a>
+<a href="./connectors.html" aria-label="Learn about Connectors" class="text-gold font-bold text-lg shrink-0">&rarr;</a>
 </article>
 </div>
 </div>
@@ -383,7 +376,7 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 <ul class="space-y-2 text-sm">
 <li><a href="./stories.html" class="hover:text-white transition-colors">Stories</a></li>
 <li><a href="./gathering.html" class="hover:text-white transition-colors">The Gathering</a></li>
-<li><a href="#membership" class="hover:text-white transition-colors">Membership</a></li>
+<li><a href="./get-involved.html" class="hover:text-white transition-colors">Membership</a></li>
 <li><a href="./community.html" class="hover:text-white transition-colors">Community</a></li>
 </ul>
 </div>
