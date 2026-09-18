@@ -199,7 +199,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
 </span>
 </span>
-<span x-show="featuredStory.duration" class="absolute bottom-4 right-4 text-[10px] font-bold uppercase tracking-wider text-white bg-black/50 rounded-full px-2.5 py-1" x-text="featuredStory.duration"></span>
+<span x-show="featuredRuntimeLabel" class="absolute bottom-4 right-4 text-[10px] font-bold uppercase tracking-wider text-white bg-black/50 rounded-full px-2.5 py-1" x-text="featuredRuntimeLabel"></span>
 </button>
 </div>
 
@@ -213,7 +213,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
   @click="openStory(featuredStory)"
   class="mt-6 inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring self-start"
 >
-  Watch Her Story
+  <span x-text="featuredWatchLabel"></span>
 </button>
 </div>
 
@@ -394,7 +394,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <span class="block font-semibold text-deepgreen text-sm" x-text="story.name"></span>
 <span class="block text-deepgreen/60 text-xs mt-0.5 truncate" x-text="story.organization"></span>
 </span>
-<span class="ml-auto shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Watch</span>
+<span class="ml-auto shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]" x-text="storyRuntimeLabel(story)"></span>
 </button>
 </li>
 </template>
@@ -403,7 +403,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 
 <template x-if="!filteredStories.length">
 <div>
-<p class="font-serif text-lg text-deepgreen">Stories in this collection are coming soon.</p>
+<p class="font-serif text-lg text-deepgreen">More verified stories are coming soon.</p>
 <a href="./share-your-key.html" class="mt-4 inline-flex items-center justify-center rounded-full border border-deepgreen/20 text-deepgreen font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-deepgreen hover:text-white transition-colors focus-ring">Share Your Key</a>
 </div>
 </template>
@@ -546,6 +546,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <div class="p-6 sm:p-8">
 <p id="modal-title" class="text-white font-semibold" x-text="modalStory.name"></p>
 <p class="text-cream/55 text-xs uppercase tracking-wide mt-0.5" x-text="[modalStory.organization, modalStory.role].filter(Boolean).join(' · ')"></p>
+<p x-show="modalRuntimeLabel" class="text-[10px] font-bold uppercase tracking-wider text-gold mt-3" x-text="modalRuntimeLabel"></p>
 <p x-show="modalStory.quote" class="font-serif italic text-cream/85 text-lg leading-snug mt-4" x-text="'\u201c' + modalStory.quote + '\u201d'"></p>
 </div>
 </div>
@@ -557,11 +558,19 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <script src="./assets/js/stories-data.js"></script>
 <script>
 function storiesPage() {
-  const data = window.KEYMAKERS_STORIES || { THEMES: [], STORIES: [], KEYMAKERS: [], isPublishable: () => false, featuredStory: null };
+  const data = window.KEYMAKERS_STORIES || {
+    THEMES: [],
+    STORIES: [],
+    KEYMAKERS: [],
+    isPublishable: () => false,
+    getStoriesPlayback: () => null,
+    featuredStory: null,
+  };
   return {
     mobileOpen: false,
     modalOpen: false,
     modalStory: null,
+    modalRuntimeLabel: '',
     embedUrl: '',
     activeTheme: null,
     lastFocus: null,
@@ -569,6 +578,24 @@ function storiesPage() {
     stories: data.STORIES,
     keymakers: data.KEYMAKERS,
     featuredStory: data.featuredStory,
+
+    get featuredRuntimeLabel() {
+      if (!this.featuredStory || !data.getStoriesPlayback) return '';
+      const playback = data.getStoriesPlayback(this.featuredStory);
+      return playback ? playback.runtimeLabel : '';
+    },
+
+    get featuredWatchLabel() {
+      if (!this.featuredStory || !data.getStoriesPlayback) return 'Watch Her Story';
+      const playback = data.getStoriesPlayback(this.featuredStory);
+      if (!playback) return 'Story Coming Soon';
+      return playback.videoKind === 'full' ? 'Watch Her Story' : 'Watch Short Preview';
+    },
+
+    storyRuntimeLabel(story) {
+      const playback = data.getStoriesPlayback ? data.getStoriesPlayback(story) : null;
+      return playback ? playback.runtimeLabel : '';
+    },
 
     get activeThemeLabel() {
       const theme = this.themes.find((t) => t.id === this.activeTheme);
@@ -627,9 +654,12 @@ function storiesPage() {
 
     openStory(story) {
       if (!data.isPublishable(story)) return;
+      const playback = data.getStoriesPlayback(story);
+      if (!playback || !playback.youtubeId) return;
       this.lastFocus = document.activeElement;
       this.modalStory = story;
-      this.embedUrl = `https://www.youtube.com/embed/${story.youtubeId}?rel=0&modestbranding=1&enablejsapi=1`;
+      this.modalRuntimeLabel = playback.runtimeLabel || '';
+      this.embedUrl = `https://www.youtube.com/embed/${playback.youtubeId}?rel=0&modestbranding=1&enablejsapi=1`;
       this.modalOpen = true;
       document.body.style.overflow = 'hidden';
       this.$nextTick(() => {
@@ -641,6 +671,7 @@ function storiesPage() {
       this.modalOpen = false;
       this.embedUrl = '';
       this.modalStory = null;
+      this.modalRuntimeLabel = '';
       document.body.style.overflow = '';
       if (this.lastFocus && typeof this.lastFocus.focus === 'function') {
         this.lastFocus.focus();

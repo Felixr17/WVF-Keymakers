@@ -175,35 +175,35 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-<div role="button" tabindex="0" @click="openStory(0)" @keydown.enter.prevent="openStory(0)" aria-label="Watch Brenda Braxton's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<div role="button" tabindex="0" @click="openStory(0, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(0, { trigger: $event.currentTarget })" aria-label="Watch Brenda Braxton's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
 <img src="./assets/images/keymakers/brenda-braxton.webp" alt="Brenda Braxton, CEO of Pause" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Brenda Braxton</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient</p>
 </div>
 </div>
-<div role="button" tabindex="0" @click="openStory(1)" @keydown.enter.prevent="openStory(1)" aria-label="Watch Angela Long's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<div role="button" tabindex="0" @click="openStory(1, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(1, { trigger: $event.currentTarget })" aria-label="Watch Angela Long's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
 <img src="./assets/images/keymakers/angela-long.webp" alt="Angela Long, Legacy Jewelry Co." width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Angela Long</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair</p>
 </div>
 </div>
-<div role="button" tabindex="0" @click="openStory(2)" @keydown.enter.prevent="openStory(2)" aria-label="Watch Nikki's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<div role="button" tabindex="0" @click="openStory(2, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(2, { trigger: $event.currentTarget })" aria-label="Watch Nikki's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
 <img src="./assets/images/keymakers/nikki.webp" alt="Nikki, Get Fit With Nik" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Nikki</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Get Fit With Nik | Keymaker</p>
 </div>
 </div>
-<div role="button" tabindex="0" @click="openStory(3)" @keydown.enter.prevent="openStory(3)" aria-label="Watch Loretta's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<div role="button" tabindex="0" @click="openStory(3, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(3, { trigger: $event.currentTarget })" aria-label="Watch Loretta's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
 <img src="./assets/images/keymakers/loretta.webp" alt="Loretta, LA Sweets" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Loretta</p>
 <p class="text-[#D4AF37] text-[11px] leading-tight mt-1">LA Sweets | Keymaker</p>
 </div>
 </div>
-<div role="button" tabindex="0" @click="openStory(4)" @keydown.enter.prevent="openStory(4)" aria-label="Watch Michelle's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
+<div role="button" tabindex="0" @click="openStory(4, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(4, { trigger: $event.currentTarget })" aria-label="Watch Michelle's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
 <img src="./assets/images/keymakers/michelle.webp" alt="Michelle, Michelle's Beauty Salon" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
 <p class="text-white font-semibold text-sm">Michelle</p>
@@ -435,17 +435,23 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 <template x-if="currentStory">
 <div>
 <div class="relative px-4 sm:px-6 pt-4 sm:pt-6">
-<div class="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl" data-yt-wrapper>
+<div class="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl bg-deepgreen" data-yt-wrapper>
+<div x-show="currentStoryHasVideo() && !ytApiError" class="absolute inset-0 bg-black" data-yt-mount>
 <div id="keymaker-yt-player" class="w-full h-full"></div>
-<template x-if="!currentStory.youtubeId">
-<div class="absolute inset-0 flex flex-col items-center justify-center bg-deepgreen text-center p-6">
-<img :src="currentStory.img" :alt="currentStory.name" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-40">
+</div>
+<div x-show="currentStoryHasVideo() && ytApiError" class="absolute inset-0 flex flex-col items-center justify-center bg-deepgreen text-center p-6">
+<p class="text-white font-serif text-lg mb-2" x-text="currentStory.name"></p>
+<p class="text-cream/80 text-sm mb-4">The video player could not load. You can watch on YouTube instead.</p>
+<a :href="currentStoryWatchUrl()" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-full bg-gold text-deepgreen font-bold text-xs uppercase tracking-wider px-5 py-2.5 hover:bg-gold-bright transition-colors">Open on YouTube</a>
+</div>
+<div x-show="!currentStoryHasVideo()" class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+<img :src="currentStory.img" :alt="currentStory.name" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-50">
+<div class="absolute inset-0 bg-deepgreen/55"></div>
 <div class="relative z-10">
 <p class="text-white font-serif text-lg mb-2" x-text="currentStory.name"></p>
-<p class="text-cream/70 text-sm">Video asset pending upload</p>
+<p class="text-cream/80 text-sm font-semibold uppercase tracking-wider">Story coming soon</p>
 </div>
 </div>
-</template>
 
 <button @click="prevStory()" type="button" aria-label="Previous story" class="absolute left-3 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 backdrop-blur-sm transition-colors">&lt;</button>
 <button @click="nextStory()" type="button" aria-label="Next story" class="absolute right-3 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 backdrop-blur-sm transition-colors">&gt;</button>
@@ -454,7 +460,7 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 
 <div class="flex items-center justify-between gap-3 px-6 sm:px-8 py-4 border-t border-white/10">
 <span class="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-white/90" x-text="'Story ' + (currentIndex + 1) + ' of ' + playlist.length"></span>
-<p class="text-[10px] uppercase tracking-editorial text-gold" x-show="autoAdvanceSequence">Auto-advancing</p>
+<p class="text-[10px] uppercase tracking-editorial text-gold" x-show="autoAdvanceSequence && playbackStarted">Auto-advancing</p>
 </div>
 
 <div class="p-6 sm:p-8 pt-2">
@@ -473,73 +479,30 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 </div>
 
 <script src="./assets/js/keymakers-config.js"></script>
+<script src="./assets/js/stories-data.js"></script>
 <script>
 function keymakers() {
+  const storiesData = window.KEYMAKERS_STORIES || {};
+  const featuredSource = storiesData.HOMEPAGE_FEATURED_PLAYLIST || [];
+
   return {
     mobileOpen: false,
     isOpen: false,
     currentIndex: 0,
     autoAdvanceSequence: false,
+    playbackStarted: false,
     ytPlayer: null,
     ytApiReady: false,
+    ytApiError: false,
+    lastFocus: null,
     _ytApiPromise: null,
 
-    /*
-     * Production video IDs — replace empty strings with WVF YouTube asset IDs.
-     * Brenda: set start/end seconds for clip "My advice..." → "...there's always a way to get to a yes."
-     */
-    playlist: [
-      {
-        id: 'brenda',
-        name: 'Brenda Braxton',
-        title: 'CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient',
-        quote: 'My advice... there\u2019s always a way to get to a yes.',
-        youtubeId: '',
-        start: null,
-        end: null,
-        img: './assets/images/keymakers/brenda-braxton.webp',
-      },
-      {
-        id: 'angela',
-        name: 'Angela Long',
-        title: 'Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair',
-        quote: '',
-        youtubeId: '',
-        start: null,
-        end: null,
-        img: './assets/images/keymakers/angela-long.webp',
-      },
-      {
-        id: 'nikki',
-        name: 'Nikki',
-        title: 'Get Fit With Nik | Keymaker',
-        quote: '',
-        youtubeId: '',
-        start: null,
-        end: null,
-        img: './assets/images/keymakers/nikki.webp',
-      },
-      {
-        id: 'loretta',
-        name: 'Loretta',
-        title: 'LA Sweets | Keymaker',
-        quote: '',
-        youtubeId: '',
-        start: null,
-        end: null,
-        img: './assets/images/keymakers/loretta.webp',
-      },
-      {
-        id: 'michelle',
-        name: 'Michelle',
-        title: 'Michelle\u2019s Beauty Salon | Keymaker',
-        quote: '',
-        youtubeId: '',
-        start: null,
-        end: null,
-        img: './assets/images/keymakers/michelle.webp',
-      },
-    ],
+    playlist: featuredSource.map((entry) => ({
+      ...entry,
+      youtubeId: entry.homepageYoutubeId || '',
+      start: entry.homepageStart != null ? entry.homepageStart : null,
+      end: entry.homepageEnd != null ? entry.homepageEnd : null,
+    })),
 
     get currentStory() {
       return this.playlist[this.currentIndex] ?? null;
@@ -549,18 +512,45 @@ function keymakers() {
       window.__keymakersApp = this;
     },
 
+    currentStoryHasVideo() {
+      const story = this.currentStory;
+      return !!(story && story.youtubeId);
+    },
+
+    currentStoryWatchUrl() {
+      const story = this.currentStory;
+      if (!story || !story.youtubeId) return '#';
+      let url = `https://www.youtube.com/watch?v=${story.youtubeId}`;
+      if (story.start != null) url += `&t=${story.start}`;
+      return url;
+    },
+
     ensureYouTubeApi() {
+      if (this.ytApiError) return Promise.reject(new Error('YouTube API unavailable'));
       if (this.ytApiReady || (window.YT && window.YT.Player)) {
         this.ytApiReady = true;
         return Promise.resolve();
       }
       if (this._ytApiPromise) return this._ytApiPromise;
 
-      this._ytApiPromise = new Promise((resolve) => {
+      this._ytApiPromise = new Promise((resolve, reject) => {
+        let settled = false;
         const finish = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
           this.ytApiReady = true;
           resolve();
         };
+        const fail = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          this.ytApiError = true;
+          reject(new Error('YouTube API failed to load'));
+        };
+
+        const timer = setTimeout(fail, 15000);
 
         const previousReady = window.onYouTubeIframeAPIReady;
         window.onYouTubeIframeAPIReady = () => {
@@ -573,7 +563,10 @@ function keymakers() {
           const tag = document.createElement('script');
           tag.id = 'yt-iframe-api';
           tag.src = 'https://www.youtube.com/iframe_api';
+          tag.onerror = fail;
           document.head.appendChild(tag);
+        } else if (window.YT && window.YT.Player) {
+          finish();
         }
       });
 
@@ -584,9 +577,28 @@ function keymakers() {
       this.ytApiReady = true;
     },
 
-    openStory(index, fromAutoAdvance = false) {
+    findNextPlayableIndex(startIndex) {
+      const len = this.playlist.length;
+      if (!len) return -1;
+      for (let step = 0; step < len; step += 1) {
+        const idx = (startIndex + step) % len;
+        if (this.playlist[idx].youtubeId && idx !== this.currentIndex) return idx;
+      }
+      return -1;
+    },
+
+    openStory(index, options = {}) {
+      const fromAutoAdvance = !!options.fromAutoAdvance;
+      const trigger = options.trigger || null;
       const wasOpen = this.isOpen;
+
+      if (trigger && typeof trigger.focus === 'function') {
+        this.lastFocus = trigger;
+      }
+
       this.destroyPlayer();
+      this.playbackStarted = false;
+      this.ytApiError = false;
       this.currentIndex = index;
       this.isOpen = true;
 
@@ -603,32 +615,38 @@ function keymakers() {
       this.$nextTick(() => {
         const story = this.currentStory;
         if (!story || !story.youtubeId) {
-          this.autoAdvanceSequence = false;
+          if (fromAutoAdvance) {
+            this.advancePlaylist();
+          }
           return;
         }
-        this.ensureYouTubeApi().then(() => {
-          this.loadStoryPlayer(this.currentIndex);
-        });
+        this.ensureYouTubeApi()
+          .then(() => {
+            this.loadStoryPlayer(this.currentIndex);
+          })
+          .catch(() => {
+            this.ytApiError = true;
+          });
       });
     },
 
     prevStory() {
       this.autoAdvanceSequence = false;
       const prev = (this.currentIndex - 1 + this.playlist.length) % this.playlist.length;
-      this.openStory(prev, false);
+      this.openStory(prev, { fromAutoAdvance: false });
     },
 
     nextStory() {
       this.autoAdvanceSequence = false;
       const next = (this.currentIndex + 1) % this.playlist.length;
-      this.openStory(next, false);
+      this.openStory(next, { fromAutoAdvance: false });
     },
 
     loadStoryPlayer(index) {
       const story = this.playlist[index];
       if (!story || !story.youtubeId) return;
 
-      this.destroyPlayer();
+      this.rebuildPlayerMount();
 
       const playerVars = {
         autoplay: 1,
@@ -648,11 +666,17 @@ function keymakers() {
         playerVars,
         events: {
           onStateChange: (event) => this.onPlayerStateChange(event),
+          onError: () => {
+            this.ytApiError = true;
+          },
         },
       });
     },
 
     onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        this.playbackStarted = true;
+      }
       if (event.data === YT.PlayerState.PAUSED) {
         this.autoAdvanceSequence = false;
       }
@@ -662,26 +686,50 @@ function keymakers() {
     },
 
     advancePlaylist() {
-      const next = (this.currentIndex + 1) % this.playlist.length;
-      this.openStory(next, true);
+      const next = this.findNextPlayableIndex(this.currentIndex + 1);
+      if (next === -1 || next === this.currentIndex) {
+        this.autoAdvanceSequence = false;
+        return;
+      }
+      this.openStory(next, { fromAutoAdvance: true });
+    },
+
+    rebuildPlayerMount() {
+      const wrapper = document.querySelector('[data-yt-wrapper]');
+      if (!wrapper) return;
+      const mount = wrapper.querySelector('[data-yt-mount]');
+      if (mount) {
+        mount.innerHTML = '<div id="keymaker-yt-player" class="w-full h-full"></div>';
+        return;
+      }
     },
 
     destroyPlayer() {
+      if (this.ytPlayer && typeof this.ytPlayer.stopVideo === 'function') {
+        try { this.ytPlayer.stopVideo(); } catch (e) { /* ignore */ }
+      }
       if (this.ytPlayer && typeof this.ytPlayer.destroy === 'function') {
         try { this.ytPlayer.destroy(); } catch (e) { /* player may already be torn down */ }
       }
       this.ytPlayer = null;
       const wrapper = document.querySelector('[data-yt-wrapper]');
       if (wrapper) {
-        wrapper.innerHTML = '<div id="keymaker-yt-player" class="w-full h-full"></div>';
+        const videoLayer = wrapper.querySelector('[data-yt-mount]');
+        if (videoLayer) {
+          videoLayer.innerHTML = '<div id="keymaker-yt-player" class="w-full h-full"></div>';
+        }
       }
     },
 
     closeModal() {
       this.autoAdvanceSequence = false;
+      this.playbackStarted = false;
       this.destroyPlayer();
       this.isOpen = false;
       document.body.style.overflow = '';
+      if (this.lastFocus && typeof this.lastFocus.focus === 'function') {
+        this.lastFocus.focus();
+      }
     },
   };
 }
