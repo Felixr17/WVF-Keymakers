@@ -255,7 +255,7 @@
       youtubeIdFull: 'Yfrc8gDYh2Y',
       videoKind: 'full',
       duration: '0:35',
-      durationFull: '1:30',
+      durationFull: '1:33',
       runtimeLabel: 'Short preview · 0:35',
       transcript: '',
       transcriptUrl: '',
@@ -308,7 +308,7 @@
   const featuredStoryEntry = STORIES.find(isPublishable) || null;
 
   const KEYMAKERS = STORIES
-    .filter((story) => story.name && story.portrait)
+    .filter(isPublishable)
     .filter((story) => !featuredStoryEntry || story.id !== featuredStoryEntry.id)
     .map((story) => {
       const playback = getStoriesPlayback(story);
