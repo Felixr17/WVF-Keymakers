@@ -78,58 +78,6 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
   html { scroll-behavior: auto; }
 }
 
-/* Cusdis — homepage palette */
-#cusdis_thread {
-  --color-primary: #C5A059;
-  --color-text-default: #0D281E;
-  --color-text-subtle: rgba(13, 40, 30, 0.65);
-  --color-bg-default: #FFFFFF;
-  --color-bg-subtle: #FAF8F5;
-  --color-bg-reply: #F5F2EB;
-  --color-bg-hover: rgba(197, 160, 89, 0.08);
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  width: 100%;
-  min-height: 0;
-  overflow: visible;
-}
-#cusdis_thread iframe {
-  width: 100% !important;
-  min-height: 240px;
-  border: none !important;
-  overflow: visible !important;
-  display: block;
-}
-#cusdis_thread button,
-#cusdis_thread input[type="submit"],
-#cusdis_thread .cusdis-btn {
-  background-color: #C5A059 !important;
-  border-color: #C5A059 !important;
-  color: #0A2E20 !important;
-  border-radius: 9999px !important;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 0.8125rem !important;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-#cusdis_thread textarea,
-#cusdis_thread input[type="text"],
-#cusdis_thread input[type="email"] {
-  border: 1px solid #E8E0D4 !important;
-  border-radius: 0.75rem !important;
-  background-color: rgba(250, 248, 245, 0.7) !important;
-  color: #0D281E !important;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
-}
-#cusdis_thread textarea:focus,
-#cusdis_thread input[type="text"]:focus,
-#cusdis_thread input[type="email"]:focus {
-  outline: none !important;
-  border-color: #C5A059 !important;
-  box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.25) !important;
-}
 </style>
 </head>
 
@@ -338,96 +286,41 @@ Contact WVF
 </div>
 </div>
 
-<div class="border border-deepgreen/10 bg-white/60 rounded-2xl p-6 sm:p-8 mb-10">
-<p class="font-serif text-lg text-deepgreen">New member conversations are being scheduled.</p>
-<p class="text-deepgreen/70 text-sm leading-relaxed mt-2 max-w-2xl">
-Become a member to receive the next invitation.
-</p>
-<a href="./get-involved.html" class="mt-5 inline-flex items-center justify-center rounded-full border border-deepgreen/20 text-deepgreen font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-deepgreen hover:text-white transition-colors focus-ring">
-Become a Member
-</a>
-</div>
-
-<div id="discussion" class="border border-deepgreen/15 bg-white rounded-2xl p-5 sm:p-8">
-<div class="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Community discussion channels">
-<button
-  type="button"
-  role="tab"
-  id="tab-featured"
-  aria-controls="panel-featured"
-  :aria-selected="(activeTab === 'featured').toString()"
-  :tabindex="activeTab === 'featured' ? '0' : '-1'"
-  @click="switchTab('featured')"
-  @keydown="onTabKey($event)"
-  :class="activeTab === 'featured' ? 'bg-[#0A2E20] text-white border-[#0A2E20]' : 'bg-cream text-deepgreen/70 border-warmtan hover:border-deepgreen/30'"
-  class="shrink-0 rounded-full border px-4 py-2.5 min-h-[44px] text-xs font-bold uppercase tracking-wide transition-colors focus-ring"
->
-Featured Monthly Prompt
-</button>
-<button
-  type="button"
-  role="tab"
-  id="tab-general"
-  aria-controls="panel-general"
-  :aria-selected="(activeTab === 'general').toString()"
-  :tabindex="activeTab === 'general' ? '0' : '-1'"
-  @click="switchTab('general')"
-  @keydown="onTabKey($event)"
-  :class="activeTab === 'general' ? 'bg-[#0A2E20] text-white border-[#0A2E20]' : 'bg-cream text-deepgreen/70 border-warmtan hover:border-deepgreen/30'"
-  class="shrink-0 rounded-full border px-4 py-2.5 min-h-[44px] text-xs font-bold uppercase tracking-wide transition-colors focus-ring"
->
-Community Discussion
-</button>
-</div>
-
-<div
-  id="panel-featured"
-  role="tabpanel"
-  aria-labelledby="tab-featured"
-  x-show="activeTab === 'featured'"
->
-<div class="bg-cream-alt/80 border border-gold/30 rounded-xl p-5 mb-6">
+<div id="discussion" class="border border-deepgreen/15 bg-white rounded-2xl p-6 sm:p-8">
+<div class="bg-cream-alt/80 border border-gold/30 rounded-xl p-5 sm:p-6 mb-6">
 <div class="flex flex-wrap items-center gap-2 mb-3">
 <span class="inline-flex items-center rounded-full bg-gold/15 border border-gold/40 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#C5A059]">Monthly Keymaker Prompt</span>
 <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-terracotta" x-text="currentMonthName"></span>
 </div>
 <h3 class="font-serif text-lg sm:text-xl font-semibold text-deepgreen leading-snug mb-2" x-text="activeMonthlyPrompt"></h3>
 <p class="text-deepgreen/65 text-sm leading-relaxed">
-Share your experience below or reply directly to fellow members in the circle.
+When member conversations open, Keyholders will be invited to respond in the Community Circle&mdash;not on this public page.
 </p>
 </div>
-</div>
 
-<div
-  id="panel-general"
-  role="tabpanel"
-  aria-labelledby="tab-general"
-  x-show="activeTab === 'general'"
+<div class="rounded-xl border border-deepgreen/10 bg-cream-alt/60 p-6 sm:p-8 text-center sm:text-left">
+<p class="text-[10px] font-bold uppercase tracking-[0.16em] text-terracotta mb-3">Members-only · Keyholder ($25) and above</p>
+<h3 class="font-serif text-xl sm:text-2xl font-semibold text-deepgreen">Member conversations are being scheduled.</h3>
+<p class="text-deepgreen/70 text-sm leading-relaxed mt-3 max-w-2xl">
+Community Circle access begins at Keyholder membership ($25). Connectors and Key Guides are roles of service&mdash;not membership tiers.
+</p>
+<div class="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
+<a
+  x-show="hasMemberDestination"
   x-cloak
+  :href="memberCircleUrl"
+  class="inline-flex items-center justify-center rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#0D3827] transition-colors focus-ring"
 >
-<div class="bg-cream-alt/80 border border-warmtan/80 rounded-xl p-5 mb-6">
-<h3 class="font-serif text-lg sm:text-xl font-semibold text-deepgreen leading-snug mb-2">Welcome to the Community Circle</h3>
-<p class="text-deepgreen/65 text-sm leading-relaxed">
-Ask questions, share resources, and connect with fellow members.
-</p>
+Enter the Community Circle
+</a>
+<a href="./get-involved.html" class="inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring">
+Become a Member
+</a>
+<a href="mailto:info@wvf-ny.org?subject=Community%20Circle" class="inline-flex items-center justify-center rounded-full border border-deepgreen/20 text-deepgreen font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-deepgreen hover:text-white transition-colors focus-ring">
+Contact WVF
+</a>
 </div>
 </div>
-
-<div class="bg-[#FAF7F2] border border-gold/25 rounded-xl p-4 mb-6 flex items-start gap-3">
-<p class="text-xs sm:text-sm text-deepgreen/80 leading-relaxed">
-<strong class="font-semibold text-deepgreen">When posting,</strong> enter your <span class="text-terracotta font-semibold">Name (Company Name / Location)</span> in the nickname field so fellow Keymakers know who you are.
-</p>
-</div>
-
-<div x-show="threadStatus === 'loading'" class="rounded-xl border border-dashed border-deepgreen/15 bg-cream-alt/50 px-5 py-8 text-center mb-4" role="status" aria-live="polite">
-<p class="text-sm text-deepgreen/70">Loading the conversation&hellip;</p>
-</div>
-<div x-show="threadStatus === 'error'" x-cloak class="rounded-xl border border-terracotta/30 bg-terracotta/5 px-5 py-8 text-center mb-4" role="alert">
-<p class="text-sm text-deepgreen mb-4">The discussion couldn&rsquo;t load right now. Please try again.</p>
-<button type="button" @click="retryCusdis()" class="inline-flex items-center justify-center rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#0D3827] focus-ring">Retry</button>
-</div>
-
-<div id="cusdis_thread" class="w-full overflow-visible" :class="threadStatus === 'error' ? 'hidden' : ''"></div>
 </div>
 </div>
 </section>
@@ -551,22 +444,16 @@ function communityPage() {
     'Looking back at the year, which milestone are you most proud of—and what unlocked it?',
   ];
   const now = new Date();
-  const TAB_KEY = 'keymakersCommunityTab';
-  const CUSDIS_APP_ID = '691f4dfd-64ac-4df1-a6f2-ab69e8dc54ad';
-  const CUSDIS_HOST = 'https://cusdis.com';
-  const LOAD_TIMEOUT_MS = 10000;
+  const config = window.KEYMAKERS_CONFIG || {};
+  const memberCircleUrl = String(config.COMMUNITY_CIRCLE_MEMBER_URL || '').trim();
 
   return {
     mobileOpen: false,
-    activeTab: 'featured',
-    threadStatus: 'idle',
     monthNames,
     monthlyPrompts,
     currentMonthIndex: now.getMonth(),
-    currentYear: now.getFullYear(),
-    _loadTimer: null,
-    _iframePoll: null,
-    _messageBound: false,
+    memberCircleUrl,
+    hasMemberDestination: memberCircleUrl.length > 0,
 
     get currentMonthName() {
       return this.monthNames[this.currentMonthIndex];
@@ -576,166 +463,7 @@ function communityPage() {
       return this.monthlyPrompts[this.currentMonthIndex];
     },
 
-    get cusdisPageId() {
-      if (this.activeTab === 'featured') {
-        return 'monthly-prompt-' + this.currentYear + '-' + (this.currentMonthIndex + 1);
-      }
-      return 'community-general';
-    },
-
-    get cusdisPageTitle() {
-      if (this.activeTab === 'featured') {
-        return 'Keymakers Monthly Prompt - ' + this.currentMonthName;
-      }
-      return 'Keymakers Community Circle Discussion';
-    },
-
-    init() {
-      try {
-        const saved = sessionStorage.getItem(TAB_KEY);
-        if (saved === 'featured' || saved === 'general') this.activeTab = saved;
-      } catch (e) { /* private mode */ }
-
-      if (!this._messageBound) {
-        this._onCusdisMessage = (event) => this.handleCusdisMessage(event);
-        window.addEventListener('message', this._onCusdisMessage);
-        this._messageBound = true;
-      }
-
-      this.loadCusdisAndRender();
-    },
-
-    onTabKey(event) {
-      const tabs = ['featured', 'general'];
-      const index = tabs.indexOf(this.activeTab);
-      let next = index;
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
-      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
-      else if (event.key === 'Home') next = 0;
-      else if (event.key === 'End') next = tabs.length - 1;
-      else return;
-      event.preventDefault();
-      this.switchTab(tabs[next]);
-      this.$nextTick(() => {
-        const el = document.getElementById('tab-' + tabs[next]);
-        if (el) el.focus();
-      });
-    },
-
-    switchTab(tab) {
-      if (this.activeTab === tab) return;
-      this.activeTab = tab;
-      try { sessionStorage.setItem(TAB_KEY, tab); } catch (e) { /* private mode */ }
-      this.$nextTick(() => this.renderCusdis());
-    },
-
-    retryCusdis() {
-      this.renderCusdis();
-    },
-
-    loadCusdisAndRender() {
-      if (window.CUSDIS && window.CUSDIS.renderTo) {
-        this.renderCusdis();
-        return;
-      }
-      if (document.getElementById('cusdis-script')) {
-        this.waitForCusdis();
-        return;
-      }
-      this.threadStatus = 'loading';
-      const script = document.createElement('script');
-      script.id = 'cusdis-script';
-      script.src = 'https://cusdis.com/js/cusdis.es.js';
-      script.async = true;
-      script.defer = true;
-      script.onload = () => this.renderCusdis();
-      script.onerror = () => { this.threadStatus = 'error'; };
-      document.body.appendChild(script);
-      this.startLoadTimeout();
-    },
-
-    waitForCusdis() {
-      this.threadStatus = 'loading';
-      this.startLoadTimeout();
-      const started = Date.now();
-      const check = () => {
-        if (window.CUSDIS && window.CUSDIS.renderTo) {
-          this.renderCusdis();
-        } else if (Date.now() - started > LOAD_TIMEOUT_MS) {
-          this.threadStatus = 'error';
-        } else {
-          setTimeout(check, 80);
-        }
-      };
-      check();
-    },
-
-    startLoadTimeout() {
-      this.clearTimers();
-      this._loadTimer = setTimeout(() => {
-        if (this.threadStatus === 'loading') this.threadStatus = 'error';
-      }, LOAD_TIMEOUT_MS);
-    },
-
-    clearTimers() {
-      if (this._loadTimer) { clearTimeout(this._loadTimer); this._loadTimer = null; }
-      if (this._iframePoll) { clearTimeout(this._iframePoll); this._iframePoll = null; }
-    },
-
-    renderCusdis() {
-      const el = document.getElementById('cusdis_thread');
-      if (!el) return;
-
-      this.threadStatus = 'loading';
-      this.startLoadTimeout();
-      el.innerHTML = '';
-      el.className = 'w-full overflow-visible';
-      el.setAttribute('data-host', CUSDIS_HOST);
-      el.setAttribute('data-app-id', CUSDIS_APP_ID);
-      el.setAttribute('data-page-id', this.cusdisPageId);
-      el.setAttribute('data-page-url', 'https://keymakers.womensventurefund.org/community.html');
-      el.setAttribute('data-page-title', this.cusdisPageTitle);
-
-      if (window.CUSDIS && window.CUSDIS.renderTo) {
-        window.CUSDIS.renderTo(el);
-        this.pollForIframe();
-      }
-    },
-
-    pollForIframe() {
-      const started = Date.now();
-      const check = () => {
-        const iframe = document.querySelector('#cusdis_thread iframe');
-        if (iframe) {
-          this.clearTimers();
-          this.threadStatus = 'ready';
-          iframe.addEventListener('error', () => { this.threadStatus = 'error'; });
-          return;
-        }
-        if (Date.now() - started > LOAD_TIMEOUT_MS) {
-          this.threadStatus = 'error';
-          return;
-        }
-        this._iframePoll = setTimeout(check, 120);
-      };
-      check();
-    },
-
-    handleCusdisMessage(event) {
-      if (!event.origin || event.origin.indexOf('cusdis.com') === -1) return;
-      try {
-        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-        if (data && data.type === 'resize' && data.data) {
-          const iframe = document.querySelector('#cusdis_thread iframe');
-          if (iframe) {
-            const height = Math.max(Number(data.data) || 0, 240);
-            iframe.style.height = height + 'px';
-          }
-        }
-      } catch (err) {
-        /* Non-JSON postMessage from other extensions */
-      }
-    },
+    init() {},
   };
 }
 </script>

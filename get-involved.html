@@ -406,39 +406,20 @@ Explore Ways to Join <span class="ml-2" aria-hidden="true">&rarr;</span>
 </div>
 
 <!-- Newsletter -->
-<div x-data="{ email: '', subscribed: false, loading: false }">
+<div x-data="window.KEYMAKERS_SUBSCRIBE.keymakersEmailSignupForm({ source: 'Footer Newsletter', participation: 'newsletter-only', inputId: 'footer-email-get-involved' })">
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Stay in the loop</h4>
 <p class="text-sm text-cream/70 mb-4">Get new stories and Gathering updates in your inbox.</p>
 
-<form @submit.prevent="
-  if (!email) return;
-  loading = true;
-  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      source: 'Footer Newsletter',
-      participation: 'newsletter-only',
-      email: email
-    })
-  })
-  .then(() => {
-    subscribed = true;
-    loading = false;
-    email = '';
-  })
-  .catch(err => {
-    console.error('Newsletter submission error:', err);
-    subscribed = true;
-    loading = false;
-  });
-" class="flex items-center gap-2">
-<label for="footer-email" class="sr-only">Email address</label>
+<template x-if="signupAvailable">
+<form @submit.prevent="submit()" class="flex items-center gap-2" novalidate>
+<label for="footer-email-get-involved" class="sr-only">Email address</label>
+<input type="text" name="company" x-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only" />
 <input
-  id="footer-email"
+  id="footer-email-get-involved"
   name="email"
   type="email"
   x-model="email"
+  :aria-invalid="failed ? 'true' : 'false'"
   required
   placeholder="you@email.com"
   class="w-full min-w-0 rounded-full bg-white/10 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold"
@@ -452,10 +433,13 @@ Explore Ways to Join <span class="ml-2" aria-hidden="true">&rarr;</span>
 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </button>
 </form>
+</template>
+<template x-if="!signupAvailable">
+<a href="mailto:info@wvf-ny.org?subject=Keymakers%20updates" class="inline-flex text-gold text-xs font-semibold hover:text-white">Email WVF for updates</a>
+</template>
 
-<p x-show="subscribed" x-cloak class="text-gold text-xs font-semibold mt-2 transition-all">
-Thanks &mdash; you&rsquo;re on the list!
-</p>
+<p x-ref="statusLive" x-show="succeeded" x-cloak tabindex="-1" role="status" class="text-gold text-xs font-semibold mt-2 transition-all" x-text="successMessage"></p>
+<p x-show="failed" x-cloak role="alert" class="text-terracotta text-xs mt-2" x-text="errorMessage"></p>
 </div>
 </div>
 
@@ -471,6 +455,7 @@ Thanks &mdash; you&rsquo;re on the list!
 </footer>
 
 <script src="./assets/js/keymakers-config.js"></script>
+<script src="./assets/js/keymakers-subscribe.js"></script>
 <script>
 
 function getInvolvedPage() {
