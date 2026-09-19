@@ -589,7 +589,7 @@ function storiesPage() {
       if (!this.featuredStory || !data.getStoriesPlayback) return 'Watch Her Story';
       const playback = data.getStoriesPlayback(this.featuredStory);
       if (!playback) return 'Story Coming Soon';
-      return playback.videoKind === 'full' ? 'Watch Her Story' : 'Watch Short Preview';
+      return playback.videoKind === 'full' ? 'Watch Full Story' : 'Watch Short Preview';
     },
 
     storyRuntimeLabel(story) {
