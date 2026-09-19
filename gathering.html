@@ -241,28 +241,22 @@ Stay in the Loop <span aria-hidden="true">&rarr;</span>
 <h2 class="font-serif text-3xl sm:text-4xl text-white font-semibold mb-4">Be Part of the Gathering</h2>
 <p class="text-white/80 text-sm sm:text-base leading-relaxed mb-8">Join the movement for a more connected, more equitable, more possible tomorrow.</p>
 
-<div x-data="{ email: '', submitted: false, loading: false }">
-<form @submit.prevent="
-  if (!email) return;
-  loading = true;
-  fetch(window.KEYMAKERS_CONFIG.N8N_INTAKE_WEBHOOK_URL || 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      source: 'Gathering Stay in the Loop',
-      participation: 'gathering-rsvp',
-      email: email
-    })
-  })
-  .then(() => { submitted = true; loading = false; })
-  .catch(err => { console.error('Gathering signup error:', err); submitted = true; loading = false; });
-" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-md mx-auto">
+<div x-data="window.KEYMAKERS_SUBSCRIBE.keymakersEmailSignupForm({
+  source: 'Gathering Stay in the Loop',
+  participation: 'gathering-rsvp',
+  inputId: 'gathering-email',
+  successMessage: 'You\u2019re on the list. We\u2019ll share Gathering updates as details are confirmed.'
+})">
+<template x-if="signupAvailable">
+<form @submit.prevent="submit()" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-md mx-auto" novalidate>
 <label for="gathering-email" class="sr-only">Email address</label>
+<input type="text" name="company" x-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only" />
 <input
   id="gathering-email"
   name="email"
   type="email"
   x-model="email"
+  :aria-invalid="failed ? 'true' : 'false'"
   required
   placeholder="Enter your email"
   class="w-full min-h-[44px] rounded-full bg-white/10 border border-white/25 px-6 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
@@ -272,10 +266,16 @@ Stay in the Loop <span aria-hidden="true">&rarr;</span>
   :disabled="loading"
   class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center min-h-[44px] rounded-full bg-[#D4AF37] text-[#062117] font-bold text-sm px-8 py-3 hover:bg-[#E2C15E] transition-colors disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
 >
-<span x-text="loading ? 'Submitting&hellip;' : 'Stay in the Loop'"></span>
+<span x-text="loading ? 'Submitting\u2026' : 'Stay in the Loop'"></span>
 </button>
 </form>
-<p x-show="submitted" x-cloak class="text-[#D4AF37] text-sm font-semibold mt-4">You&rsquo;re on the list. We&rsquo;ll share Gathering updates as details are confirmed.</p>
+</template>
+<template x-if="!signupAvailable">
+<p class="text-white/80 text-sm mb-4">Updates signup is not available on this page yet.</p>
+<a href="mailto:info@wvf-ny.org?subject=Gathering%20updates" class="inline-flex items-center justify-center min-h-[44px] rounded-full border border-white/30 text-white font-bold text-sm px-8 py-3 hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white">Email WVF for updates</a>
+</template>
+<p x-ref="statusLive" x-show="succeeded" x-cloak tabindex="-1" role="status" class="text-[#D4AF37] text-sm font-semibold mt-4" x-text="successMessage"></p>
+<p x-show="failed" x-cloak role="alert" class="text-white/90 text-sm mt-4" x-text="errorMessage"></p>
 </div>
 
 <p class="text-[10px] uppercase tracking-[0.2em] text-white/50 mt-10">More people. Brighter tomorrows.</p>
@@ -348,5 +348,6 @@ Stay in the Loop <span aria-hidden="true">&rarr;</span>
 </footer>
 
 <script src="./assets/js/keymakers-config.js"></script>
+<script src="./assets/js/keymakers-subscribe.js"></script>
 </body>
 </html>
