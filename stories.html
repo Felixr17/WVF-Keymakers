@@ -292,39 +292,44 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-terracotta mb-2" x-text="[keymakers[0].organization, keymakers[0].role].filter(Boolean).join(' · ')"></p>
 <h3 class="font-serif text-2xl sm:text-3xl text-deepgreen font-semibold" x-text="keymakers[0].name"></h3>
 <p x-show="keymakers[0].quote" class="font-serif italic text-deepgreen/75 text-base leading-relaxed mt-4" x-text="'\u201c' + keymakers[0].quote + '\u201d'"></p>
+<p x-show="keymakers[0].runtimeLabel" class="text-[10px] font-bold uppercase tracking-wider text-[#C5A059] mt-4" x-text="keymakers[0].runtimeLabel"></p>
 <button
-  x-show="keymakers[0].hasVideo"
   type="button"
   @click="openStoryById(keymakers[0].storyId)"
   class="mt-6 inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-6 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring"
   x-text="keymakers[0].statusLabel"
 ></button>
-<p x-show="!keymakers[0].hasVideo" class="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-deepgreen/55" x-text="keymakers[0].statusLabel"></p>
 </div>
 </article>
 </template>
 
 <!-- Multiple verified people: compact magazine strip / scroll-snap -->
 <template x-if="keymakers.length > 1">
-<div class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x no-scrollbar pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+<div class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-x-auto snap-x no-scrollbar pb-2 -mx-4 px-4 md:mx-0 md:px-0">
 <template x-for="person in keymakers" :key="person.id">
 <article class="snap-start shrink-0 w-[78vw] sm:w-72 md:w-auto">
-<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card mb-3 bg-[#0A2E20]">
-<img :src="person.img" :alt="person.alt" :width="person.width" :height="person.height" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top">
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-transparent to-transparent"></div>
-<div class="absolute bottom-0 left-0 right-0 p-4">
-<p class="text-white font-semibold text-sm" x-text="person.name"></p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1" x-text="[person.organization, person.role].filter(Boolean).join(' · ')"></p>
-</div>
-</div>
 <button
-  x-show="person.hasVideo"
   type="button"
   @click="openStoryById(person.storyId)"
-  class="text-xs font-bold uppercase tracking-wider text-terracotta hover:text-deepgreen focus-ring rounded-sm min-h-[44px]"
-  x-text="person.statusLabel"
-></button>
-<p x-show="!person.hasVideo" class="text-xs font-bold uppercase tracking-wider text-deepgreen/50 min-h-[44px] flex items-center" x-text="person.statusLabel"></p>
+  class="group w-full text-left focus-ring rounded-2xl"
+  :aria-label="'Play ' + person.name + (person.runtimeLabel ? ' — ' + person.runtimeLabel : '')"
+>
+<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card mb-3 bg-[#0A2E20]">
+<img :src="person.img" :alt="person.alt" :width="person.width" :height="person.height" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top motion-safe-scale group-hover:scale-[1.02] transition-transform duration-300">
+<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/90 via-[#062117]/20 to-transparent"></div>
+<span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-white/95 text-deepgreen shadow-lg">
+<svg class="w-5 h-5 translate-x-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.5 4.2v11.6a.6.6 0 00.92.5l9.1-5.8a.6.6 0 000-1.02l-9.1-5.8a.6.6 0 00-.92.52z"/></svg>
+</span>
+</span>
+<span x-show="person.runtimeLabel" class="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider text-white bg-black/55 rounded-full px-2.5 py-1" x-text="person.runtimeLabel"></span>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<p class="text-white font-semibold text-sm" x-text="person.name"></p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1" x-text="[person.organization, person.role].filter(Boolean).join(' · ') || person.statusLabel"></p>
+</div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-terracotta group-hover:text-deepgreen min-h-[44px] flex items-center" x-text="person.statusLabel"></p>
+</button>
 </article>
 </template>
 </div>
@@ -529,7 +534,7 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
 
-<template x-if="modalStory && modalStory.youtubeId">
+<template x-if="modalStory && embedUrl">
 <div>
 <div class="relative px-4 sm:px-6 pt-4 sm:pt-6">
 <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
@@ -589,7 +594,7 @@ function storiesPage() {
       if (!this.featuredStory || !data.getStoriesPlayback) return 'Watch Her Story';
       const playback = data.getStoriesPlayback(this.featuredStory);
       if (!playback) return 'Story Coming Soon';
-      return playback.videoKind === 'full' ? 'Watch Her Story' : 'Watch Short Preview';
+      return playback.videoKind === 'full' ? 'Watch Full Story' : 'Watch Short Preview';
     },
 
     storyRuntimeLabel(story) {
@@ -659,7 +664,7 @@ function storiesPage() {
       this.lastFocus = document.activeElement;
       this.modalStory = story;
       this.modalRuntimeLabel = playback.runtimeLabel || '';
-      this.embedUrl = `https://www.youtube.com/embed/${playback.youtubeId}?rel=0&modestbranding=1&enablejsapi=1`;
+      this.embedUrl = `https://www.youtube.com/embed/${playback.youtubeId}?rel=0&modestbranding=1&enablejsapi=1&playsinline=1`;
       this.modalOpen = true;
       document.body.style.overflow = 'hidden';
       this.$nextTick(() => {

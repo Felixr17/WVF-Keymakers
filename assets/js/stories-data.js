@@ -101,7 +101,7 @@
       name: 'Loretta',
       title: 'LA Sweets | Keymaker',
       quote: '',
-      homepageYoutubeId: '',
+      homepageYoutubeId: 'iABS1P8Agm4',
       homepageStart: null,
       homepageEnd: null,
       img: './assets/images/keymakers/loretta.webp',
@@ -111,7 +111,7 @@
       name: 'Michelle',
       title: 'Michelle\u2019s Beauty Salon | Keymaker',
       quote: '',
-      homepageYoutubeId: '',
+      homepageYoutubeId: 'wMWPg5E3bh8',
       homepageStart: null,
       homepageEnd: null,
       img: './assets/images/keymakers/michelle.webp',
@@ -138,13 +138,125 @@
       portraitWidth: 800,
       portraitHeight: 1422,
       portraitAlt: 'Tamiko Maldonado, CEO of Tamico Dancing and Key Carrier',
-      /** Approved 30-second preview (not a 90-second full story). */
+      /** Approved short preview only until a separate full-story ID is supplied. */
       youtubeId: 'Qe9IBmPSLSg',
       youtubeIdFull: '',
       videoKind: 'preview',
       duration: '0:30',
       durationFull: '',
       runtimeLabel: 'Short preview · 0:30',
+      transcript: '',
+      transcriptUrl: '',
+    },
+    {
+      id: 'loretta-la-sweets',
+      slug: 'loretta-la-sweets',
+      published: true,
+      name: 'Loretta',
+      organization: 'LA Sweets',
+      role: 'Keymaker',
+      title: '',
+      summary: '',
+      quote: '',
+      theme: 'more',
+      img: './assets/images/keymakers/loretta.webp',
+      imgWidth: 800,
+      imgHeight: 1067,
+      imgAlt: 'Loretta, LA Sweets',
+      portrait: './assets/images/keymakers/loretta.webp',
+      portraitWidth: 800,
+      portraitHeight: 1067,
+      portraitAlt: 'Loretta, LA Sweets',
+      youtubeId: '',
+      youtubeIdFull: 'QxL-6V8RP48',
+      videoKind: 'full',
+      duration: '',
+      durationFull: '1:33',
+      runtimeLabel: '',
+      transcript: '',
+      transcriptUrl: '',
+    },
+    {
+      id: 'michelle-beauty-salon',
+      slug: 'michelle-beauty-salon',
+      published: true,
+      name: 'Michelle',
+      organization: 'Michelle\u2019s Beauty Salon',
+      role: 'Keymaker',
+      title: '',
+      summary: '',
+      quote: '',
+      theme: 'more',
+      img: './assets/images/keymakers/michelle.webp',
+      imgWidth: 800,
+      imgHeight: 1067,
+      imgAlt: 'Michelle, Michelle\u2019s Beauty Salon',
+      portrait: './assets/images/keymakers/michelle.webp',
+      portraitWidth: 800,
+      portraitHeight: 1067,
+      portraitAlt: 'Michelle, Michelle\u2019s Beauty Salon',
+      youtubeId: '',
+      youtubeIdFull: 'TI73FO42NDI',
+      videoKind: 'full',
+      duration: '',
+      durationFull: '1:05',
+      runtimeLabel: '',
+      transcript: '',
+      transcriptUrl: '',
+    },
+    {
+      id: 'harlem-cycle',
+      slug: 'harlem-cycle',
+      published: true,
+      name: 'Harlem Cycle',
+      organization: '',
+      role: '',
+      title: '',
+      summary: '',
+      quote: '',
+      theme: 'more',
+      img: './assets/images/stories/theme-career.webp',
+      imgWidth: 960,
+      imgHeight: 1201,
+      imgAlt: 'Garments hanging on wooden hangers in a small shop',
+      portrait: './assets/images/stories/theme-career.webp',
+      portraitWidth: 960,
+      portraitHeight: 1201,
+      portraitAlt: 'Harlem Cycle',
+      youtubeId: 'P4s7qLVBbzk',
+      youtubeIdFull: 'rUzdJwsEvKw',
+      videoKind: 'full',
+      duration: '0:36',
+      durationFull: '1:35',
+      runtimeLabel: 'Short preview · 0:36',
+      transcript: '',
+      transcriptUrl: '',
+    },
+    {
+      id: 'ltlida',
+      slug: 'ltlida',
+      published: true,
+      name: 'LTLIDA',
+      organization: '',
+      role: '',
+      title: '',
+      summary: '',
+      quote: '',
+      theme: 'more',
+      img: './assets/images/stories/theme-more.webp',
+      imgWidth: 960,
+      imgHeight: 1200,
+      imgAlt: 'A fountain pen writing on lined paper',
+      portrait: './assets/images/stories/theme-more.webp',
+      portraitWidth: 960,
+      portraitHeight: 1200,
+      portraitAlt: 'LTLIDA',
+      youtubeId: 'xHsDtBHzVPA',
+      youtubeIdFull: 'Yfrc8gDYh2Y',
+      videoKind: 'full',
+      duration: '0:35',
+      durationFull: '1:33',
+      runtimeLabel: 'Short preview · 0:35',
       transcript: '',
       transcriptUrl: '',
     },
@@ -163,14 +275,14 @@
     };
   }
 
-  /** Stories-page modal: prefer full 90s asset when supplied. */
+  /** Stories-page modal: prefer full-story asset when supplied. */
   function getStoriesPlayback(story) {
     if (!story) return null;
     if (story.youtubeIdFull) {
       return {
         youtubeId: story.youtubeIdFull,
         duration: story.durationFull || story.duration || '',
-        runtimeLabel: story.durationFull ? `Full story · ${story.durationFull}` : 'Full story',
+        runtimeLabel: story.durationFull ? `Full Story · ${story.durationFull}` : 'Full Story',
         videoKind: 'full',
       };
     }
@@ -196,7 +308,7 @@
   const featuredStoryEntry = STORIES.find(isPublishable) || null;
 
   const KEYMAKERS = STORIES
-    .filter((story) => story.name && story.portrait)
+    .filter(isPublishable)
     .filter((story) => !featuredStoryEntry || story.id !== featuredStoryEntry.id)
     .map((story) => {
       const playback = getStoriesPlayback(story);
@@ -213,7 +325,9 @@
         quote: story.quote || '',
         hasVideo: !!playback,
         runtimeLabel: playback ? playback.runtimeLabel : '',
-        statusLabel: playback ? 'Watch her story' : 'Story coming soon',
+        statusLabel: playback
+          ? (playback.videoKind === 'full' ? 'Watch full story' : 'Watch short preview')
+          : 'Story coming soon',
       };
     });
 
