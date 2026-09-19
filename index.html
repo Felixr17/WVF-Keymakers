@@ -175,41 +175,31 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-<div role="button" tabindex="0" @click="openStory(0, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(0, { trigger: $event.currentTarget })" aria-label="Watch Brenda Braxton's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/brenda-braxton.webp" alt="Brenda Braxton, CEO of Pause" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+<template x-for="(person, index) in playlist" :key="person.id">
+<div
+  role="button"
+  tabindex="0"
+  @click="openStory(index, { trigger: $event.currentTarget })"
+  @keydown.enter.prevent="openStory(index, { trigger: $event.currentTarget })"
+  :aria-label="'Watch ' + person.name + ' key story'"
+  class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2"
+>
+<img
+  :src="homepageCardImg(person)"
+  :alt="person.name"
+  width="800"
+  height="1067"
+  loading="lazy"
+  decoding="async"
+  @error="onHomeThumbnailError($event, person)"
+  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+>
 <div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
-<p class="text-white font-semibold text-sm">Brenda Braxton</p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">CEO, Pause | Keymaker | Host Committee Co-Chair | Grammy Award Recipient</p>
+<p class="text-white font-semibold text-sm" x-text="person.name"></p>
+<p class="text-[#D4AF37] text-[11px] leading-tight mt-1" x-text="person.title"></p>
 </div>
 </div>
-<div role="button" tabindex="0" @click="openStory(1, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(1, { trigger: $event.currentTarget })" aria-label="Watch Angela Long's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/angela-long.webp" alt="Angela Long, Legacy Jewelry Co." width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
-<p class="text-white font-semibold text-sm">Angela Long</p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Legacy Jewelry Co. | Keymaker | Host Committee Co-Chair</p>
-</div>
-</div>
-<div role="button" tabindex="0" @click="openStory(2, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(2, { trigger: $event.currentTarget })" aria-label="Watch Nikki's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/nikki.webp" alt="Nikki, Get Fit With Nik" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
-<p class="text-white font-semibold text-sm">Nikki</p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Get Fit With Nik | Keymaker</p>
-</div>
-</div>
-<div role="button" tabindex="0" @click="openStory(3, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(3, { trigger: $event.currentTarget })" aria-label="Watch Loretta's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/loretta.webp" alt="Loretta, LA Sweets" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
-<p class="text-white font-semibold text-sm">Loretta</p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">LA Sweets | Keymaker</p>
-</div>
-</div>
-<div role="button" tabindex="0" @click="openStory(4, { trigger: $event.currentTarget })" @keydown.enter.prevent="openStory(4, { trigger: $event.currentTarget })" aria-label="Watch Michelle's key story" class="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2">
-<img src="./assets/images/keymakers/michelle.webp" alt="Michelle, Michelle's Beauty Salon" width="800" height="1067" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
-<div class="absolute inset-0 bg-gradient-to-t from-[#062117]/95 via-[#062117]/50 to-transparent flex flex-col justify-end p-4">
-<p class="text-white font-semibold text-sm">Michelle</p>
-<p class="text-[#D4AF37] text-[11px] leading-tight mt-1">Michelle&rsquo;s Beauty Salon | Keymaker</p>
-</div>
-</div>
+</template>
 </div>
 </div>
 </section>
@@ -437,7 +427,14 @@ class="relative w-full max-w-4xl bg-deepgreen rounded-2xl sm:rounded-3xl overflo
 <div class="relative px-4 sm:px-6 pt-4 sm:pt-6">
 <div class="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl bg-deepgreen" data-yt-wrapper>
 <div x-show="currentStoryHasVideo() && !ytApiError" class="absolute inset-0 bg-black" data-yt-mount>
-<div id="keymaker-yt-player" class="w-full h-full"></div>
+<img
+  x-show="modalPosterSrc"
+  :src="modalPosterSrc"
+  alt=""
+  class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+  @error="onHomeThumbnailError($event, currentStory, true)"
+>
+<div id="keymaker-yt-player" class="relative z-10 w-full h-full"></div>
 </div>
 <div x-show="currentStoryHasVideo() && ytApiError" class="absolute inset-0 flex flex-col items-center justify-center bg-deepgreen text-center p-6">
 <p class="text-white font-serif text-lg mb-2" x-text="currentStory.name"></p>
@@ -495,6 +492,8 @@ function keymakers() {
     ytApiReady: false,
     ytApiError: false,
     lastFocus: null,
+    modalPosterSrc: '',
+    modalPosterFallback: '',
     _ytApiPromise: null,
 
     playlist: featuredSource.map((entry) => ({
@@ -523,6 +522,42 @@ function keymakers() {
       let url = `https://www.youtube.com/watch?v=${story.youtubeId}`;
       if (story.start != null) url += `&t=${story.start}`;
       return url;
+    },
+
+    homepageThumbUrls(person) {
+      if (!person || !person.youtubeId || !storiesData.getYouTubeThumbnailUrls) return null;
+      return storiesData.getYouTubeThumbnailUrls(person.youtubeId);
+    },
+
+    homepageCardImg(person) {
+      const thumb = this.homepageThumbUrls(person);
+      if (thumb && thumb.maxres) return thumb.maxres;
+      return person.img;
+    },
+
+    homepageCardImgFallback(person) {
+      const thumb = this.homepageThumbUrls(person);
+      if (thumb && thumb.hq) return thumb.hq;
+      return person.img;
+    },
+
+    onHomeThumbnailError(event, person, posterOnly = false) {
+      const img = event && event.target;
+      if (!img || !person) return;
+      const fallback = posterOnly
+        ? this.modalPosterFallback
+        : this.homepageCardImgFallback(person);
+      if (fallback && img.src.indexOf(fallback) === -1) {
+        img.src = fallback;
+      }
+    },
+
+    setModalPosterForStory(story) {
+      const thumb = story && story.youtubeId && storiesData.getYouTubeThumbnailUrls
+        ? storiesData.getYouTubeThumbnailUrls(story.youtubeId)
+        : null;
+      this.modalPosterSrc = thumb ? thumb.maxres : '';
+      this.modalPosterFallback = thumb ? thumb.hq : '';
     },
 
     ensureYouTubeApi() {
@@ -599,6 +634,8 @@ function keymakers() {
       this.destroyPlayer();
       this.playbackStarted = false;
       this.ytApiError = false;
+      this.modalPosterSrc = '';
+      this.modalPosterFallback = '';
       this.currentIndex = index;
       this.isOpen = true;
 
@@ -620,6 +657,7 @@ function keymakers() {
           }
           return;
         }
+        this.setModalPosterForStory(story);
         this.ensureYouTubeApi()
           .then(() => {
             this.loadStoryPlayer(this.currentIndex);
@@ -724,6 +762,8 @@ function keymakers() {
     closeModal() {
       this.autoAdvanceSequence = false;
       this.playbackStarted = false;
+      this.modalPosterSrc = '';
+      this.modalPosterFallback = '';
       this.destroyPlayer();
       this.isOpen = false;
       document.body.style.overflow = '';
