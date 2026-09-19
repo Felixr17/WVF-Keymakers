@@ -275,6 +275,22 @@
     };
   }
 
+  function getYouTubeThumbnailUrls(videoId) {
+    const id = String(videoId || '').trim();
+    if (!id) return null;
+    return {
+      maxres: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+      hq: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+    };
+  }
+
+  /** Thumbnail for Stories UI — uses playback video ID (full story when available). */
+  function getStoryThumbnail(story) {
+    const playback = getStoriesPlayback(story);
+    if (!playback || !playback.youtubeId) return null;
+    return getYouTubeThumbnailUrls(playback.youtubeId);
+  }
+
   /** Stories-page modal: prefer full-story asset when supplied. */
   function getStoriesPlayback(story) {
     if (!story) return null;
@@ -312,12 +328,14 @@
     .filter((story) => !featuredStoryEntry || story.id !== featuredStoryEntry.id)
     .map((story) => {
       const playback = getStoriesPlayback(story);
+      const thumb = getStoryThumbnail(story);
       return {
         id: story.id,
         name: story.name,
         organization: story.organization || '',
         role: story.role || '',
-        img: story.portrait,
+        img: thumb ? thumb.maxres : story.portrait,
+        imgFallback: thumb ? thumb.hq : (story.portrait || story.img),
         width: story.portraitWidth || 800,
         height: story.portraitHeight || 1200,
         alt: story.portraitAlt || story.name,
@@ -339,6 +357,8 @@
     hasHomepageVideo,
     getHomepagePlayerConfig,
     getStoriesPlayback,
+    getYouTubeThumbnailUrls,
+    getStoryThumbnail,
     isPublishable,
     isFullStory,
     get featuredStory() {
