@@ -68,9 +68,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     radial-gradient(circle at 80% 70%, rgba(13, 40, 30, 0.04), transparent 32%);
 }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="{ mobileOpen: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <header class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-sm border-b border-white/10">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
@@ -106,7 +109,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </div>
 </nav>
 </header>
-<main class="flex-grow">
+<main id="main-content" class="flex-grow">
 
 <!-- HERO -->
 <section class="relative min-h-[min(88vh,52rem)] flex items-end overflow-hidden bg-deepgreen-dark">
@@ -239,11 +242,64 @@ Turn relationships into opportunity. Connectors bring people together, open door
 We&rsquo;re looking for experienced Keymakers who are passionate about bringing people together. As a Connector, you&rsquo;ll help expand opportunity, welcome new voices, and strengthen our community through intentional introductions and relationship-building.
 </p>
 <p class="text-cream/70 text-sm leading-relaxed mb-6">
-Applicants must already be Keymakers. <a href="./get-involved.html#membership" class="text-gold font-semibold hover:text-gold-bright underline underline-offset-2">Join or upgrade membership</a> or <a href="./share-your-key.html" class="text-gold font-semibold hover:text-gold-bright underline underline-offset-2">share your key</a> to begin.
+Applicants must already be Keymakers. <a href="./get-involved.html#membership" class="text-gold font-semibold hover:text-gold-bright underline underline-offset-2">Join or upgrade membership</a> or <a href="./share-your-key.html" class="text-gold font-semibold hover:text-gold-bright underline underline-offset-2">share your key</a> to begin. Connector is a volunteer role, not a membership tier.
 </p>
-<a href="mailto:info@wvf-ny.org?subject=Keymakers%20Connector%20Inquiry&amp;body=Hi%20WVF%20Team%2C%0A%0AI%20would%20like%20to%20learn%20more%20about%20serving%20as%20a%20Connector%20in%20the%20Keymakers%20movement.%20I%20am%20already%20a%20Keymaker.%0A%0AName%3A%20%0AOrganization%3A%20" class="inline-flex items-center justify-center min-h-[2.75rem] w-fit rounded-full bg-gold text-deepbrown font-bold text-xs sm:text-sm uppercase tracking-wide px-7 py-3 hover:bg-gold/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
-Apply to Be a Connector <span class="ml-2" aria-hidden="true">&rarr;</span>
-</a>
+<div x-data="window.KEYMAKERS_INTEREST.keymakersInterestForm({
+  source: 'Connector Application',
+  participation: 'connector-interest',
+  inputPrefix: 'connector',
+  successMessage: 'Thank you. We received your Connector interest. This is a volunteer role, not a membership purchase. WVF will follow up if there is a potential next step.'
+})" class="max-w-xl">
+<div x-show="succeeded" x-cloak class="rounded-2xl border border-gold/40 bg-white/10 p-6 mb-4">
+<h3 x-ref="statusLive" tabindex="-1" class="font-serif text-xl font-semibold text-white mb-2">Interest received</h3>
+<p class="text-sm text-cream/85" x-text="successMessage"></p>
+</div>
+<form x-show="!succeeded" @submit.prevent="submit()" novalidate class="space-y-4">
+<input type="text" :id="idFor('company')" name="company" x-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
+<div>
+<label :for="idFor('fullName')" class="block text-sm font-semibold text-white mb-1.5">Name <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="text" :id="idFor('fullName')" required autocomplete="name" x-model="fullName" :aria-invalid="hasError('fullName')" class="w-full min-h-[44px] rounded-lg border bg-white/10 text-white px-4 py-2.5 text-sm" :class="hasError('fullName') ? 'border-terracotta' : 'border-white/20'">
+<p x-show="hasError('fullName')" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
+</div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div>
+<label :for="idFor('email')" class="block text-sm font-semibold text-white mb-1.5">Email <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="email" :id="idFor('email')" required autocomplete="email" x-model="email" :aria-invalid="hasError('email')" class="w-full min-h-[44px] rounded-lg border bg-white/10 text-white px-4 py-2.5 text-sm" :class="hasError('email') ? 'border-terracotta' : 'border-white/20'">
+<p x-show="hasError('email')" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
+</div>
+<div>
+<label :for="idFor('business')" class="block text-sm font-semibold text-white mb-1.5">Organization <span class="text-white/50 font-normal">(optional)</span></label>
+<input type="text" :id="idFor('business')" autocomplete="organization" x-model="business" class="w-full min-h-[44px] rounded-lg border border-white/20 bg-white/10 text-white px-4 py-2.5 text-sm">
+</div>
+</div>
+<div>
+<label :for="idFor('alreadyKeymaker')" class="block text-sm font-semibold text-white mb-1.5">Are you already a Keymaker? <span class="text-terracotta" aria-hidden="true">*</span></label>
+<select :id="idFor('alreadyKeymaker')" required x-model="alreadyKeymaker" :aria-invalid="hasError('alreadyKeymaker')" class="w-full min-h-[44px] rounded-lg border bg-[#0A2E20] text-white px-4 py-2.5 text-sm" :class="hasError('alreadyKeymaker') ? 'border-terracotta' : 'border-white/20'">
+<option value="">Select an option</option>
+<option value="yes">Yes</option>
+<option value="no">Not yet</option>
+<option value="not-sure">Not sure</option>
+</select>
+<p x-show="hasError('alreadyKeymaker')" class="text-xs text-terracotta mt-1" x-text="errorFor('alreadyKeymaker')"></p>
+</div>
+<div>
+<label :for="idFor('message')" class="block text-sm font-semibold text-white mb-1.5">How do you hope to connect people? <span class="text-white/50 font-normal">(optional)</span></label>
+<textarea :id="idFor('message')" rows="3" x-model="message" class="w-full rounded-lg border border-white/20 bg-white/10 text-white px-4 py-3 text-sm min-h-[5rem]"></textarea>
+</div>
+<div class="flex items-start gap-3">
+<input type="checkbox" :id="idFor('contactPermission')" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-white/30 text-gold focus:ring-gold" :aria-invalid="hasError('contactPermission')">
+<label :for="idFor('contactPermission')" class="text-sm text-cream/90 leading-snug">Yes, the WVF team may contact me about this interest. <span class="text-terracotta" aria-hidden="true">*</span></label>
+</div>
+<p x-show="hasError('contactPermission')" class="text-xs text-terracotta" x-text="errorFor('contactPermission')"></p>
+<p x-show="formError" x-cloak role="alert" class="text-sm text-terracotta" x-text="formError"></p>
+<div class="flex flex-col sm:flex-row gap-3">
+<button type="submit" :disabled="loading" class="inline-flex items-center justify-center min-h-[2.75rem] w-fit rounded-full bg-gold text-deepbrown font-bold text-xs sm:text-sm uppercase tracking-wide px-7 py-3 disabled:opacity-60">
+<span x-text="loading ? 'Submitting…' : 'Submit Connector interest'"></span>
+</button>
+<a href="mailto:info@wvf-ny.org?subject=Keymakers%20Connector%20Inquiry" class="inline-flex items-center justify-center min-h-[2.75rem] w-fit rounded-full border border-white/30 text-white font-bold text-xs uppercase tracking-wide px-6 py-3 hover:bg-white/10">Email instead</a>
+</div>
+</form>
+</div>
 </div>
 <div class="relative min-h-[16rem] lg:min-h-[24rem] order-1 lg:order-2">
 <img src="./assets/images/keymakers/michelle.webp" alt="Keymaker in a warm editorial portrait" width="800" height="1067" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-center">
@@ -269,7 +325,7 @@ Apply to Be a Connector <span class="ml-2" aria-hidden="true">&rarr;</span>
 <p class="text-deepbrown/80 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
 Experienced Keymakers and/or Connectors may apply to become Key Guides, offering practical guidance, insight, and support inside the members-only Community Circle. Key Guides help others navigate, grow, and make the most of their journey&mdash;separate from the relationship-building focus of Connectors.
 </p>
-<a href="mailto:info@wvf-ny.org?subject=Keymakers%20Key%20Guide%20Application&amp;body=Hi%20WVF%20Team%2C%0A%0AI%20would%20like%20to%20apply%20to%20serve%20as%20a%20Key%20Guide.%20Please%20share%20next%20steps.%0A%0AName%3A%20%0ABackground%3A%20" class="inline-flex items-center justify-center min-h-[2.75rem] rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-6 py-3 hover:bg-gold/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2">
+<a href="./community.html#apply-key-guide" class="inline-flex items-center justify-center min-h-[2.75rem] rounded-full bg-gold text-deepbrown font-bold text-xs uppercase tracking-wide px-6 py-3 hover:bg-gold/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2">
 Apply to Be a Key Guide <span class="ml-2" aria-hidden="true">&rarr;</span>
 </a>
 </div>
@@ -358,9 +414,9 @@ Apply to Be a Key Guide <span class="ml-2" aria-hidden="true">&rarr;</span>
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex items-center gap-6">
-<a href="#" class="hover:text-white transition-colors">Privacy policy</a>
-<a href="#" class="hover:text-white transition-colors">Terms of use</a>
-<a href="#" class="hover:text-white transition-colors">Accessibility</a>
+<a href="./privacy.html" class="hover:text-white transition-colors">Privacy policy</a>
+<a href="./terms.html" class="hover:text-white transition-colors">Terms of use</a>
+<a href="./accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
 </div>
 </div>
 </div>
@@ -368,5 +424,6 @@ Apply to Be a Key Guide <span class="ml-2" aria-hidden="true">&rarr;</span>
 
 <script src="./assets/js/keymakers-config.js"></script>
 <script src="./assets/js/keymakers-subscribe.js"></script>
+<script src="./assets/js/keymakers-interest.js"></script>
 </body>
 </html>

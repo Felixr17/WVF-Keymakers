@@ -14,6 +14,7 @@
      * When WVF provides a members-only Community Circle URL (Keyholder+),
      * set it here to show “Enter the Community Circle” on community.html.
      * Leave empty while member access is being scheduled.
+     * Authentication and Keyholder+ gating are external (dashboard / automation).
      */
     COMMUNITY_CIRCLE_MEMBER_URL: '',
   };

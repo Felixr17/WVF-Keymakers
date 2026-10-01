@@ -56,9 +56,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .font-serif { font-family: 'Lora', Georgia, serif; }
 [x-cloak] { display: none !important; }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="{ mobileOpen: false }" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <header class="sticky top-0 z-50 bg-deepbrown/98 backdrop-blur supports-[backdrop-filter]:bg-deepbrown/95 border-b border-white/10">
 <nav class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-20">
@@ -113,7 +116,7 @@ Share your key
 </div>
 </header>
 
-<main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+<main id="main-content" class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
 <div class="max-w-xl w-full text-center">
 <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold/10 ring-1 ring-gold/30 text-gold mb-8 p-3">
 <img src="./assets/images/Keymakers_Logo.svg" alt="" aria-hidden="true" class="h-full w-auto max-w-full object-contain opacity-80">

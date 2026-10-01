@@ -86,9 +86,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="getInvolvedPage()" class="bg-cream text-deepbrown antialiased flex flex-col min-h-screen">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <!-- ============================================================ -->
 <!-- SECTION 1 :: TOP NAVIGATION -->
@@ -127,7 +130,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </div>
 </nav>
 </header>
-<main class="flex-grow">
+<main id="main-content" class="flex-grow">
 
 <!-- ============================================================ -->
 <!-- IMAGE-LED HERO -->
@@ -179,7 +182,7 @@ Explore Ways to Join
 <div class="relative mt-auto p-5 sm:p-6 flex flex-col gap-3">
 <h3 class="font-serif text-xl text-white font-semibold">Become a Keymaker</h3>
 <p class="text-white/75 text-xs sm:text-sm leading-relaxed">Join as a member, contribute your resources, and become part of the movement.</p>
-<a href="./get-involved.html" class="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wide min-h-[2.75rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm w-fit">
+<a href="#membership" class="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wide min-h-[2.75rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm w-fit">
 Learn more <span aria-hidden="true">&rarr;</span>
 </a>
 </div>
@@ -203,7 +206,7 @@ Learn more <span aria-hidden="true">&rarr;</span>
 <div class="relative mt-auto p-5 sm:p-6 flex flex-col gap-3">
 <h3 class="font-serif text-xl text-white font-semibold">Serve as a Connector</h3>
 <p class="text-white/75 text-xs sm:text-sm leading-relaxed">Introduce people, open doors, and help the community grow.</p>
-<a href="mailto:info@wvf-ny.org?subject=Keymakers%20Connector%20Inquiry&amp;body=Hi%20WVF%20Team%2C%0A%0AI%20would%20like%20to%20learn%20more%20about%20serving%20as%20a%20Connector%20in%20the%20Keymakers%20movement.%0A%0AName%3A%20%0AOrganization%3A%20" class="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wide min-h-[2.75rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm w-fit">
+<a href="./connectors.html#apply-connector" class="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wide min-h-[2.75rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm w-fit">
 Learn more <span aria-hidden="true">&rarr;</span>
 </a>
 </div>
@@ -215,7 +218,7 @@ Learn more <span aria-hidden="true">&rarr;</span>
 <div class="relative mt-auto p-5 sm:p-6 flex flex-col gap-3">
 <h3 class="font-serif text-xl text-white font-semibold">Apply to Be a Key Guide</h3>
 <p class="text-white/75 text-xs sm:text-sm leading-relaxed">Experienced leaders can provide practical guidance to fellow members.</p>
-<a href="mailto:info@wvf-ny.org?subject=Keymakers%20Key%20Guide%20Application&amp;body=Hi%20WVF%20Team%2C%0A%0AI%20would%20like%20to%20apply%20to%20serve%20as%20a%20Key%20Guide.%20Please%20share%20next%20steps.%0A%0AName%3A%20%0ABackground%3A%20" class="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wide min-h-[2.75rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm w-fit">
+<a href="./community.html#apply-key-guide" class="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wide min-h-[2.75rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm w-fit">
 Learn more <span aria-hidden="true">&rarr;</span>
 </a>
 </div>
@@ -239,27 +242,27 @@ Learn more <span aria-hidden="true">&rarr;</span>
 
 <div class="rounded-2xl border border-warmtan bg-white/60 overflow-hidden">
 <div class="flex items-stretch divide-x divide-warmtan/80 overflow-x-auto no-scrollbar">
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
+<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" aria-label="Key Carrier membership, free. Opens Givebutter checkout." class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
 <img src="./assets/images/Key_Carrier.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform">
 <span class="block text-[11px] font-bold text-deepbrown mt-2 whitespace-nowrap">Key Carrier</span>
 <span class="block text-[11px] text-terracotta font-semibold">Free</span>
 </a>
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
+<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" aria-label="Keyholder membership, 25 dollars per year. Community Circle access begins here. Opens Givebutter checkout." class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
 <img src="./assets/images/Keyholder.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform">
 <span class="block text-[11px] font-bold text-deepbrown mt-2 whitespace-nowrap">Keyholder</span>
 <span class="block text-[11px] text-terracotta font-semibold">$25<span class="text-deepbrown/45 font-normal"> / yr</span></span>
 </a>
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
+<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" aria-label="Keysmith membership, 100 dollars per year. Opens Givebutter checkout." class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
 <img src="./assets/images/Keysmith.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform">
 <span class="block text-[11px] font-bold text-deepbrown mt-2 whitespace-nowrap">Keysmith</span>
 <span class="block text-[11px] text-terracotta font-semibold">$100<span class="text-deepbrown/45 font-normal"> / yr</span></span>
 </a>
-<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
+<a href="https://givebutter.com/keymakers-campaign" data-givebutter-widget="keymakers-campaign" aria-label="Key Shaper membership, 250 dollars per year. Opens Givebutter checkout." class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
 <img src="./assets/images/Key_Shaper.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform">
 <span class="block text-[11px] font-bold text-deepbrown mt-2 whitespace-nowrap">Key Shaper</span>
 <span class="block text-[11px] text-terracotta font-semibold">$250<span class="text-deepbrown/45 font-normal"> / yr</span></span>
 </a>
-<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
+<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" aria-label="Key Circle membership, 1,000 dollars per year, invitation only. Email WVF." class="shrink-0 flex-1 min-w-[7.5rem] px-3 sm:px-4 py-5 text-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold">
 <img src="./assets/images/Key_Circle.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform">
 <span class="block text-[11px] font-bold text-deepbrown mt-2 whitespace-nowrap">Key Circle</span>
 <span class="block text-[10px] text-terracotta font-semibold leading-tight">$1,000 / yr</span>
@@ -269,8 +272,38 @@ Learn more <span aria-hidden="true">&rarr;</span>
 </div>
 
 <p class="text-xs text-deepbrown/65 mt-4 max-w-3xl leading-relaxed">
-Annual membership through Givebutter. <strong class="font-semibold text-deepbrown">Community Circle</strong> access begins at Keyholder ($25/year). Connector and Key Guide are participation roles, not membership tiers.
+Annual membership through Givebutter. <strong class="font-semibold text-deepbrown">Community Circle</strong> access begins at Keyholder ($25/year). Key Carrier (free) does not include the Circle. Connector and Key Guide are participation roles, not membership tiers.
 </p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- AFTER YOU JOIN (proposed paid-member access) -->
+<!-- ============================================================ -->
+<section id="after-you-join" class="editorial-cream py-10 sm:py-12 border-b border-warmtan/80" aria-labelledby="after-join-heading">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<p class="text-terracotta text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Paid members</p>
+<h2 id="after-join-heading" class="font-serif text-2xl sm:text-3xl font-semibold text-deepbrown mb-3">After you join</h2>
+<p class="text-deepbrown/70 text-sm leading-relaxed max-w-3xl mb-8">
+This public website cannot log members in. Community Circle access is <strong class="font-semibold text-deepbrown">proposed</strong> for Keyholder and above once WVF confirms the membership. Email, Baserow tagging, and the member destination are completed in other systems&mdash;not claimed as live here.
+</p>
+<ol class="grid sm:grid-cols-3 gap-4 sm:gap-5">
+<li class="rounded-2xl border border-warmtan bg-white/70 p-5">
+<p class="text-[10px] font-bold uppercase tracking-[0.16em] text-terracotta mb-2">1. Join</p>
+<p class="font-serif text-lg text-deepbrown font-semibold mb-2">Choose Keyholder+</p>
+<p class="text-sm text-deepbrown/70 leading-relaxed">Complete checkout on Givebutter for Keyholder ($25/year) or a higher tier. Key Carrier stays free and public-facing only.</p>
+</li>
+<li class="rounded-2xl border border-warmtan bg-white/70 p-5">
+<p class="text-[10px] font-bold uppercase tracking-[0.16em] text-terracotta mb-2">2. Confirmation</p>
+<p class="font-serif text-lg text-deepbrown font-semibold mb-2">Watch for WVF email</p>
+<p class="text-sm text-deepbrown/70 leading-relaxed">When membership email is implemented, you will receive a receipt and next-step note. Until then, keep your Givebutter confirmation.</p>
+</li>
+<li class="rounded-2xl border border-warmtan bg-white/70 p-5">
+<p class="text-[10px] font-bold uppercase tracking-[0.16em] text-terracotta mb-2">3. The Circle</p>
+<p class="font-serif text-lg text-deepbrown font-semibold mb-2">Access when scheduled</p>
+<p class="text-sm text-deepbrown/70 leading-relaxed">Member conversations happen in the Community Circle&mdash;not on this public page. <a href="./community.html#member-conversations" class="font-semibold underline underline-offset-2">See current Circle status</a>.</p>
+</li>
+</ol>
 </div>
 </section>
 
@@ -324,7 +357,7 @@ Doors to Capital brings together WVF business development programs, preparation 
 <div class="max-w-xl">
 <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white mb-3">The Movement Grows With You.</h2>
 <p class="text-white/85 text-sm sm:text-base mb-8">Share your time. Your talent. Your resources. Your key.</p>
-<a href="./get-involved.html" class="inline-flex items-center justify-center min-h-[2.75rem] rounded-full bg-gold text-deepbrown font-bold text-xs sm:text-sm uppercase tracking-wide px-7 py-3 hover:bg-gold/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+<a href="#ways-to-join" class="inline-flex items-center justify-center min-h-[2.75rem] rounded-full bg-gold text-deepbrown font-bold text-xs sm:text-sm uppercase tracking-wide px-7 py-3 hover:bg-gold/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
 Explore Ways to Join <span class="ml-2" aria-hidden="true">&rarr;</span>
 </a>
 <p class="font-serif italic text-gold text-lg mt-8 hidden sm:block">Bigger together.</p>
@@ -446,9 +479,9 @@ Explore Ways to Join <span class="ml-2" aria-hidden="true">&rarr;</span>
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex items-center gap-6">
-<a href="#" class="hover:text-white transition-colors">Privacy policy</a>
-<a href="#" class="hover:text-white transition-colors">Terms of use</a>
-<a href="#" class="hover:text-white transition-colors">Accessibility</a>
+<a href="./privacy.html" class="hover:text-white transition-colors">Privacy policy</a>
+<a href="./terms.html" class="hover:text-white transition-colors">Terms of use</a>
+<a href="./accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
 </div>
 </div>
 </div>

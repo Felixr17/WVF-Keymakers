@@ -66,9 +66,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 }
 [x-cloak] { display: none !important; }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="{ mobileOpen: false }" class="bg-cream text-deepgreen antialiased m-0 p-0">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <header class="relative bg-[#062117] overflow-hidden">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
@@ -105,7 +108,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </nav>
 
 <!-- Hero -->
-<section class="relative min-h-[calc(100vh-4.5rem)] max-h-[920px] flex items-end lg:items-center">
+<section id="main-content" tabindex="-1" class="relative min-h-[calc(100vh-4.5rem)] max-h-[920px] flex items-end lg:items-center">
 <div class="absolute inset-0">
 <img src="./assets/images/gathering-networking.webp" alt="Women founders connecting at a workshop-style gathering" width="1200" height="675" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover object-center">
 <div class="absolute inset-0 bg-gradient-to-r from-[#062117]/92 via-[#062117]/75 to-[#062117]/35"></div>
@@ -340,8 +343,9 @@ Stay in the Loop <span aria-hidden="true">&rarr;</span>
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex gap-6">
-<a href="#" class="hover:text-white">Privacy</a>
-<a href="#" class="hover:text-white">Terms</a>
+<a href="./privacy.html" class="hover:text-white">Privacy</a>
+<a href="./terms.html" class="hover:text-white">Terms</a>
+<a href="./accessibility.html" class="hover:text-white">Accessibility</a>
 </div>
 </div>
 </div>

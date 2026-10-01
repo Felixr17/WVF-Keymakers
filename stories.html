@@ -85,9 +85,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
   .motion-safe-scale { transform: none !important; }
 }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="storiesPage()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <header class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-sm border-b border-white/10">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
@@ -125,7 +128,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </header>
 
 <!-- STORIES HERO (above the crease) -->
-<header class="relative overflow-hidden min-h-[100svh] lg:min-h-[40rem]">
+<header id="main-content" tabindex="-1" class="relative overflow-hidden min-h-[100svh] lg:min-h-[40rem]">
 <img
   src="./assets/images/stories/hero.webp"
   alt="A woman entrepreneur completing a sale in a sunlit studio"
@@ -501,8 +504,9 @@ Discover the stories of women who turned possibility into progress&mdash;differe
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex gap-6">
-<a href="mailto:info@wvf-ny.org?subject=Privacy%20Policy" class="hover:text-white">Privacy</a>
-<a href="mailto:info@wvf-ny.org?subject=Terms%20of%20Use" class="hover:text-white">Terms</a>
+<a href="./privacy.html" class="hover:text-white">Privacy</a>
+<a href="./terms.html" class="hover:text-white">Terms</a>
+<a href="./accessibility.html" class="hover:text-white">Accessibility</a>
 </div>
 </div>
 </div>
