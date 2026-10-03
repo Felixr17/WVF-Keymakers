@@ -44,6 +44,7 @@
       honeypot: '',
       status: 'idle',
       errors: {},
+      fieldErrors: [],
       formError: '',
       successMessage,
       prefix,
@@ -78,6 +79,7 @@
 
       validate() {
         this.errors = {};
+        this.fieldErrors = [];
         if (!String(this.fullName).trim()) {
           this.errors.fullName = 'Please enter your name.';
         }
@@ -93,7 +95,11 @@
         if (String(this.honeypot).trim()) {
           this.errors.fullName = 'Unable to submit. Please try again later.';
         }
-        return Object.keys(this.errors).length === 0;
+        this.fieldErrors = Object.keys(this.errors).map((id) => ({
+          id: this.idFor(id),
+          message: this.errors[id],
+        }));
+        return this.fieldErrors.length === 0;
       },
 
       async submit() {
@@ -107,8 +113,13 @@
         if (!this.validate()) {
           this.status = 'error';
           this.$nextTick(() => {
-            const first = Object.keys(this.errors)[0];
-            if (first) document.getElementById(this.idFor(first))?.focus();
+            const summary = document.getElementById(this.idFor('error-summary'));
+            if (summary) {
+              summary.focus();
+              return;
+            }
+            const first = this.fieldErrors[0];
+            if (first) document.getElementById(first.id)?.focus();
           });
           return;
         }

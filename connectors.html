@@ -256,16 +256,25 @@ Applicants must already be Keymakers. <a href="./get-involved.html#membership" c
 </div>
 <form x-show="!succeeded" @submit.prevent="submit()" novalidate class="space-y-4">
 <input type="text" :id="idFor('company')" name="company" x-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
+<p x-show="!submitAvailable" x-cloak role="status" class="text-sm text-cream/85">This form is not available yet. Please <a class="underline font-semibold text-gold" href="mailto:info@wvf-ny.org?subject=Keymakers%20Connector%20Inquiry">email info@wvf-ny.org</a>.</p>
+<div x-show="fieldErrors.length" x-cloak :id="idFor('error-summary')" tabindex="-1" role="alert" class="rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-white">
+<p class="font-semibold mb-2">Please correct the following:</p>
+<ul class="list-disc pl-5 space-y-1 text-cream/90">
+<template x-for="err in fieldErrors" :key="err.id">
+<li><a :href="'#' + err.id" class="underline hover:text-white" x-text="err.message"></a></li>
+</template>
+</ul>
+</div>
 <div>
 <label :for="idFor('fullName')" class="block text-sm font-semibold text-white mb-1.5">Name <span class="text-terracotta" aria-hidden="true">*</span></label>
-<input type="text" :id="idFor('fullName')" required autocomplete="name" x-model="fullName" :aria-invalid="hasError('fullName')" class="w-full min-h-[44px] rounded-lg border bg-white/10 text-white px-4 py-2.5 text-sm" :class="hasError('fullName') ? 'border-terracotta' : 'border-white/20'">
-<p x-show="hasError('fullName')" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
+<input type="text" :id="idFor('fullName')" required autocomplete="name" x-model="fullName" :aria-invalid="hasError('fullName')" :aria-describedby="hasError('fullName') ? idFor('fullName-error') : null" class="w-full min-h-[44px] rounded-lg border bg-white/10 text-white px-4 py-2.5 text-sm" :class="hasError('fullName') ? 'border-terracotta' : 'border-white/20'">
+<p x-show="hasError('fullName')" :id="idFor('fullName-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
 </div>
 <div class="grid sm:grid-cols-2 gap-4">
 <div>
 <label :for="idFor('email')" class="block text-sm font-semibold text-white mb-1.5">Email <span class="text-terracotta" aria-hidden="true">*</span></label>
-<input type="email" :id="idFor('email')" required autocomplete="email" x-model="email" :aria-invalid="hasError('email')" class="w-full min-h-[44px] rounded-lg border bg-white/10 text-white px-4 py-2.5 text-sm" :class="hasError('email') ? 'border-terracotta' : 'border-white/20'">
-<p x-show="hasError('email')" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
+<input type="email" :id="idFor('email')" required autocomplete="email" x-model="email" :aria-invalid="hasError('email')" :aria-describedby="hasError('email') ? idFor('email-error') : null" class="w-full min-h-[44px] rounded-lg border bg-white/10 text-white px-4 py-2.5 text-sm" :class="hasError('email') ? 'border-terracotta' : 'border-white/20'">
+<p x-show="hasError('email')" :id="idFor('email-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
 </div>
 <div>
 <label :for="idFor('business')" class="block text-sm font-semibold text-white mb-1.5">Organization <span class="text-white/50 font-normal">(optional)</span></label>
@@ -274,23 +283,23 @@ Applicants must already be Keymakers. <a href="./get-involved.html#membership" c
 </div>
 <div>
 <label :for="idFor('alreadyKeymaker')" class="block text-sm font-semibold text-white mb-1.5">Are you already a Keymaker? <span class="text-terracotta" aria-hidden="true">*</span></label>
-<select :id="idFor('alreadyKeymaker')" required x-model="alreadyKeymaker" :aria-invalid="hasError('alreadyKeymaker')" class="w-full min-h-[44px] rounded-lg border bg-[#0A2E20] text-white px-4 py-2.5 text-sm" :class="hasError('alreadyKeymaker') ? 'border-terracotta' : 'border-white/20'">
+<select :id="idFor('alreadyKeymaker')" required x-model="alreadyKeymaker" :aria-invalid="hasError('alreadyKeymaker')" :aria-describedby="hasError('alreadyKeymaker') ? idFor('alreadyKeymaker-error') : null" class="w-full min-h-[44px] rounded-lg border bg-[#0A2E20] text-white px-4 py-2.5 text-sm" :class="hasError('alreadyKeymaker') ? 'border-terracotta' : 'border-white/20'">
 <option value="">Select an option</option>
 <option value="yes">Yes</option>
 <option value="no">Not yet</option>
 <option value="not-sure">Not sure</option>
 </select>
-<p x-show="hasError('alreadyKeymaker')" class="text-xs text-terracotta mt-1" x-text="errorFor('alreadyKeymaker')"></p>
+<p x-show="hasError('alreadyKeymaker')" :id="idFor('alreadyKeymaker-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('alreadyKeymaker')"></p>
 </div>
 <div>
 <label :for="idFor('message')" class="block text-sm font-semibold text-white mb-1.5">How do you hope to connect people? <span class="text-white/50 font-normal">(optional)</span></label>
 <textarea :id="idFor('message')" rows="3" x-model="message" class="w-full rounded-lg border border-white/20 bg-white/10 text-white px-4 py-3 text-sm min-h-[5rem]"></textarea>
 </div>
 <div class="flex items-start gap-3">
-<input type="checkbox" :id="idFor('contactPermission')" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-white/30 text-gold focus:ring-gold" :aria-invalid="hasError('contactPermission')">
+<input type="checkbox" :id="idFor('contactPermission')" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-white/30 text-gold focus:ring-gold" :aria-invalid="hasError('contactPermission')" :aria-describedby="hasError('contactPermission') ? idFor('contactPermission-error') : null">
 <label :for="idFor('contactPermission')" class="text-sm text-cream/90 leading-snug">Yes, the WVF team may contact me about this interest. <span class="text-terracotta" aria-hidden="true">*</span></label>
 </div>
-<p x-show="hasError('contactPermission')" class="text-xs text-terracotta" x-text="errorFor('contactPermission')"></p>
+<p x-show="hasError('contactPermission')" :id="idFor('contactPermission-error')" class="text-xs text-terracotta" x-text="errorFor('contactPermission')"></p>
 <p x-show="formError" x-cloak role="alert" class="text-sm text-terracotta" x-text="formError"></p>
 <div class="flex flex-col sm:flex-row gap-3">
 <button type="submit" :disabled="loading" class="inline-flex items-center justify-center min-h-[2.75rem] w-fit rounded-full bg-gold text-deepbrown font-bold text-xs sm:text-sm uppercase tracking-wide px-7 py-3 disabled:opacity-60">
@@ -386,7 +395,7 @@ Apply to Be a Key Guide <span class="ml-2" aria-hidden="true">&rarr;</span>
 <h4 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Resources</h4>
 <ul class="space-y-2.5 text-sm">
 <li><a href="./share-your-key.html" class="hover:text-white transition-colors">Submission guidelines</a></li>
-<li><a href="./index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+<li><a href="./about.html" class="hover:text-white transition-colors">FAQ</a></li>
 <li><a href="./about.html" class="hover:text-white transition-colors">About WVF</a></li>
 <li><a href="mailto:info@wvf-ny.org" class="hover:text-white transition-colors">Contact us</a></li>
 </ul>

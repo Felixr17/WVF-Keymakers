@@ -193,10 +193,10 @@ Start Your Story <span aria-hidden="true">&rarr;</span>
 <div x-show="formError" x-cloak role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
 <p class="font-semibold mb-1">We couldn&rsquo;t submit your story</p>
 <p x-text="formError" class="text-deepgreen/80"></p>
-<p class="text-xs mt-2 text-deepgreen/60">Please check your connection and try again. Your entries are still here.</p>
+<p class="text-xs mt-2 text-deepgreen/60">Your entries are still here. You can try again or <a class="underline font-semibold" href="mailto:info@wvf-ny.org?subject=Share%20Your%20Key">email info@wvf-ny.org</a>.</p>
 </div>
 
-<div x-show="fieldErrors.length" x-cloak role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
+<div x-show="fieldErrors.length" x-cloak id="share-error-summary" tabindex="-1" role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
 <p class="font-semibold mb-2">Please correct the following:</p>
 <ul class="list-disc pl-5 space-y-1 text-deepgreen/80">
 <template x-for="err in fieldErrors" :key="err.id">
@@ -300,10 +300,13 @@ Start Your Story <span aria-hidden="true">&rarr;</span>
 </div>
 </div>
 
+<div class="flex flex-col sm:flex-row gap-3 sm:items-center">
 <button type="submit" :disabled="submitting" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] rounded-full bg-[#D4AF37] text-[#062117] font-bold text-sm px-8 py-3 hover:bg-[#E2C15E] transition-colors disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-deepgreen">
 <span x-text="submitting ? 'Submitting…' : 'Submit My Story'"></span>
 <span x-show="!submitting" aria-hidden="true">&rarr;</span>
 </button>
+<a href="mailto:info@wvf-ny.org?subject=Share%20Your%20Key" class="inline-flex items-center justify-center min-h-[44px] text-sm font-semibold text-deepgreen underline underline-offset-2 hover:text-deepgreen/80">Email instead</a>
+</div>
 </form>
 </div>
 </div>
@@ -538,10 +541,21 @@ function shareYourKey() {
 
       this.formError = '';
       if (!this.validateClient()) {
-        const first = this.fieldErrors[0];
-        if (first) {
-          document.getElementById(first.id)?.focus();
+        const summary = document.getElementById('share-error-summary');
+        if (summary) {
+          summary.focus();
+        } else {
+          const first = this.fieldErrors[0];
+          if (first) {
+            document.getElementById(first.id)?.focus();
+          }
         }
+        return;
+      }
+
+      const webhookUrl = String(window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL || '').trim();
+      if (!webhookUrl) {
+        this.formError = 'This form is not available yet. Please email info@wvf-ny.org.';
         return;
       }
 
@@ -560,9 +574,6 @@ function shareYourKey() {
         alreadyMember: this.alreadyMember || '',
         membershipInterest: Boolean(this.membershipInterest),
       };
-
-      const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL
-        || 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake';
 
       try {
         const response = await fetch(webhookUrl, {

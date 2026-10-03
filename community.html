@@ -286,16 +286,25 @@ Share your experience. Make a bigger impact. Key Guide is a role for experienced
 </div>
 <form x-show="!succeeded" @submit.prevent="submit()" novalidate class="rounded-2xl border border-deepgreen/10 bg-white p-5 sm:p-6 space-y-4">
 <input type="text" :id="idFor('company')" name="company" x-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
+<p x-show="!submitAvailable" x-cloak role="status" class="text-sm text-deepgreen/80">This form is not available yet. Please <a class="underline font-semibold" href="mailto:info@wvf-ny.org?subject=Key%20Guide%20Interest">email info@wvf-ny.org</a>.</p>
+<div x-show="fieldErrors.length" x-cloak :id="idFor('error-summary')" tabindex="-1" role="alert" class="rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
+<p class="font-semibold mb-2">Please correct the following:</p>
+<ul class="list-disc pl-5 space-y-1 text-deepgreen/80">
+<template x-for="err in fieldErrors" :key="err.id">
+<li><a :href="'#' + err.id" class="underline hover:text-deepgreen" x-text="err.message"></a></li>
+</template>
+</ul>
+</div>
 <div>
 <label :for="idFor('fullName')" class="block text-sm font-semibold text-deepgreen mb-1.5">Name <span class="text-terracotta" aria-hidden="true">*</span></label>
-<input type="text" :id="idFor('fullName')" name="fullName" required autocomplete="name" x-model="fullName" :aria-invalid="hasError('fullName')" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('fullName') ? 'border-terracotta' : 'border-deepgreen/20'">
-<p x-show="hasError('fullName')" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
+<input type="text" :id="idFor('fullName')" name="fullName" required autocomplete="name" x-model="fullName" :aria-invalid="hasError('fullName')" :aria-describedby="hasError('fullName') ? idFor('fullName-error') : null" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('fullName') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('fullName')" :id="idFor('fullName-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
 </div>
 <div class="grid sm:grid-cols-2 gap-4">
 <div>
 <label :for="idFor('email')" class="block text-sm font-semibold text-deepgreen mb-1.5">Email <span class="text-terracotta" aria-hidden="true">*</span></label>
-<input type="email" :id="idFor('email')" name="email" required autocomplete="email" x-model="email" :aria-invalid="hasError('email')" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('email') ? 'border-terracotta' : 'border-deepgreen/20'">
-<p x-show="hasError('email')" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
+<input type="email" :id="idFor('email')" name="email" required autocomplete="email" x-model="email" :aria-invalid="hasError('email')" :aria-describedby="hasError('email') ? idFor('email-error') : null" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('email') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('email')" :id="idFor('email-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
 </div>
 <div>
 <label :for="idFor('phone')" class="block text-sm font-semibold text-deepgreen mb-1.5">Phone <span class="text-deepgreen/50 font-normal">(optional)</span></label>
@@ -304,23 +313,23 @@ Share your experience. Make a bigger impact. Key Guide is a role for experienced
 </div>
 <div>
 <label :for="idFor('alreadyKeymaker')" class="block text-sm font-semibold text-deepgreen mb-1.5">Are you already a Keymaker or Connector? <span class="text-terracotta" aria-hidden="true">*</span></label>
-<select :id="idFor('alreadyKeymaker')" name="alreadyKeymaker" required x-model="alreadyKeymaker" :aria-invalid="hasError('alreadyKeymaker')" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('alreadyKeymaker') ? 'border-terracotta' : 'border-deepgreen/20'">
+<select :id="idFor('alreadyKeymaker')" name="alreadyKeymaker" required x-model="alreadyKeymaker" :aria-invalid="hasError('alreadyKeymaker')" :aria-describedby="hasError('alreadyKeymaker') ? idFor('alreadyKeymaker-error') : null" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('alreadyKeymaker') ? 'border-terracotta' : 'border-deepgreen/20'">
 <option value="">Select an option</option>
 <option value="yes">Yes</option>
 <option value="no">Not yet</option>
 <option value="not-sure">Not sure</option>
 </select>
-<p x-show="hasError('alreadyKeymaker')" class="text-xs text-terracotta mt-1" x-text="errorFor('alreadyKeymaker')"></p>
+<p x-show="hasError('alreadyKeymaker')" :id="idFor('alreadyKeymaker-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('alreadyKeymaker')"></p>
 </div>
 <div>
 <label :for="idFor('message')" class="block text-sm font-semibold text-deepgreen mb-1.5">What guidance could you offer? <span class="text-deepgreen/50 font-normal">(optional)</span></label>
 <textarea :id="idFor('message')" name="message" rows="3" x-model="message" class="w-full rounded-lg border border-deepgreen/20 bg-cream-alt/80 px-4 py-3 text-sm min-h-[5rem]"></textarea>
 </div>
 <div class="flex items-start gap-3">
-<input type="checkbox" :id="idFor('contactPermission')" name="contactPermission" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-deepgreen/30 text-[#D4AF37] focus:ring-[#D4AF37]" :aria-invalid="hasError('contactPermission')">
+<input type="checkbox" :id="idFor('contactPermission')" name="contactPermission" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-deepgreen/30 text-[#D4AF37] focus:ring-[#D4AF37]" :aria-invalid="hasError('contactPermission')" :aria-describedby="hasError('contactPermission') ? idFor('contactPermission-error') : null">
 <label :for="idFor('contactPermission')" class="text-sm text-deepgreen leading-snug">Yes, the WVF team may contact me about this interest. <span class="text-terracotta" aria-hidden="true">*</span></label>
 </div>
-<p x-show="hasError('contactPermission')" class="text-xs text-terracotta" x-text="errorFor('contactPermission')"></p>
+<p x-show="hasError('contactPermission')" :id="idFor('contactPermission-error')" class="text-xs text-terracotta" x-text="errorFor('contactPermission')"></p>
 <p x-show="formError" x-cloak role="alert" class="text-sm text-terracotta" x-text="formError"></p>
 <button type="submit" :disabled="loading" class="inline-flex items-center justify-center min-h-[44px] rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-7 py-3 disabled:opacity-60">
 <span x-text="loading ? 'Submitting…' : 'Submit Key Guide interest'"></span>

@@ -104,3 +104,7 @@ Answer these before later phases claim integrations are live:
 6. **Privacy / terms legal review** — New pages are website-facing summaries that point people to `info@wvf-ny.org`. Does WVF have a canonical policy URL to use instead?
 7. **Photography** — When can named Keymaker portraits and Community/Stories Unsplash stills be replaced with approved WVF images?
 8. **Dashboard access** — When the Keymakers dashboard and n8n workspace are attached, Maria’s spec in `docs/maria-applicant-staff-workflow-spec.md` can be implemented there — not in this repo.
+
+## 7. Remaining live webhook tests (pre-launch requirement)
+
+Do not POST from this website workspace. Exact operator tests are listed in `docs/external-integration-handoff.md` (end of file) and `docs/forms-and-email-planning.md`. They remain incomplete until n8n/Baserow/email owners run them.

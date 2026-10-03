@@ -55,6 +55,8 @@ Automation must accept unknown extra fields without dropping the submission. New
 }
 ```
 
+`membershipInterest` is a JSON **boolean** (`true` / `false`), not a string. Unchecked checkboxes still send `false`. `alreadyMember` is a string and may be `""`.
+
 `participation` values are **legacy codes**. Map them for staff as:
 
 | Posted value | Public label |
@@ -293,3 +295,19 @@ Providing the URL, auth, and Keyholder+ gating is **External implementation requ
 - Implement Maria’s staff queue
 - Authenticate paid members
 - Submit test data to the live webhook during development
+
+## Remaining live webhook tests (pre-launch requirement)
+
+Website QA in this repository must **not** POST to `N8N_INTAKE_WEBHOOK_URL`. The following tests remain for a designated operator before production:
+
+| # | Form | Exact test | Pass criteria |
+| --- | --- | --- | --- |
+| 1 | Share Your Key | POST one payload with `participation: "virtual"`, `alreadyMember: ""`, `membershipInterest: false` | HTTP 2xx; Baserow intake created; public success copy only after 2xx |
+| 2 | Share Your Key additive | POST `alreadyMember: "not-sure"`, `membershipInterest: true` (boolean) plus a legacy participation code | Fields stored; intake not dropped |
+| 3 | Newsletter | POST `{ "source": "Footer Newsletter", "participation": "newsletter-only", "email": "<test>" }` | Tagged newsletter only; no intake row |
+| 4 | Gathering | POST `{ "source": "Gathering Stay in the Loop", "participation": "gathering-rsvp", "email": "<test>" }` | Tagged gathering list |
+| 5 | Connector | POST `source: "Connector Application"`, `participation: "connector-interest"` | Volunteer interest record |
+| 6 | Key Guide | POST `source: "Key Guide Application"`, `participation: "key-guide-interest"` | Volunteer interest record |
+| 7 | Failure honesty | Return a non-2xx from n8n for a test submit | Public UI shows error + mailto, never success |
+
+See `docs/forms-and-email-planning.md` for the same list in website-planning language.

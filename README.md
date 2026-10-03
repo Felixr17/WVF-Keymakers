@@ -16,6 +16,6 @@ Then open `http://localhost:8080/`.
 
 ## Secrets
 
-Copy `.env.example` to `.env.local` for local notes only. `.env`, `.env.*` (except `.env.example`), keys, and credential files are gitignored and must not be committed.
+Copy `.env.example` to `.env.local` for local notes only. `.env.example` contains **names and safe placeholders only**. `.env`, `.env.*` (except `.env.example`), keys, and credential files are gitignored and must not be committed.
 
 Public webhook and Givebutter IDs in `assets/js/keymakers-config.js` are frontend configuration, not admin secrets.
