@@ -3,6 +3,15 @@
 **Status:** External implementation required for every item below.  
 This website repository only owns public pages, frontend validation, and the JSON payloads browsers POST. It does not own Baserow, n8n, Givebutter admin, production email, or the Keymakers dashboard.
 
+**Missing repositories in this Cloud Agent VM (do not recreate them here):**
+
+| System | Expected location | Status |
+| --- | --- | --- |
+| Keymakers Dashboard | `/Users/felixr/Developer/Felix-OS/Dashboard WVF/Keymakers Dashboard` | Not mounted — External implementation required |
+| WVF AI / n8n automation | `/Users/felixr/Developer/Felix-OS/WVF AI ` | Not mounted — External implementation required |
+
+Scan and file-by-file plan: `docs/multi-repository-workspace.md`.
+
 Do not treat a successful frontend “thank you” state as proof that records, tags, or emails exist.
 
 ---

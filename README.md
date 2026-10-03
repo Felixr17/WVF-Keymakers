@@ -2,7 +2,7 @@
 
 Public website for the Women’s Venture Fund Keymakers movement.
 
-This repository is **website-only**. Dashboard, Baserow, n8n, Givebutter administration, and production email live in other systems. See `AGENTS.md` and `docs/external-integration-handoff.md`.
+This repository is **website-only**. The Keymakers Dashboard and WVF AI/n8n workspace are separate folders and are not in this Cloud Agent VM. See `AGENTS.md`, `docs/multi-repository-workspace.md`, and `docs/external-integration-handoff.md`.
 
 ## Local preview
 

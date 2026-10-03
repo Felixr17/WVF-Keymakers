@@ -46,6 +46,7 @@ WVF-Keymakers/
     forms-and-email-planning.md
     maria-applicant-staff-workflow-spec.md
     image-replacement-manifest.md
+    multi-repository-workspace.md
 ```
 
 ## 2. Git branch and worktree (at start of this run)
