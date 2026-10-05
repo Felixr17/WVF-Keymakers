@@ -14,6 +14,7 @@ Do not mix files between repositories. Do not deploy or modify production servic
 | Public website | GitHub `Felixr17/WVF-Keymakers` | `/workspace` | **Yes** — only Git project in this workspace |
 | Keymakers Dashboard | `/Users/felixr/Developer/Felix-OS/Dashboard WVF/Keymakers Dashboard` | — | **No** (`/Users` does not exist here) |
 | WVF AI / automation | `/Users/felixr/Developer/Felix-OS/WVF AI ` | — | **No** |
+| Keymakers Community Circle | Sibling of the dashboard and the WVF AI folder. Not inside either, and not inside this website repo | Built on this VM as `/home/ubuntu/Keymakers Community Circle` | **Separate project.** Source is not committed in `WVF-Keymakers` |
 | Live Baserow | (service, not a repo) | — | **No access** |
 | Live Givebutter | (service, not a repo) | — | **No access** |
 | Production email | (service, not a repo) | — | **No access** |
