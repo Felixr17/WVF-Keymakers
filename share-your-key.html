@@ -65,9 +65,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 }
 [x-cloak] { display: none !important; }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="shareYourKey()" class="bg-cream text-deepgreen antialiased m-0 p-0">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <header class="relative bg-[#062117]">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
@@ -103,7 +106,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </div>
 </nav>
 
-<section class="relative min-h-[min(100vh,720px)] max-h-[880px] flex items-end lg:items-center">
+<section id="main-content" tabindex="-1" class="relative min-h-[min(100vh,720px)] max-h-[880px] flex items-end lg:items-center">
 <div class="absolute inset-0">
 <img src="./assets/images/keymakers/loretta.webp" alt="Keymaker Loretta in a warm, reflective moment" width="800" height="1067" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover object-top">
 <div class="absolute inset-0 bg-gradient-to-r from-[#062117]/93 via-[#062117]/78 to-[#062117]/45"></div>
@@ -190,10 +193,10 @@ Start Your Story <span aria-hidden="true">&rarr;</span>
 <div x-show="formError" x-cloak role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
 <p class="font-semibold mb-1">We couldn&rsquo;t submit your story</p>
 <p x-text="formError" class="text-deepgreen/80"></p>
-<p class="text-xs mt-2 text-deepgreen/60">Please check your connection and try again. Your entries are still here.</p>
+<p class="text-xs mt-2 text-deepgreen/60">Your entries are still here. You can try again or <a class="underline font-semibold" href="mailto:info@wvf-ny.org?subject=Share%20Your%20Key">email info@wvf-ny.org</a>.</p>
 </div>
 
-<div x-show="fieldErrors.length" x-cloak role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
+<div x-show="fieldErrors.length" x-cloak id="share-error-summary" tabindex="-1" role="alert" class="mb-4 rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
 <p class="font-semibold mb-2">Please correct the following:</p>
 <ul class="list-disc pl-5 space-y-1 text-deepgreen/80">
 <template x-for="err in fieldErrors" :key="err.id">
@@ -270,21 +273,40 @@ Start Your Story <span aria-hidden="true">&rarr;</span>
 <p x-show="hasError('participation')" id="participation-error" class="text-xs text-terracotta mt-1" x-text="errorFor('participation')"></p>
 </div>
 
+<div>
+<label for="alreadyMember" class="block text-sm font-semibold text-deepgreen mb-1.5">Are you already a Keymakers member? <span class="text-deepgreen/50 font-normal">(optional)</span></label>
+<select id="alreadyMember" name="alreadyMember" x-model="alreadyMember"
+  class="w-full min-h-[44px] rounded-lg border border-deepgreen/20 bg-white/80 px-4 py-2.5 text-sm text-deepgreen focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+<option value="">Select an option</option>
+<option value="yes">Yes</option>
+<option value="no">Not yet</option>
+<option value="not-sure">Not sure</option>
+</select>
+</div>
+
+<div class="flex items-start gap-3">
+<input type="checkbox" id="membershipInterest" name="membershipInterest" x-model="membershipInterest" class="mt-1 w-5 h-5 rounded border-deepgreen/30 text-[#D4AF37] focus:ring-[#D4AF37]">
+<label for="membershipInterest" class="text-sm text-deepgreen leading-snug">I would like information about paid membership and Community Circle access (Keyholder $25/year and above).</label>
+</div>
+
 <div class="flex items-start gap-3">
 <input type="checkbox" id="contactPermission" name="contactPermission" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-deepgreen/30 text-[#D4AF37] focus:ring-[#D4AF37]"
   :aria-invalid="hasError('contactPermission')"
   :aria-describedby="hasError('contactPermission') ? 'contactPermission-error' : 'contactPermission-hint'">
 <div>
 <label for="contactPermission" class="text-sm text-deepgreen leading-snug">Yes, the WVF team may contact me about this submission. <span class="text-terracotta" aria-hidden="true">*</span></label>
-<p id="contactPermission-hint" class="text-xs text-deepgreen/55 mt-1">This is not permission to publish or use your likeness. See our <a href="#" class="underline hover:text-deepgreen">privacy policy</a>.</p>
+<p id="contactPermission-hint" class="text-xs text-deepgreen/55 mt-1">This is not permission to publish or use your likeness. See our <a href="./privacy.html" class="underline hover:text-deepgreen">privacy policy</a>.</p>
 <p x-show="hasError('contactPermission')" id="contactPermission-error" class="text-xs text-terracotta mt-1" x-text="errorFor('contactPermission')"></p>
 </div>
 </div>
 
+<div class="flex flex-col sm:flex-row gap-3 sm:items-center">
 <button type="submit" :disabled="submitting" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] rounded-full bg-[#D4AF37] text-[#062117] font-bold text-sm px-8 py-3 hover:bg-[#E2C15E] transition-colors disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-deepgreen">
 <span x-text="submitting ? 'Submitting…' : 'Submit My Story'"></span>
 <span x-show="!submitting" aria-hidden="true">&rarr;</span>
 </button>
+<a href="mailto:info@wvf-ny.org?subject=Share%20Your%20Key" class="inline-flex items-center justify-center min-h-[44px] text-sm font-semibold text-deepgreen underline underline-offset-2 hover:text-deepgreen/80">Email instead</a>
+</div>
 </form>
 </div>
 </div>
@@ -405,8 +427,9 @@ Start Your Story <span aria-hidden="true">&rarr;</span>
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex gap-6">
-<a href="#" class="hover:text-white">Privacy</a>
-<a href="#" class="hover:text-white">Terms</a>
+<a href="./privacy.html" class="hover:text-white">Privacy</a>
+<a href="./terms.html" class="hover:text-white">Terms</a>
+<a href="./accessibility.html" class="hover:text-white">Accessibility</a>
 </div>
 </div>
 </div>
@@ -429,6 +452,8 @@ function shareYourKey() {
     business: '',
     keyDescription: '',
     participation: '',
+    alreadyMember: '',
+    membershipInterest: false,
     contactPermission: false,
     participationOptions: [
       { value: 'virtual', label: 'Be Featured in a Story' },
@@ -516,10 +541,21 @@ function shareYourKey() {
 
       this.formError = '';
       if (!this.validateClient()) {
-        const first = this.fieldErrors[0];
-        if (first) {
-          document.getElementById(first.id)?.focus();
+        const summary = document.getElementById('share-error-summary');
+        if (summary) {
+          summary.focus();
+        } else {
+          const first = this.fieldErrors[0];
+          if (first) {
+            document.getElementById(first.id)?.focus();
+          }
         }
+        return;
+      }
+
+      const webhookUrl = String(window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL || '').trim();
+      if (!webhookUrl) {
+        this.formError = 'This form is not available yet. Please email info@wvf-ny.org.';
         return;
       }
 
@@ -535,10 +571,9 @@ function shareYourKey() {
         keyDescription: String(this.keyDescription || '').trim(),
         participation: this.participation,
         contactOptIn: 'yes',
+        alreadyMember: this.alreadyMember || '',
+        membershipInterest: Boolean(this.membershipInterest),
       };
-
-      const webhookUrl = window.KEYMAKERS_CONFIG?.N8N_INTAKE_WEBHOOK_URL
-        || 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake';
 
       try {
         const response = await fetch(webhookUrl, {

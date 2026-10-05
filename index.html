@@ -75,9 +75,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="keymakers()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <!-- Unified above-the-crease canvas: nav + hero -->
 <header id="top" class="relative bg-gradient-to-b from-[#062117] via-[#0A2E20] to-[#0D3827] overflow-hidden">
@@ -101,7 +104,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 
 <a href="./share-your-key.html" class="hidden xl:inline-flex items-center justify-center bg-[#D4AF37] text-[#062117] font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full hover:bg-[#E5C158] min-h-[44px]">Share Your Key</a>
 
-<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10" :aria-expanded="mobileOpen" aria-label="Toggle menu">
+<button @click="mobileOpen = !mobileOpen" type="button" class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold" :aria-expanded="mobileOpen" aria-label="Toggle menu">
 <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
 <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 </button>
@@ -109,19 +112,19 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 
 <div x-show="mobileOpen" x-cloak x-transition.duration.200ms @click.outside="mobileOpen = false" class="xl:hidden px-4 pb-6 pt-2 bg-[#062117]/95">
 <ul class="flex flex-col text-sm font-semibold uppercase tracking-widest text-white/80">
-<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 border-b border-white/10 hover:text-white">Stories</a></li>
-<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 border-b border-white/10 hover:text-white">Community</a></li>
-<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 border-b border-white/10 hover:text-white">The Gathering</a></li>
-<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 border-b border-white/10 hover:text-white">Get Involved</a></li>
-<li><a @click="mobileOpen = false" href="./connectors.html" class="block py-3 border-b border-white/10 hover:text-white">Connectors</a></li>
-<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 hover:text-white">About WVF</a></li>
+<li><a @click="mobileOpen = false" href="./stories.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Stories</a></li>
+<li><a @click="mobileOpen = false" href="./community.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Community</a></li>
+<li><a @click="mobileOpen = false" href="./gathering.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">The Gathering</a></li>
+<li><a @click="mobileOpen = false" href="./get-involved.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Get Involved</a></li>
+<li><a @click="mobileOpen = false" href="./connectors.html" class="block py-3 min-h-[44px] border-b border-white/10 hover:text-white">Connectors</a></li>
+<li><a @click="mobileOpen = false" href="./about.html" class="block py-3 min-h-[44px] hover:text-white">About WVF</a></li>
 </ul>
 <a @click="mobileOpen = false" href="./share-your-key.html" class="mt-5 block text-center rounded-full bg-[#D4AF37] text-[#0A2E20] text-xs font-bold uppercase tracking-widest px-4 py-3 hover:bg-[#E2C15E]">Share Your Key</a>
 </div>
 </nav>
 
 <!-- Hero -->
-<section class="relative">
+<section id="main-content" tabindex="-1" class="relative">
 <div class="relative max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-12 grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
 <div class="max-w-xl">
 <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-white font-normal leading-[1.08] tracking-tight mb-6">
@@ -314,18 +317,21 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 <!-- MEMBERSHIP -->
 <!-- ============================================================ -->
 <section id="membership" class="bg-[#F5F2EB] border-y border-[#0D281E]/10 py-6 px-4">
-<div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="max-w-6xl mx-auto flex flex-col gap-4">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
 <div class="shrink-0 text-center md:text-left">
 <span class="font-serif text-xl text-[#0D281E] font-semibold">Membership</span>
 <span class="text-[10px] tracking-widest text-[#0D281E]/60 uppercase ml-2">Multiple ways to belong</span>
 </div>
 <div class="flex items-center justify-between gap-6 sm:gap-10 overflow-x-auto no-scrollbar w-full md:w-auto text-center pb-1">
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Carrier.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Carrier</span><span class="block text-[10px] text-[#C25E38]">Free</span></a>
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keyholder.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keyholder</span><span class="block text-[10px] text-[#C25E38]">$25</span></a>
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Keysmith.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keysmith</span><span class="block text-[10px] text-[#C25E38]">$100</span></a>
-<a href="https://givebutter.com/keymakers-campaign" class="shrink-0 group"><img src="./assets/images/Key_Shaper.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Shaper</span><span class="block text-[10px] text-[#C25E38]">$250</span></a>
-<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" class="shrink-0 group"><img src="./assets/images/Key_Circle.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Circle</span><span class="block text-[10px] text-[#C25E38]">$1,000</span></a>
+<a href="https://givebutter.com/keymakers-campaign" aria-label="Key Carrier membership, free. Opens Givebutter checkout." class="shrink-0 group min-h-[44px]"><img src="./assets/images/Key_Carrier.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Carrier</span><span class="block text-[10px] text-[#C25E38]">Free</span></a>
+<a href="https://givebutter.com/keymakers-campaign" aria-label="Keyholder membership, 25 dollars per year. Community Circle access begins here. Opens Givebutter checkout." class="shrink-0 group min-h-[44px]"><img src="./assets/images/Keyholder.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keyholder</span><span class="block text-[10px] text-[#C25E38]">$25</span></a>
+<a href="https://givebutter.com/keymakers-campaign" aria-label="Keysmith membership, 100 dollars per year. Opens Givebutter checkout." class="shrink-0 group min-h-[44px]"><img src="./assets/images/Keysmith.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Keysmith</span><span class="block text-[10px] text-[#C25E38]">$100</span></a>
+<a href="https://givebutter.com/keymakers-campaign" aria-label="Key Shaper membership, 250 dollars per year. Opens Givebutter checkout." class="shrink-0 group min-h-[44px]"><img src="./assets/images/Key_Shaper.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Shaper</span><span class="block text-[10px] text-[#C25E38]">$250</span></a>
+<a href="mailto:info@wvf-ny.org?subject=Key%20Circle%20Invitation%20Request" aria-label="Key Circle membership, 1,000 dollars per year, invitation only. Email WVF." class="shrink-0 group min-h-[44px]"><img src="./assets/images/Key_Circle.svg" alt="" loading="lazy" decoding="async" class="w-9 h-9 mx-auto object-contain group-hover:scale-105 transition-transform"><span class="block text-[10px] font-bold text-[#0D281E] mt-1 whitespace-nowrap">Key Circle</span><span class="block text-[10px] text-[#C25E38]">$1,000</span></a>
 </div>
+</div>
+<p class="text-xs text-[#0D281E]/65 max-w-4xl leading-relaxed text-center md:text-left">Community Circle access begins at Keyholder ($25/year). Key Carrier (free) does not include the Circle. Checkout is on Givebutter; member login is not on this public site. <a href="./get-involved.html#after-you-join" class="font-semibold underline underline-offset-2 hover:text-[#0D281E]">What happens after you join</a></p>
 </div>
 </section>
 
@@ -387,8 +393,9 @@ PEOPLE<br>IDEAS<br>CONNECTIONS<br>OPPORTUNITY<br>A BRIGHTER TOMORROW
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex gap-6">
-<a href="#" class="hover:text-white">Privacy</a>
-<a href="#" class="hover:text-white">Terms</a>
+<a href="./privacy.html" class="hover:text-white">Privacy</a>
+<a href="./terms.html" class="hover:text-white">Terms</a>
+<a href="./accessibility.html" class="hover:text-white">Accessibility</a>
 </div>
 </div>
 </div>

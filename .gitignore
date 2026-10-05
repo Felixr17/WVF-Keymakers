@@ -1,1 +1,21 @@
-.env.local
+# Environment and secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+credentials.json
+secrets.json
+*secret*
+*.secret
+id_rsa
+id_ed25519
+
+# Local tooling
+.DS_Store
+node_modules/
+.npm/
+.cache/

@@ -79,9 +79,12 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 }
 
 </style>
+<link rel="stylesheet" href="./assets/css/keymakers-base.css">
 </head>
 
 <body x-data="communityPage()" x-init="init()" class="bg-cream text-deepgreen antialiased m-0 p-0">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 
 <header class="sticky top-0 z-50 bg-[#062117]/95 backdrop-blur-sm border-b border-white/10">
 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[4.5rem]">
@@ -119,7 +122,7 @@ body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 </header>
 
 <!-- COMMUNITY HERO (above the crease) -->
-<header class="relative overflow-hidden min-h-[min(100vh,52rem)]">
+<header id="main-content" tabindex="-1" class="relative overflow-hidden min-h-[min(100vh,52rem)]">
 <picture>
   <source srcset="./assets/images/community/hero.webp" type="image/webp">
   <img
@@ -255,22 +258,84 @@ Guidance today.<br>Greater possibility tomorrow.
 <!-- ============================================================ -->
 <!-- APPLY TO BE A KEY GUIDE -->
 <!-- ============================================================ -->
-<section id="apply-key-guide" class="bg-cream-alt border-y border-deepgreen/10 py-8 sm:py-9" aria-labelledby="apply-guide-heading">
-<div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-<div class="flex items-start gap-4 max-w-2xl">
+<section id="apply-key-guide" class="bg-cream-alt border-y border-deepgreen/10 py-8 sm:py-10" aria-labelledby="apply-guide-heading">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 grid lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-5">
+<div class="flex items-start gap-4">
 <span class="hidden sm:inline-flex text-[#C5A059] shrink-0 mt-1" aria-hidden="true">
 <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="16" r="7"/><path d="M6 38c1.5-8 6-12 12-12s10.5 4 12 12"/><path d="M32 18h10M37 13v10"/></svg>
 </span>
 <div>
 <h2 id="apply-guide-heading" class="font-serif text-2xl sm:text-3xl font-semibold text-deepgreen">Apply to Be a Key Guide</h2>
 <p class="text-deepgreen/70 text-sm sm:text-base leading-relaxed mt-2">
-Share your experience. Make a bigger impact. Key Guide is a role for experienced Keymakers and Connectors&mdash;not something you purchase. Applications are opening soon.
+Share your experience. Make a bigger impact. Key Guide is a role for experienced Keymakers and Connectors&mdash;not something you purchase. Submitting this form is interest only; appointment happens after staff review.
 </p>
+<p class="text-xs text-deepgreen/55 mt-3">Prefer email? <a class="underline font-semibold" href="mailto:info@wvf-ny.org?subject=Key%20Guide%20Interest">info@wvf-ny.org</a></p>
 </div>
 </div>
-<a href="mailto:info@wvf-ny.org?subject=Key%20Guide%20Interest" class="inline-flex items-center justify-center shrink-0 rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#0D3827] transition-colors focus-ring">
-Contact WVF
-</a>
+</div>
+<div class="lg:col-span-7" x-data="window.KEYMAKERS_INTEREST.keymakersInterestForm({
+  source: 'Key Guide Application',
+  participation: 'key-guide-interest',
+  inputPrefix: 'guide',
+  successMessage: 'Thank you. We received your Key Guide interest. This is not an appointment, and it is not a membership purchase. WVF will follow up if there is a potential next step.'
+})">
+<div x-show="succeeded" x-cloak class="rounded-2xl border border-gold/40 bg-white p-6">
+<h3 id="guide-success" x-ref="statusLive" tabindex="-1" class="font-serif text-xl font-semibold text-deepgreen mb-2">Interest received</h3>
+<p class="text-sm text-deepgreen/75" x-text="successMessage"></p>
+</div>
+<form x-show="!succeeded" @submit.prevent="submit()" novalidate class="rounded-2xl border border-deepgreen/10 bg-white p-5 sm:p-6 space-y-4">
+<input type="text" :id="idFor('company')" name="company" x-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
+<p x-show="!submitAvailable" x-cloak role="status" class="text-sm text-deepgreen/80">This form is not available yet. Please <a class="underline font-semibold" href="mailto:info@wvf-ny.org?subject=Key%20Guide%20Interest">email info@wvf-ny.org</a>.</p>
+<div x-show="fieldErrors.length" x-cloak :id="idFor('error-summary')" tabindex="-1" role="alert" class="rounded-lg border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-deepgreen">
+<p class="font-semibold mb-2">Please correct the following:</p>
+<ul class="list-disc pl-5 space-y-1 text-deepgreen/80">
+<template x-for="err in fieldErrors" :key="err.id">
+<li><a :href="'#' + err.id" class="underline hover:text-deepgreen" x-text="err.message"></a></li>
+</template>
+</ul>
+</div>
+<div>
+<label :for="idFor('fullName')" class="block text-sm font-semibold text-deepgreen mb-1.5">Name <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="text" :id="idFor('fullName')" name="fullName" required autocomplete="name" x-model="fullName" :aria-invalid="hasError('fullName')" :aria-describedby="hasError('fullName') ? idFor('fullName-error') : null" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('fullName') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('fullName')" :id="idFor('fullName-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('fullName')"></p>
+</div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div>
+<label :for="idFor('email')" class="block text-sm font-semibold text-deepgreen mb-1.5">Email <span class="text-terracotta" aria-hidden="true">*</span></label>
+<input type="email" :id="idFor('email')" name="email" required autocomplete="email" x-model="email" :aria-invalid="hasError('email')" :aria-describedby="hasError('email') ? idFor('email-error') : null" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('email') ? 'border-terracotta' : 'border-deepgreen/20'">
+<p x-show="hasError('email')" :id="idFor('email-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('email')"></p>
+</div>
+<div>
+<label :for="idFor('phone')" class="block text-sm font-semibold text-deepgreen mb-1.5">Phone <span class="text-deepgreen/50 font-normal">(optional)</span></label>
+<input type="tel" :id="idFor('phone')" name="phone" autocomplete="tel" x-model="phone" class="w-full min-h-[44px] rounded-lg border border-deepgreen/20 bg-cream-alt/80 px-4 py-2.5 text-sm">
+</div>
+</div>
+<div>
+<label :for="idFor('alreadyKeymaker')" class="block text-sm font-semibold text-deepgreen mb-1.5">Are you already a Keymaker or Connector? <span class="text-terracotta" aria-hidden="true">*</span></label>
+<select :id="idFor('alreadyKeymaker')" name="alreadyKeymaker" required x-model="alreadyKeymaker" :aria-invalid="hasError('alreadyKeymaker')" :aria-describedby="hasError('alreadyKeymaker') ? idFor('alreadyKeymaker-error') : null" class="w-full min-h-[44px] rounded-lg border bg-cream-alt/80 px-4 py-2.5 text-sm" :class="hasError('alreadyKeymaker') ? 'border-terracotta' : 'border-deepgreen/20'">
+<option value="">Select an option</option>
+<option value="yes">Yes</option>
+<option value="no">Not yet</option>
+<option value="not-sure">Not sure</option>
+</select>
+<p x-show="hasError('alreadyKeymaker')" :id="idFor('alreadyKeymaker-error')" class="text-xs text-terracotta mt-1" x-text="errorFor('alreadyKeymaker')"></p>
+</div>
+<div>
+<label :for="idFor('message')" class="block text-sm font-semibold text-deepgreen mb-1.5">What guidance could you offer? <span class="text-deepgreen/50 font-normal">(optional)</span></label>
+<textarea :id="idFor('message')" name="message" rows="3" x-model="message" class="w-full rounded-lg border border-deepgreen/20 bg-cream-alt/80 px-4 py-3 text-sm min-h-[5rem]"></textarea>
+</div>
+<div class="flex items-start gap-3">
+<input type="checkbox" :id="idFor('contactPermission')" name="contactPermission" x-model="contactPermission" class="mt-1 w-5 h-5 rounded border-deepgreen/30 text-[#D4AF37] focus:ring-[#D4AF37]" :aria-invalid="hasError('contactPermission')" :aria-describedby="hasError('contactPermission') ? idFor('contactPermission-error') : null">
+<label :for="idFor('contactPermission')" class="text-sm text-deepgreen leading-snug">Yes, the WVF team may contact me about this interest. <span class="text-terracotta" aria-hidden="true">*</span></label>
+</div>
+<p x-show="hasError('contactPermission')" :id="idFor('contactPermission-error')" class="text-xs text-terracotta" x-text="errorFor('contactPermission')"></p>
+<p x-show="formError" x-cloak role="alert" class="text-sm text-terracotta" x-text="formError"></p>
+<button type="submit" :disabled="loading" class="inline-flex items-center justify-center min-h-[44px] rounded-full bg-[#0A2E20] text-white font-bold text-xs uppercase tracking-wider px-7 py-3 disabled:opacity-60">
+<span x-text="loading ? 'Submitting…' : 'Submit Key Guide interest'"></span>
+</button>
+</form>
+</div>
 </div>
 </section>
 
@@ -302,8 +367,13 @@ When member conversations open, Keyholders will be invited to respond in the Com
 <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-terracotta mb-3">Members-only · Keyholder ($25) and above</p>
 <h3 class="font-serif text-xl sm:text-2xl font-semibold text-deepgreen">Member conversations are being scheduled.</h3>
 <p class="text-deepgreen/70 text-sm leading-relaxed mt-3 max-w-2xl">
-Community Circle access begins at Keyholder membership ($25). Connectors and Key Guides are roles of service&mdash;not membership tiers.
+This public page is not the Community Circle. Access begins at Keyholder membership ($25/year). Key Carrier (free) does not include the Circle. Connectors and Key Guides are roles of service&mdash;not membership tiers.
 </p>
+<ol class="mt-5 grid sm:grid-cols-3 gap-3 text-left text-sm text-deepgreen/75">
+<li class="rounded-lg bg-white/70 border border-deepgreen/10 p-4"><span class="block text-[10px] font-bold uppercase tracking-wide text-terracotta mb-1">Join</span>Checkout as Keyholder+ on Givebutter.</li>
+<li class="rounded-lg bg-white/70 border border-deepgreen/10 p-4"><span class="block text-[10px] font-bold uppercase tracking-wide text-terracotta mb-1">Confirm</span>Keep your receipt. Member email is sent when that automation is live.</li>
+<li class="rounded-lg bg-white/70 border border-deepgreen/10 p-4"><span class="block text-[10px] font-bold uppercase tracking-wide text-terracotta mb-1">Enter</span>When WVF publishes the members-only URL, Keyholders can open the Circle from this page.</li>
+</ol>
 <div class="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
 <a
   x-show="hasMemberDestination"
@@ -313,7 +383,7 @@ Community Circle access begins at Keyholder membership ($25). Connectors and Key
 >
 Enter the Community Circle
 </a>
-<a href="./get-involved.html" class="inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring">
+<a href="./get-involved.html#after-you-join" class="inline-flex items-center justify-center rounded-full bg-[#D4AF37] text-[#0A2E20] font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-[#E2C15E] transition-colors focus-ring">
 Become a Member
 </a>
 <a href="mailto:info@wvf-ny.org?subject=Community%20Circle" class="inline-flex items-center justify-center rounded-full border border-deepgreen/20 text-deepgreen font-bold text-xs uppercase tracking-wider px-7 py-3 min-h-[44px] hover:bg-deepgreen hover:text-white transition-colors focus-ring">
@@ -415,14 +485,16 @@ Join Keymakers
 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
 <p>&copy; 2026 Women&rsquo;s Venture Fund. All rights reserved.</p>
 <div class="flex gap-6">
-<a href="mailto:info@wvf-ny.org?subject=Privacy%20Policy" class="hover:text-white">Privacy</a>
-<a href="mailto:info@wvf-ny.org?subject=Terms%20of%20Use" class="hover:text-white">Terms</a>
+<a href="./privacy.html" class="hover:text-white">Privacy</a>
+<a href="./terms.html" class="hover:text-white">Terms</a>
+<a href="./accessibility.html" class="hover:text-white">Accessibility</a>
 </div>
 </div>
 </div>
 </footer>
 
 <script src="./assets/js/keymakers-config.js"></script>
+<script src="./assets/js/keymakers-interest.js"></script>
 <script>
 function communityPage() {
   const monthNames = [
