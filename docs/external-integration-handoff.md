@@ -283,7 +283,54 @@ No JSON payload. Staff handle invitations manually until a dashboard workflow ex
 | Config | `COMMUNITY_CIRCLE_MEMBER_URL` in `keymakers-config.js` (currently empty) |
 | Public behavior | “Enter the Community Circle” is hidden until the URL is set |
 
+Leave this URL empty. The members-only app is a separate project, not a page or iframe in this repository. The staging plan is `docs/community-circle-implementation-plan.md`. Do not point the public site at a community hostname until WVF approves the access rules, privacy review, and staff workflow.
+
 Providing the URL, auth, and Keyholder+ gating is **External implementation required.**
+
+## 9. Community Circle provisioning (separate project)
+
+| | |
+| --- | --- |
+| Originating action | Dashboard action after Maria records approved Community Circle access. Not a public form POST. Not a Givebutter success URL. |
+| Public website | No code in this repo provisions an account |
+
+### Expected payload
+
+Server-side only, from the dashboard or n8n, never from the browser:
+
+```json
+{
+  "externalPersonId": "stable-person-id",
+  "email": "member@example.org",
+  "displayName": "Name",
+  "applicantReview": "pending | approved",
+  "membershipTier": "none | key_carrier | keyholder | keysmith | key_shaper | key_circle",
+  "dashboardEligibilityActive": false,
+  "profile": {}
+}
+```
+
+`dashboardEligibilityActive` true with a Keyholder-or-higher tier is what opens the Circle. A Givebutter return by itself must not set that flag.
+
+Operations: `provisionMember`, `suspendMember`, `restoreMember`, `assignRole`, `removeRole`, `syncProfile`, `getProvisioningStatus`.
+
+### Expected Baserow fields
+
+Person id, email, applicant review, membership tier, and a community-access flag. Do not copy payment amounts, staff notes, CDFI data, ethnicity, phone, or street address into the Circle.
+
+### Expected user email
+
+Activation email after provisioning succeeds. Not sent by this website. Not sent by the staging prototype.
+
+### Expected staff notification
+
+Provisioning result (`provisioned`, `updated`, or an error code) shown on the dashboard record. **External implementation required.**
+
+### Required automation behavior
+
+Idempotent on the stable person id. Email changes update the same account. Duplicate emails are rejected. Suspension removes access and keeps the audit row. Restore follows the latest eligibility flag.
+
+**External implementation required.** The staging adapter was not connected to production Baserow, n8n, or email.
 
 ---
 
