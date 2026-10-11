@@ -21,6 +21,19 @@ require_local() {
   esac
 }
 
-compose() { docker compose "$@"; }
+# Staging and production runs are refused until config/deployment-gate.json is passed
+# (see docs/deployment.md, "Cost-control deployment gate").
+require_deployment_gate() {
+  [ "$(env_value HUMHUB_PILOT_ENV)" = "local" ] && return 0
+  python3 - config/deployment-gate.json <<'PY' || die "deployment gate not passed: see config/deployment-gate.json and docs/deployment.md"
+import json, sys
+gate = json.load(open(sys.argv[1]))
+ok = gate.get("status") == "approved" and gate.get("deploymentEnabled") is True \
+    and all(c.get("confirmed") is True and c.get("confirmedBy") and c.get("evidence") for c in gate["checks"])
+sys.exit(0 if ok else 1)
+PY
+}
+
+compose() { require_deployment_gate; docker compose "$@"; }
 
 yii() { compose exec -T -u www-data humhub /app/yii "$@"; }

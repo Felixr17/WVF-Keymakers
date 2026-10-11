@@ -223,6 +223,24 @@ def require_local(env, client):
         raise PilotError(f"demo users are local-only: refusing host {client.host!r}")
 
 
+def deployment_gate_passed(gate):
+    checks = gate.get("checks") or []
+    return (
+        gate.get("status") == "approved"
+        and gate.get("deploymentEnabled") is True
+        and bool(checks)
+        and all(c.get("confirmed") is True and c.get("confirmedBy") and c.get("evidence") for c in checks)
+    )
+
+
+def require_deployment_gate(env):
+    """Staging and production calls wait for the cost-control deployment gate."""
+    if env.get("HUMHUB_PILOT_ENV") == "local":
+        return
+    if not deployment_gate_passed(load_json("deployment-gate.json")):
+        raise PilotError("deployment gate not passed: see config/deployment-gate.json and docs/deployment.md")
+
+
 def check_demo_users(users):
     for user in users:
         if not user["email"].endswith("@example.com"):
@@ -412,6 +430,7 @@ def main(argv=None, out=print):
     try:
         client = None
         if args.command not in ("plan", "openapi"):
+            require_deployment_gate(env)
             client = Client(env.get("HUMHUB_API_BASE_URL"), env.get("HUMHUB_API_TOKEN"), env.get("HUMHUB_TLS_INSECURE") == "1")
         return COMMANDS[args.command](env, client, out)
     except PilotError as err:
