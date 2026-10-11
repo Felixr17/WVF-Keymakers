@@ -1,0 +1,60 @@
+{
+  "$comment": "Cost-control deployment gate for the Keymakers Community Circle (HumHub). Production stays disabled until every check below is confirmed in writing by WVF. Fill in confirmedBy, confirmedOn, and evidence (a link to or description of the written confirmation, never a credential). See docs/deployment.md.",
+  "status": "blocked",
+  "deploymentEnabled": false,
+  "publicCommunityLinkEnabled": false,
+  "hosting": {
+    "project": "Part of the Keymakers website project and brand. Source code stays in this repository under community/humhub/.",
+    "productionShape": "Separate HumHub service, because the public website is static and cannot run PHP, a database, or background jobs.",
+    "hostname": "community.<existing-keymakers-domain>",
+    "hostnameConfirmed": false,
+    "preferredTargets": [
+      "Existing WVF infrastructure with spare capacity",
+      "Unused capacity within the existing WVF Railway subscription"
+    ],
+    "constraints": [
+      "No additional recurring cost.",
+      "No additional domain purchase.",
+      "No separate paid HumHub hosting provider.",
+      "Railway is not assumed to be free; usage must be checked against the current plan."
+    ]
+  },
+  "checks": [
+    {
+      "key": "costWithinExistingInfrastructure",
+      "description": "Written confirmation that HumHub, its database, storage, and backups fit within existing infrastructure costs with no new recurring charge or expected overage.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    },
+    {
+      "key": "hostingCapacity",
+      "description": "Current plan, existing usage, projected HumHub memory, database memory, persistent storage, backup storage, and expected overage recorded in the predeployment check.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    },
+    {
+      "key": "exactDomain",
+      "description": "Exact hostname community.<existing-keymakers-domain> confirmed, and the DNS owner has agreed to add the record.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    },
+    {
+      "key": "https",
+      "description": "HTTPS certificate issued and renewing for the exact hostname on the chosen host.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    },
+    {
+      "key": "email",
+      "description": "WVF confirms the existing email provider supports the SMTP or relay settings HumHub needs for invitations and password recovery. Until then HumHub stays on No Delivery.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    },
+    {
+      "key": "backups",
+      "description": "Encrypted backups stored on existing WVF storage, and a restore tested on the chosen host.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    },
+    {
+      "key": "moderation",
+      "description": "Named WVF moderators, Community Rules URL, and a process for reports, suspensions, and revocations.",
+      "confirmed": false, "confirmedBy": "", "confirmedOn": "", "evidence": ""
+    }
+  ],
+  "ifBlocked": "If existing infrastructure cannot run HumHub without increasing the bill, leave deploymentEnabled and publicCommunityLinkEnabled false, keep COMMUNITY_MODE 'disabled' on the website, and record the blocker in docs/deployment.md."
+}

@@ -1,0 +1,10 @@
+# Runtime data, backups, and local secrets never leave the host.
+.env
+.env.*
+!.env.example
+data/
+backups/
+state/
+__pycache__/
+# The root *secret* pattern would otherwise hide this script (it contains no secrets).
+!scripts/generate-secrets.sh

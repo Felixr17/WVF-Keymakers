@@ -127,6 +127,18 @@ Do not create dashboard or automation code inside the website repository.
 
 Confirm environment files and secrets are ignored and will not be committed (see `.gitignore` and `.env.example`).
 
+## Community Circle HumHub pilot
+
+HumHub is part of the Keymakers website project and brand. Its source stays in `community/humhub/`; the dashboard contract is `docs/dashboard-community-connection-contract.md`. In production it runs as a separate service at `community.<existing-keymakers-domain>` (exact hostname not confirmed).
+
+- The static website never serves, runs, or calls HumHub. It only links to the sign-in page through `assets/js/keymakers-community.js`.
+- Do not build the dashboard adapter, dashboard routes, Baserow writes, or n8n workflows here.
+- `community/humhub/.env`, `data/`, `backups/`, and `state/` are gitignored. Never commit them.
+- Synthetic users are local-only (`HUMHUB_PILOT_ENV=local`, `localhost` API host) and never enabled automatically.
+- Versions are pinned: HumHub 1.18.6, REST 0.11.7, MariaDB 11.8.9. Do not move to 1.19 or REST 0.12.x without WVF approval.
+- Do not deploy it or change DNS without explicit approval.
+- No additional recurring cost: no new domain, no separate paid HumHub host, and no assumption that Railway is free. Keep `COMMUNITY_MODE: 'disabled'` and `config/deployment-gate.json` `blocked` until WVF confirms in writing that hosting fits existing costs, plus the exact domain, HTTPS, email, backups, and moderation (`community/humhub/docs/deployment.md`).
+
 ## Working notes
 
 - Static HTML site with Tailwind CDN, Alpine.js, and shared scripts in `assets/js/`.

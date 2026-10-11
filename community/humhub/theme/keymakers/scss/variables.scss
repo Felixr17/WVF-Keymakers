@@ -1,0 +1,29 @@
+/**
+ * Keymakers child theme for HumHub 1.18 (Bootstrap 5 / SCSS).
+ * Colors come from the public Keymakers website (tailwind config in community.html).
+ * Admins can still override the base colors in Administration > Settings > Appearance.
+ */
+$baseTheme: "HumHub";
+
+// Brand palette
+$km-deepgreen: #0D281E !default;
+$km-deepgreen-dark: #081912 !default;
+$km-cream: #FAF8F5 !default;
+$km-cream-alt: #F5F2EB !default;
+$km-gold: #C5A059 !default;
+$km-terracotta: #C25E38 !default;
+
+// WCAG 2.1 AA for normal text; HumHub picks contrast text colors with color-contrast().
+$min-contrast-ratio: 4.5 !default;
+
+$primary: $km-deepgreen !default;
+$accent: $km-gold !default;
+$secondary: #5C6B63 !default;
+$danger: #B4361F !default;
+$success: #2F7D32 !default;
+
+$link-color: $km-deepgreen !default;
+$body-color: #26332C !default;
+$body-bg: $km-cream !default;
+
+$font-family-base: 'Plus Jakarta Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;

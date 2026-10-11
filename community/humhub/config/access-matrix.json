@@ -1,0 +1,88 @@
+{
+  "$comment": "PROPOSED PILOT CONFIGURATION. WVF may change this matrix before production. This file documents intent for HumHub administrators and for the future Keymakers Dashboard policy module. The public website never reads it and never calculates eligibility.",
+  "status": "proposed-pilot",
+  "approvedByWvf": false,
+  "principles": [
+    "Every account and every access grant requires WVF staff approval.",
+    "Registration alone never grants access.",
+    "Payment alone never grants access.",
+    "Connector interest does not grant Connector Hub access; only an approved Connector role does.",
+    "Key Guide interest does not grant Key Guide Hub access; only an approved Key Guide role does.",
+    "WVF Staff access requires an explicit staff assignment and is never inferred from an email domain.",
+    "Roles are independent of participation level and payment.",
+    "Unknown, missing, inferred, or conflicting values grant nothing."
+  ],
+  "publicTierMapping": {
+    "$comment": "Public tier names on the website are unchanged. They map to internal participation levels as follows.",
+    "Key Carrier": { "price": "Free", "participationLevel": "general" },
+    "Keyholder": { "price": "$25/year", "participationLevel": "paid" },
+    "Keysmith": { "price": "$100/year", "participationLevel": "paid" },
+    "Key Shaper": { "price": "$250/year", "participationLevel": "paid" },
+    "Key Circle": { "price": "$1,000/year, invitation only", "participationLevel": "paid" }
+  },
+  "participationLevels": {
+    "general": {
+      "label": "Approved general participant",
+      "spaces": ["welcome", "general", "shareKey", "microloan"],
+      "requires": ["registrationApproved", "communityAccessApproved"]
+    },
+    "paid": {
+      "label": "Approved paid member",
+      "inherits": "general",
+      "spaces": ["paid"],
+      "requires": [
+        "registrationApproved",
+        "communityAccessApproved",
+        "participationLevelIsPaid",
+        "paymentVerifiedWhenRequired",
+        "membershipActive"
+      ]
+    }
+  },
+  "roles": {
+    "connector": {
+      "label": "Approved Connector",
+      "spaces": ["connector"],
+      "requires": ["registrationApproved", "communityAccessApproved", "connectorRoleApproved"],
+      "doesNotQualify": ["connectorInterest"]
+    },
+    "keyGuide": {
+      "label": "Approved Key Guide",
+      "spaces": ["keyGuide"],
+      "requires": ["registrationApproved", "communityAccessApproved", "keyGuideRoleApproved"],
+      "doesNotQualify": ["keyGuideInterest"]
+    },
+    "staff": {
+      "label": "WVF Staff",
+      "spaces": ["staff"],
+      "requires": ["explicitStaffAssignment"],
+      "doesNotQualify": ["emailDomain"]
+    }
+  },
+  "lifecycle": {
+    "states": [
+      "Not requested",
+      "Pending approval",
+      "Approved",
+      "Provisioning",
+      "Enabled",
+      "Provisioning failed",
+      "Suspended",
+      "Revoked"
+    ],
+    "enabledRequires": "HumHub confirms the user exists and holds every intended space membership.",
+    "suspend": {
+      "humhubAccountStatus": 0,
+      "endSessions": true,
+      "spaceMemberships": "retained so access can be restored after review",
+      "effect": "Account disabled; the person cannot sign in or open any space."
+    },
+    "revoke": {
+      "humhubAccountStatus": 0,
+      "endSessions": true,
+      "spaceMemberships": "all removed",
+      "deleteAccount": false,
+      "effect": "Account disabled and removed from every space. The HumHub record and WVF audit history are kept."
+    }
+  }
+}

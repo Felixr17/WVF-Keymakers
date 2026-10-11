@@ -1,6 +1,6 @@
 # Multi-repository workspace — scan, Git status, and file-by-file plan
 
-Scan date: 3 October 2026 (this Cloud Agent VM).  
+Scan date: 3 October 2026 (this Cloud Agent VM). Re-checked 11 October 2026 for the HumHub Community Circle pilot: dashboard and WVF AI workspaces still absent; not found on GitHub under `Felixr17`. Dashboard and n8n work stays in `docs/external-integration-handoff.md` section 8. HumHub is part of the Keymakers website project: its source stays in this repository under `community/humhub/`, with the dashboard contract in `docs/dashboard-community-connection-contract.md`. In production it runs as a separate service at `community.<existing-keymakers-domain>`, and only after the cost-control deployment gate is passed.  
 Uncommitted website changes at scan time: **none** (clean worktree). Unrelated local edits were not present, so nothing needed preserving.
 
 Do not mix files between repositories. Do not deploy or modify production services without explicit approval.
@@ -61,7 +61,7 @@ Do **not** perform these from this website workspace without explicit approval:
 | Map Givebutter payments to membership tags | Givebutter admin + n8n + Baserow | Live campaign `keymakers-campaign` |
 | Send applicant or staff email | Production email / n8n | Live mail |
 | Create Baserow rows or tags | Baserow admin | Live data |
-| Set `COMMUNITY_CIRCLE_MEMBER_URL` to a real members URL | Dashboard / Circle host | Live access |
+| Set `COMMUNITY_URL` / `COMMUNITY_MODE` to a real HumHub URL | HumHub host + dashboard approval | Live access |
 | Salesforce export | Dashboard + Salesforce | Live CRM |
 
 Website frontend validation, copy, and docs do **not** require live access if we do not POST during QA.
@@ -85,7 +85,8 @@ Website-only remaining work. Already shipped on this branch is listed as **done*
 | `docs/image-replacement-manifest.md` | Slots and replacement rules | Keep until WVF supplies photos | No |
 | `assets/images/**` | Replace only with WVF-supplied files; do not generate fake portraits | Blocked on photography | No |
 | `assets/images/og-share-card.png` | Missing OG image referenced in page meta | Blocked on design file | No |
-| `assets/js/keymakers-config.js` | Set `COMMUNITY_CIRCLE_MEMBER_URL` only when WVF provides it | Wait | URL itself is live access |
+| `assets/js/keymakers-config.js` | Keep `COMMUNITY_MODE: 'disabled'` until WVF approves the HumHub URL (see `docs/community-website-handoff.md`) | Wait | URL itself is live access |
+| `assets/js/keymakers-community.js` | Fail-closed community entry resolver | Done | No |
 | `assets/js/keymakers-subscribe.js` | Newsletter / Gathering frontend only | Done | POST = live; do not QA-submit |
 | `assets/js/keymakers-interest.js` | Connector / Key Guide frontend only | Done | POST = live; do not QA-submit |
 | `share-your-key.html` | Intake UI + optional member questions | Done | POST = live |
@@ -96,8 +97,10 @@ Website-only remaining work. Already shipped on this branch is listed as **done*
 | `why-it-matters.html` | Shared newsletter helper | Done | POST = live |
 | `privacy.html` `terms.html` `accessibility.html` | Public legal/a11y summaries | Done; legal review is a WVF decision | No |
 | `sitemap.xml` | Include new public URLs | Done | No |
+| `community/humhub/**` | Standalone HumHub pilot: Docker Compose, theme, spaces and access matrix, local scripts, admin/backup/deployment docs. Source stays here; runs as a separate service, never served by the static website. Deployment gated by `config/deployment-gate.json`. | Done (local pilot only) | Running it locally: no. Deploying it, DNS, and email: live, not done |
+| `docs/dashboard-community-connection-contract.md` | Inputs, actions, outputs, and lifecycle the dashboard adapter must implement | Done (contract only) | No |
 
-**Do not add** dashboard routes, staff auth, n8n JSON, or Baserow schemas under `/workspace`.
+**Do not add** dashboard routes, staff auth, the dashboard HumHub adapter, n8n JSON, or Baserow schemas under `/workspace`. `community/humhub/scripts/pilot.py` is a local administration aid for synthetic users only, not the adapter.
 
 ### B. Keymakers Dashboard — **not present** — External implementation required
 
@@ -108,7 +111,8 @@ When `/Users/felixr/Developer/Felix-OS/Dashboard WVF/Keymakers Dashboard` is att
 | Staff auth / session files already in that repo | Staff authentication |
 | Registration / intake inbox views | Review Share Your Key payloads |
 | Applicant detail view | Show public labels, already-member, membership-interest |
-| Member profile + membership status | Keyholder+ vs Key Carrier; Circle eligibility |
+| Member profile + membership status | General (Key Carrier) vs paid (Keyholder+) participation; Circle spaces per `community/humhub/config/access-matrix.json` |
+| Community Circle adapter | Implements `docs/dashboard-community-connection-contract.md` against HumHub REST 0.11.7 |
 | Connector / Key Guide queues | Volunteer roles, not tiers |
 | Microloan readiness surface | Staff-facing; not public website |
 | Salesforce export action | Staff-facing; live CRM later |
