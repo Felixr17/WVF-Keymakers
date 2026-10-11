@@ -256,7 +256,7 @@ The public site **cannot** grant dashboard or Community Circle access. After pay
 2. Givebutter / n8n creates or updates the person and sets membership tier.
 3. User email: payment received; Community Circle access is **scheduled**, not instant on the public website.
 4. Staff notification: new paid member + tier.
-5. When `COMMUNITY_CIRCLE_MEMBER_URL` is provided, the public Community page can show “Enter the Community Circle.” Authentication still lives outside this repo.
+5. Payment alone never grants access. Staff approve Community Circle access in the dashboard (section 8). The public “Enter the Community” link only goes to the HumHub sign-in page.
 
 **Key Carrier (Free)** does not include Community Circle access.
 
@@ -276,14 +276,158 @@ No JSON payload. Staff handle invitations manually until a dashboard workflow ex
 
 ---
 
-## 8. Community Circle member destination
+## 8. Community Circle on HumHub (pilot)
 
-| | |
+**Status: External implementation required** in the Keymakers Dashboard repository and the WVF AI / n8n workspace. Neither was mounted when this was written (11 October 2026), so none of the items below exist yet. Nothing here is live.
+
+Website side (done in this repo): see `docs/community-website-handoff.md`.
+
+### Architecture
+
+`Public website → n8n intake → Baserow → staff dashboard approval → HumHub provisioning`
+
+- HumHub is a separate application on a dedicated subdomain, proposed `https://community.wvf-ny.org`. DNS is **not** changed.
+- The website links to it in the same tab. No iframe in the website or dashboard.
+- Tiers are HumHub **space memberships and roles** in one HumHub install, not separate sites.
+- Pilot sign-in uses HumHub invitation / local accounts. OIDC SSO is a later phase.
+
+### Originating website forms or actions
+
+| Website action | Community effect |
 | --- | --- |
-| Config | `COMMUNITY_CIRCLE_MEMBER_URL` in `keymakers-config.js` (currently empty) |
-| Public behavior | “Enter the Community Circle” is hidden until the URL is set |
+| Share Your Key (`share-your-key.html`), incl. `membershipInterest: true` | **None.** Never provisions. |
+| Connector interest (`connectors.html`) | **None.** Interest is not role approval. |
+| Key Guide interest (`community.html`, `connectors.html`) | **None.** Interest is not role approval. |
+| Givebutter checkout | **None by itself.** Payment is one input; staff approval is still required. |
+| “Enter the Community” link (`community.html`) | Opens HumHub sign-in. Carries no parameters. |
 
-Providing the URL, auth, and Keyholder+ gating is **External implementation required.**
+### Expected payload (n8n → dashboard)
+
+Provisioning is triggered only by a staff action in the dashboard. If routed through n8n, n8n forwards this to the dashboard’s protected endpoint and adds nothing of its own:
+
+```json
+{
+  "candidateId": "baserow-row-or-dashboard-id",
+  "action": "provision | suspend | revoke",
+  "reason": "string, required",
+  "idempotencyKey": "uuid, required, preserved on retry",
+  "previousAccessState": "Approved | Provisioning failed | Enabled | Suspended",
+  "requestedBy": "staff identity from dashboard session"
+}
+```
+
+Signed with `COMMUNITY_INTERNAL_API_SECRET` (HMAC over body + timestamp). n8n holds **no** HumHub token and **does not** re-implement eligibility.
+
+### Expected Baserow fields / participation tags
+
+Proposed additions (to be reconciled with the dashboard’s `docs/baserow-schema-migration-proposal.md`):
+
+| Field | Values |
+| --- | --- |
+| `registration_status` | existing approval field; must be `Approved` |
+| `participation_level` | `General` / `Paid member` (free vs. paid matrix awaits WVF approval) |
+| `payment_verified` | boolean, set only from verified Givebutter records |
+| `membership_status` | `Active` / `Lapsed` / … |
+| `community_access_approved` | boolean, staff-set only |
+| `connector_role_status` | `Not requested` / `Interested` / `Approved` / `Removed` |
+| `key_guide_role_status` | same |
+| `staff_role_approved` | boolean, never inferred from email domain |
+| `community_state` | `Not requested`, `Pending approval`, `Approved`, `Provisioning`, `Enabled`, `Provisioning failed`, `Suspended`, `Revoked` |
+| `community_provider_user_id` | HumHub user ID (confirmed) |
+| `community_confirmed_spaces` | list returned by HumHub |
+| `community_last_sync_at` | timestamp |
+| `community_last_error` | sanitized message only |
+| `community_audit_log` | append-only; revocation never deletes it |
+
+Tags: `community-approved`, `community-enabled`, `community-suspended`, `community-revoked`, `role-connector-approved`, `role-key-guide-approved`.
+
+### Proposed space matrix (pilot configuration — requires WVF approval)
+
+| HumHub space | General/free approved | Paid member | Connector approved | Key Guide approved | Staff role |
+| --- | --- | --- | --- | --- | --- |
+| Welcome & Announcements | ✓ | ✓ | | | ✓ |
+| Community Circle | ✓ | ✓ | | | ✓ |
+| Share Your Key | ✓ | ✓ | | | ✓ |
+| Microloan Resources (selected) | ✓ | ✓ | | | ✓ |
+| Paid Member Circle | | ✓ | | | ✓ |
+| Connector Hub | | | ✓ | | ✓ |
+| Key Guide Hub | | | | ✓ | ✓ |
+| WVF Staff | | | | | ✓ |
+
+Roles stack on top of general or paid participation and are independent of payment.
+
+> **Conflict for WVF to resolve:** the current public site says Key Carrier (free) does **not** include the Community Circle. The proposed pilot gives approved free participants general spaces. The website copy was not changed to promise free access; decide before go-live.
+
+### Policy rules (deterministic, no AI)
+
+- General access: registration `Approved` **and** `community_access_approved` **and** not suspended/revoked.
+- Paid spaces add: `participation_level = Paid member` **and** `payment_verified` (when payment is required) **and** `membership_status = Active`.
+- Connector / Key Guide hubs: role status `Approved` only. `Interested` grants nothing.
+- Staff space: `staff_role_approved` only.
+- Unknown, absent, inferred, or conflicting values fail closed and list the missing requirement.
+- Output: eligible, reason, intended spaces, missing requirements, spaces to remove on suspend/revoke.
+- Required unit tests: approved free; unapproved free; approved paid; payment without approval; active membership without verified payment; Connector interest only; approved Connector; approved Key Guide; suspended; revoked; incomplete/conflicting data.
+
+### Dashboard endpoints (server-only, existing staff auth and write gates)
+
+`GET /api/community/status`, `POST /api/community/preview`, `POST /api/community/provision`, `POST /api/community/suspend`, `POST /api/community/revoke`.
+
+State-changing requests must carry staff identity, candidate ID, reason, idempotency key, intended action, and previous state, all validated server-side. `Enabled` is shown only after HumHub confirms the user and every intended space.
+
+Modes: `COMMUNITY_PROVISIONING_MODE=disabled` (no provider call possible; buttons say no write occurred), `preview` (show intended changes, write nothing to Baserow or HumHub), `live` (provider calls only after every check). Default `disabled` everywhere.
+
+Dashboard env placeholders: `COMMUNITY_PROVIDER=disabled`, `COMMUNITY_PROVISIONING_MODE=disabled`, `COMMUNITY_PUBLIC_URL=`, `HUMHUB_BASE_URL=`, `HUMHUB_API_TOKEN=`, `HUMHUB_GENERAL_SPACE_ID=`, `HUMHUB_PAID_SPACE_ID=`, `HUMHUB_SHARE_KEY_SPACE_ID=`, `HUMHUB_CONNECTOR_SPACE_ID=`, `HUMHUB_KEY_GUIDE_SPACE_ID=`, `HUMHUB_MICROLOAN_SPACE_ID=`, `HUMHUB_STAFF_SPACE_ID=`, `COMMUNITY_INTERNAL_API_SECRET=`. (Welcome & Announcements has no dedicated variable in this list; add one or set it as a HumHub default space.)
+
+### HumHub adapter (implements the dashboard’s existing `src/lib/community-platform-adapter.ts` contract)
+
+Versions checked against official sources on 11 October 2026 (re-verify at implementation):
+
+| Component | Version | Source |
+| --- | --- | --- |
+| HumHub core | **1.18.6** (latest stable; 1.19.0 is beta only) | https://github.com/humhub/humhub/releases |
+| HumHub Docker image | `humhub/humhub:1.18.6` | https://hub.docker.com/r/humhub/humhub |
+| REST API module | **0.11.7** (`module.json`: minVersion 1.18, maxVersion 1.18). 0.12.x requires 1.19 and must not be used. | https://github.com/humhub/rest/releases |
+
+REST operations listed in the module’s OpenAPI at tag `v0.11.7` (`docs/swagger/user.yaml`, `docs/swagger/space.yaml`). Confirm against the **installed** module before coding:
+
+| Need | REST 0.11.7 operation |
+| --- | --- |
+| Find by email | `GET /user/get-by-email` |
+| Find by external WVF ID | `GET /user/get-by-authclient` (after `POST /user/{id}/auth-client`) |
+| Create user | `POST /user` |
+| Invite user | `POST /user/invite` (sends HumHub mail — keep off until mail is approved) |
+| Update profile | `PUT /user/{id}` (minimum fields only) |
+| List / add / remove space membership | `GET` / `POST` / `DELETE /space/{id}/membership[/{userId}]` |
+| Set space role | `PATCH /space/{id}/membership/{userId}/role` |
+| End sessions on suspend/revoke | `DELETE /user/session/all/{id}` |
+| Suspend account | Account `status` field via `PUT /user/{id}` — **verify** in installed OpenAPI; otherwise a manual admin step |
+
+Idempotency: look up before create; diff memberships before add/remove; store the idempotency key with the result so a replay returns the stored outcome. Send only name, email, and external ID. Never send application answers, financial data, interview notes, CDFI data, or staff notes. Sanitize errors (strip tokens, emails, response bodies).
+
+### Expected user email
+
+None in the pilot. Do not claim an invitation was sent unless a delivery provider confirms it. HumHub’s own invite mail stays off until WVF approves production email.
+
+### Expected staff notification
+
+Optional Slack/email on `Provisioning failed` with the sanitized error and a dashboard link. **External implementation required.**
+
+### Required automation behavior (WVF AI / n8n, `WF-MEM-08-provision-request.json`, stays inactive)
+
+1. Receive a staff-approved provisioning request.
+2. Verify the internal signature.
+3. Call the dashboard’s protected provisioning endpoint.
+4. Preserve the idempotency key.
+5. Record success or a sanitized failure.
+6. Allow retry without duplicates.
+
+No HumHub token in n8n. Do not publish or activate.
+
+### HumHub package (dashboard repo, `community/humhub/`)
+
+Docker Compose (HumHub 1.18.6 + the database the official Docker docs specify), persistent volumes, `.env.example` with placeholders, health checks, start/stop/backup/restore/upgrade docs, a WVF theme override (logo, colors, “Return to Women’s Venture Fund”, Support, rules, privacy), synthetic `example.com` fixtures that never load in production. Docs to create there: `community/humhub/README.md`, `docs/community-humhub-pilot.md`, `docs/community-operations-runbook.md`.
+
+**External implementation required.** Do not claim any of this is complete.
 
 ---
 

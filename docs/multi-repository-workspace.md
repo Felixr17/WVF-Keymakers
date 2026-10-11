@@ -1,6 +1,6 @@
 # Multi-repository workspace — scan, Git status, and file-by-file plan
 
-Scan date: 3 October 2026 (this Cloud Agent VM).  
+Scan date: 3 October 2026 (this Cloud Agent VM). Re-checked 11 October 2026 for the HumHub Community Circle pilot: dashboard and WVF AI workspaces still absent; not found on GitHub under `Felixr17`. Dashboard, n8n, and HumHub package work stays in `docs/external-integration-handoff.md` section 8.  
 Uncommitted website changes at scan time: **none** (clean worktree). Unrelated local edits were not present, so nothing needed preserving.
 
 Do not mix files between repositories. Do not deploy or modify production services without explicit approval.
@@ -61,7 +61,7 @@ Do **not** perform these from this website workspace without explicit approval:
 | Map Givebutter payments to membership tags | Givebutter admin + n8n + Baserow | Live campaign `keymakers-campaign` |
 | Send applicant or staff email | Production email / n8n | Live mail |
 | Create Baserow rows or tags | Baserow admin | Live data |
-| Set `COMMUNITY_CIRCLE_MEMBER_URL` to a real members URL | Dashboard / Circle host | Live access |
+| Set `COMMUNITY_URL` / `COMMUNITY_MODE` to a real HumHub URL | HumHub host + dashboard approval | Live access |
 | Salesforce export | Dashboard + Salesforce | Live CRM |
 
 Website frontend validation, copy, and docs do **not** require live access if we do not POST during QA.
@@ -85,7 +85,8 @@ Website-only remaining work. Already shipped on this branch is listed as **done*
 | `docs/image-replacement-manifest.md` | Slots and replacement rules | Keep until WVF supplies photos | No |
 | `assets/images/**` | Replace only with WVF-supplied files; do not generate fake portraits | Blocked on photography | No |
 | `assets/images/og-share-card.png` | Missing OG image referenced in page meta | Blocked on design file | No |
-| `assets/js/keymakers-config.js` | Set `COMMUNITY_CIRCLE_MEMBER_URL` only when WVF provides it | Wait | URL itself is live access |
+| `assets/js/keymakers-config.js` | Keep `COMMUNITY_MODE: 'disabled'` until WVF approves the HumHub URL (see `docs/community-website-handoff.md`) | Wait | URL itself is live access |
+| `assets/js/keymakers-community.js` | Fail-closed community entry resolver | Done | No |
 | `assets/js/keymakers-subscribe.js` | Newsletter / Gathering frontend only | Done | POST = live; do not QA-submit |
 | `assets/js/keymakers-interest.js` | Connector / Key Guide frontend only | Done | POST = live; do not QA-submit |
 | `share-your-key.html` | Intake UI + optional member questions | Done | POST = live |
