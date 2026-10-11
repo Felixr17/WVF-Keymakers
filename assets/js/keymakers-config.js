@@ -11,12 +11,17 @@
     /** Share Your Key + newsletter / Gathering RSVP (n8n keymakers-intake). */
     N8N_INTAKE_WEBHOOK_URL: 'https://primary-production-a33d.up.railway.app/webhook/keymakers-intake',
     /**
-     * When WVF provides a members-only Community Circle URL (Keyholder+),
-     * set it here to show “Enter the Community Circle” on community.html.
-     * Leave empty while member access is being scheduled.
-     * Authentication and Keyholder+ gating are external (dashboard / automation).
+     * Community Circle entry (HumHub, proposed https://community.wvf-ny.org).
+     * Mirrors NEXT_PUBLIC_COMMUNITY_URL / NEXT_PUBLIC_COMMUNITY_MODE.
+     * Modes: 'disabled' (shows "coming soon"), 'preview' (link only on
+     * COMMUNITY_PREVIEW_HOSTS + localhost), 'live' (link for everyone).
+     * The URL must be a bare https origin/path: no query string or fragment.
+     * Access, tiers, and spaces are decided by WVF staff and HumHub, never here.
+     * Keep 'disabled' until WVF approves the URL and the access process.
      */
-    COMMUNITY_CIRCLE_MEMBER_URL: '',
+    COMMUNITY_URL: '',
+    COMMUNITY_MODE: 'disabled',
+    COMMUNITY_PREVIEW_HOSTS: [],
   };
   window.KEYMAKERS_CONFIG = KEYMAKERS_CONFIG;
 })();
