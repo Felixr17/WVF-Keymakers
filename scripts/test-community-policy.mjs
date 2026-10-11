@@ -250,3 +250,62 @@ test('HumHub and REST versions stay pinned to the stable 1.18 line', () => {
   assert.match(install, /VERSION="0\.11\.7"/);
   assert.match(install, /SHA256="[0-9a-f]{64}"/);
 });
+
+// --- Hosting and cost-control deployment gate --------------------------------
+
+const loadWebsiteConfig = () => {
+  const sandbox = { window: {} };
+  require('node:vm').runInNewContext(read('assets', 'js', 'keymakers-config.js'), sandbox);
+  return sandbox.window.KEYMAKERS_CONFIG;
+};
+
+test('deployment gate ships blocked with every required check unconfirmed', () => {
+  const gate = readJson('deployment-gate.json');
+  assert.equal(gate.status, 'blocked');
+  assert.equal(gate.deploymentEnabled, false);
+  assert.equal(gate.publicCommunityLinkEnabled, false);
+  assert.deepEqual(gate.checks.map((c) => c.key), [
+    'costWithinExistingInfrastructure', 'hostingCapacity', 'exactDomain', 'https', 'email', 'backups', 'moderation',
+  ]);
+  for (const check of gate.checks) assert.equal(check.confirmed, false, check.key);
+});
+
+test('hosting uses a subdomain of the existing Keymakers domain with no added recurring cost', () => {
+  const { hosting } = readJson('deployment-gate.json');
+  assert.equal(hosting.hostname, 'community.<existing-keymakers-domain>');
+  assert.equal(hosting.hostnameConfirmed, false);
+  const constraints = hosting.constraints.join(' ');
+  assert.match(constraints, /No additional recurring cost/);
+  assert.match(constraints, /No additional domain/);
+  assert.match(constraints, /No separate paid HumHub hosting provider/);
+  assert.match(constraints, /Railway is not assumed to be free/);
+});
+
+test('the website link stays disabled while the deployment gate is not approved', () => {
+  const gate = readJson('deployment-gate.json');
+  const cfg = loadWebsiteConfig();
+  if (gate.status !== 'approved' || !gate.publicCommunityLinkEnabled) {
+    assert.equal(cfg.COMMUNITY_MODE, 'disabled');
+    assert.equal(cfg.COMMUNITY_URL, '');
+  }
+});
+
+test('no file fixes community.wvf-ny.org as the community address', () => {
+  const files = [
+    ...walk(HUMHUB), ...walk(join(ROOT, 'docs')), ...walk(join(ROOT, 'assets', 'js')),
+    join(ROOT, 'AGENTS.md'), join(ROOT, 'README.md'), join(ROOT, '.env.example'),
+    ...htmlPages.map((p) => join(ROOT, p)),
+  ].filter((f) => !/\.(svg|png|jpg|webp|mp4)$/.test(f));
+  for (const file of files) assert.doesNotMatch(readFileSync(file, 'utf8'), /community\.wvf-ny\.org/, relative(ROOT, file));
+});
+
+test('deployment doc has the cost-control gate and predeployment check', () => {
+  const doc = readFileSync(join(HUMHUB, 'docs', 'deployment.md'), 'utf8');
+  assert.match(doc, /## Cost-control deployment gate/);
+  assert.match(doc, /\*\*Written confirmation\*\*[^\n]*fit within existing infrastructure costs/);
+  for (const item of ['Current plan', 'Existing usage', 'Projected HumHub memory', 'Projected database memory', 'Persistent storage', 'Backup storage', 'Expected overage']) {
+    assert.match(doc, new RegExp(`\\| ${item} \\|`), item);
+  }
+  assert.match(doc, /not\*\* assumed to be free/);
+  assert.doesNotMatch(doc, /Railway (is|will be) free/i);
+});

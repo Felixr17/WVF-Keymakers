@@ -190,7 +190,7 @@ class ClientGuardTests(unittest.TestCase):
 
     def test_demo_commands_refuse_non_local(self):
         fake = FakeHumHub()
-        remote = pilot.Client("https://community.wvf-ny.org", TOKEN, opener=fake)
+        remote = pilot.Client("https://community.example.org", TOKEN, opener=fake)
         local = pilot.Client("https://localhost", TOKEN, opener=fake)
         with self.assertRaises(pilot.PilotError):
             pilot.require_local(LOCAL_ENV, remote)
@@ -304,6 +304,41 @@ class IdempotencyTests(unittest.TestCase):
     def test_bearer_header_is_sent(self):
         self.client.find_user_by_email("nobody@example.com")
         self.assertEqual(self.fake.requests[-1][2], "Bearer " + TOKEN)
+
+
+class DeploymentGateTests(unittest.TestCase):
+    def approved(self):
+        gate = pilot.load_json("deployment-gate.json")
+        gate["status"], gate["deploymentEnabled"] = "approved", True
+        for check in gate["checks"]:
+            check.update(confirmed=True, confirmedBy="WVF budget owner", evidence="signed note on file")
+        return gate
+
+    def test_shipped_gate_is_blocked(self):
+        self.assertFalse(pilot.deployment_gate_passed(pilot.load_json("deployment-gate.json")))
+
+    def test_every_check_needs_written_evidence(self):
+        self.assertTrue(pilot.deployment_gate_passed(self.approved()))
+        for field, value in (("confirmed", False), ("confirmedBy", ""), ("evidence", "")):
+            gate = self.approved()
+            gate["checks"][0][field] = value
+            self.assertFalse(pilot.deployment_gate_passed(gate), field)
+        gate = self.approved()
+        gate["deploymentEnabled"] = False
+        self.assertFalse(pilot.deployment_gate_passed(gate))
+        self.assertFalse(pilot.deployment_gate_passed({"status": "approved", "deploymentEnabled": True, "checks": []}))
+
+    def test_non_local_commands_refuse_before_any_request(self):
+        lines = []
+        env = {"HUMHUB_PILOT_ENV": "production", "HUMHUB_API_BASE_URL": "https://community.example.org", "HUMHUB_API_TOKEN": TOKEN}
+        with mock.patch.object(pilot, "load_env", return_value=env), mock.patch.object(pilot, "Client") as client:
+            code = pilot.main(["spaces"], out=lines.append)
+        self.assertEqual(code, 2)
+        client.assert_not_called()
+        self.assertIn("deployment gate", lines[-1])
+
+    def test_local_pilot_is_not_blocked(self):
+        pilot.require_deployment_gate({"HUMHUB_PILOT_ENV": "local"})
 
 
 class OpenApiTests(unittest.TestCase):
