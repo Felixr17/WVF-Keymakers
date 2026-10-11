@@ -56,6 +56,6 @@ python3 -m http.server 8080   # then open http://localhost:8080/community.html
 ## Decisions WVF must make
 
 1. Approve `community.wvf-ny.org` (or another address).
-2. Approve the free vs. paid space matrix. The site currently says Key Carrier (free) does **not** include the Circle, while the proposed pilot gives approved free participants general spaces. The copy was left as-is until WVF decides.
+2. Confirm the free vs. paid space matrix in `community/humhub/config/access-matrix.json` before production. The public copy now follows the pilot policy: approved general participants may receive selected spaces; paid members may receive expanded spaces; all access requires WVF approval.
 3. Approve the public wording for “access requires WVF approval.”
 4. Supply support and community-rules links for HumHub’s theme.

@@ -258,7 +258,7 @@ The public site **cannot** grant dashboard or Community Circle access. After pay
 4. Staff notification: new paid member + tier.
 5. Payment alone never grants access. Staff approve Community Circle access in the dashboard (section 8). The public “Enter the Community” link only goes to the HumHub sign-in page.
 
-**Key Carrier (Free)** does not include Community Circle access.
+**Key Carrier (Free)** maps to general participation. Approved general participants may receive selected general spaces; payment is not required for those, but WVF approval is. See `community/humhub/config/access-matrix.json` for the tier mapping.
 
 **External implementation required** in Givebutter admin, n8n, Baserow, email, and the dashboard. Do not claim this flow is live.
 
@@ -356,7 +356,7 @@ Tags: `community-approved`, `community-enabled`, `community-suspended`, `communi
 
 Roles stack on top of general or paid participation and are independent of payment.
 
-> **Conflict for WVF to resolve:** the current public site says Key Carrier (free) does **not** include the Community Circle. The proposed pilot gives approved free participants general spaces. The website copy was not changed to promise free access; decide before go-live.
+> **Policy (approved for the pilot):** approved general/free participants receive selected general spaces; paid members receive general plus paid spaces. Payment alone, registration alone, Connector interest, and Key Guide interest never grant access. The public copy now says: “Approved general participants may receive access to selected community spaces. Paid members may receive expanded spaces, resources, and member sessions. All access is subject to WVF review and approval.” WVF may still change the space matrix before production.
 
 ### Policy rules (deterministic, no AI)
 

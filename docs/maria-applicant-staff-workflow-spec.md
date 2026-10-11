@@ -20,7 +20,7 @@ Applicants never see a staff queue. They see:
    - Copy states they should already be Keymakers (Connector) or experienced Keymakers/Connectors (Key Guide)
 3. **Paid membership**
    - Checkout is Givebutter
-   - After-you-join copy explains that Community Circle access is scheduled after Keyholder+ is confirmed — not a login on the public site
+   - After-you-join copy explains that payment does not automatically enable Community Circle access; expanded paid spaces are proposed for Keyholder+ after WVF approval — not a login on the public site
 4. **No public application-status portal**
    - Status, assignment, and notes are staff-only
    - If a future “check my submission” page is desired, it belongs in the dashboard repo with authentication
@@ -51,8 +51,9 @@ Implement these screens in the Keymakers dashboard when that repo is available.
 
 ### M3. Membership match
 
-- If Givebutter/n8n later tags the same email as Keyholder+, show “Paid member — Community Circle eligible” on the record
-- Key Carrier (free) is not eligible
+- If Givebutter/n8n later tags the same email as Keyholder+, show “Paid member — paid spaces may be approved” on the record
+- Key Carrier (free) maps to general participation: selected general spaces may be approved, paid spaces may not
+- No tier grants access on its own; staff approval is always required (see `docs/dashboard-community-connection-contract.md`)
 - Staff can still note “invite to join Keyholder” when `membershipInterest` is true
 
 ### M4. Connector & Key Guide queue
