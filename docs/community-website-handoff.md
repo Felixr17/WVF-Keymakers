@@ -2,7 +2,9 @@
 
 Written 11 October 2026. Applies to the public website repository (`Felixr17/WVF-Keymakers`).
 
-The HumHub community, dashboard approval, and provisioning live in other systems. Their requirements are in `docs/external-integration-handoff.md` section 8 and are **External implementation required**. The Keymakers Dashboard and WVF AI workspaces were not available, so nothing was built there.
+Dashboard approval and provisioning live in other systems. Their requirements are in `docs/external-integration-handoff.md` section 8 and `docs/dashboard-community-connection-contract.md`, and are **External implementation required**. The Keymakers Dashboard and WVF AI workspaces were not available, so nothing was built there.
+
+The standalone HumHub pilot package is kept in this repository for now under `community/humhub/` (see its `README.md`). The website does not serve, run, or call it.
 
 ## How members reach the community
 
@@ -22,6 +24,8 @@ The HumHub community, dashboard approval, and provisioning live in other systems
 | `community.html` | Uses the resolver; shows “Community entry coming soon” when disabled; copy says access requires WVF approval and payment alone does not grant it. |
 | `.env.example` | `NEXT_PUBLIC_COMMUNITY_URL=` and `NEXT_PUBLIC_COMMUNITY_MODE=disabled` placeholders. |
 | `scripts/test-community-entry.mjs` | Tests for the resolver, shipped config, and page markup. |
+| `scripts/test-community-policy.mjs` | Tests for the public access wording and the HumHub pilot config (spaces, access matrix, demo users, secret scan). |
+| `community.html`, `get-involved.html`, `index.html`, `terms.html`, `connectors.html`, `accessibility.html` | Copy follows the pilot policy: approved general participants may receive selected spaces; paid members may receive expanded spaces; all access requires WVF approval. Tier names unchanged. |
 
 The static site reads `keymakers-config.js`. The `NEXT_PUBLIC_*` names are documented for parity with a future build step and mean the same thing.
 

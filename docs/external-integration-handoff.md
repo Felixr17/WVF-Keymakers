@@ -278,9 +278,13 @@ No JSON payload. Staff handle invitations manually until a dashboard workflow ex
 
 ## 8. Community Circle on HumHub (pilot)
 
-**Status: External implementation required** in the Keymakers Dashboard repository and the WVF AI / n8n workspace. Neither was mounted when this was written (11 October 2026), so none of the items below exist yet. Nothing here is live.
+**Status: External implementation required** in the Keymakers Dashboard repository and the WVF AI / n8n workspace. Neither was mounted when this was written (11 October 2026), so the dashboard, Baserow, and n8n items below do not exist yet. Nothing here is live.
 
-Website side (done in this repo): see `docs/community-website-handoff.md`.
+In this repository:
+
+- Website side: `docs/community-website-handoff.md`.
+- Standalone HumHub pilot package (temporary home): `community/humhub/`. Verified on a local stack only; not deployed.
+- Contract for the future dashboard adapter: `docs/dashboard-community-connection-contract.md`. That document supersedes the adapter notes below where they differ.
 
 ### Architecture
 
@@ -376,7 +380,7 @@ State-changing requests must carry staff identity, candidate ID, reason, idempot
 
 Modes: `COMMUNITY_PROVISIONING_MODE=disabled` (no provider call possible; buttons say no write occurred), `preview` (show intended changes, write nothing to Baserow or HumHub), `live` (provider calls only after every check). Default `disabled` everywhere.
 
-Dashboard env placeholders: `COMMUNITY_PROVIDER=disabled`, `COMMUNITY_PROVISIONING_MODE=disabled`, `COMMUNITY_PUBLIC_URL=`, `HUMHUB_BASE_URL=`, `HUMHUB_API_TOKEN=`, `HUMHUB_GENERAL_SPACE_ID=`, `HUMHUB_PAID_SPACE_ID=`, `HUMHUB_SHARE_KEY_SPACE_ID=`, `HUMHUB_CONNECTOR_SPACE_ID=`, `HUMHUB_KEY_GUIDE_SPACE_ID=`, `HUMHUB_MICROLOAN_SPACE_ID=`, `HUMHUB_STAFF_SPACE_ID=`, `COMMUNITY_INTERNAL_API_SECRET=`. (Welcome & Announcements has no dedicated variable in this list; add one or set it as a HumHub default space.)
+Dashboard env placeholders: `COMMUNITY_PROVIDER=disabled`, `COMMUNITY_PROVISIONING_MODE=disabled`, `COMMUNITY_PUBLIC_URL=`, `HUMHUB_BASE_URL=`, `HUMHUB_API_TOKEN=`, `HUMHUB_GENERAL_SPACE_ID=`, `HUMHUB_PAID_SPACE_ID=`, `HUMHUB_SHARE_KEY_SPACE_ID=`, `HUMHUB_CONNECTOR_SPACE_ID=`, `HUMHUB_KEY_GUIDE_SPACE_ID=`, `HUMHUB_MICROLOAN_SPACE_ID=`, `HUMHUB_STAFF_SPACE_ID=`, `COMMUNITY_INTERNAL_API_SECRET=`. `HUMHUB_WELCOME_SPACE_ID=`. Welcome & Announcements is an explicit membership, never a HumHub default space (default spaces would bypass approval).
 
 ### HumHub adapter (implements the dashboard’s existing `src/lib/community-platform-adapter.ts` contract)
 
@@ -400,7 +404,7 @@ REST operations listed in the module’s OpenAPI at tag `v0.11.7` (`docs/swagger
 | List / add / remove space membership | `GET` / `POST` / `DELETE /space/{id}/membership[/{userId}]` |
 | Set space role | `PATCH /space/{id}/membership/{userId}/role` |
 | End sessions on suspend/revoke | `DELETE /user/session/all/{id}` |
-| Suspend account | Account `status` field via `PUT /user/{id}` — **verify** in installed OpenAPI; otherwise a manual admin step |
+| Suspend account | `PUT /user/{id}` with `account.status = 0`. Verified against the installed 0.11.7 module on the local pilot. |
 
 Idempotency: look up before create; diff memberships before add/remove; store the idempotency key with the result so a replay returns the stored outcome. Send only name, email, and external ID. Never send application answers, financial data, interview notes, CDFI data, or staff notes. Sanitize errors (strip tokens, emails, response bodies).
 
@@ -423,11 +427,11 @@ Optional Slack/email on `Provisioning failed` with the sanitized error and a das
 
 No HumHub token in n8n. Do not publish or activate.
 
-### HumHub package (dashboard repo, `community/humhub/`)
+### HumHub package (`community/humhub/` in this repository, temporary home)
 
-Docker Compose (HumHub 1.18.6 + the database the official Docker docs specify), persistent volumes, `.env.example` with placeholders, health checks, start/stop/backup/restore/upgrade docs, a WVF theme override (logo, colors, “Return to Women’s Venture Fund”, Support, rules, privacy), synthetic `example.com` fixtures that never load in production. Docs to create there: `community/humhub/README.md`, `docs/community-humhub-pilot.md`, `docs/community-operations-runbook.md`.
+Built here at WVF's request: Docker Compose (HumHub 1.18.6 + MariaDB 11.8.9, pinned by digest), persistent volumes, health checks, `.env.example` placeholders, pinned REST 0.11.7 install, Keymakers child theme, spaces and access-matrix config, synthetic `example.com` personas (local only), and backup, restore, administrator, and deployment docs. See `community/humhub/README.md`.
 
-**External implementation required.** Do not claim any of this is complete.
+It is a **pilot**, run only on a local machine. Hosting, DNS, email, the dashboard adapter, Baserow fields, and n8n remain **External implementation required**.
 
 ---
 

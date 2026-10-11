@@ -4,6 +4,8 @@ Public website for the Women’s Venture Fund Keymakers movement.
 
 This repository is **website-only**. The Keymakers Dashboard and WVF AI/n8n workspace are separate folders and are not in this Cloud Agent VM. See `AGENTS.md`, `docs/multi-repository-workspace.md`, and `docs/external-integration-handoff.md`.
 
+`community/humhub/` is the temporary home of the standalone HumHub Community Circle pilot (Docker Compose, theme, config, and admin docs). It is not part of the static site and is not deployed. See `community/humhub/README.md` and `docs/dashboard-community-connection-contract.md`.
+
 ## Local preview
 
 Serve the folder over HTTP (opening `file://` can block fetches):
@@ -17,10 +19,13 @@ Then open `http://localhost:8080/`.
 ## Tests
 
 ```bash
-node --test scripts/test-community-entry.mjs
+node --test scripts/test-community-entry.mjs scripts/test-community-policy.mjs
+python3 -m unittest discover -s community/humhub/tests -v
+HUMHUB_DB_PASSWORD=placeholder MARIADB_ROOT_PASSWORD=placeholder \
+  docker compose -f community/humhub/docker-compose.yml --env-file community/humhub/.env.example --profile manual config --quiet
 ```
 
-Covers the Community Circle entry button (`docs/community-website-handoff.md`).
+The Node tests cover the Community Circle entry button, the public access wording, and the HumHub pilot config (`docs/community-website-handoff.md`). The Python tests cover the pilot helper's policy, idempotency, local-only guard, and error sanitizing, with no network access.
 
 ## Secrets
 

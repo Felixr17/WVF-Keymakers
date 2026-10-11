@@ -1,6 +1,6 @@
 # Multi-repository workspace — scan, Git status, and file-by-file plan
 
-Scan date: 3 October 2026 (this Cloud Agent VM). Re-checked 11 October 2026 for the HumHub Community Circle pilot: dashboard and WVF AI workspaces still absent; not found on GitHub under `Felixr17`. Dashboard, n8n, and HumHub package work stays in `docs/external-integration-handoff.md` section 8.  
+Scan date: 3 October 2026 (this Cloud Agent VM). Re-checked 11 October 2026 for the HumHub Community Circle pilot: dashboard and WVF AI workspaces still absent; not found on GitHub under `Felixr17`. Dashboard and n8n work stays in `docs/external-integration-handoff.md` section 8. At WVF's request, this website repository is the **temporary** source-control home for the standalone HumHub pilot package (`community/humhub/`) and the dashboard contract (`docs/dashboard-community-connection-contract.md`). The package is self-contained and can move to its own repository later.  
 Uncommitted website changes at scan time: **none** (clean worktree). Unrelated local edits were not present, so nothing needed preserving.
 
 Do not mix files between repositories. Do not deploy or modify production services without explicit approval.
@@ -97,8 +97,10 @@ Website-only remaining work. Already shipped on this branch is listed as **done*
 | `why-it-matters.html` | Shared newsletter helper | Done | POST = live |
 | `privacy.html` `terms.html` `accessibility.html` | Public legal/a11y summaries | Done; legal review is a WVF decision | No |
 | `sitemap.xml` | Include new public URLs | Done | No |
+| `community/humhub/**` | Standalone HumHub pilot: Docker Compose, theme, spaces and access matrix, local scripts, admin/backup/deployment docs. Temporary home; not served by the website. | Done (local pilot only) | Running it locally: no. Deploying it, DNS, and email: live, not done |
+| `docs/dashboard-community-connection-contract.md` | Inputs, actions, outputs, and lifecycle the dashboard adapter must implement | Done (contract only) | No |
 
-**Do not add** dashboard routes, staff auth, n8n JSON, or Baserow schemas under `/workspace`.
+**Do not add** dashboard routes, staff auth, the dashboard HumHub adapter, n8n JSON, or Baserow schemas under `/workspace`. `community/humhub/scripts/pilot.py` is a local administration aid for synthetic users only, not the adapter.
 
 ### B. Keymakers Dashboard — **not present** — External implementation required
 
@@ -109,7 +111,8 @@ When `/Users/felixr/Developer/Felix-OS/Dashboard WVF/Keymakers Dashboard` is att
 | Staff auth / session files already in that repo | Staff authentication |
 | Registration / intake inbox views | Review Share Your Key payloads |
 | Applicant detail view | Show public labels, already-member, membership-interest |
-| Member profile + membership status | Keyholder+ vs Key Carrier; Circle eligibility |
+| Member profile + membership status | General (Key Carrier) vs paid (Keyholder+) participation; Circle spaces per `community/humhub/config/access-matrix.json` |
+| Community Circle adapter | Implements `docs/dashboard-community-connection-contract.md` against HumHub REST 0.11.7 |
 | Connector / Key Guide queues | Volunteer roles, not tiers |
 | Microloan readiness surface | Staff-facing; not public website |
 | Salesforce export action | Staff-facing; live CRM later |
