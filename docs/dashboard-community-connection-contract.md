@@ -95,7 +95,7 @@ New users are created with a random password that nobody knows and `mustChangePa
 
 ## Configuration the dashboard will need (server-side only)
 
-- `HUMHUB_API_BASE_URL` (for example `https://community.wvf-ny.org`)
+- `HUMHUB_API_BASE_URL` (`https://community.<existing-keymakers-domain>` once confirmed; the local pilot uses `https://localhost`)
 - `HUMHUB_API_TOKEN` (Bearer token for a dedicated service administrator, with an expiration date)
 - `HUMHUB_WELCOME_SPACE_ID`, `HUMHUB_GENERAL_SPACE_ID`, `HUMHUB_PAID_SPACE_ID`, `HUMHUB_SHARE_KEY_SPACE_ID`, `HUMHUB_CONNECTOR_SPACE_ID`, `HUMHUB_KEY_GUIDE_SPACE_ID`, `HUMHUB_MICROLOAN_SPACE_ID`, `HUMHUB_STAFF_SPACE_ID` (the names match `dashboardEnvVar` in `spaces.json`; values come from `state/space-ids.json` after `pilot.py spaces`)
 - A kill switch that keeps all writes disabled until WVF approves.

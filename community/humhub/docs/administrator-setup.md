@@ -32,7 +32,7 @@ Compose stops with an error if a required value is missing from `.env`.
 ## 4. Create the initial administrator
 
 - **Local only:** `./scripts/bootstrap-local.sh`. It runs HumHub's own console installer, creates the admin from `HUMHUB_ADMIN_USERNAME`, `HUMHUB_ADMIN_EMAIL` (must be `@example.com`), and `HUMHUB_ADMIN_PASSWORD`, sets the base URL, and sets mail to **No Delivery (save as file)**. It does nothing if HumHub is already installed. The admin password is passed as a command argument, which is acceptable only on a single-user local machine.
-- **Staging and production (Manual):** open the site and complete the web installer. Use the database values from `.env` (host `db`). Use a named WVF administrator with a strong unique password and two-factor authentication. Then go to **Administration › Settings › Advanced › E-Mail** and keep **No Delivery** until WVF approves outbound email (see `deployment.md`).
+- **Staging and production (Manual):** open the site and complete the web installer. Use the database values from `.env` (host `db`). Use a named WVF administrator with a strong unique password and two-factor authentication. Then go to **Administration › Settings › Advanced › E-Mail** and keep **No Delivery** until WVF confirms the existing WVF email provider supports the SMTP or relay settings HumHub needs (see `deployment.md`). Staging and production also require the cost-control deployment gate to be passed first.
 
 ## 5. Install the REST module
 

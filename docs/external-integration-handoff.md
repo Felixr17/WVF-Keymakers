@@ -283,14 +283,14 @@ No JSON payload. Staff handle invitations manually until a dashboard workflow ex
 In this repository:
 
 - Website side: `docs/community-website-handoff.md`.
-- Standalone HumHub pilot package (temporary home): `community/humhub/`. Verified on a local stack only; not deployed.
+- HumHub package: `community/humhub/`. Its source stays in this repository. Verified on a local stack only; deployment is disabled until the cost-control deployment gate in `community/humhub/docs/deployment.md` is passed.
 - Contract for the future dashboard adapter: `docs/dashboard-community-connection-contract.md`. That document supersedes the adapter notes below where they differ.
 
 ### Architecture
 
 `Public website → n8n intake → Baserow → staff dashboard approval → HumHub provisioning`
 
-- HumHub is a separate application on a dedicated subdomain, proposed `https://community.wvf-ny.org`. DNS is **not** changed.
+- HumHub runs as a separate service at `https://community.<existing-keymakers-domain>` (exact hostname not confirmed; no new domain, no separate paid HumHub host). Preferred targets: existing WVF infrastructure or unused capacity in the existing Railway subscription, only if it adds no recurring cost. DNS is **not** changed.
 - The website links to it in the same tab. No iframe in the website or dashboard.
 - Tiers are HumHub **space memberships and roles** in one HumHub install, not separate sites.
 - Pilot sign-in uses HumHub invitation / local accounts. OIDC SSO is a later phase.
@@ -410,7 +410,7 @@ Idempotency: look up before create; diff memberships before add/remove; store th
 
 ### Expected user email
 
-None in the pilot. Do not claim an invitation was sent unless a delivery provider confirms it. HumHub’s own invite mail stays off until WVF approves production email.
+None in the pilot. Do not claim an invitation was sent unless a delivery provider confirms it. HumHub’s own invite and password-recovery mail stays off until WVF confirms the existing WVF email provider supports the SMTP or relay settings HumHub needs.
 
 ### Expected staff notification
 
@@ -427,11 +427,11 @@ Optional Slack/email on `Provisioning failed` with the sanitized error and a das
 
 No HumHub token in n8n. Do not publish or activate.
 
-### HumHub package (`community/humhub/` in this repository, temporary home)
+### HumHub package (`community/humhub/` in this repository)
 
 Built here at WVF's request: Docker Compose (HumHub 1.18.6 + MariaDB 11.8.9, pinned by digest), persistent volumes, health checks, `.env.example` placeholders, pinned REST 0.11.7 install, Keymakers child theme, spaces and access-matrix config, synthetic `example.com` personas (local only), and backup, restore, administrator, and deployment docs. See `community/humhub/README.md`.
 
-It is a **pilot**, run only on a local machine. Hosting, DNS, email, the dashboard adapter, Baserow fields, and n8n remain **External implementation required**.
+It is a **pilot**, run only on a local machine. Deployment is blocked by the cost-control deployment gate (`community/humhub/config/deployment-gate.json`). Hosting capacity, DNS, email, the dashboard adapter, Baserow fields, and n8n remain **External implementation required**.
 
 ---
 

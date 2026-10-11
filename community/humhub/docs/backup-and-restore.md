@@ -34,7 +34,7 @@ shred -u backups/humhub_backup_<timestamp>.tar   # after the encrypted copy is v
 The pilot does not schedule backups. For staging or production, WVF should decide:
 
 - Frequency (suggested: daily) and retention (suggested: 14 daily, 8 weekly).
-- Off-host, encrypted storage in a separate account or provider.
+- Off-host, encrypted storage on **existing** WVF storage. Do not add a new paid storage service; backup storage counts toward the cost-control deployment gate in `deployment.md`.
 - An alert when a backup fails or is missing.
 - A restore test at least quarterly, and before every upgrade.
 

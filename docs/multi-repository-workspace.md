@@ -1,6 +1,6 @@
 # Multi-repository workspace — scan, Git status, and file-by-file plan
 
-Scan date: 3 October 2026 (this Cloud Agent VM). Re-checked 11 October 2026 for the HumHub Community Circle pilot: dashboard and WVF AI workspaces still absent; not found on GitHub under `Felixr17`. Dashboard and n8n work stays in `docs/external-integration-handoff.md` section 8. At WVF's request, this website repository is the **temporary** source-control home for the standalone HumHub pilot package (`community/humhub/`) and the dashboard contract (`docs/dashboard-community-connection-contract.md`). The package is self-contained and can move to its own repository later.  
+Scan date: 3 October 2026 (this Cloud Agent VM). Re-checked 11 October 2026 for the HumHub Community Circle pilot: dashboard and WVF AI workspaces still absent; not found on GitHub under `Felixr17`. Dashboard and n8n work stays in `docs/external-integration-handoff.md` section 8. HumHub is part of the Keymakers website project: its source stays in this repository under `community/humhub/`, with the dashboard contract in `docs/dashboard-community-connection-contract.md`. In production it runs as a separate service at `community.<existing-keymakers-domain>`, and only after the cost-control deployment gate is passed.  
 Uncommitted website changes at scan time: **none** (clean worktree). Unrelated local edits were not present, so nothing needed preserving.
 
 Do not mix files between repositories. Do not deploy or modify production services without explicit approval.
@@ -97,7 +97,7 @@ Website-only remaining work. Already shipped on this branch is listed as **done*
 | `why-it-matters.html` | Shared newsletter helper | Done | POST = live |
 | `privacy.html` `terms.html` `accessibility.html` | Public legal/a11y summaries | Done; legal review is a WVF decision | No |
 | `sitemap.xml` | Include new public URLs | Done | No |
-| `community/humhub/**` | Standalone HumHub pilot: Docker Compose, theme, spaces and access matrix, local scripts, admin/backup/deployment docs. Temporary home; not served by the website. | Done (local pilot only) | Running it locally: no. Deploying it, DNS, and email: live, not done |
+| `community/humhub/**` | Standalone HumHub pilot: Docker Compose, theme, spaces and access matrix, local scripts, admin/backup/deployment docs. Source stays here; runs as a separate service, never served by the static website. Deployment gated by `config/deployment-gate.json`. | Done (local pilot only) | Running it locally: no. Deploying it, DNS, and email: live, not done |
 | `docs/dashboard-community-connection-contract.md` | Inputs, actions, outputs, and lifecycle the dashboard adapter must implement | Done (contract only) | No |
 
 **Do not add** dashboard routes, staff auth, the dashboard HumHub adapter, n8n JSON, or Baserow schemas under `/workspace`. `community/humhub/scripts/pilot.py` is a local administration aid for synthetic users only, not the adapter.

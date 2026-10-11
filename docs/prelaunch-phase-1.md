@@ -96,7 +96,7 @@ Marked **External implementation required** in `docs/external-integration-handof
 
 Answer these before later phases claim integrations are live:
 
-1. **Community Circle URL** — Proposed HumHub address `https://community.wvf-ny.org`. Set `COMMUNITY_URL` and `COMMUNITY_MODE` in `keymakers-config.js` only after WVF approves the URL and access process. See `docs/community-website-handoff.md`.
+1. **Community Circle URL** — HumHub will run as a separate service at `https://community.<existing-keymakers-domain>` (exact hostname not confirmed; no new domain). Keep `COMMUNITY_MODE: 'disabled'` in `keymakers-config.js` until the cost-control deployment gate in `community/humhub/docs/deployment.md` is passed: hosting within existing costs, exact domain, HTTPS, email, backups, and moderation. See `docs/community-website-handoff.md`.
 2. **Givebutter post-purchase** — What should donors/members see after Keyholder+ checkout? Who maps Givebutter payments to Baserow membership tags?
 3. **Share Your Key participation values** — UI labels (`Be Featured in a Story`, etc.) currently post legacy values (`virtual`, `self-record`, `in-person`, `more-info`). Keep, remap, or replace?
 4. **New registration questions** — Confirm the two added optional fields (already a member; membership/Community Circle interest) or supply replacements.

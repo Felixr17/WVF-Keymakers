@@ -9,11 +9,11 @@ The standalone HumHub pilot package is kept in this repository for now under `co
 ## How members reach the community
 
 - HumHub is reached through a **normal HTTPS link**, not an iframe.
-- Proposed address: **`https://community.wvf-ny.org`** (not yet approved; DNS unchanged).
+- Address: **`https://community.<existing-keymakers-domain>`**, a subdomain of the existing Keymakers domain. The exact hostname is not confirmed, no new domain will be bought, and DNS is unchanged. HumHub runs as a separate service because this site is static (`community/humhub/docs/deployment.md`).
 - The website has **one** Community destination: the “Enter the Community” button on `community.html`, in the “Member conversations” section. It opens in the same tab.
 - After sign-in, HumHub shows only the spaces that person belongs to. **HumHub space membership creates the tiered view.** The website makes no tier decision.
 - **Registration and payment do not grant access.** Share Your Key, Connector or Key Guide interest, and Givebutter checkout never create a HumHub account. WVF staff approve access in the dashboard.
-- The entry button stays in “coming soon” state until WVF approves the URL and the access process.
+- The entry button stays in “coming soon” state (`COMMUNITY_MODE: 'disabled'`) until the cost-control deployment gate is passed: written confirmation that hosting fits existing costs, plus the exact domain, HTTPS, email, backups, and moderation.
 
 ## What changed in this repository
 
@@ -45,8 +45,8 @@ No HumHub token, Baserow identifier, space ID, community role, tier, or eligibil
 
 ## Turning it on (after WVF approval)
 
-1. Confirm HumHub is running at the approved URL with sign-in working.
-2. For a staging check, set `COMMUNITY_MODE: 'preview'`, `COMMUNITY_URL: 'https://community.wvf-ny.org'`, and the staging hostname in `COMMUNITY_PREVIEW_HOSTS`.
+1. Confirm `community/humhub/config/deployment-gate.json` is `approved`, and HumHub is running at the confirmed hostname with sign-in working.
+2. For a staging check, set `COMMUNITY_MODE: 'preview'`, `COMMUNITY_URL: 'https://community.<existing-keymakers-domain>'` (the confirmed hostname), and the staging hostname in `COMMUNITY_PREVIEW_HOSTS`.
 3. For launch, set `COMMUNITY_MODE: 'live'`.
 4. Run `node --test scripts/test-community-entry.mjs`. Update the “shipped config” test, which asserts `disabled`, in the same change.
 
@@ -59,7 +59,7 @@ python3 -m http.server 8080   # then open http://localhost:8080/community.html
 
 ## Decisions WVF must make
 
-1. Approve `community.wvf-ny.org` (or another address).
+1. Confirm the exact hostname `community.<existing-keymakers-domain>` and a hosting target within existing infrastructure costs (cost-control deployment gate).
 2. Confirm the free vs. paid space matrix in `community/humhub/config/access-matrix.json` before production. The public copy now follows the pilot policy: approved general participants may receive selected spaces; paid members may receive expanded spaces; all access requires WVF approval.
 3. Approve the public wording for “access requires WVF approval.”
 4. Supply support and community-rules links for HumHub’s theme.

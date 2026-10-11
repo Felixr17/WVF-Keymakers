@@ -4,7 +4,7 @@ Public website for the Women’s Venture Fund Keymakers movement.
 
 This repository is **website-only**. The Keymakers Dashboard and WVF AI/n8n workspace are separate folders and are not in this Cloud Agent VM. See `AGENTS.md`, `docs/multi-repository-workspace.md`, and `docs/external-integration-handoff.md`.
 
-`community/humhub/` is the temporary home of the standalone HumHub Community Circle pilot (Docker Compose, theme, config, and admin docs). It is not part of the static site and is not deployed. See `community/humhub/README.md` and `docs/dashboard-community-connection-contract.md`.
+`community/humhub/` holds the HumHub Community Circle pilot (Docker Compose, theme, config, and admin docs). It is part of the Keymakers project but runs as a separate service, not on the static site. It is not deployed: deployment waits for the cost-control deployment gate in `community/humhub/docs/deployment.md`. See `community/humhub/README.md` and `docs/dashboard-community-connection-contract.md`.
 
 ## Local preview
 

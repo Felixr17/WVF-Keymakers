@@ -2,7 +2,7 @@
 
 A standalone, reviewable HumHub pilot for the Keymakers Community Circle. **This is a pilot, not a production deployment.**
 
-The public website repository is only the temporary source-control home for this package. The website never runs HumHub, never calls the HumHub REST API, and never decides who gets access. When a dedicated infrastructure repository exists, this folder can move there as is.
+HumHub is part of the Keymakers website project and brand, and its source stays in this repository. In production it runs as a separate service at `https://community.<existing-keymakers-domain>` (exact hostname not yet confirmed), because the public website is static. The website never runs HumHub, never calls the HumHub REST API, and never decides who gets access. Deployment is disabled until the cost-control deployment gate in `docs/deployment.md` is passed.
 
 ## Versions (pinned)
 
@@ -22,12 +22,13 @@ Images are pinned by tag **and** digest in `docker-compose.yml`. The REST archiv
 | `.env.example` | Placeholders only. Copy to `.env` (gitignored). |
 | `config/spaces.json` | The eight proposed spaces. All private and invitation-only. |
 | `config/access-matrix.json` | Public tier → general/paid mapping, level and role → space mapping, and lifecycle. Proposed; WVF may change it before production. |
+| `config/deployment-gate.json` | Cost-control deployment gate. `blocked` until WVF confirms in writing that hosting fits existing costs, plus domain, HTTPS, email, backups, and moderation. Non-local script runs refuse until it is approved. |
 | `config/demo-users.json` | Seven fictional `example.com` personas. No passwords. Local only. |
 | `scripts/` | Secrets, install, theme, registration lock, demo data, health, backup, and restore. |
 | `theme/keymakers/` | Minimal child theme of the HumHub 1.18 base theme. No core files changed. |
 | `docs/administrator-setup.md` | The full 14-step setup sequence, including the manual admin-UI steps. |
 | `docs/backup-and-restore.md` | Backup, encryption, and restore. |
-| `docs/deployment.md` | What a later deployment at `https://community.wvf-ny.org` needs. Nothing is deployed. |
+| `docs/deployment.md` | Hosting decision, predeployment cost check, and the cost-control deployment gate for `https://community.<existing-keymakers-domain>`. Nothing is deployed. |
 
 The dashboard contract is in the repository-level `docs/dashboard-community-connection-contract.md`.
 
