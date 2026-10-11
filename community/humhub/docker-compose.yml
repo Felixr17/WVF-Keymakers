@@ -1,0 +1,82 @@
+# Keymakers Community Circle — HumHub pilot stack.
+#
+# Based on the official HumHub Docker quick start (https://github.com/humhub/docker)
+# with pinned versions. Only the services that quick start requires: HumHub and
+# MariaDB. The "backup" service is the official one-shot backup job and only runs
+# when invoked with `docker compose run --rm backup`.
+#
+# All secrets come from an untracked `.env` next to this file. Compose refuses to
+# start if a required value is missing.
+
+name: keymakers-community
+
+services:
+  humhub:
+    # HumHub 1.18.6 (latest stable 1.18). Do not use 1.19 beta.
+    image: humhub/humhub:1.18.6@sha256:9978bff0d2b9f7efe2dce3d8344d6b31e3c1da561367e971d6803551a0a1c589
+    restart: unless-stopped
+    ports:
+      - "${HUMHUB_HTTP_PORT:-80}:80"
+      - "${HUMHUB_HTTPS_PORT:-443}:443"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data/humhub:/data
+    environment:
+      SERVER_NAME: ${HUMHUB_SERVER_NAME:?set HUMHUB_SERVER_NAME in .env}
+      HUMHUB_DEBUG: "false"
+      HUMHUB_CONFIG__COMPONENTS__DB__DSN: mysql:host=db;dbname=${HUMHUB_DB_NAME:?set HUMHUB_DB_NAME in .env}
+      HUMHUB_CONFIG__COMPONENTS__DB__USERNAME: ${HUMHUB_DB_USER:?set HUMHUB_DB_USER in .env}
+      HUMHUB_CONFIG__COMPONENTS__DB__PASSWORD: ${HUMHUB_DB_PASSWORD:?set HUMHUB_DB_PASSWORD in .env}
+      # "updater" is the image default. "rest" stops the start-up `module/update-all`
+      # from replacing the pinned REST 0.11.7 installed in /data/modules-custom.
+      HUMHUB_CONFIG__MODULES__MARKETPLACE__MODULE_BLACKLIST: '["updater","rest"]'
+      # Mail delivery is NOT set here: HUMHUB_FIXED_SETTINGS values are passed through
+      # is_callable(), so the value "file" would be executed as PHP's file() and break
+      # every request. scripts/set-mail-no-delivery.sh sets "No Delivery" via the console.
+      # Read by the Keymakers theme footer (Yii params keymakersReturnUrl, etc.).
+      HUMHUB_CONFIG__PARAMS__KEYMAKERS_RETURN_URL: ${KEYMAKERS_RETURN_URL:-}
+      HUMHUB_CONFIG__PARAMS__KEYMAKERS_RULES_URL: ${KEYMAKERS_RULES_URL:-}
+      HUMHUB_CONFIG__PARAMS__KEYMAKERS_PRIVACY_URL: ${KEYMAKERS_PRIVACY_URL:-}
+      HUMHUB_CONFIG__PARAMS__KEYMAKERS_SUPPORT_URL: ${KEYMAKERS_SUPPORT_URL:-}
+    healthcheck:
+      test: ["CMD", "/app/bin/humhub-simple-healthcheck.sh"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+
+  db:
+    # HumHub docs: MariaDB 10.11+ supported, 11.8+ recommended; utf8mb4 + InnoDB required.
+    image: mariadb:11.8.9@sha256:6422478cb8e159f080fb1d8ccf65101e26fe51385787fde7d16c3b165a331f15
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?set MARIADB_ROOT_PASSWORD in .env}
+      MARIADB_DATABASE: ${HUMHUB_DB_NAME:?set HUMHUB_DB_NAME in .env}
+      MARIADB_USER: ${HUMHUB_DB_USER:?set HUMHUB_DB_USER in .env}
+      MARIADB_PASSWORD: ${HUMHUB_DB_PASSWORD:?set HUMHUB_DB_PASSWORD in .env}
+    expose:
+      - "3306"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backup:
+    extends:
+      service: humhub
+    profiles: ["manual"]
+    restart: "no"
+    command: /app/bin/humhub-backup.sh
+    user: root
+    volumes:
+      - ./backups:/backup
+    environment:
+      HUMHUB_DOCKER__BACKUP_MERGE_ARCHIVES: "true"

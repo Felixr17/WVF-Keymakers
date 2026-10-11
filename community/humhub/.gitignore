@@ -1,0 +1,7 @@
+# Runtime data, backups, and local secrets never leave the host.
+.env
+.env.*
+!.env.example
+data/
+backups/
+state/

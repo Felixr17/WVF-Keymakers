@@ -1,0 +1,89 @@
+{
+  "$comment": "PROPOSED PILOT CONFIGURATION. WVF may rename, add, remove, or re-scope any space before production. Space IDs are assigned by HumHub at creation and recorded in the untracked state/space-ids.json, never here. HumHub limits space descriptions to 100 characters.",
+  "status": "proposed-pilot",
+  "approvedByWvf": false,
+  "humhubConstants": {
+    "$comment": "From HumHub 1.18.6 protected/humhub/modules/space/models/Space.php.",
+    "visibility": {
+      "private": 0,
+      "registeredUsers": 1,
+      "public": 2
+    },
+    "joinPolicy": {
+      "inviteOnly": 0,
+      "inviteAndRequest": 1,
+      "open": 2
+    }
+  },
+  "defaults": {
+    "visibility": 0,
+    "joinPolicy": 0,
+    "$comment": "Every space is private (invisible to non-members) and invite-only, so a member never sees a space she has not been added to."
+  },
+  "spaces": [
+    {
+      "key": "welcome",
+      "name": "Welcome & Announcements",
+      "description": "News, announcements, and orientation for approved Keymakers members.",
+      "dashboardEnvVar": "HUMHUB_WELCOME_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "general",
+      "name": "Community Circle",
+      "description": "The main conversation space for approved Keymakers participants.",
+      "dashboardEnvVar": "HUMHUB_GENERAL_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "paid",
+      "name": "Paid Member Circle",
+      "description": "Expanded resources, member sessions, and opportunities for approved paid members.",
+      "dashboardEnvVar": "HUMHUB_PAID_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "shareKey",
+      "name": "Share Your Key",
+      "description": "Members share the keys that opened doors for them.",
+      "dashboardEnvVar": "HUMHUB_SHARE_KEY_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "connector",
+      "name": "Connector Hub",
+      "description": "Coordination space for WVF-approved Connectors.",
+      "dashboardEnvVar": "HUMHUB_CONNECTOR_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "keyGuide",
+      "name": "Key Guide Hub",
+      "description": "Coordination space for WVF-approved Key Guides.",
+      "dashboardEnvVar": "HUMHUB_KEY_GUIDE_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "microloan",
+      "name": "Microloan Resources",
+      "description": "Selected microloan education resources. No applications or financial data.",
+      "dashboardEnvVar": "HUMHUB_MICROLOAN_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    },
+    {
+      "key": "staff",
+      "name": "WVF Staff",
+      "description": "Internal coordination for explicitly assigned WVF staff.",
+      "dashboardEnvVar": "HUMHUB_STAFF_SPACE_ID",
+      "visibility": 0,
+      "joinPolicy": 0
+    }
+  ]
+}

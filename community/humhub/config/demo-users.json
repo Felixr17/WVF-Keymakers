@@ -1,0 +1,83 @@
+{
+  "$comment": "SYNTHETIC LOCAL DEMO USERS ONLY. Fictional people with example.com addresses. No passwords are stored here; scripts read HUMHUB_DEMO_PASSWORD from the untracked .env. scripts/pilot.py refuses to create these unless HUMHUB_PILOT_ENV=local and the API host is localhost.",
+  "demoOnly": true,
+  "users": [
+    {
+      "key": "general",
+      "username": "demo-general",
+      "firstname": "Avery",
+      "lastname": "Demo-General",
+      "email": "avery.general@example.com",
+      "participationLevel": "general",
+      "roles": [],
+      "lifecycleState": "Enabled",
+      "represents": "Approved general/free participant (public tier: Key Carrier)"
+    },
+    {
+      "key": "paid",
+      "username": "demo-paid",
+      "firstname": "Blair",
+      "lastname": "Demo-Paid",
+      "email": "blair.paid@example.com",
+      "participationLevel": "paid",
+      "roles": [],
+      "lifecycleState": "Enabled",
+      "represents": "Approved paid member (public tier: Keyholder)"
+    },
+    {
+      "key": "connector",
+      "username": "demo-connector",
+      "firstname": "Casey",
+      "lastname": "Demo-Connector",
+      "email": "casey.connector@example.com",
+      "participationLevel": "general",
+      "roles": ["connector"],
+      "lifecycleState": "Enabled",
+      "represents": "Approved Connector with general participation (role is independent of payment)"
+    },
+    {
+      "key": "keyGuide",
+      "username": "demo-keyguide",
+      "firstname": "Dana",
+      "lastname": "Demo-KeyGuide",
+      "email": "dana.keyguide@example.com",
+      "participationLevel": "paid",
+      "roles": ["keyGuide"],
+      "lifecycleState": "Enabled",
+      "represents": "Approved Key Guide with paid participation"
+    },
+    {
+      "key": "suspended",
+      "username": "demo-suspended",
+      "firstname": "Ellis",
+      "lastname": "Demo-Suspended",
+      "email": "ellis.suspended@example.com",
+      "participationLevel": "general",
+      "roles": [],
+      "lifecycleState": "Suspended",
+      "represents": "Suspended participant (account disabled, memberships retained)"
+    },
+    {
+      "key": "revoked",
+      "username": "demo-revoked",
+      "firstname": "Frankie",
+      "lastname": "Demo-Revoked",
+      "email": "frankie.revoked@example.com",
+      "participationLevel": "general",
+      "roles": [],
+      "lifecycleState": "Revoked",
+      "represents": "Revoked participant (account disabled, all memberships removed, record kept)"
+    },
+    {
+      "key": "staff",
+      "username": "demo-staff",
+      "firstname": "Gale",
+      "lastname": "Demo-Staff",
+      "email": "gale.staff@example.com",
+      "participationLevel": "general",
+      "roles": ["staff"],
+      "lifecycleState": "Enabled",
+      "represents": "Explicitly assigned WVF staff (not inferred from email domain)"
+    }
+  ]
+}
