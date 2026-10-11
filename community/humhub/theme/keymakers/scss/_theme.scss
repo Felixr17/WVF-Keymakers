@@ -1,0 +1,102 @@
+/**
+ * Keymakers selectors. Keep this small: HumHub upgrades restyle core components.
+ */
+
+h1, h2, h3, .panel-heading, .card-header strong, #app-title {
+    font-family: var(--hh-km-heading-font);
+}
+
+body {
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+// Visible keyboard focus everywhere.
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--hh-km-gold);
+    outline-offset: 2px;
+}
+
+#topbar-first {
+    background-color: var(--hh-km-deepgreen);
+}
+
+.km-logo {
+    height: 34px;
+    width: auto;
+}
+
+.km-logo-login {
+    height: 96px;
+    width: auto;
+    margin-bottom: 0.5rem;
+}
+
+.km-brand-text {
+    color: #fff;
+    font-family: var(--hh-km-heading-font);
+    font-weight: 600;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+// WVF links shared by every footer location.
+.km-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1rem;
+    margin: 0.75rem 0;
+    font-size: 0.875rem;
+
+    a,
+    .km-link-pending {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px; // touch target
+        padding: 0 0.25rem;
+    }
+
+    a {
+        color: var(--hh-km-deepgreen);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .km-link-pending {
+        color: #4A5650;
+    }
+}
+
+.km-notice {
+    max-width: 32rem;
+    margin: 1rem auto 0;
+    padding: 0.875rem 1rem;
+    border-left: 4px solid var(--hh-km-gold);
+    background: var(--hh-km-cream-alt);
+    color: #26332C;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.login-container .km-links a,
+.login-container .km-links .km-link-pending {
+    color: #fff;
+}
+
+.login-container .km-notice {
+    color: #26332C;
+}
+
+@media (max-width: 767.98px) {
+    .km-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+}
